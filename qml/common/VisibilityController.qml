@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.0
+import QtQuick 2.0
 import "utils.js" as Utils
 
 Item {
@@ -26,8 +26,8 @@ Item {
     property bool forceVisible: false
     property bool forceHidden: false
     property variant forceVisibleChangeId
-    property variant forceVisibleStack: {}
-    property variant forceHiddenStack: {}
+    property variant forceVisibleStack: ({})
+    property variant forceHiddenStack: ({})
 
     Binding {
         target: controller

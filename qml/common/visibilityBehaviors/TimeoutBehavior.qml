@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 2.0
 
 /*
     This behavior will show the target onFocusIn and hide it
@@ -31,8 +31,6 @@ BaseBehavior {
     Connections {
         target: timeout.target
         onActiveFocusChanged: {
-            console.log("== Signal ==")
-            console.log(target + ":\t" + target.activeFocus)
             if (timeout.target.activeFocus) {
                 shown = true
                 hideTimer.restart()

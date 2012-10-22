@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 2.0
 import "../common"
 import "../common/utils.js" as Utils
 import "../common/units.js" as Units
@@ -154,7 +154,7 @@ FocusScope {
 
             onItemClicked: {
                 hideOnFillerWidthAnimationEnd = true
-                video.position = Math.ceil(video.duration * sceneSelector.currentIndex / 10)
+                video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
             }
 
             Keys.priority: Keys.AfterItem

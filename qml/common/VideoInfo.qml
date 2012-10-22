@@ -1,4 +1,5 @@
-import QtQuick 1.0
+import QtQuick 2.0
+import QtQuick.XmlListModel 2.0
 import "../common/utils.js" as Utils
 
 Item {

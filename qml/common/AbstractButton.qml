@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.0
+import QtQuick 2.0
 
 FocusScope {
     property bool enabled: true
@@ -31,8 +31,6 @@ FocusScope {
     property alias mouseOver: mouse_area.containsMouse
 
     signal clicked
-
-    Accessible.role: Accessible.PushButton
 
     MouseArea {
         id: mouse_area

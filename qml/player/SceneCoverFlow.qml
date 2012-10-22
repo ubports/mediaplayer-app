@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 1.0
+import QtQuick 2.0
 import "../common"
 import "../common/units.js" as Units
 import "../common/utils.js" as Utils
@@ -35,7 +35,6 @@ ListView {
     signal itemClicked
 
     cacheBuffer: width / 2
-    focus: true
     orientation: ListView.Horizontal
     spacing: Units.tvPx(36)
     contentX: firstFullSceneIndex * (itemWidth + spacing)

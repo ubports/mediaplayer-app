@@ -1,11 +1,11 @@
-import QtQuick 1.1
+import QtQuick 2.0
 
 Item {
     id: mediaPlayer
-    width: 800; height: 450
+    width: 1200; height: 675
 
     property string formFactor: "tv"
-    property string uri: "file:///home/michal/Wideo/Test/20100725_001.mp4"
+    property string uri: "file:///home/michal/Wideo/Filmy/Oslo.31.August.2011.720p.BluRay.x264-CiNEFiLE/Oslo.31.August.2011.720p.BluRay.x264-CiNEFiLE.mkv"
     property variant volume: playerLoader.item.volume
 
     function play() {

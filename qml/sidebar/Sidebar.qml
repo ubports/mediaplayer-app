@@ -1,11 +1,10 @@
-import QtQuick 1.0
+import QtQuick 2.0
 import "../common"
 import "../common/utils.js" as Utils
 import "../common/units.js" as Units
 
 FocusScope {
     id: sidebar
-    Accessible.name: "sidebar"
 
     property alias source: loader.source
     property alias status: loader.status
@@ -65,7 +64,6 @@ FocusScope {
 
             Loader {
                 id: loader
-                Accessible.name: "loader"
 
                 anchors.top: parent.top
                 anchors.left: parent.left; anchors.right: parent.right

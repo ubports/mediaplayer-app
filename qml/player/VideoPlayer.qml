@@ -1,6 +1,5 @@
-import QtQuick 1.0
-import QtMultimediaKit 1.1
-//import Effects 1.0
+import QtQuick 2.0
+import QtMultimedia 5.0
 import "../common"
 import "../common/visibilityBehaviors"
 import "../sidebar"
@@ -16,19 +15,6 @@ AbstractPlayer {
 
     nfo: VideoInfo {
         uri: source
-    }
-
-    Timer {
-        running: true
-        repeat: true
-        interval: 2000
-        onTriggered: {
-            console.log("== State ==")
-            console.log(player + ":\t" + player.activeFocus)
-            console.log(indicators + ":\t" + indicators.activeFocus)
-            console.log(controls + ":\t" + controls.activeFocus)
-            console.log(sidebar + ":\t" + sidebar.activeFocus)
-        }
     }
 
     VideoPlayerIndicatorsBar {
@@ -146,6 +132,8 @@ AbstractPlayer {
 
         Behavior on y { NumberAnimation {} }
 
+        focus: true
+
         state: player.state
         video: player.video
 
@@ -251,7 +239,7 @@ AbstractPlayer {
     }
 
     onStatusChanged: {
-        if (status == Video.EndOfMedia) {
+        if (status == MediaPlayer.EndOfMedia) {
             stop()
         }
     }
