@@ -21,6 +21,7 @@ AbstractPlayer {
         anchors.fill: parent
         onClicked: {
             if (sidebar.activeFocus) { sidebar.focus = false; player.forceActiveFocus() }
+            else if (indicators.activeFocus) {indicators.focus = false; player.forceActiveFocus() }
             else if (!controls.focus) { controls.focus = true }
             else { controls.close() }
         }

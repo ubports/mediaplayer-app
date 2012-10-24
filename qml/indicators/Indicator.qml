@@ -22,6 +22,8 @@ import "../common/utils.js" as Utils
 import "../common/units.js" as Units
 
 FocusScope {
+    id: indicator
+
     property alias background: backgroundRectangle
     property bool ownBackground: true
     property bool active: false
@@ -31,6 +33,8 @@ FocusScope {
 
     width: icon.width
     height: icon.height
+
+    onActiveFocusChanged: if (active && !activeFocus) active = false
 
     Rectangle {
         id: backgroundRectangle
@@ -46,6 +50,26 @@ FocusScope {
         Behavior on opacity { NumberAnimation {} }
         Behavior on width { NumberAnimation {} }
         Behavior on height { NumberAnimation {} }
+    }
+
+    MouseArea {
+        anchors.fill: background
+        enabled: active
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        enabled: activable
+        hoverEnabled: true
+        onClicked: if (activable) { indicator.forceActiveFocus(); active = !active }
+    }
+
+    Rectangle {
+        anchors.fill: background
+        radius: Units.tvPx(10)
+        opacity: !active && mouseArea.containsMouse ? 0.4 : 0.0
+        Behavior on opacity { NumberAnimation { duration: 100 } }
     }
 
     Rectangle {

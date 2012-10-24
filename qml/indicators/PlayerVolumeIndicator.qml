@@ -49,6 +49,11 @@ VolumeIndicator {
             radius: Units.tvPx(10)
         }
 
+        MouseArea {
+            anchors.fill: volumeBarBackground
+            enabled: active
+        }
+
         Rectangle {
             id: volumeBarBackgroundBorder
             x: border.width / 2
@@ -85,6 +90,31 @@ VolumeIndicator {
             anchors.bottom: volumeBarOutline.bottom
             width: Units.tvPx(58)
             height: Units.tvPx(Math.round(58 + mediaPlayer.volume * 212))
+        }
+
+        MouseArea {
+            id: mouseArea
+            anchors.fill: volumeBarOutline
+            anchors.margins: Units.tvPx(19)
+            enabled: active
+            onClicked: {
+                if (mouseY == 0) shell.volume = 1.0
+                else shell.volume = Math.min((height - mouseY) / height, 1.0)
+            }
+            drag.target: slider
+            drag.axis: "YAxis"
+            drag.minimumY: 0
+            drag.maximumY: height
+
+            Item {
+                id: slider
+                anchors.horizontalCenter: parent.horizontalCenter
+                onYChanged: if (mouseArea.drag.active) shell.volume = Math.min((mouseArea.height - y) / mouseArea.height, 1.0)
+                Connections {
+                    target: shell
+                    onVolumeChanged: slider.y = mouseArea.height - shell.volume * mouseArea.height
+                }
+            }
         }
     }
 }

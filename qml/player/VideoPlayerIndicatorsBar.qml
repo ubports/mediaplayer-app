@@ -58,6 +58,10 @@ FocusScope {
         }
     }
 
+    MouseArea {
+        anchors.fill: parent
+    }
+
     PlayerIndicators {
         id: indicators
         anchors.top: indicatorsBackground.top
