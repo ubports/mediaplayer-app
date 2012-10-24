@@ -103,6 +103,7 @@ FocusScope {
         SceneCoverFlow {
             id: sceneSelector
             opacity: shown
+            interactive: shown
             height: Units.tvPx(176)
             anchors.bottom: timelineBackground.top
             anchors.left: parent.left
@@ -172,6 +173,7 @@ FocusScope {
 
             MouseArea {
                 anchors.fill: parent
+                enabled: shown
                 onClicked: if (!sceneSelector.activeFocus) controls.close()
             }
 
