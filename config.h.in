@@ -30,7 +30,7 @@ inline bool isRunningInstalled() {
 
 inline QString mediaPlayerDirectory() {
     if (isRunningInstalled()) {
-        return QString("@CMAKE_INSTALL_PREFIX@/@MEDIAPLAYER_APP_DIR@");
+        return QString("@CMAKE_INSTALL_PREFIX@/@MEDIAPLAYER_DIR@");
     } else {
         return QString("@CMAKE_SOURCE_DIR@");
     }
