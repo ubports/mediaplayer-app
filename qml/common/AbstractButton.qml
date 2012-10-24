@@ -65,7 +65,7 @@ FocusScope {
     }
 
     Keys.onPressed: {
-        if (event.key == Qt.Key_Return) {
+        if (event.key == Qt.Key_Return && !event.modifiers) {
             clicked()
             event.accepted = true;
         }

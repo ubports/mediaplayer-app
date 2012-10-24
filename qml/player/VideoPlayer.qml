@@ -35,9 +35,12 @@ AbstractPlayer {
 
         height: Units.tvPx(122)
 
-        Keys.onEscapePressed: {
-            focus = false
-            player.forceActiveFocus()
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) {
+                event.accepted = true
+                focus = false
+                player.forceActiveFocus()
+            }
         }
 
         Keys.forwardTo: [indicatorsBehavior]
@@ -89,7 +92,7 @@ AbstractPlayer {
                 indicators.focus = false
                 player.forceActiveFocus()
             }
-        } else if (event.key == Qt.Key_Left || event.key == Qt.Key_Right) {
+        } else if (event.key == Qt.Key_Left || event.key == Qt.Key_Right && !event.modifiers) {
             controls.focus = true
             if (event.isAutoRepeat) {
                 pressCount += 1
@@ -154,7 +157,12 @@ AbstractPlayer {
             player.forceActiveFocus()
         }
 
-        Keys.onEscapePressed: close()
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) {
+                event.accepted = true
+                close()
+            }
+        }
 
         Keys.forwardTo: [controlsBehavior]
 
@@ -236,9 +244,12 @@ AbstractPlayer {
 
         Behavior on x { NumberAnimation { duration: 125 } }
 
-        Keys.onEscapePressed: {
-            focus = false
-            player.forceActiveFocus()
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) {
+                event.accepted = true
+                focus = false
+                player.forceActiveFocus()
+            }
         }
 
         onLoaded: item.video = player.video

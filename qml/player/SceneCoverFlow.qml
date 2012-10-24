@@ -33,12 +33,23 @@ ListView {
     property real margin: Units.tvPx(135)
     property real itemWidth: Units.tvPx(245)
     signal itemClicked
+    signal seekRequested
 
     cacheBuffer: width / 2
     orientation: ListView.Horizontal
     spacing: Units.tvPx(36)
     contentX: firstFullSceneIndex * (itemWidth + spacing)
     Behavior on contentX { id: contentXAnimation; enabled: true; SmoothedAnimation {duration: 300}}
+
+    function previous() {
+        if (currentIndex > 0) currentIndex -= 1
+        seekRequested()
+    }
+
+    function next() {
+        if (currentIndex < count + 1) currentIndex += 1
+        seekRequested()
+    }
 
     // TODO See if we can make it work with highlightRangeMode & friends
     onCurrentIndexChanged:

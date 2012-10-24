@@ -22,6 +22,14 @@ FocusScope {
         console.log("WARNING: Controls.close() unimplemented")
     }
 
+    function previous() {
+        sceneSelector.previous()
+    }
+
+    function next() {
+        sceneSelector.next()
+    }
+
     Item {
         id: mainContainer
         anchors.left: parent.left
@@ -176,15 +184,23 @@ FocusScope {
                 }
             }
 
+            onSeekRequested: {
+                video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
+            }
+
             Keys.priority: Keys.AfterItem
 
             Keys.onPressed: {
-                if (event.key == Qt.Key_Down && hideOnFillerWidthAnimationEnd) {
+                if (event.key == Qt.Key_Down && hideOnFillerWidthAnimationEnd && !event.modifiers) {
                     // We will hide in a sec, ignore eat the event
                     event.accepted = true
                 }
-                if (event.key == Qt.Key_Left || event.key == Qt.Key_Right) {
+                if ((event.key == Qt.Key_Left || event.key == Qt.Key_Right) && !event.modifiers) {
                     event.accepted = true
+                }
+                if ((event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) && !event.modifiers) {
+                    event.accepted = true
+                    button.focus = true
                 }
             }
 
@@ -192,10 +208,6 @@ FocusScope {
                 if (event.key == Qt.Key_Left || event.key == Qt.Key_Right) {
                     event.accepted = true
                 }
-            }
-
-            Keys.onEscapePressed: {
-                button.focus = true
             }
         }
 
