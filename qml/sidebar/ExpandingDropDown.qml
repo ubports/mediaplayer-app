@@ -62,6 +62,12 @@ SidebarComponent {
             }
         }
 
+        MouseArea {
+            anchors.fill: parent
+            enabled: dropDown.state == "collapsed"
+            onClicked: { dropDown.forceActiveFocus(); dropDown.open() }
+        }
+
         delegate:
             Item {
                 anchors.left: parent.left; anchors.right: parent.right
@@ -74,27 +80,41 @@ SidebarComponent {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
+
+                MouseArea {
+                    anchors.fill: parent
+                    enabled: dropDown.state == "expanded"
+                    onClicked: { dropDown.selectedIndex = index; dropDown.state = "collapsed" }
+                }
             }
 
         // dummy highlight
         highlight: Item {}
     }
 
-    // actual highlight
     Item {
-        x: dropDown.x + dropDown.listView.highlightItem.x - dropDown.listView.contentX
-        y: dropDown.y + dropDown.listView.highlightItem.y - dropDown.listView.contentY
-        width: dropDown.listView.highlightItem.width
-        height: dropDown.listView.highlightItem.height
-        opacity: dropDown.activeFocus ? 0.8 : 0
-        Behavior on opacity { NumberAnimation { duration: 250 } }
+        anchors.fill: dropDown
+        anchors.margins: Units.tvPx(-19)
+        anchors.topMargin: Units.tvPx(-18)
+        anchors.rightMargin: Units.tvPx(-20)
+        clip: true
 
-        BorderImage {
-            anchors.fill: parent
-            anchors.margins: Units.tvPx(-19)
-            anchors.topMargin: Units.tvPx(-18)
-            anchors.rightMargin: Units.tvPx(-20)
-            source: "../common/artwork/button_glow.sci"
+        // actual highlight
+        Item {
+            x: 18 + dropDown.listView.highlightItem.x - dropDown.listView.contentX
+            y: 19 + dropDown.listView.highlightItem.y - dropDown.listView.contentY
+            width: dropDown.listView.highlightItem.width
+            height: dropDown.listView.highlightItem.height
+            opacity: dropDown.activeFocus ? 0.8 : 0
+            Behavior on opacity { NumberAnimation { duration: 250 } }
+
+            BorderImage {
+                anchors.fill: parent
+                anchors.margins: Units.tvPx(-19)
+                anchors.topMargin: Units.tvPx(-18)
+                anchors.rightMargin: Units.tvPx(-20)
+                source: "../common/artwork/button_glow.sci"
+            }
         }
     }
 

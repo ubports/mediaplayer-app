@@ -52,8 +52,20 @@ FocusScope {
 
     function toggle() {
         if (state == "collapsed") {
-            state = "expanded"
+            open()
         } else {
+            close()
+        }
+    }
+
+    function open() {
+        if (state == "collapsed") {
+            state = "expanded"
+        }
+    }
+
+    function close() {
+        if (state == "expanded") {
             state = "collapsed"
             selectedIndex = listView.currentIndex
             selectedItem = listView.currentItem
@@ -98,6 +110,8 @@ FocusScope {
             /* Inhibit key navigation when at end or beginning of the list */
             Keys.onUpPressed: if (currentIndex != 0) event.accepted = false
             Keys.onDownPressed: if (currentIndex != count - 1) event.accepted = false
+
+            interactive: dropDown.state == "expanded"
         }
     }
 

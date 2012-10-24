@@ -19,7 +19,11 @@ AbstractPlayer {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: if (!controls.focus) controls.focus = true; else { controls.close(); }
+        onClicked: {
+            if (sidebar.activeFocus) { sidebar.focus = false; player.forceActiveFocus() }
+            else if (!controls.focus) { controls.focus = true }
+            else { controls.close() }
+        }
     }
 
     VideoPlayerIndicatorsBar {

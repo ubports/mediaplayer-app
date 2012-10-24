@@ -55,7 +55,6 @@ FocusScope {
             anchors.leftMargin: Units.tvPx(24)
             anchors.right: scrollbar.left
             anchors.rightMargin: Units.tvPx(10)
-            interactive: false
 
             contentHeight: loader.item.height
 
