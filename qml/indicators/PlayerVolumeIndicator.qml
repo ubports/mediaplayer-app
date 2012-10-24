@@ -98,8 +98,8 @@ VolumeIndicator {
             anchors.margins: Units.tvPx(19)
             enabled: active
             onClicked: {
-                if (mouseY == 0) shell.volume = 1.0
-                else shell.volume = Math.min((height - mouseY) / height, 1.0)
+                if (mouseY == 0) video.volume = 1.0
+                else video.volume = Math.min((height - mouseY) / height, 1.0)
             }
             drag.target: slider
             drag.axis: "YAxis"
@@ -109,10 +109,10 @@ VolumeIndicator {
             Item {
                 id: slider
                 anchors.horizontalCenter: parent.horizontalCenter
-                onYChanged: if (mouseArea.drag.active) shell.volume = Math.min((mouseArea.height - y) / mouseArea.height, 1.0)
+                onYChanged: if (mouseArea.drag.active) video.volume = Math.min((mouseArea.height - y) / mouseArea.height, 1.0)
                 Connections {
-                    target: shell
-                    onVolumeChanged: slider.y = mouseArea.height - shell.volume * mouseArea.height
+                    target: video
+                    onVolumeChanged: slider.y = mouseArea.height - video.volume * mouseArea.height
                 }
             }
         }

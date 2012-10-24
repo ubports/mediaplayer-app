@@ -244,7 +244,7 @@ FocusScope {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: { video.position = video.duration * (mouseX / timeline.width); controls.clicked() }
+                onClicked: { video.seek(video.duration * (mouseX / timeline.width)); controls.clicked() }
             }
 
             Item {
@@ -388,7 +388,35 @@ FocusScope {
                     switchIcons = !switchIcons
                 }
 
-                onClicked: buttonClicked()
+                Connections {
+                    target: positionFillerWidthAnimation
+                    onRunningChanged: if (!positionFillerWidthAnimation.running && !dragger.drag.active) button.anchors.horizontalCenter = positionFiller.right
+                }
+
+                MouseArea {
+                    id: dragger
+
+                    property bool dragged
+
+                    anchors.fill: parent
+                    drag.target: parent
+                    drag.axis: Drag.XAxis
+                    drag.minimumX: 0 - parent.width / 2
+                    drag.maximumX: timelineContents.width - parent.width / 2
+
+                    drag.onActiveChanged: if (drag.active) dragged = true
+
+                    onPressed: {
+                        controlsVisibility.beginForceVisible("drag")
+                        button.anchors.horizontalCenter = undefined
+                    }
+                    onReleased: {
+                        if (dragged) video.seek(video.duration * ((button.x + parent.width / 2) / timeline.width))
+                        dragged = false
+                        controlsVisibility.endForceVisible("drag")
+                    }
+                    onClicked: buttonClicked()
+                }
             }
         }
 
