@@ -9,11 +9,17 @@ FocusScope {
 
     property bool shown: false
     property variant video: null
+    property variant button: button
 
     signal buttonClicked
+    signal clicked
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
+    }
+
+    function close() {
+        console.log("WARNING: Controls.close() unimplemented")
     }
 
     Item {
@@ -24,6 +30,10 @@ FocusScope {
         height: Units.tvPx(160)
 
         Rectangle {
+            MouseArea {
+                anchors.fill: parent
+            }
+
             id: timelineBackground
             anchors.fill: parent
             color: Utils.darkAubergineDesaturated
@@ -152,9 +162,18 @@ FocusScope {
                 }
             }
 
+            MouseArea {
+                anchors.fill: parent
+                onClicked: if (!sceneSelector.activeFocus) controls.close()
+            }
+
             onItemClicked: {
-                hideOnFillerWidthAnimationEnd = true
-                video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
+                if (activeFocus) {
+                    hideOnFillerWidthAnimationEnd = true
+                    video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
+                } else {
+                    focus = true
+                }
             }
 
             Keys.priority: Keys.AfterItem
@@ -210,6 +229,11 @@ FocusScope {
             anchors.left: timeline.left; anchors.leftMargin: Units.tvPx(13)
             anchors.right: timeline.right; anchors.rightMargin: Units.tvPx(13)
             height: 28
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: { video.position = video.duration * (mouseX / timeline.width); controls.clicked() }
+            }
 
             Item {
                 id: bufferFiller

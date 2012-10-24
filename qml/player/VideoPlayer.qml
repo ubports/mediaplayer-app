@@ -17,6 +17,11 @@ AbstractPlayer {
         uri: source
     }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: if (!controls.focus) controls.focus = true; else { controls.close(); }
+    }
+
     VideoPlayerIndicatorsBar {
         id: indicators
         anchors.right: parent.right
@@ -137,17 +142,24 @@ AbstractPlayer {
         state: player.state
         video: player.video
 
-        Keys.onEscapePressed: {
+        function close() {
             if (player.paused) controlsVisibility.endForceVisible("pause")
+            button.focus = true
             focus = false
             player.forceActiveFocus()
         }
+
+        Keys.onEscapePressed: close()
 
         Keys.forwardTo: [controlsBehavior]
 
         onButtonClicked: {
             if (["paused", "playing"].indexOf(state) != -1) player.togglePause()
             else player.play()
+        }
+
+        onClicked: {
+            controlsBehavior.restartTimer()
         }
 
         onActiveFocusChanged: {

@@ -140,6 +140,7 @@ ListView {
                 scale: Utils.segmentsLinearInterpolation(segments, [scaleHelper, 1.0, 1.0, scaleHelper], absoluteX)
 
                 onClicked: {
+                    flow.currentIndex = index
                     flow.itemClicked()
                 }
 
