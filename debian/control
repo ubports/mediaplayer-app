@@ -1,0 +1,19 @@
+Source: media-player
+Section: video
+Priority: extra
+Maintainer: The Amanzi Team <phablet@lists.canonical.com>
+Build-Depends:
+    debhelper (>= 8.0.0),
+    cmake,
+    qtdeclarative,
+    libgl-dev[i386],
+    libgl-dev[amd64],
+    libgles2-mesa-dev[armel],
+    libgles2-mesa-dev[armhf],
+Standards-Version: 3.9.3
+Vcs-Browser: https://code.launchpad.net/~amanzi-team/besancon/media-player
+
+Package: media-player
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Media player

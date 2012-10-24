@@ -1,0 +1,5 @@
+media-player (0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Michał Sawicz <phablet@lists.canonical.com>  Wed, 24 Oct 2012 15:09:02 +0200
