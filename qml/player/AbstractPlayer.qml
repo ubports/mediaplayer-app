@@ -93,21 +93,6 @@ FocusScope {
         color: "black"
     }
 
-//    Video {
-
-//        id: video
-
-//        /* FIXME that's a workaround for not resetting the video surface */
-//        onStatusChanged: if (status == Video.Buffered) opacity = 1
-//        onSourceChanged: { if (source == "") opacityTimer.restart(); else opacityTimer.stop() }
-
-//        Timer {
-//            id: opacityTimer
-//            interval: 500
-//            onTriggered: video.opacity = 0
-//        }
-//    }
-
     VideoOutput {
         id: videoOutput
         source: mediaPlayer

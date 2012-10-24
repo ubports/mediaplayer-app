@@ -1,21 +1,13 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
 Item {
     id: mediaPlayer
     width: 1200; height: 675
 
     property string formFactor: "tv"
-    property string uri: "file:///home/michal/Wideo/Filmy/Oslo.31.August.2011.720p.BluRay.x264-CiNEFiLE/Oslo.31.August.2011.720p.BluRay.x264-CiNEFiLE.mkv"
+    property string uri: playUri
     property variant volume: playerLoader.item.volume
-
-    function play() {
-        if (mediaPlayer.uri) {
-            console.log("playing uri: " + mediaPlayer.uri)
-            playerLoader.item.playUri(mediaPlayer.uri)
-        } else {
-            console.log("Error: no uri specified")
-        }
-    }
 
     Loader {
         id: playerLoader
@@ -24,7 +16,24 @@ Item {
         focus: true
         onLoaded: {
             item.focus = true
-            mediaPlayer.play()
+            item.playUri(playUri)
+        }
+    }
+
+    Connections {
+        target: playerLoader.item
+        onStatusChanged: {
+            if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
+                application.quit()
+            }
+        }
+    }
+
+    Keys.onReleased: {
+        if (!event.isAutoRepeat
+            && (event.key == Qt.Key_F11 || event.key == Qt.Key_F)) {
+            event.accepted = true
+            application.toggleFullscreen();
         }
     }
 }

@@ -238,12 +238,6 @@ AbstractPlayer {
         }
     }
 
-    onStatusChanged: {
-        if (status == MediaPlayer.EndOfMedia) {
-            stop()
-        }
-    }
-
     onActiveFocusChanged: {
         if (!activeFocus) {
             controls.focus = false
