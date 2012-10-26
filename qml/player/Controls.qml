@@ -13,6 +13,7 @@ FocusScope {
 
     signal buttonClicked
     signal clicked
+    signal timeClicked
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
@@ -439,6 +440,11 @@ FocusScope {
                 styleColor: "grey"
 
                 text: Utils.format_time(video.duration - video.position, Utils.get_human_time_format(video.duration))
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: controls.timeClicked()
             }
         }
     }

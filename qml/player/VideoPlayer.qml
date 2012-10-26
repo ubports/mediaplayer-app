@@ -13,6 +13,8 @@ AbstractPlayer {
     property bool wasPlaying: false
     property string uri
 
+    signal timeClicked
+
     nfo: VideoInfo {
         uri: source
     }
@@ -177,6 +179,10 @@ AbstractPlayer {
 
         onActiveFocusChanged: {
             if (!activeFocus && player.paused) controlsVisibility.endForceVisible("pause")
+        }
+
+        onTimeClicked: {
+            player.timeClicked()
         }
     }
 

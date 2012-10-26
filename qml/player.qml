@@ -94,6 +94,9 @@ Rectangle {
                 application.quit()
             }
         }
+        onTimeClicked: {
+            rotateClockwise()
+        }
     }
 
     function rotateClockwise() {
