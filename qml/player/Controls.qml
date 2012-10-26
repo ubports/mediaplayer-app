@@ -13,6 +13,7 @@ FocusScope {
 
     signal buttonClicked
     signal clicked
+    signal timeClicked
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
@@ -103,6 +104,7 @@ FocusScope {
         SceneCoverFlow {
             id: sceneSelector
             opacity: shown
+            interactive: shown
             height: Units.tvPx(176)
             anchors.bottom: timelineBackground.top
             anchors.left: parent.left
@@ -172,6 +174,7 @@ FocusScope {
 
             MouseArea {
                 anchors.fill: parent
+                enabled: shown
                 onClicked: if (!sceneSelector.activeFocus) controls.close()
             }
 
@@ -437,6 +440,11 @@ FocusScope {
                 styleColor: "grey"
 
                 text: Utils.format_time(video.duration - video.position, Utils.get_human_time_format(video.duration))
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: controls.timeClicked()
             }
         }
     }

@@ -36,6 +36,8 @@ public:
 
 public Q_SLOTS:
     void toggleFullscreen();
+    void onWidthChanged(int);
+    void onHeightChanged(int);
 
 private:
     QQuickView *m_view;
