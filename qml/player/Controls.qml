@@ -111,7 +111,6 @@ FocusScope {
             anchors.right: parent.right
             stackItems: true
             stackedItemsX: timelineContents.currentPosition - itemWidth / 2
-            currentIndex: stackItems ? Math.min(9, Math.floor(video.position / video.duration * 10)) : currentIndex
             property bool hideOnFillerWidthAnimationEnd: false
 
             KeyNavigation.down: button
@@ -119,6 +118,15 @@ FocusScope {
             model: ListModel { }
 
             Behavior on opacity { NumberAnimation {} }
+
+            Connections {
+                target: video
+                onPositionChanged: {
+                    if (sceneSelector.stackItems) {
+                        sceneSelector.currentIndex = Math.min(9, Math.floor(video.position / video.duration * 10))
+                    }
+                }
+            }
 
             function open()
             {
