@@ -1,6 +1,7 @@
 media-player (0.2) quantal; urgency=low
 
-  * Flip orientation in the meanwhile
+  * Flip orientation check
+  * Add mediaplayerplugin-aal dep
 
  -- Ricardo Mendoza <ricardo.mendoza@canonical.com>  Wed, 28 Nov 2012 09:20:24 -0430
 

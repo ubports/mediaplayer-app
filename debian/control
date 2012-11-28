@@ -17,4 +17,5 @@ Vcs-Browser: https://code.launchpad.net/~amanzi-team/besancon/media-player
 Package: media-player
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+         mediaplayerplugin-aal,
 Description: Media player
