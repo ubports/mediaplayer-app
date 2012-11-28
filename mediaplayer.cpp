@@ -51,7 +51,7 @@ bool MediaPlayer::setup()
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
 
-    if (portrait) {
+    if (!portrait) {
         m_view->rootContext()->setContextProperty("orientation", "Portrait");
     } else {
         m_view->rootContext()->setContextProperty("orientation", "Landscape");
