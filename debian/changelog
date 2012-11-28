@@ -1,3 +1,10 @@
+media-player (0.2) quantal; urgency=low
+
+  * Flip orientation check
+  * Add mediaplayerplugin-aal dep
+
+ -- Ricardo Mendoza <ricardo.mendoza@canonical.com>  Wed, 28 Nov 2012 09:20:24 -0430
+
 media-player (0.1-1) unstable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
