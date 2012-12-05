@@ -1,3 +1,10 @@
+media-player (0.3) quantal; urgency=low
+
+  * unset QML multi-threaded rendering env vars as they are not supported
+    by the media player app 
+
+ -- Bill Filler <bill.filler@canonical.com>  Wed, 05 Dec 2012 10:30:39 +0000
+
 media-player (0.2) quantal; urgency=low
 
   * Flip orientation check
