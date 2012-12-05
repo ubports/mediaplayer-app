@@ -27,6 +27,9 @@
 
 int main(int argc, char** argv)
 {
+    unsetenv("QML_FORCE_THREADED_RENDERER");
+    unsetenv("QML_FIXED_ANIMATION_STEP");
+
     QGuiApplication::setApplicationName("Media Player");
     MediaPlayer application(argc, argv);
 
