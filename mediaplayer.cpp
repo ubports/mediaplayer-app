@@ -5,6 +5,7 @@
 #include <QtCore/QDebug>
 #include <QtCore/QString>
 #include <QtCore/QStringList>
+#include <QtCore/QLibrary>
 #include <QtCore/QTimer>
 #include <QQmlContext>
 #include <QtQuick/QQuickItem>
@@ -33,10 +34,27 @@ bool MediaPlayer::setup()
     QStringList args = arguments();
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
     bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
+    bool testability = args.removeAll("-testability") > 0;
 
     if (args.length() != 2) {
         printUsage(arguments());
         return false;
+    }
+
+    if(testability) {
+        QLibrary testLib(QLatin1String("qttestability"));
+        if (testLib.load()) {
+            typedef void (*TasInitialize)(void);
+            TasInitialize initFunction = 
+                (TasInitialize)testLib.resolve("qt_testability_init");
+            if (initFunction) {
+                initFunction();
+            } else {
+                qCritical("Library qttestability resolve failed!");
+            }
+        } else {
+            qCritical("Library qttestability load failed!");
+        }
     }
 
     m_view = new QQuickView();
