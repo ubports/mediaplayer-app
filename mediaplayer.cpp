@@ -41,6 +41,10 @@ bool MediaPlayer::setup()
         return false;
     }
 
+    // The testability driver is only loaded by QApplication but not by 
+    // QGuiApplication.
+    // However, QApplication depends on QWidget which would add some 
+    // unneeded overhead => Let's load the testability driver on our own.
     if(testability) {
         QLibrary testLib(QLatin1String("qttestability"));
         if (testLib.load()) {
