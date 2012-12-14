@@ -194,6 +194,13 @@ ListView {
                     source: imageSourceUrl
                     smooth: true
                     asynchronous: true
+
+                    opacity: 0
+
+                    Behavior on opacity { NumberAnimation { duration: 200 } }
+
+                    onSourceChanged: opacity = 0
+                    onStatusChanged: if (status == Image.Ready) opacity = 1
                 }
             }
         }

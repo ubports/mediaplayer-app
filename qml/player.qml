@@ -20,7 +20,7 @@ Rectangle {
             item.playUri(playUri)
         }
 
-        Component.onCompleted: state = orientation
+        state: orientation
 
         states:  [
           State {

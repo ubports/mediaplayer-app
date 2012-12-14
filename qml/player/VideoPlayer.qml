@@ -84,7 +84,13 @@ AbstractPlayer {
         y: controlsVisibility.shown ? parent.height - height : parent.height
         shown: controlsVisibility.shown
 
-        Behavior on y { NumberAnimation {} }
+        onYChanged: if (!yBehavior.enabled && (y == player.height - height)) yBehavior.enabled = true
+
+        Behavior on y {
+            id: yBehavior
+            enabled: false
+            NumberAnimation { }
+        }
 
         focus: true
 
