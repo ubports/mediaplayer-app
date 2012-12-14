@@ -60,6 +60,6 @@ install(FILES data/${MEDIAPLAYER}.desktop
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
     )
 
-install FILES data/${MEDIAPLAYER}.svg
+install(FILES data/${MEDIAPLAYER}.svg
     DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps
     )
