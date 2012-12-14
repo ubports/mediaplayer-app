@@ -37,11 +37,6 @@ bool MediaPlayer::setup()
     bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
-    if (args.length() != 2) {
-        printUsage(arguments());
-        return false;
-    }
-
     // The testability driver is only loaded by QApplication but not by 
     // QGuiApplication.
     // However, QApplication depends on QWidget which would add some 
