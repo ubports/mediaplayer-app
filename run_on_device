@@ -1,0 +1,103 @@
+#!/bin/sh
+CODE_DIR=media-player
+USER=phablet
+USER_ID=32011
+PASSWORD=phablet
+PACKAGE=media-player
+BINARY=media-player
+RUN_OPTIONS="-qmljsdebugger=port:3768 ~/Videos/iron_man_3_1080p.mp4"
+TARGET_IP=`adb shell ip -o -4 addr | grep -v "lo " | grep -o inet.*/ | egrep -o '([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}'`
+SETUP=false
+SUDO="echo $PASSWORD | sudo -S"
+NUM_JOBS='1'
+
+usage() {
+    echo "usage: run_on_device [OPTIONS]\n"
+    echo "Script to setup a build environment for the shell and sync build and run it on the phone.\n"
+    echo "OPTIONS:"
+    echo "  -s, --setup   Setup the build environment"
+    echo ""
+    echo "IMPORTANT:"
+    echo " * Make sure to have the networking and PPAs setup on the device beforehand (phablet-deploy-networking && phablet-ppa-fetch)."
+    echo " * Execute that script from a directory containing a branch the shell code."
+    exit 1
+}
+
+exec_with_ssh() {
+    ssh -t $USER@$TARGET_IP "bash -ic \"$@\""
+}
+
+exec_with_adb() {
+    adb shell chroot /data/ubuntu /usr/bin/env -i PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin "$@"
+}
+adb_root() {
+    adb root
+    adb wait-for-device
+}
+
+install_ssh_key() {
+    ssh-keygen -R $TARGET_IP
+    HOME_DIR=/data/ubuntu/home/phablet
+    adb push ~/.ssh/id_rsa.pub $HOME_DIR/.ssh/authorized_keys
+    adb shell chown $USER_ID:$USER_ID $HOME_DIR/.ssh
+    adb shell chown $USER_ID:$USER_ID $HOME_DIR/.ssh/authorized_keys
+    adb shell chmod 700 $HOME_DIR/.ssh
+    adb shell chmod 600 $HOME_DIR/.ssh/authorized_keys
+}
+
+install_dependencies() {
+    exec_with_adb apt-get -y install openssh-server
+    exec_with_ssh $SUDO apt-get -y install build-essential rsync bzr ccache
+    exec_with_ssh $SUDO apt-get -y build-dep $PACKAGE
+}
+
+push_code() {
+    bzr push bzr+ssh://$USER@$TARGET_IP/~/$CODE_DIR/
+    exec_with_ssh bzr checkout $CODE_DIR/
+}
+
+sync_code() {
+    bzr export --uncommitted --format=dir /tmp/$CODE_DIR
+    rsync -crlOzv -e ssh /tmp/$CODE_DIR/ $USER@$TARGET_IP:$CODE_DIR/
+    rm -rf /tmp/$CODE_DIR
+}
+
+build() {
+    exec_with_ssh "cd $CODE_DIR/ && PATH=/usr/lib/ccache:/opt/qt5/bin:$PATH PKG_CONFIG_PATH=/opt/qt5/lib/pkgconfig cmake -DCMAKE_BUILD_TYPE=Debug ."
+    exec_with_ssh PATH=/usr/lib/ccache:$PATH "make -j${NUM_JOBS}" --directory=$CODE_DIR/
+}
+
+run() {
+    adb shell pkill $BINARY
+    exec_with_ssh "cd $CODE_DIR/ && ./$BINARY $RUN_OPTIONS"
+}
+
+set -- `getopt -n$0 -u -a --longoptions="setup,help" "sh" "$@"`
+
+# FIXME: giving incorrect arguments does not call usage and exit
+while [ $# -gt 0 ]
+do
+    case "$1" in
+       -s|--setup)   SETUP=true;;
+       -h|--help)    usage;;
+       --)           shift;break;;
+    esac
+    shift
+done
+
+if $SETUP; then
+    echo "Setting up environment for building shell.."
+    adb_root
+    install_ssh_key
+    install_dependencies
+    push_code
+else
+    echo "Transferring code.."
+    sync_code
+    echo "Building.."
+    build
+    echo "Running.."
+    adb_root
+    run
+fi
+
