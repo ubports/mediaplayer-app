@@ -7,7 +7,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QtCore/QTimer>
-#include <QQmlContext>
+#include <QtQml/QQmlContext>
+#include <QtQml/QQmlEngine>
 #include <QtQuick/QQuickItem>
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
@@ -65,7 +66,6 @@ bool MediaPlayer::setup()
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Media Player");
-    m_view->rootContext()->setContextProperty("application", this);
     QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args.back())));
     m_view->rootContext()->setContextProperty("playUri", uri);
 
@@ -73,6 +73,7 @@ bool MediaPlayer::setup()
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
+    connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
 
     m_view->rootContext()->setContextProperty("portrait", portrait);
 

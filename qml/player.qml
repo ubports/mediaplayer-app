@@ -100,7 +100,7 @@ Rectangle {
         target: playerLoader.item
         onStatusChanged: {
             if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
-                application.quit()
+                Qt.quit()
             }
         }
         onTimeClicked: {
