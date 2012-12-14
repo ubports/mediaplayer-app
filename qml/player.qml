@@ -6,6 +6,7 @@ Rectangle {
     width: screenWidth
     height: screenHeight
 
+    property string orientation: portrait ? (screenHeight <= screenWidth ? "270" : "0") : ""
     property string formFactor: "tv"
     property real volume: playerLoader.item.volume
 
@@ -18,13 +19,20 @@ Rectangle {
         onLoaded: {
             item.focus = true
             item.playUri(playUri)
+            item.rotating = Qt.binding(function () { return rotatingTransition.running } )
         }
 
-        state: orientation
+        state: mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
+
+        Component.onCompleted: {
+            state = Qt.binding(function () {
+                return mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
+            })
+        }
 
         states:  [
           State {
-            name: "Landscape"
+            name: "0"
             PropertyChanges {
               target: mediaPlayer
               rotation: 0
@@ -35,7 +43,7 @@ Rectangle {
             }
           },
           State {
-            name: "LandscapeInverted"
+            name: "180"
             PropertyChanges {
               target: mediaPlayer
               rotation: 180
@@ -46,7 +54,7 @@ Rectangle {
             }
           },
           State {
-            name: "Portrait"
+            name: "270"
             PropertyChanges {
               target: mediaPlayer
               rotation: 270
@@ -57,7 +65,7 @@ Rectangle {
             }
           },
           State {
-            name: "PortraitInverted"
+            name: "90"
             PropertyChanges {
               target: mediaPlayer
               rotation: 90
@@ -71,6 +79,7 @@ Rectangle {
 
         transitions: [
           Transition {
+            id: rotatingTransition
             ParallelAnimation {
               RotationAnimation {
                 properties: "rotation"
@@ -100,17 +109,19 @@ Rectangle {
     }
 
     function rotateClockwise() {
-        if (playerLoader.state == "Landscape") playerLoader.state = "Portrait"
-        else if (playerLoader.state == "Portrait") playerLoader.state = "LandscapeInverted"
-        else if (playerLoader.state == "LandscapeInverted") playerLoader.state = "PortraitInverted"
-        else playerLoader.state = "Landscape"
+        if (orientation == "") orientation = playerLoader.state
+        if (orientation == "0") orientation = "270"
+        else if (orientation == "270") orientation = "180"
+        else if (orientation == "180") orientation = "90"
+        else orientation = "0"
     }
 
     function rotateCounterClockwise() {
-        if (playerLoader.state == "Landscape") playerLoader.state = "PortraitInverted"
-        else if (playerLoader.state == "PortraitInverted") playerLoader.state = "LandscapeInverted"
-        else if (playerLoader.state == "LandscapeInverted") playerLoader.state = "Portrait"
-        else playerLoader.state = "Landscape"
+        if (orientation == "") orientation = playerLoader.state
+        if (orientation == "0") orientation = "90"
+        else if (orientation == "90") orientation = "180"
+        else if (orientation == "180") orientation = "270"
+        else orientation = "0"
     }
 
     Keys.onReleased: {

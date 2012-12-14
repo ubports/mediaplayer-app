@@ -74,11 +74,7 @@ bool MediaPlayer::setup()
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
 
-    if (!portrait) {
-        m_view->rootContext()->setContextProperty("orientation", "Portrait");
-    } else {
-        m_view->rootContext()->setContextProperty("orientation", "Landscape");
-    }
+    m_view->rootContext()->setContextProperty("portrait", portrait);
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);
