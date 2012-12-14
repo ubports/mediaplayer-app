@@ -89,6 +89,7 @@ AbstractPlayer {
 
         Behavior on y {
             id: yBehavior
+            enabled: false
             property bool hideOnAnimationEnd: false
             NumberAnimation {
                 onRunningChanged: {
