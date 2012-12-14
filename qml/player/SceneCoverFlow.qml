@@ -124,6 +124,10 @@ ListView {
                 State {
                     name: "unstacked"
                     when: !stackItems
+                    PropertyChanges {
+                        target: looseItem
+                        visible: true
+                    }
                 }
             ]
 

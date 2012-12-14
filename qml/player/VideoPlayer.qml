@@ -89,11 +89,28 @@ AbstractPlayer {
 
         Behavior on y {
             id: yBehavior
-            enabled: false
-            NumberAnimation { }
+            property bool hideOnAnimationEnd: false
+            NumberAnimation {
+                onRunningChanged: {
+                    if (!running && yBehavior.hideOnAnimationEnd) {
+                        yBehavior.enabled = false
+                        controls.visible = false
+                    }
+                }
+            }
         }
 
         focus: true
+
+        onShownChanged: {
+            if (shown) {
+                yBehavior.enabled = true
+                controls.visible = true
+                yBehavior.hideOnAnimationEnd = false
+            } else {
+                yBehavior.hideOnAnimationEnd = true
+            }
+        }
 
         state: player.state
         video: player.video
@@ -130,12 +147,27 @@ AbstractPlayer {
         onTimeClicked: {
             player.timeClicked()
         }
+
+        Connections {
+            target: player
+            onRotatingChanged: {
+                if (controls.shown && player.rotating) controls.anchors.bottom = player.bottom
+                else if (controls.shown) controls.anchors.bottom = undefined
+            }
+        }
     }
 
     Label {
         id: title
-        anchors.centerIn: parent
-        anchors.verticalCenterOffset: -controls.height / 2
+        anchors {
+            left: parent.left
+            right: parent.right
+            margins: Units.tvPx(20)
+            verticalCenter: parent.verticalCenter
+            verticalCenterOffset: -controls.height / 2
+        }
+
+        horizontalAlignment: Text.AlignHCenter
 
         opacity: player.paused ? 1 : 0
 
@@ -143,6 +175,8 @@ AbstractPlayer {
 
         fontSize: "x-large"
         color: "white"
+
+        fontSizeMode: Text.Fit
 
         elide: {
             if (player.nfo.video || video.metaData.title !== undefined) return Text.ElideMiddle
@@ -158,7 +192,6 @@ AbstractPlayer {
     VisibilityController {
         id: controlsVisibility
         behavior: controlsBehavior
-        shown: false
         onShownChanged: if (!shown && controls.activeFocus) {
             controls.focus = false
             player.forceActiveFocus()
