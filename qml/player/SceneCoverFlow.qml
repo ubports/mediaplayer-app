@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 import "../common"
 import "../common/units.js" as Units
 import "../common/utils.js" as Utils

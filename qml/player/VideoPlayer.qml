@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
+import Ubuntu.Components 0.1
 import "../common"
 import "../common/visibilityBehaviors"
-import "../sidebar"
 import "../common/units.js" as Units
 
 AbstractPlayer {
@@ -22,53 +22,8 @@ AbstractPlayer {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if (sidebar.activeFocus) { sidebar.focus = false; player.forceActiveFocus() }
-            else if (indicators.activeFocus) {indicators.focus = false; player.forceActiveFocus() }
-            else if (!controls.focus) { controls.focus = true }
+            if (!controls.focus) { controls.focus = true }
             else { controls.close() }
-        }
-    }
-
-    VideoPlayerIndicatorsBar {
-        id: indicators
-        anchors.right: parent.right
-        anchors.left: parent.left
-        y: indicatorsVisibility.shown ? 0 : -height
-
-        height: Units.tvPx(122)
-
-        Keys.onPressed: {
-            if (event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) {
-                event.accepted = true
-                focus = false
-                player.forceActiveFocus()
-            }
-        }
-
-        Keys.forwardTo: [indicatorsBehavior]
-        onFocusedIndicatorChanged: indicatorsBehavior.restartTimer()
-
-        Connections {
-            target: indicators.focusedIndicator
-            onActiveChanged: {
-                if (indicators.focusedIndicator.active) indicatorsVisibility.beginForceVisible("indicators")
-                else indicatorsVisibility.endForceVisible("indicators")
-            }
-        }
-    }
-
-    TimeoutBehavior {
-        id: indicatorsBehavior
-        target: indicators
-        forcedVisible: indicatorsVisibility.forceVisible
-    }
-
-    VisibilityController {
-        id: indicatorsVisibility
-        behavior: indicatorsBehavior
-        onShownChanged: if (!shown && indicators.activeFocus) {
-            indicators.focus = false
-            player.forceActiveFocus()
         }
     }
 
@@ -79,22 +34,7 @@ AbstractPlayer {
 
     Keys.onPressed: {
         event.accepted = true
-        if (event.key == Qt.Key_F3 || event.key == Qt.Key_MediaPlay) {
-            if (!sidebar.activeFocus) {
-                sidebar.forceActiveFocus()
-            } else {
-                sidebar.focus = false
-                player.forceActiveFocus()
-            }
-        } else if (!event.isAutoRepeat && (event.key == Qt.Key_F2 || event.key == Qt.Key_Period ||
-                                           (event.key == Qt.Key_R && event.modifiers & Qt.ControlModifier))) {
-            if (!indicators.activeFocus) {
-                indicators.forceActiveFocus()
-            } else {
-                indicators.focus = false
-                player.forceActiveFocus()
-            }
-        } else if (event.key == Qt.Key_Left || event.key == Qt.Key_Right && !event.modifiers) {
+        if (event.key == Qt.Key_Left || event.key == Qt.Key_Right && !event.modifiers) {
             controls.focus = true
             if (event.isAutoRepeat) {
                 pressCount += 1
@@ -112,7 +52,6 @@ AbstractPlayer {
     }
 
     function edgeEvent(event) {
-        indicators.focus = false
         player.forceActiveFocus()
         event.accepted = true
     }
@@ -186,7 +125,7 @@ AbstractPlayer {
         }
     }
 
-    TextCustom {
+    Label {
         id: title
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -controls.height / 2
@@ -195,17 +134,8 @@ AbstractPlayer {
 
         Behavior on opacity { NumberAnimation {} }
 
-        fontSize: "xxx-large"
+        font.pixelSize: units.gu(10)
         color: "white"
-
-        /*
-        effect: DropShadow {
-                    blurRadius: 3
-                    offset.x: 0
-                    offset.y: 1
-                    color: "#1e1e1e"
-                }
-        */
 
         elide: {
             if (player.nfo.video || video.metaData.title !== undefined) return Text.ElideMiddle
@@ -221,6 +151,7 @@ AbstractPlayer {
     VisibilityController {
         id: controlsVisibility
         behavior: controlsBehavior
+        shown: false
         onShownChanged: if (!shown && controls.activeFocus) {
             controls.focus = false
             player.forceActiveFocus()
@@ -240,43 +171,9 @@ AbstractPlayer {
         forcedVisible: controlsVisibility.forceVisible
     }
 
-    Sidebar {
-        id: sidebar
-        source: "../player/VideoSidebar.qml"
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        width: Units.tvPx(550) + borderWidth
-        x: sidebarVisibility.shown ? parent.width - width : parent.width
-
-        Behavior on x { NumberAnimation { duration: 125 } }
-
-        Keys.onPressed: {
-            if (event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) {
-                event.accepted = true
-                focus = false
-                player.forceActiveFocus()
-            }
-        }
-
-        onLoaded: item.video = player.video
-    }
-
-    VisibilityController {
-        id: sidebarVisibility
-        behavior: ImmediateHideBehavior {
-            target: sidebar
-        }
-        onShownChanged: if (!shown && sidebar.activeFocus) {
-            sidebar.focus = false
-            player.forceActiveFocus()
-        }
-    }
-
     onActiveFocusChanged: {
         if (!activeFocus) {
             controls.focus = false
-            sidebar.focus = false
-            indicators.focus = false
         }
     }
 }

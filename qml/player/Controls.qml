@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 import "../common"
 import "../common/utils.js" as Utils
 import "../common/units.js" as Units
@@ -437,12 +438,12 @@ FocusScope {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
 
-            TextCustom {
+            Label {
                 id: positionText
                 anchors.centerIn: parent
 
                 font.family: "Ubuntu"
-                fontSize: "x-large"
+                font.pixelSize: units.gu(6)
                 color: "white"
                 style: Text.Outline
                 styleColor: "grey"
