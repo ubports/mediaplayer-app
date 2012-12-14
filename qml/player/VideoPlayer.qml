@@ -140,7 +140,7 @@ AbstractPlayer {
 
         Behavior on opacity { NumberAnimation {} }
 
-        font.pixelSize: units.gu(10)
+        fontSize: "x-large"
         color: "white"
 
         elide: {

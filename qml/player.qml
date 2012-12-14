@@ -7,7 +7,7 @@ Rectangle {
     height: screenHeight
 
     property string formFactor: "tv"
-    property variant volume: playerLoader.item.volume
+    property real volume: playerLoader.item.volume
 
     Loader {
         id: playerLoader

@@ -443,7 +443,7 @@ FocusScope {
                 anchors.centerIn: parent
 
                 font.family: "Ubuntu"
-                font.pixelSize: units.gu(6)
+                fontSize: "large"
                 color: "white"
                 style: Text.Outline
                 styleColor: "grey"
