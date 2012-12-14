@@ -40,6 +40,7 @@ bool MediaPlayer::setup()
     }
 
     m_view = new QQuickView();
+    m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Media Player");
     m_view->rootContext()->setContextProperty("application", this);
@@ -59,9 +60,9 @@ bool MediaPlayer::setup()
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);
+    m_view->setWidth(1200);
+    m_view->setHeight(675);
     if (windowed) {
-        m_view->setWidth(1200);
-        m_view->setHeight(675);
         m_view->showNormal();
     } else {
         m_view->showFullScreen();
