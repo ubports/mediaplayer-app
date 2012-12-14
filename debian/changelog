@@ -1,3 +1,17 @@
+media-player (0.5) quantal; urgency=low
+
+  * improved orientation behavior
+  * detect orientation based on screen size
+  * drop unnecessary components and use Ubuntu Components
+  * add run_on_device script
+  * use black background
+  * always set window size
+  * stop controls from travelling on start
+  * fade sceneflow image in
+  * use QQmlEngine.quit signal
+
+ -- Michał Sawicz <michal.sawicz@canonical.com>  Fri, 14 Dec 2012 17:32:52 +0000
+
 media-player (0.4) quantal; urgency=low
 
   * Adding testability flag to allow testing with autopilot 

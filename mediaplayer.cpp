@@ -7,7 +7,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QtCore/QTimer>
-#include <QQmlContext>
+#include <QtQml/QQmlContext>
+#include <QtQml/QQmlEngine>
 #include <QtQuick/QQuickItem>
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
@@ -36,11 +37,6 @@ bool MediaPlayer::setup()
     bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
-    if (args.length() != 2) {
-        printUsage(arguments());
-        return false;
-    }
-
     // The testability driver is only loaded by QApplication but not by 
     // QGuiApplication.
     // However, QApplication depends on QWidget which would add some 
@@ -62,28 +58,25 @@ bool MediaPlayer::setup()
     }
 
     m_view = new QQuickView();
+    m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Media Player");
-    m_view->rootContext()->setContextProperty("application", this);
-    QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args.back())));
+    QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
     m_view->rootContext()->setContextProperty("playUri", uri);
 
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
+    connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
 
-    if (!portrait) {
-        m_view->rootContext()->setContextProperty("orientation", "Portrait");
-    } else {
-        m_view->rootContext()->setContextProperty("orientation", "Landscape");
-    }
+    m_view->rootContext()->setContextProperty("portrait", portrait);
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);
+    m_view->setWidth(1200);
+    m_view->setHeight(675);
     if (windowed) {
-        m_view->setWidth(1200);
-        m_view->setHeight(675);
         m_view->showNormal();
     } else {
         m_view->showFullScreen();

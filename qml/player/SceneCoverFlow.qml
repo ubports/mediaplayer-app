@@ -17,6 +17,7 @@
  */
 
 import QtQuick 2.0
+import Ubuntu.Components 0.1
 import "../common"
 import "../common/units.js" as Units
 import "../common/utils.js" as Utils
@@ -123,6 +124,10 @@ ListView {
                 State {
                     name: "unstacked"
                     when: !stackItems
+                    PropertyChanges {
+                        target: looseItem
+                        visible: true
+                    }
                 }
             ]
 
@@ -193,6 +198,13 @@ ListView {
                     source: imageSourceUrl
                     smooth: true
                     asynchronous: true
+
+                    opacity: 0
+
+                    Behavior on opacity { NumberAnimation { duration: 200 } }
+
+                    onSourceChanged: opacity = 0
+                    onStatusChanged: if (status == Image.Ready) opacity = 1
                 }
             }
         }
