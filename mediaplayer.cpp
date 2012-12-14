@@ -61,7 +61,7 @@ bool MediaPlayer::setup()
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setWindowTitle("Media Player");
-    QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args.back())));
+    QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
     m_view->rootContext()->setContextProperty("playUri", uri);
 
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
