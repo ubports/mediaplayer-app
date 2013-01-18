@@ -1,3 +1,5 @@
+project(mediaplayer_src)
+
 set(MEDIAPLAYER media-player)
 
 include_directories(

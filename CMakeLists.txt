@@ -16,7 +16,7 @@ include(GNUInstallDirs)
 
 set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/media-player)
 
-configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
-
 add_subdirectory(data)
 add_subdirectory(src)
+
+configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
