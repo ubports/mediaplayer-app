@@ -239,8 +239,15 @@ FocusScope {
                 sceneSelector.previousCurrentIndex = -1
                 sceneSelector.firstFullSceneIndex = 0
                 sceneSelector.model.clear()
-                for (var i = 0; i < 10; ++i) {
-                    sceneSelector.model.append({"imageSource": removeExt(video.source) + "_" + i + (".tmb")})
+                // Only create thumbnails if video is bigger than 1min
+                if (video.duration > 60000) {
+                    var frameSize = video.duration/10;
+                    for (var i = 0; i < 10; ++i) {
+                        // TODO: discuss this with designers
+                        // shift 3s to avoid black frame in the position 0
+                        var pos = Math.floor(i * frameSize) + 3000;
+                        sceneSelector.model.append({"imageSource": "image://video/" + video.source + "/"+ pos})
+                    }
                 }
             }
         }
