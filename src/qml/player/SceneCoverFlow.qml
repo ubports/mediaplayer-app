@@ -62,7 +62,7 @@ ListView {
                     var fullScenesThatFitOnScreen = Math.floor(width / (itemWidth + spacing))
                     if (currentIndex - firstFullSceneIndex >= fullScenesThatFitOnScreen - 1) {
                         // We went to the one before the end
-                        if (currentIndex < count - 1) { 
+                        if (currentIndex < count - 1) {
                             // But not that much too the end
                             firstFullSceneIndex++
                         } else {
@@ -205,6 +205,15 @@ ListView {
 
                     onSourceChanged: opacity = 0
                     onStatusChanged: if (status == Image.Ready) opacity = 1
+                }
+
+                ActivityIndicator {
+                    id: imgLoading
+
+                    anchors.margins: units.gu(5)
+                    anchors.fill: image
+                    running: image.status != Image.Ready
+                    visible: running
                 }
             }
         }

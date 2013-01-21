@@ -7,9 +7,13 @@ include_directories(
     )
 
 set(mediaplayer_HDRS
+    thumbnail-surface.h
+    thumbnail-provider.h
     mediaplayer.h)
 
 set(mediaplayer_SRCS
+    thumbnail-surface.cpp
+    thumbnail-provider.cpp
     mediaplayer.cpp
     main.cpp)
 
@@ -18,12 +22,7 @@ add_executable(${MEDIAPLAYER}
     ${mediaplayer_SRCS}
     )
 
-qt5_use_modules(${MEDIAPLAYER} Qml Quick Multimedia)
-
-target_link_libraries(${MEDIAPLAYER}
-    ${Qt5Qml_LIBRARIES}
-    ${Qt5Quick_LIBRARIES}
-    )
+qt5_use_modules(${MEDIAPLAYER} Gui Core Qml Quick Multimedia)
 
 install(TARGETS ${MEDIAPLAYER}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
