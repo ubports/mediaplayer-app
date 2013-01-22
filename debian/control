@@ -5,6 +5,7 @@ Maintainer: The Amanzi Team <phablet@lists.canonical.com>
 Build-Depends:
     debhelper (>= 8.0.0),
     cmake,
+    qtbase5-dev,
     qtdeclarative5-dev,
     qtmultimedia5-dev,
     libgl-dev[i386],
@@ -18,4 +19,5 @@ Package: media-player
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
          mediaplayerplugin-aal,
+         qtdeclarative5-xmllistmodel-plugin,
 Description: Media player
