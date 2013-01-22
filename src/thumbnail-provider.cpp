@@ -22,6 +22,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
 #include <QtCore/QMutex>
+#include <QtCore/QCoreApplication>
 #include <QtMultimedia/QVideoRendererControl>
 #include <QtMultimedia/QMediaService>
 
@@ -39,17 +40,26 @@ private:
     qint64 m_time;
     QImage m_image;
     QMutex m_mutex;
+    bool m_exiting;
 };
 
 ThumbnailRequest::ThumbnailRequest(qint64 time)
-    : m_time(time)
+    : m_time(time),
+      m_exiting(false)
 {
     m_mutex.lock();
 }
 
 ThumbnailRequest::~ThumbnailRequest()
 {
-    wait();
+    m_exiting = true;
+
+    // unlock any active request
+    setImage(QImage());
+
+    // wait for unfinished request
+    m_mutex.lock();
+    m_mutex.unlock();
 }
 
 void ThumbnailRequest::setImage(const QImage &frame)
@@ -61,7 +71,11 @@ void ThumbnailRequest::setImage(const QImage &frame)
 void ThumbnailRequest::wait()
 {
     if (m_image.isNull()) {
-        m_mutex.lock();
+        while (!m_mutex.tryLock(100)) {
+            if (m_exiting) {
+                return;
+            }
+        }
         m_mutex.unlock();
     }
 }
@@ -76,12 +90,12 @@ qint64 ThumbnailRequest::time() const
     return m_time;
 }
 
-
 ThumbnailProvider::ThumbnailProvider()
     : QObject(0),
       QQuickImageProvider(QQuickImageProvider::Image),
       m_mediaLoaded(false),
-      m_running(false)
+      m_running(false),
+      m_exiting(false)
 {
     m_player = new QMediaPlayer;
     m_player->setMuted(true);
@@ -93,15 +107,24 @@ ThumbnailProvider::ThumbnailProvider()
         connect(m_surface, SIGNAL(newFrame(qint64,QImage&)), this, SLOT(updateThumbnail(qint64,QImage&)));
         rendererControl->setSurface(m_surface);
     }
+
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
 }
 
 ThumbnailProvider::~ThumbnailProvider()
 {
+    m_exiting = true;
     clearCache();
 
     if (m_player) {
         delete m_player;
     }
+}
+
+void ThumbnailProvider::applicationAboutToQuit()
+{
+    m_exiting = true;
+    clearCache();
 }
 
 QQmlImageProviderBase::Flags ThumbnailProvider::flags() const
@@ -137,7 +160,9 @@ void ThumbnailProvider::updateThumbnail(qint64 position, QImage &frame)
     request->setImage(frame);
 
     // next
-    QTimer::singleShot(1, this, SLOT(getNextFrame()));
+    if (!m_exiting) {
+        QTimer::singleShot(1, this, SLOT(getNextFrame()));
+    }
 }
 
 void ThumbnailProvider::getNextFrame()
@@ -149,6 +174,7 @@ void ThumbnailProvider::getNextFrame()
 
 void ThumbnailProvider::clearCache()
 {
+    m_requests.clear();
     Q_FOREACH(ThumbnailRequest *r, m_cache.values()) {
         delete r;
     }
@@ -199,6 +225,10 @@ ThumbnailRequest *ThumbnailProvider::request(qint64 time)
 
 QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QSize &requestedSize)
 {
+    if (m_exiting) {
+        return QImage();
+    }
+
     qint64 time;
     QString url = parseThumbnailName(id, &time);
 
