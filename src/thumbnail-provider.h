@@ -44,6 +44,7 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
         void getNextFrame();
         void updateThumbnail(qint64 position, QImage &frame);
         void mediaPlayerStatusChanged(QMediaPlayer::MediaStatus status);
+        void applicationAboutToQuit();
 
     private:
         QMediaPlayer *m_player;
@@ -52,6 +53,7 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
         QMap<qint64, ThumbnailRequest*> m_cache;
         bool m_mediaLoaded;
         bool m_running;
+        bool m_exiting;
 
         ThumbnailRequest* request(qint64 time);
         void clearCache();
