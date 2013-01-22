@@ -81,7 +81,11 @@ AbstractPlayer {
 
     Controls {
         id: controls
-        anchors.left: parent.left; anchors.right: parent.right
+
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: units.gu(11)
+
         y: controlsVisibility.shown ? parent.height - height : parent.height
         shown: controlsVisibility.shown
 
@@ -132,7 +136,7 @@ AbstractPlayer {
 
         Keys.forwardTo: [controlsBehavior]
 
-        onButtonClicked: {
+        onPlaybackButtonClicked: {
             if (["paused", "playing"].indexOf(state) != -1) player.togglePause()
             else player.play()
         }
@@ -147,6 +151,14 @@ AbstractPlayer {
 
         onTimeClicked: {
             player.timeClicked()
+        }
+
+        onActivityStart: {
+            controlsVisibility.beginForceVisible(activity)
+        }
+
+        onActivityEnd: {
+            controlsVisibility.endForceVisible(activity)
         }
 
         Connections {

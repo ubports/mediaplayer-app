@@ -1,20 +1,21 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import "../common"
-import "../common/utils.js" as Utils
-import "../common/units.js" as Units
+import "../sdk"
 
 FocusScope {
     id: controls
-    height: mainContainer.height + timelineBackgroundBorderLeft.height
 
-    property bool shown: false
     property variant video: null
     property variant button: button
+    property bool shown: false
 
-    signal buttonClicked
+    signal activityStart(string activity)
+    signal activityEnd(string activity)
     signal clicked
+    signal playbackButtonClicked
     signal timeClicked
+
+    focus: true
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
@@ -32,463 +33,194 @@ FocusScope {
         sceneSelector.next()
     }
 
-    Item {
+    ListModel {
+        id: _sceneSelectorModel
+    }
+
+    SceneSelector {
+        id: _sceneSelector
+
+        model: _sceneSelectorModel
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: mainContainer.top
+        anchors.bottomMargin: units.gu(2)
+
+        onMovementStarted: controls.activated()
+
+        onSceneSelected: {
+            clicked()
+            video.seek(start)
+        }
+    }
+
+    SharePopover {
+        id: _sharePopover
+
+        visible: false
+
+        onVisibleChanged: {
+            if (visible) {
+                activityStart("share")
+            } else {
+                activityEnd("share")
+            }
+        }
+    }
+
+    Rectangle {
         id: mainContainer
+
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: Units.tvPx(160)
+        color: "black"
+        opacity: 0.7
+        height: units.gu(3)
 
-        Rectangle {
-            MouseArea {
-                anchors.fill: parent
+        IconButton {
+            id: _closeButton
+
+            iconSource: "artwork/icon_close.png"
+            anchors {
+                left: parent.left
+                top: parent.top
+                bottom: parent.bottom
             }
+            width: units.gu(3)
+            onClicked: Qt.quit()
+        }
 
-            id: timelineBackground
-            anchors.fill: parent
-            color: Utils.darkAubergineDesaturated
-            opacity: 0.56
+        VLine {
+            id: _vline1
 
-            Rectangle {
-                id: timelineBackgroundBorderLeft
-                anchors.left: parent.left
-                anchors.bottom: parent.top
-                color: "white"
-                opacity: 0.4
-                height: 2
-                width: sceneBubble.x + sceneBubble.width / 2 - Units.tvPx(2)
-            }
+            anchors.left: _closeButton.right
+        }
 
-            Rectangle {
-                id: timelineBackgroundBorderRight
-                anchors.right: parent.right
-                anchors.bottom: parent.top
-                color: timelineBackgroundBorderLeft.color
-                opacity: timelineBackgroundBorderLeft.opacity
-                height: timelineBackgroundBorderLeft.height
-                width: parent.width - timelineBackgroundBorderLeft.width - timelineBackgroundBorderMiddle.width
-            }
+        PlaybackButton {
+            id: _playbackButtom
 
-            Rectangle {
-                id: timelineBackgroundBorderMiddle
-                anchors.left: timelineBackgroundBorderLeft.right
-                anchors.bottom: parent.top
-                color: timelineBackgroundBorderLeft.color
-                opacity: timelineBackgroundBorderLeft.opacity * (1 - sceneBubble.opacity)
-                height: timelineBackgroundBorderLeft.height
-                width: Units.tvPx(6)
+            anchors.left: _vline1.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: units.gu(3)
+
+            onClicked: {
+                controls.clicked()
+                controls.playbackButtonClicked()
             }
         }
 
-        BorderImage {
-            id: timeline
-            source: "../common/artwork/media_player_bar.sci"
+        VLine {
+            id: _vline2
 
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left; anchors.leftMargin: Units.tvPx(48)
-            anchors.right: parent.right; anchors.rightMargin: Units.tvPx(268)
-            height: 54
+            anchors.left: _playbackButtom.right
         }
 
-        BorderImage {
-            id: sceneBubble
-            x: sceneSelector.currentItem ? sceneSelector.currentItem.imageX - (width - sceneSelector.itemWidth) / 2 : 0
-            height: sceneSelector.currentItem ? Math.ceil(sceneSelector.currentItem.imageHeight + Units.tvPx(51)) : 0
-            anchors.bottom: timelineBackground.top
-            anchors.bottomMargin: -3
-            source: "artwork/bubble.sci"
-            smooth: true
-            opacity: shown && !sceneSelector.activeFocus ? 1 : 0
-            Behavior on opacity { NumberAnimation {} }
-        }
+        TimeLine {
+            id: _timeline
 
-        SceneCoverFlow {
-            id: sceneSelector
-            opacity: shown
-            interactive: shown
-            height: Units.tvPx(176)
-            anchors.bottom: timelineBackground.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            stackItems: true
-            stackedItemsX: timelineContents.currentPosition - itemWidth / 2
-            property bool hideOnFillerWidthAnimationEnd: false
-
-            KeyNavigation.down: button
-
-            model: ListModel { }
-
-            Behavior on opacity { NumberAnimation {} }
-
-            Connections {
-                target: video
-                onPositionChanged: {
-                    if (sceneSelector.stackItems) {
-                        sceneSelector.currentIndex = Math.min(9, Math.floor(video.position / video.duration * 10))
-                    }
-                }
-            }
-
-            function open()
-            {
-                // You would think currentIndexAux and currentIndex would always be the same
-                // since they use the same formula, issue is that video.position is updated once set
-                // but the signal emitting its change is not set until the video really seeks
-                // so here we check that the video has finished seeking before showing the scene selection bar
-                var currentIndexAux = Math.min(9, Math.floor(video.position / video.duration * 10))
-                if (currentIndex == currentIndexAux) {
-                    openTimer.stop()
-                    var sceneWidth = itemWidth + spacing
-                    var fullScenesThatFitOnScreen = Math.floor(width / sceneWidth)
-                    var wantedVisualIndex = Math.max(0, Math.round((stackedItemsX - margin) / sceneWidth))
-                    var firstSceneIndexDifference = currentIndex - firstFullSceneIndex - wantedVisualIndex
-
-                    animateContentX = false
-                    if (firstFullSceneIndex + firstSceneIndexDifference > count - fullScenesThatFitOnScreen) {
-                        firstFullSceneIndex = count - fullScenesThatFitOnScreen
-                    } else {
-                        firstFullSceneIndex += firstSceneIndexDifference
-                    }
-                    animateContentX = true
-
-                    if (controlsVisibility) {
-                        controlsVisibility.beginForceVisible("sceneSelector")
-                    }
-                    stackItems = false
-                }
-            }
-
-            Timer {
-                id: openTimer
-                interval: 50
-                repeat: true
-                onTriggered: sceneSelector.open()
-            }
-
-            onActiveFocusChanged: {
-                if (activeFocus) {
-                    var realCurrentIndex = Math.min(9, Math.round(video.position / video.duration * 10))
-                    if (currentIndex != realCurrentIndex) {
-                        openTimer.start()
-                    } else {
-                        open();
-                    }
-                } else {
-                    stackItems = true
-                    if (controlsVisibility) {
-                        controlsVisibility.endForceVisible("sceneSelector")
-                    }
-                }
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                enabled: shown
-                onClicked: if (!sceneSelector.activeFocus) controls.close()
-            }
-
-            onItemClicked: {
-                if (activeFocus) {
-                    hideOnFillerWidthAnimationEnd = true
-                    video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
-                } else {
-                    focus = true
-                }
-            }
-
-            onSeekRequested: {
-                video.seek(Math.ceil(video.duration * sceneSelector.currentIndex / 10))
-            }
-
-            Keys.priority: Keys.AfterItem
-
-            Keys.onPressed: {
-                if (event.key == Qt.Key_Down && hideOnFillerWidthAnimationEnd && !event.modifiers) {
-                    // We will hide in a sec, ignore eat the event
-                    event.accepted = true
-                }
-                if ((event.key == Qt.Key_Left || event.key == Qt.Key_Right) && !event.modifiers) {
-                    event.accepted = true
-                }
-                if ((event.key == Qt.Key_Escape || event.key == Qt.Key_Backspace) && !event.modifiers) {
-                    event.accepted = true
-                    button.focus = true
-                }
-            }
-
-            Keys.onReleased: {
-                if (event.key == Qt.Key_Left || event.key == Qt.Key_Right) {
-                    event.accepted = true
-                }
-            }
-        }
-
-        Connections {
-            target: positionFillerWidthAnimation
-            onRunningChanged: {
-                if (sceneSelector.hideOnFillerWidthAnimationEnd && !positionFillerWidthAnimation.running) {
-                    sceneSelector.hideOnFillerWidthAnimationEnd = false
-                    button.focus = true
-                }
-            }
-        }
-
-        Connections {
-            target: video
-            onDurationChanged: {
-                sceneSelector.previousCurrentIndex = -1
-                sceneSelector.firstFullSceneIndex = 0
-                sceneSelector.model.clear()
-                // Only create thumbnails if video is bigger than 1min
-                if (video.duration > 60000) {
-                    var frameSize = video.duration/10;
-                    for (var i = 0; i < 10; ++i) {
-                        // TODO: discuss this with designers
-                        // shift 3s to avoid black frame in the position 0
-                        var pos = Math.floor(i * frameSize) + 3000;
-                        sceneSelector.model.append({"imageSource": "image://video/" + video.source + "/"+ pos})
-                    }
-                }
-            }
-        }
-
-        Item {
-            id: timelineContents
-            property int currentPosition: x + positionFiller.x + positionFiller.width
-
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: timeline.left; anchors.leftMargin: Units.tvPx(13)
-            anchors.right: timeline.right; anchors.rightMargin: Units.tvPx(13)
-            height: 28
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: { video.seek(video.duration * (mouseX / timeline.width)); controls.clicked() }
-            }
-
-            Item {
-                id: bufferFiller
-                anchors.top: parent.top; anchors.bottom: parent.bottom
-                anchors.left: parent.left
-                // FIXME make the buffer bar reflect buffer fill
-                width: 0
-                clip: true
-
-                Behavior on width { NumberAnimation { duration: 75; easing.type: Easing.OutQuad } }
-
-                BorderImage {
-                        id: bufferFillerImage
-                        source: "artwork/timeline_loaded.sci"
-
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        width: timelineContents.width
-                }
-            }
-
-            Item {
-                id: positionFiller
-                width: timelineContents.width * (video.position / video.duration)
-                anchors.top: parent.top; anchors.bottom: parent.bottom
-                anchors.left: parent.left
-                clip: true
-
-                Behavior on width { NumberAnimation { id: positionFillerWidthAnimation; duration: 75; easing.type: Easing.OutQuad } }
-
-                BorderImage {
-                        id: positionFillerImage
-                        source: "artwork/timeline_watched.sci"
-
-                        anchors.left: parent.left
-                        anchors.top: parent.top
-                        anchors.bottom: parent.bottom
-                        width: timelineContents.width
-                }
-            }
-
-            Item {
-                id: sceneMarker
-                width: video.duration != 0 ? timelineContents.width * (Math.min(video.duration / 10, video.duration - sceneSelector.currentIndex  * video.duration / 10) / video.duration) : width
-                anchors.top: parent.top; anchors.bottom: parent.bottom
-                x: timelineContents.width * (sceneSelector.currentIndex / 10)
-                opacity: sceneSelector.activeFocus ? 1 : 0
-                clip: true
-
-                Behavior on x { NumberAnimation { } }
-                Behavior on width { NumberAnimation { } }
-                Behavior on opacity { NumberAnimation { } }
-
-                BorderImage {
-                    id: sceneMarkerImage
-                    source: "artwork/scene_position_rounded.sci"
-
-                    x: -border.left + Math.max(border.left - sceneMarker.x, 0) - Math.max(sceneMarker.x + sceneMarker.width + border.right - timelineContents.width, 0)
-                    width: sceneMarker.width + border.left + border.right
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                }
-            }
-
-            AbstractButton {
-                id: button
-                anchors.horizontalCenter: positionFiller.right
-                anchors.verticalCenter: parent.verticalCenter
-                width: Units.tvPx(106); height: width
-                focus: true
-                KeyNavigation.up: sceneSelector
-
-                state: activeFocus ? "selected" : "default"
-
-                property string iconPath: "artwork/icon_%1.png"
-                property string selectedIconPath: "artwork/icon_%1_orange.png"
-                property string icon
-                property string iconSource
-                property bool switchIcons: false
-
-                iconSource: {
-                    if (icon) {
-                        if (state == "selected") {
-                            return selectedIconPath.arg(icon)
-                        } else {
-                            return iconPath.arg(icon)
-                        }
-                    } else return ""
-                }
-
-                Rectangle {
-                    id: buttonBackground
-                    anchors.fill: parent
-                    color: "#482d2a"
-                    radius: Units.tvPx(18)
-
-                    border.color: "#ffffff"
-                    border.width: width * 0.04
-                }
-
-                Image {
-                    id: iconOne
-                    anchors.centerIn: parent
-                    width: Units.tvPx(sourceSize.width)
-                    height: Units.tvPx(sourceSize.height)
-                    smooth: true
-                    opacity: button.switchIcons ? 0 : 1
-
-                    Behavior on opacity { NumberAnimation { duration: 125 } }
-                }
-
-                Image {
-                    id: iconTwo
-                    anchors.centerIn: parent
-                    width: Units.tvPx(sourceSize.width)
-                    height: Units.tvPx(sourceSize.height)
-                    smooth: true
-                    opacity: button.switchIcons ? 1 : 0
-
-                    Behavior on opacity { NumberAnimation { duration: 125 } }
-                }
-
-                Image {
-                    id: buttonGlow
-                    source: "artwork/play_glow.png"
-                    anchors.centerIn: parent
-                    width: Units.tvPx(sourceSize.width)
-                    height: Units.tvPx(sourceSize.height)
-                    smooth: true
-
-                    opacity: button.state == "selected" ? 1 : 0
-
-                    Behavior on opacity { NumberAnimation {} }
-                }
-
-                onIconSourceChanged: {
-                    if (!switchIcons) { iconTwo.source = iconSource }
-                    else { iconOne.source = iconSource }
-                    switchIcons = !switchIcons
-                }
-
-                Connections {
-                    target: positionFillerWidthAnimation
-                    onRunningChanged: if (!positionFillerWidthAnimation.running && !dragger.drag.active) button.anchors.horizontalCenter = positionFiller.right
-                }
-
-                MouseArea {
-                    id: dragger
-
-                    property bool dragged
-
-                    anchors.fill: parent
-                    drag.target: parent
-                    drag.axis: Drag.XAxis
-                    drag.minimumX: 0 - parent.width / 2
-                    drag.maximumX: timelineContents.width - parent.width / 2
-
-                    drag.onActiveChanged: if (drag.active) dragged = true
-
-                    onPressed: {
-                        controlsVisibility.beginForceVisible("drag")
-                        button.anchors.horizontalCenter = undefined
-                    }
-                    onReleased: {
-                        if (dragged) video.seek(video.duration * ((button.x + parent.width / 2) / timeline.width))
-                        dragged = false
-                        controlsVisibility.endForceVisible("drag")
-                    }
-                    onClicked: buttonClicked()
-                }
-            }
-        }
-
-        Item {
-            anchors.left: timeline.right
-            anchors.right: parent.right
+            anchors.left: _vline2.right
+            anchors.right: _vline3.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
 
-            Label {
-                id: positionText
-                anchors.centerIn: parent
-
-                font.family: "Ubuntu"
-                fontSize: "large"
-                color: "white"
-                style: Text.Outline
-                styleColor: "grey"
-
-                text: Utils.format_time(video.duration - video.position, Utils.get_human_time_format(video.duration))
-            }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: controls.timeClicked()
+            minimumValue: 0
+            maximumValue: video.duration / 1000
+            value: video.position / 1000
+            onValueChanged: {
+                _sceneSelector.selectSceneAt(video.position)
             }
         }
+
+        VLine {
+            id: _vline3
+
+            anchors.right: _shareButton.left
+        }
+
+        IconButton {
+            id: _shareButton
+
+            iconSource: "artwork/icon_share.png"
+            anchors.right: _vline4.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: units.gu(3)
+
+            onClicked: {
+                _sharePopover.caller = _shareButton
+                _sharePopover.show()
+            }
+        }
+
+        VLine {
+            id: _vline4
+
+            anchors.right: _settingsButton.left
+        }
+
+        IconButton {
+            id: _settingsButton
+
+            iconSource: "artwork/icon_settings.png"
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            width: units.gu(3)
+
+            onClicked: {
+                controls.clicked()
+            }
+        }
+    }
+
+
+    Connections {
+       target: video
+       onDurationChanged: {
+           _sceneSelector.currentIndex = -1
+           _sceneSelectorModel.clear()
+           // Only create thumbnails if video is bigger than 1min
+           if (video.duration > 60000) {
+               var frameSize = video.duration/10;
+               for (var i = 0; i < 10; ++i) {
+                   // TODO: discuss this with designers
+                   // shift 3s to avoid black frame in the position 0
+                   var pos = Math.floor(i * frameSize);
+                   _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/"+ (pos + 3000),
+                                               "start" : pos,
+                                               "duration" : frameSize})
+               }
+           }
+       }
     }
 
     states: [
         State {
             name: "stopped"
-            PropertyChanges { target: button; icon: "stop" }
+            PropertyChanges { target: _playbackButtom; icon: "stop" }
         },
 
         State {
             name: "playing"
-            PropertyChanges { target: button; icon: "play" }
+            PropertyChanges { target: _playbackButtom; icon: "play" }
         },
 
         State {
             name: "paused"
-            PropertyChanges { target: button; icon: "pause" }
+            PropertyChanges { target: _playbackButtom; icon: "pause" }
         },
 
         State {
             name: "forwarding"
-            PropertyChanges { target: button; icon: "forward" }
+            PropertyChanges { target: _playbackButtom; icon: "forward" }
         },
 
         State {
             name: "rewinding"
-            PropertyChanges { target: button; icon: "rewind" }
+            PropertyChanges { target: _playbackButtom; icon: "rewind" }
         }
     ]
 }
