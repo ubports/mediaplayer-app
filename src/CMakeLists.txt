@@ -4,6 +4,7 @@ set(MEDIAPLAYER media-player)
 
 include_directories(
     ${CMAKE_BINARY_DIR}
+    ${sdkhelper_SOURCE_DIR}
     )
 
 set(mediaplayer_HDRS
@@ -23,6 +24,10 @@ add_executable(${MEDIAPLAYER}
     )
 
 qt5_use_modules(${MEDIAPLAYER} Gui Core Qml Quick Multimedia)
+
+target_link_libraries(${MEDIAPLAYER}
+    sdkhelper
+    )
 
 install(TARGETS ${MEDIAPLAYER}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

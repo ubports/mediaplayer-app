@@ -22,6 +22,8 @@ import Ubuntu.Components.ListItems 0.1 as ListItem
 Popover {
     id: sharePopover
 
+    property alias picturePath : shareMenu.picturePath
+
     ShareMenu {
         id: shareMenu
         anchors {

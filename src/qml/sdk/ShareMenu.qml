@@ -17,6 +17,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components.ListItems 0.1 as ListItem
+import SDKHelper 1.0
 
 Item {
     id: sharemenu
@@ -52,6 +53,7 @@ Item {
             onClicked: {
                 sharemenu.selected()
                 if (service == "Facebook") {
+                    _shareFile.writeShareFile(shareMenu.picturePath);
                     if (loader.status != Loader.Ready) console.log("Application launching not available on this platform");
                     else loader.item.switchToShareApplication();
                 } else {
@@ -59,6 +61,10 @@ Item {
                 }
             }
         }
+    }
+
+    ShareFile {
+        id: _shareFile
     }
 
     Loader {

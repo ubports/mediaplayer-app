@@ -207,7 +207,6 @@ void ThumbnailProvider::start()
     }
 }
 
-
 ThumbnailRequest *ThumbnailProvider::request(qint64 time)
 {
     ThumbnailRequest *r = 0;

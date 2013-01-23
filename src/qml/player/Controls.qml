@@ -150,6 +150,17 @@ FocusScope {
             width: units.gu(3)
 
             onClicked: {
+                var position = video.position
+                if (position === 0) {
+                    if (video.duration > 10000) {
+                        position = 10000;
+                    } else if (video.duration > 0){
+                        position = video.duration / 2
+                    }
+                }
+                if (position >= 0) {
+                    _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
+                }
                 _sharePopover.caller = _shareButton
                 _sharePopover.show()
             }
@@ -189,7 +200,7 @@ FocusScope {
                    // TODO: discuss this with designers
                    // shift 3s to avoid black frame in the position 0
                    var pos = Math.floor(i * frameSize);
-                   _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/"+ (pos + 3000),
+                   _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
                                                "start" : pos,
                                                "duration" : frameSize})
                }
