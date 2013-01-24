@@ -19,5 +19,6 @@ Package: media-player
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
          mediaplayerplugin-aal,
+         libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-xmllistmodel-plugin,
 Description: Media player
