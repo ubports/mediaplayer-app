@@ -8,6 +8,7 @@ FocusScope {
     property variant video: null
     property variant button: button
     property bool shown: false
+    property alias sceneSelectorHeight : _sceneSelector.height
 
     signal activityStart(string activity)
     signal activityEnd(string activity)
@@ -37,23 +38,6 @@ FocusScope {
         id: _sceneSelectorModel
     }
 
-    SceneSelector {
-        id: _sceneSelector
-
-        model: _sceneSelectorModel
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.bottom: mainContainer.top
-        anchors.bottomMargin: units.gu(2)
-
-        onMovementStarted: controls.activated()
-
-        onSceneSelected: {
-            clicked()
-            video.seek(start)
-        }
-    }
 
     SharePopover {
         id: _sharePopover
@@ -70,41 +54,66 @@ FocusScope {
     }
 
     Rectangle {
-        id: mainContainer
+        id: _mainContainer
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.fill: parent
         color: "black"
         opacity: 0.7
-        height: units.gu(3)
 
-        IconButton {
-            id: _closeButton
+        SceneSelector {
+            id: _sceneSelector
 
-            iconSource: "artwork/icon_close.png"
+            model: _sceneSelectorModel
             anchors {
                 left: parent.left
+                right: parent.right
                 top: parent.top
+                topMargin: units.gu(2)
+            }
+
+            onMovementStarted: controls.clicked()
+            onSceneSelected: {
+                clicked()
+                video.seek(start)
+            }
+        }
+
+        HLine {
+            id: _divLine
+            anchors {
+                top: _sceneSelector.bottom
+                topMargin: units.gu(2)
+            }
+        }
+
+        IconButton {
+            id: _fullScreenButton
+
+            iconSource: "artwork/full_scrn_icon.png"
+            iconSize: units.gu(3)
+            anchors {
+                left: parent.left
+                top: _divLine.bottom
                 bottom: parent.bottom
             }
-            width: units.gu(3)
+            width: units.gu(9)
             onClicked: Qt.quit()
         }
 
-        VLine {
-            id: _vline1
-
-            anchors.left: _closeButton.right
-        }
-
-        PlaybackButton {
+        IconButton {
             id: _playbackButtom
 
-            anchors.left: _vline1.right
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: units.gu(3)
+            property string icon
+            iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
+
+            iconSize: units.gu(3)
+            anchors {
+                left: _fullScreenButton.right
+                leftMargin: units.gu(9)
+                top: _divLine.bottom
+                bottom: parent.bottom
+            }
+            width: units.gu(9)
 
             onClicked: {
                 controls.clicked()
@@ -112,19 +121,17 @@ FocusScope {
             }
         }
 
-        VLine {
-            id: _vline2
-
-            anchors.left: _playbackButtom.right
-        }
-
         TimeLine {
             id: _timeline
 
-            anchors.left: _vline2.right
-            anchors.right: _vline3.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
+            anchors {
+                left: _playbackButtom.right
+                right: _shareButton.left
+                top: _divLine.bottom
+                topMargin: units.gu(2)
+                bottom: parent.bottom
+                bottomMargin: units.gu(2)
+            }
 
             minimumValue: 0
             maximumValue: video.duration / 1000
@@ -134,20 +141,17 @@ FocusScope {
             }
         }
 
-        VLine {
-            id: _vline3
-
-            anchors.right: _shareButton.left
-        }
-
         IconButton {
             id: _shareButton
 
-            iconSource: "artwork/icon_share.png"
-            anchors.right: _vline4.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: units.gu(3)
+            iconSource: "artwork/share_icon.png"
+            iconSize: units.gu(3)
+            anchors {
+                right: _settingsButton.left
+                top: _divLine.bottom
+                bottom: parent.bottom
+            }
+            width: units.gu(9)
 
             onClicked: {
                 var position = video.position
@@ -166,20 +170,18 @@ FocusScope {
             }
         }
 
-        VLine {
-            id: _vline4
-
-            anchors.right: _settingsButton.left
-        }
-
         IconButton {
             id: _settingsButton
 
-            iconSource: "artwork/icon_settings.png"
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            width: units.gu(3)
+            iconSource: "artwork/settings_icon.png"
+            iconSize: units.gu(3)
+            anchors {
+                right: parent.right
+                top: _divLine.bottom
+                bottom: parent.bottom
+            }
+
+            width: units.gu(9)
 
             onClicked: {
                 controls.clicked()

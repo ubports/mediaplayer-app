@@ -20,12 +20,16 @@ import Ubuntu.Components 0.1
 
 AbstractButton {
     property alias iconSource: _image.source
+    property alias iconSize: _image.height
 
     focus: false
 
     Image {
         id: _image
-        anchors.fill: parent
-        anchors.margins: units.gu(0.5)
+        width: height
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
     }
 }

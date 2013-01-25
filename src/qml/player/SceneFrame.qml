@@ -35,10 +35,10 @@ MouseArea {
 
         anchors {
             fill: parent
-            topMargin: active ? 0 : units.gu(1.5)
-            bottomMargin: active ? 0 : units.gu(1.5)
-            leftMargin: units.gu(0.5)
-            rightMargin: units.gu(0.5)
+            topMargin: active ? 0 : units.gu(2)
+            bottomMargin: active ? 0 : units.gu(2)
+            leftMargin: units.gu(1)
+            rightMargin: units.gu(1)
 
             Behavior on topMargin {
                 NumberAnimation { duration: 175 }

@@ -22,31 +22,19 @@ Item {
     property alias minimumValue: _slider.minimumValue
     property alias maximumValue: _slider.maximumValue
     property alias value: _slider.value
-
-    anchors.margins: units.gu(2)
-
-    Label {
-        id: _currentTimeLabel
-
-        anchors.verticalCenter: _slider.verticalCenter
-        anchors.left: parent.left
-        anchors.margins: units.gu(2)
-        width: units.gu(6)
-
-        color: "#e8e1d0"
-        font.weight: Font.DemiBold
-        fontSize: "medium"
-    }
+    property string currentTime
+    property string remainingTime
 
     Slider {
         id: _slider
 
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.left: _currentTimeLabel.right
-        anchors.right: _remainingTimeLabel.left
-        anchors.leftMargin: units.gu(3)
-        anchors.rightMargin: units.gu(3)
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+            left: parent.left
+            right: _TimeLabel.left
+            rightMargin: units.gu(2)
+        }
 
         minimumValue: 0
         maximumValue: 1000
@@ -54,31 +42,58 @@ Item {
 
         function formatValue(v) {
             if (_slider.value > 0) {
-                _currentTimeLabel.text = formatProgress(_slider.value)
+                currentTime = formatProgress(_slider.value)
                 if (_slider.maximumValue > 0) {
-                    _remainingTimeLabel.text = formatProgress((_slider.maximumValue - _slider.value))
+                    remainingTime = formatProgress((_slider.maximumValue - _slider.value))
                 } else {
-                    _remainingTimeLabel.text = "unknow"
+                    remainingTime = "unknow"
                 }
             } else {
-                _currentTimeLabel.text = "0:00:00"
+                currentTime = "0:00:00"
             }
             return ""
         }
     }
 
     Label {
-        id: _remainingTimeLabel
+        id: _TimeLabel
 
-        anchors.verticalCenter: _slider.verticalCenter
-        anchors.right: parent.right
-        anchors.margins: units.gu(2)
+        anchors {
+            verticalCenter: _slider.verticalCenter
+            right: parent.right
+            margins: units.gu(2)
+        }
+
         width: units.gu(6)
 
         color: "#e8e1d0"
         font.weight: Font.DemiBold
         fontSize: "medium"
+        state: "PROGRESSIVE"
+
+        states: [
+            State {
+                name: "PROGRESSIVE"
+                PropertyChanges { target: _TimeLabel; text: currentTime }
+            },
+            State {
+                name: "DEGRESSIVE"
+                PropertyChanges { target: _TimeLabel; text: remainingTime }
+            }
+        ]
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if (_TimeLabel.state === "PROGRESSIVE") {
+                    _TimeLabel.state = "DEGRESSIVE"
+                } else {
+                    _TimeLabel.state = "PROGRESSIVE"
+                }
+            }
+        }
     }
+
 
     function formatProgress(value) {
         var hour = 0

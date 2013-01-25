@@ -31,8 +31,8 @@ ListView {
         duration: model.duration
         source: model.thumbnail
 
-        width: active ? units.gu(11) : units.gu(8)
-        height: units.gu(8)
+        width: active ? units.gu(26) : units.gu(19)
+        height: _sceneList.height
 
         onClicked: {
             currentIndex = index
