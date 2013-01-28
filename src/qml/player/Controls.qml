@@ -6,7 +6,6 @@ FocusScope {
     id: controls
 
     property variant video: null
-    property variant button: button
     property bool shown: false
     property alias sceneSelectorHeight : _sceneSelector.height
 
@@ -14,7 +13,6 @@ FocusScope {
     signal activityEnd(string activity)
     signal clicked
     signal playbackButtonClicked
-    signal timeClicked
 
     focus: true
 
@@ -53,13 +51,10 @@ FocusScope {
         }
     }
 
-    Rectangle {
+    Item {
         id: _mainContainer
 
         anchors.fill: parent
-        color: "black"
-        opacity: 0.7
-
         SceneSelector {
             id: _sceneSelector
 
@@ -127,6 +122,7 @@ FocusScope {
             anchors {
                 left: _playbackButtom.right
                 right: _shareButton.left
+                rightMargin: units.gu(7)
                 top: _divLine.bottom
                 topMargin: units.gu(2)
                 bottom: parent.bottom
@@ -165,6 +161,7 @@ FocusScope {
                 if (position >= 0) {
                     _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
                 }
+                controls.clicked()
                 _sharePopover.caller = _shareButton
                 _sharePopover.show()
             }
@@ -189,6 +186,12 @@ FocusScope {
         }
     }
 
+    Rectangle {
+        color: "black"
+        opacity: 0.7
+        anchors.fill: _mainContainer
+        z: -1
+    }
 
     Connections {
        target: video

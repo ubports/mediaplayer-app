@@ -64,7 +64,9 @@ ThumbnailRequest::~ThumbnailRequest()
 
 void ThumbnailRequest::setImage(const QImage &frame)
 {
-    m_image = frame.copy();
+    if (!frame.isNull()) {
+        m_image = frame.copy();
+    }
     m_mutex.unlock();
 }
 
@@ -169,6 +171,8 @@ void ThumbnailProvider::getNextFrame()
 {
     if (m_requests.count() > 0) {
         m_player->setPosition(m_requests.head()->time());
+    } else {
+        m_running = false;
     }
 }
 

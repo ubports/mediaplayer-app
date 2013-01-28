@@ -123,8 +123,6 @@ AbstractPlayer {
 
         function close() {
             if (player.paused) controlsVisibility.endForceVisible("pause")
-            button.focus = true
-            focus = false
             player.forceActiveFocus()
         }
 
@@ -148,10 +146,6 @@ AbstractPlayer {
 
         onActiveFocusChanged: {
             if (!activeFocus && player.paused) controlsVisibility.endForceVisible("pause")
-        }
-
-        onTimeClicked: {
-            player.timeClicked()
         }
 
         onActivityStart: {

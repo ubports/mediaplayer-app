@@ -32,6 +32,7 @@ MouseArea {
 
     UbuntuShape {
         id: _shape
+        radius: "medium"
 
         anchors {
             fill: parent
