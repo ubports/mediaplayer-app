@@ -58,6 +58,7 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
         ThumbnailRequest* request(qint64 time);
         void clearCache();
         void start();
+        void createPlayer();
 
         QString parseThumbnailName(const QString &id, qint64 *time) const;
 };

@@ -97,19 +97,10 @@ ThumbnailProvider::ThumbnailProvider()
       QQuickImageProvider(QQuickImageProvider::Image),
       m_mediaLoaded(false),
       m_running(false),
-      m_exiting(false)
+      m_exiting(false),
+      m_player(0),
+      m_surface(0)
 {
-    m_player = new QMediaPlayer;
-    m_player->setMuted(true);
-    connect(m_player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(mediaPlayerStatusChanged(QMediaPlayer::MediaStatus)));
-
-    QVideoRendererControl* rendererControl =  m_player->service()->requestControl<QVideoRendererControl*>();
-    if (rendererControl) {
-        m_surface = new ThumbnailSurface;
-        connect(m_surface, SIGNAL(newFrame(qint64,QImage&)), this, SLOT(updateThumbnail(qint64,QImage&)));
-        rendererControl->setSurface(m_surface);
-    }
-
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
 }
 
@@ -122,6 +113,21 @@ ThumbnailProvider::~ThumbnailProvider()
         delete m_player;
     }
 }
+
+void ThumbnailProvider::createPlayer()
+{
+    m_player = new QMediaPlayer;
+    m_player->setMuted(true);
+    connect(m_player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(mediaPlayerStatusChanged(QMediaPlayer::MediaStatus)));
+
+    QVideoRendererControl* rendererControl =  m_player->service()->requestControl<QVideoRendererControl*>();
+    if (rendererControl) {
+        m_surface = new ThumbnailSurface;
+        connect(m_surface, SIGNAL(newFrame(qint64,QImage&)), this, SLOT(updateThumbnail(qint64,QImage&)));
+        rendererControl->setSurface(m_surface);
+    }
+}
+
 
 void ThumbnailProvider::applicationAboutToQuit()
 {
@@ -243,6 +249,9 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
     if (currentUrl != url) {
         clearCache();
         m_mediaLoaded = false;
+        if (m_player == 0) {
+            createPlayer();
+        }
         m_player->setMedia(QUrl(url));
     }
 
