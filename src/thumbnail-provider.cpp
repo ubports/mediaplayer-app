@@ -185,7 +185,7 @@ void ThumbnailProvider::updateThumbnail(qint64 position, QImage &frame)
 
     // next
     if (!m_exiting) {
-        QTimer::singleShot(1, this, SLOT(getNextFrame()));
+        QTimer::singleShot(1000, this, SLOT(getNextFrame()));
     }
 }
 
@@ -229,7 +229,7 @@ void ThumbnailProvider::start()
 {
     if (!m_running && m_mediaLoaded && (m_requests.count() > 0)) {
         m_running = true;
-        m_player->setPosition(m_requests.head()->time());
+        QTimer::singleShot(1000, this, SLOT(getNextFrame()));
     }
 }
 
