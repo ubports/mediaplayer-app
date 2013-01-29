@@ -8,6 +8,7 @@ FocusScope {
     property bool paused: state == "paused"
     property real aspectRatio: width / height
     property variant video: mediaPlayer
+    property variant videoOutput: _videoOutput
 
     property alias source: mediaPlayer.source
     property alias status: mediaPlayer.status
@@ -94,7 +95,7 @@ FocusScope {
     }
 
     VideoOutput {
-        id: videoOutput
+        id: _videoOutput
         source: mediaPlayer
         anchors.fill: parent
         smooth: true

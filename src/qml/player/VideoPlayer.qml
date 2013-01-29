@@ -82,9 +82,11 @@ AbstractPlayer {
     Controls {
         id: controls
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: units.gu(29)
+        videoOutput: player.videoOutput
+        anchors.fill: parent
+        //anchors.left: parent.left
+        //anchors.right: parent.right
+        controlsHeight: units.gu(29)
         sceneSelectorHeight: units.gu(18)
 
         y: controlsVisibility.shown ? parent.height - height : parent.height
