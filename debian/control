@@ -21,5 +21,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          mediaplayerplugin-aal,
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-xmllistmodel-plugin,
-	 qt-components-ubuntu,
+	     qt-components-ubuntu,
+         qtubuntu-sensors
 Description: Media player
