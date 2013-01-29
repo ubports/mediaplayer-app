@@ -102,6 +102,7 @@ ThumbnailProvider::ThumbnailProvider()
       m_surface(0)
 {
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
+    createPlayer();
 }
 
 ThumbnailProvider::~ThumbnailProvider()
@@ -119,6 +120,7 @@ void ThumbnailProvider::createPlayer()
     m_player = new QMediaPlayer;
     m_player->setMuted(true);
     connect(m_player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(mediaPlayerStatusChanged(QMediaPlayer::MediaStatus)));
+    connect(m_player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(mediaPlayerStateChanged(QMediaPlayer::State)));
 
     QVideoRendererControl* rendererControl =  m_player->service()->requestControl<QVideoRendererControl*>();
     if (rendererControl) {
@@ -140,20 +142,34 @@ QQmlImageProviderBase::Flags ThumbnailProvider::flags() const
     QQmlImageProviderBase::ForceAsynchronousImageLoading;
 }
 
+void ThumbnailProvider::mediaPlayerStateChanged(QMediaPlayer::State state)
+{
+    switch (state)
+    {
+    case QMediaPlayer::PausedState:
+        qDebug() << "START TO GET";
+        m_mediaLoaded = true;
+        start();
+    default:
+        break;
+    }
+}
+
 void ThumbnailProvider::mediaPlayerStatusChanged(QMediaPlayer::MediaStatus status)
 {
     switch (status)
     {
     case QMediaPlayer::LoadedMedia:
+        qDebug() << "PAUSE THUMB PLAYER";
         m_player->pause();
         break;
-    case QMediaPlayer::BufferedMedia:
-        m_mediaLoaded = true;
-        start();
-        break;
     case QMediaPlayer::StalledMedia:
+        qWarning() << "Stalled movie file";
+        break;
     case QMediaPlayer::InvalidMedia:
         qWarning() << "Invalid movie file";
+        m_player->pause();
+    default:
         break;
     }
 }
@@ -242,16 +258,15 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
     QString url = parseThumbnailName(id, &time);
 
     if (url.isEmpty()) {
+        qWarning() << "Invalid url:" << id;
         return QImage();
     }
 
     QUrl currentUrl = m_player->currentMedia().canonicalUrl();
     if (currentUrl != url) {
+        qDebug() << "LOAD NEW URL" << url;
         clearCache();
         m_mediaLoaded = false;
-        if (m_player == 0) {
-            createPlayer();
-        }
         m_player->setMedia(QUrl(url));
     }
 

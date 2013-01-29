@@ -44,6 +44,7 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
         void getNextFrame();
         void updateThumbnail(qint64 position, QImage &frame);
         void mediaPlayerStatusChanged(QMediaPlayer::MediaStatus status);
+        void mediaPlayerStateChanged(QMediaPlayer::State state);
         void applicationAboutToQuit();
 
     private:

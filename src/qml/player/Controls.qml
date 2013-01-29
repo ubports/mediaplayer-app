@@ -16,6 +16,11 @@ FocusScope {
 
     focus: true
 
+    Component.onCompleted: {
+        var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
+        console.debug("Theme loaded:" + result + " " + Theme.error)
+    }
+
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
     }
@@ -193,11 +198,13 @@ FocusScope {
         z: -1
     }
 
-    Connections {
-       target: video
-       onDurationChanged: {
-           _sceneSelector.currentIndex = -1
-           _sceneSelectorModel.clear()
+    Timer {
+        id: _idlePopulateThumbnail
+        interval: 5000
+        running: false
+        repeat: false
+        onTriggered: {
+            console.debug("Populate thumbnail nowwww.")
            // Only create thumbnails if video is bigger than 1min
            if (video.duration > 60000) {
                var frameSize = video.duration/10;
@@ -210,7 +217,16 @@ FocusScope {
                                                "duration" : frameSize})
                }
            }
-       }
+        }
+    }
+
+    Connections {
+       target: video
+       onDurationChanged: {
+           _sceneSelector.currentIndex = -1
+           _sceneSelectorModel.clear()
+           _idlePopulateThumbnail.restart()
+      }
     }
 
     states: [
