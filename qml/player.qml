@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
+import QtSensors 5.0
 
 Rectangle {
     id: mediaPlayer
@@ -94,6 +95,27 @@ Rectangle {
             }
           }
         ]
+
+        OrientationSensor {
+            id: orientationSensor
+            active: true
+
+            // Causes the media player UI to rotate when the target device is rotated
+            onReadingChanged: {
+                if (reading.orientation == OrientationReading.LeftUp) {
+                    mediaPlayer.orientation = "270"
+                }
+                else if (reading.orientation == OrientationReading.RightUp) {
+                    mediaPlayer.orientation = "90"
+                }
+                else if (reading.orientation == OrientationReading.TopUp) {
+                    mediaPlayer.orientation = "0"
+                }
+                else if (reading.orientation == OrientationReading.TopDown) {
+                    mediaPlayer.orientation = "180"
+                }
+            }
+        }
     }
 
     Connections {
@@ -102,9 +124,6 @@ Rectangle {
             if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
                 Qt.quit()
             }
-        }
-        onTimeClicked: {
-            rotateClockwise()
         }
     }
 
