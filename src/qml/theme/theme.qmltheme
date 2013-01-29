@@ -1,0 +1,5 @@
+@import url("/usr/share/themes/Ambiance/qmltheme/default.qmltheme");
+@qml-import(theme 0.1, ..);
+@qml-mapping(.slider, , VideoSlider);
+.slider{}
+
