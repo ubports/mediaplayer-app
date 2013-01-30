@@ -19,6 +19,8 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 
 Item {
+    id: _timeLine
+
     property alias minimumValue: _slider.minimumValue
     property alias maximumValue: _slider.maximumValue
     property alias value: _slider.value
@@ -40,18 +42,17 @@ Item {
         maximumValue: 1000
         value: 100
 
-        function formatValue(v) {
-            if (_slider.value > 0) {
-                currentTime = formatProgress(_slider.value)
+        onValueChanged: {
+            if (value > 0) {
+                _timeLine.currentTime = formatProgress(value)
                 if (_slider.maximumValue > 0) {
-                    remainingTime = formatProgress((_slider.maximumValue - _slider.value))
+                    _timeLine.remainingTime = formatProgress((_slider.maximumValue - value))
                 } else {
-                    remainingTime = "unknow"
+                    _timeLine.remainingTime = "unknow"
                 }
             } else {
-                currentTime = "0:00:00"
+                _timeLine.currentTime = "0:00:00"
             }
-            return ""
         }
     }
 
@@ -74,11 +75,11 @@ Item {
         states: [
             State {
                 name: "PROGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: currentTime }
+                PropertyChanges { target: _TimeLabel; text: _timeLine.currentTime }
             },
             State {
                 name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: remainingTime }
+                PropertyChanges { target: _TimeLabel; text: _timeLine.remainingTime }
             }
         ]
 
@@ -101,8 +102,6 @@ Item {
         var secs = 0
         value = Math.floor(value)
 
-        console.debug("Format progress: " + value)
-
         while (value > 3600) {
             hour += 1
             value -= 3600
@@ -122,8 +121,6 @@ Item {
         if (secs < 10) {
             secs = "0" + secs
         }
-
-
 
         return hour + ":" + min + ":" + secs
     }

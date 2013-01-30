@@ -19,10 +19,8 @@ FocusScope {
 
     focus: true
 
-
     Component.onCompleted: {
         var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
-        console.debug("Theme loaded:" + result + " " + Theme.error)
     }
 
     function removeExt(uri) {
@@ -41,41 +39,32 @@ FocusScope {
         sceneSelector.next()
     }
 
-    //    Retangle {
-    //        id: _mask
+//    LinearGradient {
+//        id: _mask
 
-    //        color: "#fffffffff"
-    //        anchors.fill: _contents
-    //        visible: false
-    //    }
+//        anchors.fill: parent
+//        start: Qt.point(0, _contents.y)
+//        end: Qt.point(0, _contents.y + _contents.height)
+//        visible: false
 
-    LinearGradient {
-            id: _mask
-
-            anchors.fill: parent
-            start: Qt.point(0, _contents.y)
-            end: Qt.point(0, _contents.y + _contents.height)
-            //z: -1
-            //visible: false
-
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "#00ffffff" }
-                GradientStop { position: 0.1; color: "#000000" }
-            }
+//        gradient: Gradient {
+//            GradientStop { position: 0.0; color: "#00ffffff" }
+//            GradientStop { position: 0.1; color: "#000000" }
+//        }
+//    }
+//    MaskedBlur {
+//        anchors.fill: _mask
+//        source: controls.videoOutput
+//        maskSource: _mask
+//        radius: 99
+//        samples: 39
+//        fast: true
+//    }
+    Rectangle {
+        anchors.fill: _contents
+        opacity: 0.7
+        color: "black"
     }
-
-    MaskedBlur {
-        anchors.fill: parent
-        source: controls.videoOutput
-        maskSource: _mask
-        radius: 99
-        samples: 39
-        //fast: true
-        //cached: true
-        //z: -1
-    }
-
-
 
     Item {
         id: _contents
@@ -183,10 +172,12 @@ FocusScope {
                 }
 
                 minimumValue: 0
-                maximumValue: video.duration / 1000
-                value: video.position / 1000
+                maximumValue: video ? video.duration / 1000 : 0
+                value: video ? video.position / 1000 : 0
                 onValueChanged: {
-                    _sceneSelector.selectSceneAt(video.position)
+                    if (video) {
+                        _sceneSelector.selectSceneAt(video.position)
+                    }
                 }
             }
 

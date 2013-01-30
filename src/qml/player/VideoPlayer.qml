@@ -82,15 +82,15 @@ AbstractPlayer {
     Controls {
         id: controls
 
+        state: player.state
+        video: player.video
         videoOutput: player.videoOutput
         anchors.fill: parent
-        //anchors.left: parent.left
-        //anchors.right: parent.right
         controlsHeight: units.gu(29)
         sceneSelectorHeight: units.gu(18)
-
         y: controlsVisibility.shown ? parent.height - height : parent.height
         shown: controlsVisibility.shown
+        focus: true
 
         onYChanged: if (!yBehavior.enabled && (y == player.height - height)) yBehavior.enabled = true
 
@@ -108,8 +108,6 @@ AbstractPlayer {
             }
         }
 
-        focus: true
-
         onShownChanged: {
             if (shown) {
                 yBehavior.enabled = true
@@ -120,8 +118,6 @@ AbstractPlayer {
             }
         }
 
-        state: player.state
-        video: player.video
 
         function close() {
             if (player.paused) controlsVisibility.endForceVisible("pause")

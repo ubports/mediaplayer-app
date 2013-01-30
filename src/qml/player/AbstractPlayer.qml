@@ -88,12 +88,6 @@ FocusScope {
         }
     }
 
-    Rectangle {
-        id: playerBackground
-        anchors.fill: parent
-        color: "black"
-    }
-
     VideoOutput {
         id: _videoOutput
         source: mediaPlayer

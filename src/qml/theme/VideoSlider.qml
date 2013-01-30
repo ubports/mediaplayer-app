@@ -16,6 +16,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import "/usr/share/themes/Ambiance/qmltheme/styleUtils.js" as StyleUtils
 
 Item {
     id: main
