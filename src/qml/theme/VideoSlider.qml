@@ -38,10 +38,10 @@ Item {
         id: backgroundFilledShape
 
         border {
-            left: 8
-            top: 8
-            right: 8
-            bottom: 8
+            left: 7
+            top: 7
+            right: 7
+            bottom: 7
         }
         horizontalTileMode: BorderImage.Repeat
         verticalTileMode: BorderImage.Repeat
@@ -49,8 +49,9 @@ Item {
         anchors {
             verticalCenter:  parent.verticalCenter
             left: parent.left
+            leftMargin: units.gu(0.2)
         }
-        height: units.gu(1.5)
+        height: units.gu(1)
         width: normalizedValue * thumbSpace + thumbSpacing + (thumbShape.width  / 2)
     }
 
@@ -58,10 +59,10 @@ Item {
         id: backgroundShape
 
         border {
-            left: 8
-            top: 8
-            right: 8
-            bottom: 8
+            left: 7
+            top: 7
+            right: 7
+            bottom: 7
         }
         horizontalTileMode: BorderImage.Repeat
         verticalTileMode: BorderImage.Repeat
@@ -71,7 +72,7 @@ Item {
             left: parent.left
             right: parent.right
         }
-        height: units.gu(2)
+        height: units.gu(1.5)
     }
 
     Image {
