@@ -26,6 +26,9 @@ Item {
     property alias value: _slider.value
     property string currentTime
     property string remainingTime
+    property alias pressed: _slider.pressed
+
+    signal clicked()
 
     Slider {
         id: _slider
@@ -54,6 +57,9 @@ Item {
                 _timeLine.currentTime = "0:00:00"
             }
         }
+
+        onClicked: _timeLine.clicked()
+
     }
 
     Label {
@@ -86,6 +92,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                _timeLine.clicked()
                 if (_TimeLabel.state === "PROGRESSIVE") {
                     _TimeLabel.state = "DEGRESSIVE"
                 } else {

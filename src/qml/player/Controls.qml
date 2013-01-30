@@ -3,22 +3,17 @@ import Ubuntu.Components 0.1
 import QtGraphicalEffects 1.0
 import "../sdk"
 
-FocusScope {
+GenericToolbar {
     id: controls
 
     property variant video: null
-    property variant videoOutput: null
-    property bool shown: false
     property alias sceneSelectorHeight : _sceneSelector.height
-    property alias controlsHeight : _contents.height
 
-    signal activityStart(string activity)
-    signal activityEnd(string activity)
-    signal clicked
+    signal fullscreenButtonClicked
     signal playbackButtonClicked
+    signal seekRequested(int time)
 
     focus: true
-
     Component.onCompleted: {
         var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
     }
@@ -27,52 +22,16 @@ FocusScope {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
     }
 
-    function close() {
-        console.log("WARNING: Controls.close() unimplemented")
-    }
-
-    function previous() {
-        sceneSelector.previous()
-    }
-
-    function next() {
-        sceneSelector.next()
-    }
-
-//    LinearGradient {
-//        id: _mask
-
-//        anchors.fill: parent
-//        start: Qt.point(0, _contents.y)
-//        end: Qt.point(0, _contents.y + _contents.height)
-//        visible: false
-
-//        gradient: Gradient {
-//            GradientStop { position: 0.0; color: "#00ffffff" }
-//            GradientStop { position: 0.1; color: "#000000" }
-//        }
-//    }
-//    MaskedBlur {
-//        anchors.fill: _mask
-//        source: controls.videoOutput
-//        maskSource: _mask
-//        radius: 99
-//        samples: 39
-//        fast: true
-//    }
-    Rectangle {
-        anchors.fill: _contents
-        opacity: 0.7
-        color: "black"
-    }
-
     Item {
         id: _contents
+        z: 1
 
-        anchors {
-            left: parent.left
-            right:  parent.right
-            bottom: parent.bottom
+        anchors.fill: parent
+
+        Rectangle {
+            anchors.fill: parent
+            opacity: 0.7
+            color: "black"
         }
 
         ListModel {
@@ -108,11 +67,11 @@ FocusScope {
                     topMargin: units.gu(2)
                 }
 
-                onMovementStarted: controls.clicked()
                 onSceneSelected: {
-                    clicked()
-                    video.seek(start)
+                    controls.seekRequested(start)
                 }
+
+                z: 1
             }
 
             HLine {
@@ -134,7 +93,7 @@ FocusScope {
                     bottom: parent.bottom
                 }
                 width: units.gu(9)
-                onClicked: Qt.quit()
+                onClicked: controls.fullscreenClicked()
             }
 
             IconButton {
@@ -152,10 +111,7 @@ FocusScope {
                 }
                 width: units.gu(9)
 
-                onClicked: {
-                    controls.clicked()
-                    controls.playbackButtonClicked()
-                }
+                onClicked: controls.playbackButtonClicked()
             }
 
             TimeLine {
@@ -176,6 +132,10 @@ FocusScope {
                 value: video ? video.position / 1000 : 0
                 onValueChanged: {
                     if (video) {
+                        if (Math.abs((video.position / 1000) - value) > 1)  {
+                            controls.seekRequested(value * 1000)
+                        }
+
                         _sceneSelector.selectSceneAt(video.position)
                     }
                 }
@@ -205,7 +165,6 @@ FocusScope {
                     if (position >= 0) {
                         _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
                     }
-                    controls.clicked()
                     _sharePopover.caller = _shareButton
                     _sharePopover.show()
                 }
@@ -230,23 +189,12 @@ FocusScope {
             }
         }
 
-
-    //    Rectangle {
-    //        id: _mask
-
-    //        color: "white"
-    //        //opacity: 0.7
-    //        anchors.fill: _mainContainer
-    //        visible: false
-    //    }
-
         Timer {
             id: _idlePopulateThumbnail
             interval: 5000
             running: false
             repeat: false
             onTriggered: {
-                console.debug("Populate thumbnail nowwww.")
                // Only create thumbnails if video is bigger than 1min
                if (video.duration > 60000) {
                    var frameSize = video.duration/10;
@@ -286,16 +234,6 @@ FocusScope {
         State {
             name: "paused"
             PropertyChanges { target: _playbackButtom; icon: "pause" }
-        },
-
-        State {
-            name: "forwarding"
-            PropertyChanges { target: _playbackButtom; icon: "forward" }
-        },
-
-        State {
-            name: "rewinding"
-            PropertyChanges { target: _playbackButtom; icon: "rewind" }
         }
     ]
 }
