@@ -77,7 +77,7 @@ bool MediaPlayer::setup()
     m_view = new QQuickView();
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->setWindowTitle("Media Player");
+    m_view->setTitle("Media Player");
     QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
     m_view->rootContext()->setContextProperty("playUri", uri);
 
