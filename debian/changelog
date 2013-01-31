@@ -1,9 +1,3 @@
-media-player (0.6.5) quantal; urgency=low
-
-  * new release for testing ppa
-
- -- Bill Filler <bill.filler@canonical.com>  Mon, 28 Jan 2013 16:56:49 -0500
-
 media-player (0.5) quantal; urgency=low
 
   * improved orientation behavior
