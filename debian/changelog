@@ -1,3 +1,14 @@
+media-player (0.6) quantal; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Updated to qt5 final.
+  * Set "QML_BAD_GUI_RENDER_LOOP" variable during the the application startup.
+
+  [ Bill Filler ]
+  * add support of new sensor api and deps.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 31 Jan 2013 01:30:25 -0300
+
 media-player (0.5) quantal; urgency=low
 
   * improved orientation behavior
