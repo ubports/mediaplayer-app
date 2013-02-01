@@ -1,3 +1,9 @@
+media-player (0.6.6) quantal; urgency=low
+
+  * Make the check for gstreamer1.0 be required for cmake.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 01 Feb 2013 08:55:12 -0500
+
 media-player (0.6.5) quantal; urgency=low
 
   * new release for testing ppa
