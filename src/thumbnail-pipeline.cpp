@@ -120,9 +120,9 @@ bool ThumbnailPipeline::start()
 
 void ThumbnailPipeline::setup()
 {
-    static QString CAPS = QString("video/x-raw,format=RGB16,width=350,height=200,pixel-aspect-ratio=1/1");
+    static QString CAPS = QString("video/x-raw,format=RGB16,pixel-aspect-ratio=1/1");
 
-    QString pipeLine = QString("uridecodebin uri=%1 ! videoconvert ! videoscale ! appsink name=sink caps=\"%2\"")
+    QString pipeLine = QString("uridecodebin uri=%1 ! videoconvert ! appsink name=sink caps=\"%2\"")
             .arg(m_uri)
             .arg(CAPS);
 

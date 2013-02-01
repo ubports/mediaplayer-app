@@ -44,6 +44,7 @@ Item {
         minimumValue: 0
         maximumValue: 1000
         value: 100
+        live: true
 
         onValueChanged: {
             if (value > 0) {

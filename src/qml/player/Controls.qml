@@ -144,7 +144,9 @@ GenericToolbar {
                     value: video ? video.position / 1000 : 0
                     onValueChanged: {
                         if (video) {
+                            // Try to discover if the value was changed dua a user interaction or just the movie position update
                             if (Math.abs((video.position / 1000) - value) > 1)  {
+                                // request a sekk with a new position if the user has interacted with the control
                                 controls.seekRequested(value * 1000)
                             }
 
