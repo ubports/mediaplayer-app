@@ -1,7 +1,8 @@
 /*
- * This file is part of unity-2d
+ * Copyright (C) 2013 Canonical, Ltd.
  *
- * Copyright 2010-2011 Canonical Ltd.
+ * Authors:
+ *  Renato Araujo Oliveira Filho <renato@canonical.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
