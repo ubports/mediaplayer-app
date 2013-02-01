@@ -31,6 +31,7 @@ GenericToolbar {
     signal fullscreenButtonClicked
     signal playbackButtonClicked
     signal seekRequested(int time)
+    signal settingsClicked
 
     focus: true
 
@@ -210,7 +211,7 @@ GenericToolbar {
                 height: units.gu(3)
 
                 onClicked: {
-                    controls.clicked()
+                    settingsClicked()
                 }
             }
         }
