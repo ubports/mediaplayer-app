@@ -1,10 +1,6 @@
 /*
  * Copyright (C) 2012 Canonical, Ltd.
  *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
- *  Michał Sawicz <michal.sawicz@canonical.com>
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -18,21 +14,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Qt
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDir>
+#include "sharefile.h"
 
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@")).canonicalPath());
-    return installed;
+#include <QtCore/QFileInfo>
+#include <QtCore/QFile>
+#include <QtCore/QDir>
+#include <QtCore/QTextStream>
+#include <QtCore/QDebug>
+
+ShareFile::ShareFile(QObject *parent) :
+    QObject(parent)
+{
 }
 
-inline QString mediaPlayerDirectory() {
-    if (isRunningInstalled()) {
-        return QString("@CMAKE_INSTALL_PREFIX@/@MEDIAPLAYER_DIR@");
+void ShareFile::writeShareFile(const QString &path)
+{
+    QFileInfo imageFilePath(QDir::tempPath() + QDir::separator() + "sharelocation");
+    QFile imageFile(imageFilePath.absoluteFilePath());
+    if (imageFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        QTextStream stream(&imageFile);
+        stream << path;
+        imageFile.close();
     } else {
-        return QString("@mediaplayer_src_SOURCE_DIR@");
+        qWarning() << "Failed to open share file for writing";
     }
 }
-

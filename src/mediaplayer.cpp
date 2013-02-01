@@ -1,6 +1,10 @@
 /*
  * Copyright (C) 2013 Canonical, Ltd.
  *
+ * Authors:
+ *  Ugo Riboni <ugo.riboni@canonical.com>
+ *  Michał Sawicz <michal.sawicz@canonical.com>
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,9 +17,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-
 #include "mediaplayer.h"
+#include "thumbnail-provider.h"
+#include "sharefile.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QUrl>
@@ -54,15 +58,15 @@ bool MediaPlayer::setup()
     bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
-    // The testability driver is only loaded by QApplication but not by 
+    // The testability driver is only loaded by QApplication but not by
     // QGuiApplication.
-    // However, QApplication depends on QWidget which would add some 
+    // However, QApplication depends on QWidget which would add some
     // unneeded overhead => Let's load the testability driver on our own.
     if(testability) {
         QLibrary testLib(QLatin1String("qttestability"));
         if (testLib.load()) {
             typedef void (*TasInitialize)(void);
-            TasInitialize initFunction = 
+            TasInitialize initFunction =
                 (TasInitialize)testLib.resolve("qt_testability_init");
             if (initFunction) {
                 initFunction();
@@ -74,12 +78,18 @@ bool MediaPlayer::setup()
         }
     }
 
+    //TODO: move this to SDK/ShareMenu library
+    qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
+
     m_view = new QQuickView();
+    m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
-    QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
-    m_view->rootContext()->setContextProperty("playUri", uri);
+    if (args.count() >= 2) {
+        QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
+        m_view->rootContext()->setContextProperty("playUri", uri);
+    }
 
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());

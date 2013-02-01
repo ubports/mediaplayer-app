@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Canonical, Ltd.
+ * Copyright (C) 2013 Canonical, Ltd.
  *
  * Authors:
  *  Ugo Riboni <ugo.riboni@canonical.com>
@@ -18,21 +18,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Qt
-#include <QtCore/QCoreApplication>
-#include <QtCore/QDir>
+#ifndef MEDIAPLAYER_H
+#define MEDIAPLAYER_H
 
-inline bool isRunningInstalled() {
-    static bool installed = (QCoreApplication::applicationDirPath() ==
-                             QDir(("@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@")).canonicalPath());
-    return installed;
-}
+#include <QtQuick/QQuickView>
+#include <QGuiApplication>
 
-inline QString mediaPlayerDirectory() {
-    if (isRunningInstalled()) {
-        return QString("@CMAKE_INSTALL_PREFIX@/@MEDIAPLAYER_DIR@");
-    } else {
-        return QString("@mediaplayer_src_SOURCE_DIR@");
-    }
-}
+class MediaPlayer : public QGuiApplication
+{
+    Q_OBJECT
 
+public:
+    MediaPlayer(int &argc, char **argv);
+    virtual ~MediaPlayer();
+
+    bool setup();
+
+public Q_SLOTS:
+    void toggleFullscreen();
+    void onWidthChanged(int);
+    void onHeightChanged(int);
+
+private:
+    QQuickView *m_view;
+};
+
+#endif // MEDIAPLAYER_H

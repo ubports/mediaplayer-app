@@ -1,10 +1,6 @@
 /*
  * Copyright (C) 2012 Canonical, Ltd.
  *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
- *  Michał Sawicz <michal.sawicz@canonical.com>
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -18,29 +14,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MEDIAPLAYER_H
-#define MEDIAPLAYER_H
+#ifndef SHAREFILE_H
+#define SHAREFILE_H
 
-#include <QtQuick/QQuickView>
-#include <QGuiApplication>
+#include <QObject>
+#include <QString>
 
-class MediaPlayer : public QGuiApplication
+class ShareFile : public QObject
 {
     Q_OBJECT
 
 public:
-    MediaPlayer(int &argc, char **argv);
-    virtual ~MediaPlayer();
-
-    bool setup();
+    explicit ShareFile(QObject *parent = 0);
 
 public Q_SLOTS:
-    void toggleFullscreen();
-    void onWidthChanged(int);
-    void onHeightChanged(int);
-
-private:
-    QQuickView *m_view;
+    void writeShareFile(const QString& path);
 };
 
-#endif // MEDIAPLAYER_H
+#endif // SHAREFILE_H

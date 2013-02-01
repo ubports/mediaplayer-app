@@ -1,6 +1,11 @@
 /*
  * Copyright (C) 2013 Canonical, Ltd.
  *
+ * Authors:
+ *  Ugo Riboni <ugo.riboni@canonical.com>
+ *  Michał Sawicz <michal.sawicz@canonical.com>
+ *  Renato Araujo Oliveira Filho <renato@canonical.com>
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -13,18 +18,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-
 import QtQuick 2.0
 import QtMultimedia 5.0
 import "../common"
 import "../common/utils.js" as Utils
 
-FocusScope {
+Rectangle {
+    id: player
+
     property bool playing: state == "playing"
     property bool paused: state == "paused"
     property real aspectRatio: width / height
     property variant video: mediaPlayer
+    property alias videoOutput: _videoOutput
 
     property alias source: mediaPlayer.source
     property alias status: mediaPlayer.status
@@ -33,8 +39,9 @@ FocusScope {
     property int forwardSeekStep: Math.min(60000, mediaPlayer.duration * 0.05)
     property int backwardSeekStep: Math.min(30000, mediaPlayer.duration * 0.025)
 
-    id: player
+
     state: "stopped"
+    color: "black"
 
     function stop() {
         state = "stopped"
@@ -104,14 +111,8 @@ FocusScope {
         }
     }
 
-    Rectangle {
-        id: playerBackground
-        anchors.fill: parent
-        color: "black"
-    }
-
     VideoOutput {
-        id: videoOutput
+        id: _videoOutput
         source: mediaPlayer
         anchors.fill: parent
         smooth: true
