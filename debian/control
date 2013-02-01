@@ -12,7 +12,7 @@ Build-Depends:
     libgl-dev[amd64],
     libgles2-mesa-dev[armel],
     libgles2-mesa-dev[armhf],
-    gstreamer-1.0-dev,
+    libgstreamer1.0-dev,
 Standards-Version: 3.9.3
 Vcs-Browser: https://code.launchpad.net/~amanzi-team/besancon/media-player
 
