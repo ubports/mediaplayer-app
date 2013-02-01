@@ -63,17 +63,6 @@ AbstractPlayer {
         onSeekRequested: {
             player.video.seek(time)
         }
-
-        Connections {
-            target: player
-            onRotatingChanged: {
-                if (controls.shown && player.rotating) {
-                    controls.anchors.bottom = player.bottom
-                } else if (controls.shown) {
-                    controls.anchors.bottom = undefined
-                }
-            }
-        }
     }
 
     Label {

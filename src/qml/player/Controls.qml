@@ -131,12 +131,14 @@ GenericToolbar {
                 TimeLine {
                     id: _timeline
 
+                    property int maximumWidth: units.gu(82)
+
                     anchors {
                         verticalCenter: parent.verticalCenter
                         horizontalCenter: parent.horizontalCenter
                     }
 
-                    width: units.gu(82)
+                    width: _timeLineAnchor.width >= maximumWidth ? maximumWidth : _timeLineAnchor.width
                     minimumValue: 0
                     maximumValue: video ? video.duration / 1000 : 0
                     value: video ? video.position / 1000 : 0
