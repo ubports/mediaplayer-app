@@ -30,7 +30,7 @@ Rectangle {
     property bool paused: state == "paused"
     property real aspectRatio: width / height
     property variant video: mediaPlayer
-    property variant videoOutput: _videoOutput
+    property alias videoOutput: _videoOutput
 
     property alias source: mediaPlayer.source
     property alias status: mediaPlayer.status
