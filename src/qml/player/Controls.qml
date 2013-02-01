@@ -147,6 +147,10 @@ GenericToolbar {
                 }
                 height: units.gu(3)
 
+                // does not show the slider if the space on the screen is not enough
+                visible: (_timeLineAnchor.width > units.gu(5))
+
+
                 TimeLine {
                     id: _timeline
 
