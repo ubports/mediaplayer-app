@@ -1,8 +1,13 @@
-media-player (0.6.5) quantal; urgency=low
+media-player (0.6) quantal; urgency=low
 
-  * new release for testing ppa
+  [ Renato Araujo Oliveira Filho ]
+  * Updated to qt5 final.
+  * Set "QML_BAD_GUI_RENDER_LOOP" variable during the the application startup.
 
- -- Bill Filler <bill.filler@canonical.com>  Mon, 28 Jan 2013 16:56:49 -0500
+  [ Bill Filler ]
+  * add support of new sensor api and deps.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 31 Jan 2013 01:30:25 -0300
 
 media-player (0.5) quantal; urgency=low
 
