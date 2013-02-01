@@ -25,5 +25,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          qt-components-ubuntu,
          qtubuntu-sensors,
          gstreamer1.0-libav,
-         gstreamer1.0-plugins-base
+         gstreamer1.0-plugins-base,
+         gstreamer1.0-plugins-good
 Description: Media player
