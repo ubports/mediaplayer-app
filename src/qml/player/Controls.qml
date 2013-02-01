@@ -33,9 +33,6 @@ GenericToolbar {
     signal seekRequested(int time)
 
     focus: true
-    Component.onCompleted: {
-        var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
-    }
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
@@ -43,7 +40,6 @@ GenericToolbar {
 
     Item {
         id: _contents
-        z: 1
 
         anchors.fill: parent
 
@@ -61,14 +57,6 @@ GenericToolbar {
             id: _sharePopover
 
             visible: false
-
-            onVisibleChanged: {
-                if (visible) {
-                    activityStart("share")
-                } else {
-                    activityEnd("share")
-                }
-            }
         }
 
         Item {
@@ -89,8 +77,6 @@ GenericToolbar {
                 onSceneSelected: {
                     controls.seekRequested(start)
                 }
-
-                z: 1
             }
 
             HLine {
@@ -107,7 +93,7 @@ GenericToolbar {
                 iconSource: "artwork/full_scrn_icon.png"
                 iconSize: units.gu(3)
                 anchors {
-                    left: parent.left
+                    left: parent.leftSharePopover
                     top: _divLine.bottom
                     topMargin: units.gu(2)
                 }
