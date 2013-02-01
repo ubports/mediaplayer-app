@@ -22,22 +22,6 @@
 
 #include "thumbnail-pipeline.h"
 
-class ThumbnailRequest
-{
-public:
-    ThumbnailRequest(qint64 time);
-    ~ThumbnailRequest();
-    void setImage(const QImage &frame);
-    void wait();
-    QImage image() const;
-    qint64 time() const;
-
-private:
-    qint64 m_time;
-    QImage m_image;
-    bool m_exiting;
-};
-
 class FrameInfo
 {
 public:
@@ -59,22 +43,6 @@ public:
     }
 };
 
-ThumbnailRequest::ThumbnailRequest(qint64 time)
-    : m_time(time),
-      m_exiting(false)
-{
-    gst_init (0, 0);
-}
-
-ThumbnailRequest::~ThumbnailRequest()
-{
-    m_exiting = true;
-}
-
-qint64 ThumbnailRequest::time() const
-{
-    return m_time;
-}
 
 
 ThumbnailPipeline::ThumbnailPipeline(QObject *parent)
