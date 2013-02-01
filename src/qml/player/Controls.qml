@@ -125,7 +125,7 @@ GenericToolbar {
                 iconSize: units.gu(3)
                 anchors {
                     left: _fullScreenButton.right
-                    leftMargin: units.gu(9)
+                    leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(2)
                     top: _divLine.bottom
                     topMargin: units.gu(2)
                 }
