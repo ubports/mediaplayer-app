@@ -79,12 +79,11 @@ Item {
           The amount that the cursor position needs to change in y-direction
           after pressing, in order to activate/deactivate the bar.
          */
-        property real dragThreshold: units.gu(1)
+        property real dragThreshold: units.gu(3)
 
         property int pressedY
         onPressed: {
             pressedY = mouse.y;
-            mouse.accepted = true;
         }
 
         onPositionChanged: {
