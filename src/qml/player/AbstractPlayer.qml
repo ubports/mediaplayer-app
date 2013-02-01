@@ -3,7 +3,9 @@ import QtMultimedia 5.0
 import "../common"
 import "../common/utils.js" as Utils
 
-FocusScope {
+Rectangle {
+    id: player
+
     property bool playing: state == "playing"
     property bool paused: state == "paused"
     property real aspectRatio: width / height
@@ -17,8 +19,9 @@ FocusScope {
     property int forwardSeekStep: Math.min(60000, mediaPlayer.duration * 0.05)
     property int backwardSeekStep: Math.min(30000, mediaPlayer.duration * 0.025)
 
-    id: player
+
     state: "stopped"
+    color: "black"
 
     function stop() {
         state = "stopped"

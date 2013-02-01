@@ -90,9 +90,10 @@ GenericToolbar {
                 anchors {
                     left: parent.left
                     top: _divLine.bottom
-                    bottom: parent.bottom
+                    topMargin: units.gu(2)
                 }
                 width: units.gu(9)
+                height: units.gu(3)
                 onClicked: controls.fullscreenClicked()
             }
 
@@ -107,36 +108,46 @@ GenericToolbar {
                     left: _fullScreenButton.right
                     leftMargin: units.gu(9)
                     top: _divLine.bottom
-                    bottom: parent.bottom
+                    topMargin: units.gu(2)
                 }
                 width: units.gu(9)
+                height: units.gu(3)
 
                 onClicked: controls.playbackButtonClicked()
             }
 
-            TimeLine {
-                id: _timeline
+            Item {
+                id: _timeLineAnchor
 
                 anchors {
                     left: _playbackButtom.right
                     right: _shareButton.left
-                    rightMargin: units.gu(7)
+                    rightMargin: units.gu(2)
                     top: _divLine.bottom
                     topMargin: units.gu(2)
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
                 }
+                height: units.gu(3)
 
-                minimumValue: 0
-                maximumValue: video ? video.duration / 1000 : 0
-                value: video ? video.position / 1000 : 0
-                onValueChanged: {
-                    if (video) {
-                        if (Math.abs((video.position / 1000) - value) > 1)  {
-                            controls.seekRequested(value * 1000)
+                TimeLine {
+                    id: _timeline
+
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        horizontalCenter: parent.horizontalCenter
+                    }
+
+                    width: units.gu(82)
+                    minimumValue: 0
+                    maximumValue: video ? video.duration / 1000 : 0
+                    value: video ? video.position / 1000 : 0
+                    onValueChanged: {
+                        if (video) {
+                            if (Math.abs((video.position / 1000) - value) > 1)  {
+                                controls.seekRequested(value * 1000)
+                            }
+
+                            _sceneSelector.selectSceneAt(video.position)
                         }
-
-                        _sceneSelector.selectSceneAt(video.position)
                     }
                 }
             }
@@ -149,9 +160,10 @@ GenericToolbar {
                 anchors {
                     right: _settingsButton.left
                     top: _divLine.bottom
-                    bottom: parent.bottom
+                    topMargin: units.gu(2)
                 }
                 width: units.gu(9)
+                height: units.gu(3)
 
                 onClicked: {
                     var position = video.position
@@ -178,46 +190,37 @@ GenericToolbar {
                 anchors {
                     right: parent.right
                     top: _divLine.bottom
-                    bottom: parent.bottom
+                    topMargin: units.gu(2)
                 }
 
                 width: units.gu(9)
+                height: units.gu(3)
 
                 onClicked: {
                     controls.clicked()
                 }
             }
         }
-
-        Timer {
-            id: _idlePopulateThumbnail
-            interval: 5000
-            running: false
-            repeat: false
-            onTriggered: {
-               // Only create thumbnails if video is bigger than 1min
-               if (video.duration > 60000) {
-                   var frameSize = video.duration/10;
-                   for (var i = 0; i < 10; ++i) {
-                       // TODO: discuss this with designers
-                       // shift 3s to avoid black frame in the position 0
-                       var pos = Math.floor(i * frameSize);
-                       _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
-                                                   "start" : pos,
-                                                   "duration" : frameSize})
-                   }
-               }
-            }
-        }
     }
 
     Connections {
-       target: video
-       onDurationChanged: {
-           _sceneSelector.currentIndex = -1
-           _sceneSelectorModel.clear()
-           _idlePopulateThumbnail.restart()
-      }
+        target: video
+        onDurationChanged: {
+            _sceneSelector.currentIndex = -1
+            _sceneSelectorModel.clear()
+            // Only create thumbnails if video is bigger than 1min
+            if (video.duration > 60000) {
+                var frameSize = video.duration/10;
+                for (var i = 0; i < 10; ++i) {
+                    // TODO: discuss this with designers
+                    // shift 3s to avoid black frame in the position 0
+                    var pos = Math.floor(i * frameSize);
+                    _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
+                                                "start" : pos,
+                                                "duration" : frameSize})
+                }
+            }
+        }
     }
 
     states: [

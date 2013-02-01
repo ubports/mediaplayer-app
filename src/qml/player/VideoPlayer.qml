@@ -29,6 +29,7 @@ AbstractPlayer {
         event.accepted = true
     }
 
+//TODO: blur effect does not work fine without multiple thread rendering
 //    ControlsMask {
 //        anchors.fill: parent
 //        controls: _controls
@@ -56,6 +57,7 @@ AbstractPlayer {
         }
 
         onFullscreenButtonClicked: {
+            //TODO: wait for shell supports fullscreen
         }
 
         onSeekRequested: {

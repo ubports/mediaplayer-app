@@ -26,6 +26,7 @@ AbstractButton {
 
     Image {
         id: _image
+
         width: height
         anchors {
             verticalCenter: parent.verticalCenter

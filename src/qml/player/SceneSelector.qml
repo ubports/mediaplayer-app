@@ -31,7 +31,7 @@ ListView {
         duration: model.duration
         source: model.thumbnail
 
-        width: active ? units.gu(26) : units.gu(19)
+        width: active ? units.gu(27) : units.gu(20)
         height: _sceneList.height
 
         onClicked: {
@@ -52,14 +52,9 @@ ListView {
             }
         }
 
-        console.debug("Scenelist count:  " + _sceneList.count)
-        console.debug("Select at: " + time)
-
         for(var index = 0; index < _sceneList.model.count; index++) {
             var item = _sceneList.model.get(index)
             if (item) {
-                console.debug("Start: "  + item.start)
-                console.debug("End: "  + (item.start + item.duration))
                 if ((time >= item.start) &&
                     (time <= (item.start + item.duration))) {
                     currentIndex = index
@@ -67,7 +62,6 @@ ListView {
                 }
             }
         }
-        console.debug("Invalid scene time: " + time)
         currentIndex = -1
     }
 }

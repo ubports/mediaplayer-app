@@ -17,7 +17,7 @@
  */
 
 #include "thumbnail-provider.h"
-#include "thumbnail-surface.h"
+#include "thumbnail-pipeline.h"
 
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
@@ -26,80 +26,11 @@
 #include <QtMultimedia/QVideoRendererControl>
 #include <QtMultimedia/QMediaService>
 
-class ThumbnailRequest
-{
-public:
-    ThumbnailRequest(qint64 time);
-    ~ThumbnailRequest();
-    void setImage(const QImage &frame);
-    void wait();
-    QImage image() const;
-    qint64 time() const;
-
-private:
-    qint64 m_time;
-    QImage m_image;
-    QMutex m_mutex;
-    bool m_exiting;
-};
-
-ThumbnailRequest::ThumbnailRequest(qint64 time)
-    : m_time(time),
-      m_exiting(false)
-{
-    m_mutex.lock();
-}
-
-ThumbnailRequest::~ThumbnailRequest()
-{
-    m_exiting = true;
-
-    // unlock any active request
-    setImage(QImage());
-
-    // wait for unfinished request
-    m_mutex.lock();
-    m_mutex.unlock();
-}
-
-void ThumbnailRequest::setImage(const QImage &frame)
-{
-    if (!frame.isNull()) {
-        m_image = frame.copy();
-    }
-    m_mutex.unlock();
-}
-
-void ThumbnailRequest::wait()
-{
-    if (m_image.isNull()) {
-        while (!m_mutex.tryLock(100)) {
-            if (m_exiting) {
-                return;
-            }
-        }
-        m_mutex.unlock();
-    }
-}
-
-QImage ThumbnailRequest::image() const
-{
-    return m_image;
-}
-
-qint64 ThumbnailRequest::time() const
-{
-    return m_time;
-}
 
 ThumbnailProvider::ThumbnailProvider()
     : QObject(0),
       QQuickImageProvider(QQuickImageProvider::Image),
-      m_mediaLoaded(false),
-      m_running(false),
-      m_exiting(false),
-      m_player(0),
-      m_surface(0)
+      m_player(0)
 {
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
     createPlayer();
@@ -107,9 +38,6 @@ ThumbnailProvider::ThumbnailProvider()
 
 ThumbnailProvider::~ThumbnailProvider()
 {
-    m_exiting = true;
-    clearCache();
-
     if (m_player) {
         delete m_player;
     }
@@ -117,95 +45,13 @@ ThumbnailProvider::~ThumbnailProvider()
 
 void ThumbnailProvider::createPlayer()
 {
-    m_player = new QMediaPlayer;
-    m_player->setMuted(true);
-    connect(m_player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(mediaPlayerStatusChanged(QMediaPlayer::MediaStatus)));
-    connect(m_player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(mediaPlayerStateChanged(QMediaPlayer::State)));
-
-    QVideoRendererControl* rendererControl =  m_player->service()->requestControl<QVideoRendererControl*>();
-    if (rendererControl) {
-        m_surface = new ThumbnailSurface;
-        connect(m_surface, SIGNAL(newFrame(qint64,QImage&)), this, SLOT(updateThumbnail(qint64,QImage&)));
-        rendererControl->setSurface(m_surface);
-    }
+    m_player = new ThumbnailPipeline(this);
 }
-
 
 void ThumbnailProvider::applicationAboutToQuit()
 {
-    m_exiting = true;
-    clearCache();
-}
-
-QQmlImageProviderBase::Flags ThumbnailProvider::flags() const
-{
-    QQmlImageProviderBase::ForceAsynchronousImageLoading;
-}
-
-void ThumbnailProvider::mediaPlayerStateChanged(QMediaPlayer::State state)
-{
-    switch (state)
-    {
-    case QMediaPlayer::PausedState:
-        qDebug() << "START TO GET";
-        m_mediaLoaded = true;
-        start();
-    default:
-        break;
-    }
-}
-
-void ThumbnailProvider::mediaPlayerStatusChanged(QMediaPlayer::MediaStatus status)
-{
-    switch (status)
-    {
-    case QMediaPlayer::LoadedMedia:
-        qDebug() << "PAUSE THUMB PLAYER";
-        m_player->pause();
-        break;
-    case QMediaPlayer::StalledMedia:
-        qWarning() << "Stalled movie file";
-        break;
-    case QMediaPlayer::InvalidMedia:
-        qWarning() << "Invalid movie file";
-        m_player->pause();
-    default:
-        break;
-    }
-}
-
-void ThumbnailProvider::updateThumbnail(qint64 position, QImage &frame)
-{
-    if (!m_mediaLoaded) {
-        return;
-    }
-
-    ThumbnailRequest *request = m_requests.dequeue();
-    request->setImage(frame);
-
-    // next
-    if (!m_exiting) {
-        QTimer::singleShot(1000, this, SLOT(getNextFrame()));
-    }
-}
-
-void ThumbnailProvider::getNextFrame()
-{
-    if (m_requests.count() > 0) {
-        m_player->setPosition(m_requests.head()->time());
-    } else {
-        m_running = false;
-    }
-}
-
-void ThumbnailProvider::clearCache()
-{
-    m_requests.clear();
-    Q_FOREACH(ThumbnailRequest *r, m_cache.values()) {
-        delete r;
-    }
-
-    m_cache.clear();
+    delete m_player;
+    m_player = 0;
 }
 
 QString ThumbnailProvider::parseThumbnailName(const QString &id, qint64 *time) const
@@ -225,54 +71,27 @@ QString ThumbnailProvider::parseThumbnailName(const QString &id, qint64 *time) c
     }
 }
 
-void ThumbnailProvider::start()
-{
-    if (!m_running && m_mediaLoaded && (m_requests.count() > 0)) {
-        m_running = true;
-        QTimer::singleShot(1000, this, SLOT(getNextFrame()));
-    }
-}
-
-ThumbnailRequest *ThumbnailProvider::request(qint64 time)
-{
-    ThumbnailRequest *r = 0;
-    if (!m_cache.contains(time)) {
-        r = new ThumbnailRequest(time);
-        m_cache.insert(time, r);
-        m_requests << r;
-        start();
-    } else {
-        r = m_cache[time];
-    }
-
-    return r;
-}
-
 QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QSize &requestedSize)
 {
-    if (m_exiting) {
-        return QImage();
-    }
-
     qint64 time;
-    QString url = parseThumbnailName(id, &time);
+    QString uri = parseThumbnailName(id, &time);
 
-    if (url.isEmpty()) {
+    if (uri.isEmpty()) {
         qWarning() << "Invalid url:" << id;
-        return QImage();
+        return QImage();        
     }
 
-    QUrl currentUrl = m_player->currentMedia().canonicalUrl();
-    if (currentUrl != url) {
-        qDebug() << "LOAD NEW URL" << url;
-        clearCache();
-        m_mediaLoaded = false;
-        m_player->setMedia(QUrl(url));
+    if (uri != m_player->uri()) {
+        m_player->setUri(uri);
+        m_cache.clear();
     }
 
-    ThumbnailRequest *r = request(time);
-    r->wait();
-    QImage img = r->image();
+    QImage img;
+    if (m_cache.contains(time)) {
+        img = m_cache[time];
+    } else {
+        img = m_player->request(time).copy();
+    }
 
     if (requestedSize.isValid()) {
         *size = requestedSize;

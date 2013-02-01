@@ -26,8 +26,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QQueue>
 
-class ThumbnailRequest;
-class ThumbnailSurface;
+class ThumbnailPipeline;
 
 class ThumbnailProvider : public QObject, public QQuickImageProvider
 {
@@ -38,29 +37,15 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
         ~ThumbnailProvider();
 
         QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize);
-        QQmlImageProviderBase::Flags flags() const;
 
     private Q_SLOTS:
-        void getNextFrame();
-        void updateThumbnail(qint64 position, QImage &frame);
-        void mediaPlayerStatusChanged(QMediaPlayer::MediaStatus status);
-        void mediaPlayerStateChanged(QMediaPlayer::State state);
         void applicationAboutToQuit();
 
     private:
-        QMediaPlayer *m_player;
-        ThumbnailSurface *m_surface;
-        QQueue<ThumbnailRequest*> m_requests;
-        QMap<qint64, ThumbnailRequest*> m_cache;
-        bool m_mediaLoaded;
-        bool m_running;
-        bool m_exiting;
+        ThumbnailPipeline *m_player;
+        QMap<qint64, QImage> m_cache;
 
-        ThumbnailRequest* request(qint64 time);
-        void clearCache();
-        void start();
         void createPlayer();
-
         QString parseThumbnailName(const QString &id, qint64 *time) const;
 };
 
