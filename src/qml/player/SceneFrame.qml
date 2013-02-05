@@ -66,7 +66,8 @@ MouseArea {
         id: imgLoading
 
         anchors {
-            fill: _shape
+            verticalCenter: _shape.verticalCenter
+            horizontalCenter: _shape.horizontalCenter
             margins: units.gu(0.5)
         }
 

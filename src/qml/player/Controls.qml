@@ -240,17 +240,17 @@ GenericToolbar {
     states: [
         State {
             name: "stopped"
-            PropertyChanges { target: _playbackButtom; icon: "stop" }
-        },
-
-        State {
-            name: "playing"
             PropertyChanges { target: _playbackButtom; icon: "play" }
         },
 
         State {
-            name: "paused"
+            name: "playing"
             PropertyChanges { target: _playbackButtom; icon: "pause" }
+        },
+
+        State {
+            name: "paused"
+            PropertyChanges { target: _playbackButtom; icon: "play" }
         }
     ]
 }
