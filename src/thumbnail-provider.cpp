@@ -92,6 +92,7 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         img = m_cache[time];
     } else {
         img = m_player->request(time).copy();
+        m_cache.insert(time, img);
     }
 
     if (requestedSize.isValid()) {
