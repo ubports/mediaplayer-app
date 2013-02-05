@@ -44,7 +44,7 @@ private:
     GstElement *m_pipeline;
     GstElement *m_sink;
     GstCaps *m_caps;
-    QString m_uri;
+    gchar *m_uri;
     qint64 m_duration;
 
     void setup();

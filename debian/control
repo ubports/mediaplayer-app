@@ -12,7 +12,7 @@ Build-Depends:
     libgl-dev[amd64],
     libgles2-mesa-dev[armel],
     libgles2-mesa-dev[armhf],
-    libgstreamer1.0-dev,
+    libgstreamer0.10-dev,
 Standards-Version: 3.9.3
 Vcs-Browser: https://code.launchpad.net/~amanzi-team/besancon/media-player
 
@@ -24,7 +24,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          qtdeclarative5-xmllistmodel-plugin,
          qt-components-ubuntu,
          qtubuntu-sensors,
-         gstreamer1.0-libav,
-         gstreamer1.0-plugins-base,
-         gstreamer1.0-plugins-good,
+         gstreamer0.10-ffmpeg,
+         gstreamer0.10-plugins-base,
+         gstreamer0.10-plugins-good,
 Description: Media player

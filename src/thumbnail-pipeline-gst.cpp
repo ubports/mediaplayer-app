@@ -26,8 +26,10 @@ ThumbnailPipeline::ThumbnailPipeline()
     : m_pipeline(0),
       m_sink(0),
       m_caps(0),
-      m_duration(0)
+      m_duration(0),
+      m_uri(0)
 {
+    gst_init(0, 0);
 }
 
 ThumbnailPipeline::~ThumbnailPipeline()
@@ -37,14 +39,15 @@ ThumbnailPipeline::~ThumbnailPipeline()
 
 QString ThumbnailPipeline::uri() const
 {
-    return m_uri;
+    return QString::fromUtf8(m_uri);
 }
 
-void ThumbnailPipeline::setUri(const QString &uri)
+void ThumbnailPipeline::setUri(const QString &new_uri)
 {
-    if (m_uri != uri) {
+    const gchar *g_uri = new_uri.toUtf8().data();
+    if (g_strcmp0(m_uri, g_uri) != 0) {
         stop();
-        m_uri = uri;
+        m_uri = g_strdup(g_uri);
         start();
     }
 }
@@ -61,14 +64,17 @@ void ThumbnailPipeline::stop()
         gst_object_unref (m_pipeline);
         m_pipeline = 0;
     }
+
+    if (m_uri) {
+        g_free (m_uri);
+        m_uri = 0;
+    }
 }
 
 bool ThumbnailPipeline::start()
 {
-    const gchar *uri = static_cast<const gchar*> (m_uri.toUtf8());
-
     setup();
-    g_object_set (m_pipeline, "uri", uri, NULL);
+    g_object_set (m_pipeline, "uri", m_uri, NULL);
     GstStateChangeReturn ret = gst_element_set_state (m_pipeline, GST_STATE_PAUSED);
     switch (ret)
     {
@@ -110,16 +116,14 @@ void ThumbnailPipeline::setup()
     if (m_pipeline == 0) {
         GstElement *asink;
 
-	    m_pipeline = gst_element_factory_make ("playbin2", "play");
-	    asink = gst_element_factory_make ("fakesink", "audio-fake-sink");
-	    m_sink = gst_element_factory_make ("fakesink", "video-fake-sink");
-	    g_object_set (m_sink, "sync", TRUE, NULL);
-
-	    g_object_set (m_pipeline,
-		          "audio-sink", asink,
-		          "video-sink", m_sink,
-		          NULL);
-
+#if (GST_VERSION_MAJOR  == 1)
+        m_pipeline = gst_element_factory_make ("playbin", "play");
+        m_caps = gst_caps_new_simple ("video/x-raw",
+                                      "format", G_TYPE_STRING, "RGB",
+                                      "pixel-aspect-ratio", GST_TYPE_FRACTION, 1, 1,
+                                      NULL);
+#else
+        m_pipeline = gst_element_factory_make ("playbin2", "play");
         m_caps = gst_caps_new_simple ("video/x-raw-rgb",
                                       "bpp", G_TYPE_INT, 24,
                                       "depth", G_TYPE_INT, 24,
@@ -129,6 +133,14 @@ void ThumbnailPipeline::setup()
                                       "green_mask", G_TYPE_INT, 0x00ff00,
                                       "blue_mask", G_TYPE_INT, 0x0000ff,
                                       NULL);
+#endif
+        asink = gst_element_factory_make ("fakesink", "audio-fake-sink");
+        m_sink = gst_element_factory_make ("fakesink", "video-fake-sink");
+        g_object_set (m_sink, "sync", TRUE, NULL);
+        g_object_set (m_pipeline,
+                  "audio-sink", asink,
+                  "video-sink", m_sink,
+                  NULL);
     }
 }
 
@@ -140,9 +152,14 @@ static void destroy_frame_data (void *data)
 
 QImage parseImageGst(ThumbnailImageData *buffer)
 {
-    GstCaps *caps = gst_sample_get_caps (buffer);
-
-    if (buffer && caps) {
+    if (buffer) {
+        GstCaps *caps = gst_sample_get_caps (buffer);
+        if (caps == 0) {
+            qWarning() << "Invalid frame caps";
+            return QImage();
+        }
+        
+        
         gint width, height;
         GstStructure *s = gst_caps_get_structure (caps, 0);
         gboolean res = gst_structure_get_int (s, "width", &width);
@@ -158,6 +175,8 @@ QImage parseImageGst(ThumbnailImageData *buffer)
         QImage img = QImage(info.data, width, height, QImage::Format_RGB888, destroy_frame_data, buffer);
         gst_memory_unmap (memory, &info);
         return img;
+    } else {
+        qWarning() << "Invalid frame data";
     }
 
     return QImage();
@@ -211,7 +230,12 @@ QImage ThumbnailPipeline::request(qint64 time)
 
     /* get frame */
     ThumbnailImageData *buf = NULL;
+
+#if (GST_VERSION_MAJOR  == 1)
+    g_signal_emit_by_name (m_pipeline, "convert-sample", m_caps, &buf);
+#else
     g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
+#endif
     QImage img = parseImage (buf);
 
     return img;
