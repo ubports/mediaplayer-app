@@ -30,6 +30,7 @@ AbstractButton {
         id: _image
 
         width: height
+        smooth: true
         anchors {
             verticalCenter: parent.verticalCenter
             horizontalCenter: parent.horizontalCenter
