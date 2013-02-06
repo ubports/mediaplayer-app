@@ -168,15 +168,20 @@ Item {
             initialY = mouseY;
             if (bottomBar.state == "") bottomBar.state = "hint";
             else bottomBar.state = "moving";
+            mouse.accepted = false
         }
 
         onPositionChanged: {
             if (bottomBar.state == "hint" && mouseY < initialY) {
                 bottomBar.state = "moving";
             }
+            mouse.accepted = false
         }
 
-        onReleased: finishMoving()
+        onReleased: {
+            finishMoving()
+            mouse.accepted = false
+        }
         // Mouse cursor moving out of the window while pressed on desktop
         onCanceled: finishMoving()
 

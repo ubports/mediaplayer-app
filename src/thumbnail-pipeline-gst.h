@@ -23,12 +23,7 @@
 #include <QImage>
 #include <gst/gst.h>
 
-#if (GST_VERSION_MAJOR < 1)
-    typedef GstBuffer ThumbnailImageData;
-#else
-    typedef GstSample ThumbnailImageData;
-#endif
-
+typedef GstBuffer ThumbnailImageData;
 class ThumbnailPipeline 
 {
 public:
@@ -42,7 +37,6 @@ public:
 
 private:
     GstElement *m_pipeline;
-    GstElement *m_sink;
     GstCaps *m_caps;
     gchar *m_uri;
     qint64 m_duration;

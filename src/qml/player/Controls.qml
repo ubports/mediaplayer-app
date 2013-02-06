@@ -30,10 +30,10 @@ Item {
 
     signal fullscreenButtonClicked
     signal playbackButtonClicked
-    signal seekRequested(int time)
     signal settingsClicked
-    signal pauseRequested
-    signal playRequested
+    signal seekRequested(int time)
+    signal startSeek
+    signal endSeek
 
     focus: true
 
@@ -143,6 +143,8 @@ Item {
                     id: _timeline
 
                     property int maximumWidth: units.gu(82)
+                    property bool seeking: false
+
                     anchors {                        
                         top: parent.top
                         bottom:  parent.bottom
@@ -156,17 +158,19 @@ Item {
 
                     // pause the video during the seek
                     onPressedChanged: {
-                        if (pressed) {
-                            pauseRequested()
-                        } else {
-                            playRequested()
+                        if (pressed && !seeking) {
+                            startSeek()
+                            seeking = true
+                        } else if (!pressed && seeking) {
+                            endSeek()
+                            seeking = false
                         }
                     }
 
                     // Live value is the real slider value. Ex: User dragging the slider
                     onLiveValueChanged: {
                         if (video && pressed)  {
-                            controls.seekRequested(liveValue * 1000)
+                            seekRequested(liveValue * 1000)
                             _sceneSelector.selectSceneAt(liveValue * 1000)
                         }
                     }

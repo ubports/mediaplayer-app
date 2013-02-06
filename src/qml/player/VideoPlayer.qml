@@ -66,8 +66,10 @@ AbstractPlayer {
         }
         height: units.gu(29)
 
-        lock: active
         Controls {
+
+            property bool isPaused: false
+
             state: player.state
             video: player.video
             anchors.fill:  parent
@@ -90,12 +92,15 @@ AbstractPlayer {
                 player.video.seek(time)
             }
 
-            onPauseRequested: {
+            onStartSeek: {
+                isPaused = (state == "paused")
                 player.pause()
             }
 
-            onPlayRequested: {
-                player.play()
+            onEndSeek: {
+                if (!isPaused) {
+                    player.play()
+                }
             }
         }
     }
