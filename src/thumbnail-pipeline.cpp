@@ -1,3 +1,22 @@
+/*
+ * Copyright (C) 2013 Canonical, Ltd.
+ *
+ * Authors:
+ *  Renato Araujo Oliveira Filho <renato@canonical.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; version 3.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <QDebug>
 #include <gst/gst.h>
 
@@ -64,7 +83,6 @@ ThumbnailPipeline::ThumbnailPipeline(QObject *parent)
       m_sink(0),
       m_running(false)
 {
-    qDebug() << "INIT GST";
     gst_init (0, 0);
 }
 
@@ -120,9 +138,9 @@ bool ThumbnailPipeline::start()
 
 void ThumbnailPipeline::setup()
 {
-    static QString CAPS = QString("video/x-raw,format=RGB16,width=350,height=200,pixel-aspect-ratio=1/1");
+    static QString CAPS = QString("video/x-raw,format=RGB16,pixel-aspect-ratio=1/1");
 
-    QString pipeLine = QString("uridecodebin uri=%1 ! videoconvert ! videoscale ! appsink name=sink caps=\"%2\"")
+    QString pipeLine = QString("uridecodebin uri=%1 ! videoconvert ! appsink name=sink caps=\"%2\"")
             .arg(m_uri)
             .arg(CAPS);
 
