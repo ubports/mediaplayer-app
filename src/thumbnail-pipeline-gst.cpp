@@ -229,7 +229,7 @@ QImage ThumbnailPipeline::request(qint64 time)
 	gst_element_get_state (m_pipeline, NULL, NULL, GST_CLOCK_TIME_NONE);
 
     /* get frame */
-    ThumbnailImageData *buf = NULL;
+    ThumbnailImageData *buf = 0;
 
 #if (GST_VERSION_MAJOR  == 1)
     g_signal_emit_by_name (m_pipeline, "convert-sample", m_caps, &buf);
