@@ -18,7 +18,7 @@
  */
 
 #include "thumbnail-provider.h"
-#include "thumbnail-pipeline.h"
+#include "thumbnail-pipeline-gst.h"
 
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
@@ -46,7 +46,7 @@ ThumbnailProvider::~ThumbnailProvider()
 
 void ThumbnailProvider::createPlayer()
 {
-    m_player = new ThumbnailPipeline(this);
+    m_player = new ThumbnailPipeline();
 }
 
 void ThumbnailProvider::applicationAboutToQuit()
