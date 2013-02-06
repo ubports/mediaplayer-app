@@ -10,12 +10,12 @@ include_directories(
 
 set(mediaplayer_HDRS
     thumbnail-provider.h
-    thumbnail-pipeline.h
+    thumbnail-pipeline-gst.h
     mediaplayer.h)
 
 set(mediaplayer_SRCS
     thumbnail-provider.cpp
-    thumbnail-pipeline.cpp
+    thumbnail-pipeline-gst.cpp
     mediaplayer.cpp
     main.cpp)
 
