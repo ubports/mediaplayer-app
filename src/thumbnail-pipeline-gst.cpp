@@ -24,7 +24,6 @@
 
 ThumbnailPipeline::ThumbnailPipeline()
     : m_pipeline(0),
-      m_sink(0),
       m_caps(0),
       m_duration(0),
       m_uri(0)
@@ -115,6 +114,7 @@ void ThumbnailPipeline::setup()
 {
     if (m_pipeline == 0) {
         GstElement *asink;
+        GstElement *vsink;
 
 #if (GST_VERSION_MAJOR  == 1)
         m_pipeline = gst_element_factory_make ("playbin", "play");
@@ -135,11 +135,11 @@ void ThumbnailPipeline::setup()
                                       NULL);
 #endif
         asink = gst_element_factory_make ("fakesink", "audio-fake-sink");
-        m_sink = gst_element_factory_make ("fakesink", "video-fake-sink");
-        g_object_set (m_sink, "sync", TRUE, NULL);
+        vsink = gst_element_factory_make ("fakesink", "video-fake-sink");
+        g_object_set (vsink, "sync", TRUE, NULL);
         g_object_set (m_pipeline,
                   "audio-sink", asink,
-                  "video-sink", m_sink,
+                  "video-sink", vsink,
                   NULL);
     }
 }
