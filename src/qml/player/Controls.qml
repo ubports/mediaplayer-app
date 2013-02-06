@@ -22,7 +22,7 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../sdk"
 
-GenericToolbar {
+Item {
     id: controls
 
     property variant video: null
@@ -30,8 +30,10 @@ GenericToolbar {
 
     signal fullscreenButtonClicked
     signal playbackButtonClicked
-    signal seekRequested(int time)
     signal settingsClicked
+    signal seekRequested(int time)
+    signal startSeek
+    signal endSeek
 
     focus: true
 
@@ -107,8 +109,8 @@ GenericToolbar {
                 id: _playbackButtom
 
                 property string icon
-                iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
 
+                iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors {
                     left: _fullScreenButton.right
@@ -137,14 +139,15 @@ GenericToolbar {
                 // does not show the slider if the space on the screen is not enough
                 visible: (_timeLineAnchor.width > units.gu(5))
 
-
                 TimeLine {
                     id: _timeline
 
                     property int maximumWidth: units.gu(82)
+                    property bool seeking: false
 
-                    anchors {
-                        verticalCenter: parent.verticalCenter
+                    anchors {                        
+                        top: parent.top
+                        bottom:  parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
 
@@ -152,17 +155,27 @@ GenericToolbar {
                     minimumValue: 0
                     maximumValue: video ? video.duration / 1000 : 0
                     value: video ? video.position / 1000 : 0
-                    onValueChanged: {
-                        if (video) {
-                            // Try to discover if the value was changed dua a user interaction or just the movie position update
-                            if (Math.abs((video.position / 1000) - value) > 1)  {
-                                // request a sekk with a new position if the user has interacted with the control
-                                controls.seekRequested(value * 1000)
-                            }
 
-                            _sceneSelector.selectSceneAt(video.position)
+                    // pause the video during the seek
+                    onPressedChanged: {
+                        if (pressed && !seeking) {
+                            startSeek()
+                            seeking = true
+                        } else if (!pressed && seeking) {
+                            endSeek()
+                            seeking = false
                         }
                     }
+
+                    // Live value is the real slider value. Ex: User dragging the slider
+                    onLiveValueChanged: {
+                        if (video && pressed)  {
+                            seekRequested(liveValue * 1000)
+                            _sceneSelector.selectSceneAt(liveValue * 1000)
+                        }
+                    }
+
+                    onValueChanged: _sceneSelector.selectSceneAt(video.position)
                 }
             }
 
