@@ -139,7 +139,6 @@ AbstractPlayer {
         }
 
         onClicked: {
-            console.debug("Clickedddd")
             if (_controls.active) {
                 _controls.active = false
             }

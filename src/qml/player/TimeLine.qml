@@ -31,7 +31,7 @@ Item {
     property string currentTime
     property string remainingTime
 
-    // Make sure that the Slider value will be in sync wih the video progress after the user click over the slider
+    // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
     // The Slider components break the binding when the user interact with the component because of that a simple
     // "property alias value: _slider.value" does not work
     Binding { target: _slider; property: "value"; value: _timeLine.value }
