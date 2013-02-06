@@ -30,7 +30,9 @@ Item {
     property string remainingTime
     property alias pressed: _slider.pressed
 
-    signal clicked()
+    Component.onCompleted: {
+        var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
+    }
 
     Slider {
         id: _slider
@@ -52,7 +54,7 @@ Item {
             if (value > 0) {
                 _timeLine.currentTime = formatProgress(value)
                 if (_slider.maximumValue > 0) {
-                    _timeLine.remainingTime = formatProgress((_slider.maximumValue - value))
+                    _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
                 } else {
                     _timeLine.remainingTime = "unknow"
                 }
@@ -60,9 +62,6 @@ Item {
                 _timeLine.currentTime = "0:00:00"
             }
         }
-
-        onClicked: _timeLine.clicked()
-
     }
 
     Label {
@@ -88,14 +87,13 @@ Item {
             },
             State {
                 name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: _timeLine.remainingTime }
+                PropertyChanges { target: _TimeLabel; text: "- " + _timeLine.remainingTime }
             }
         ]
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                _timeLine.clicked()
                 if (_TimeLabel.state === "PROGRESSIVE") {
                     _TimeLabel.state = "DEGRESSIVE"
                 } else {
@@ -105,34 +103,21 @@ Item {
         }
     }
 
-
-    function formatProgress(value) {
+    function formatProgress(time) {
         var hour = 0
         var min = 0
         var secs = 0
-        value = Math.floor(value)
+        time = Math.floor(time)
 
-        while (value > 3600) {
-            hour += 1
-            value -= 3600
-        }
+        secs = time % 60
+        time = Math.floor(time / 60)
+        min = time % 60
+        hour = Math.floor(time / 60)
 
-        while (value > 60) {
-            min += 1
-            value -= 60
-        }
-
-        secs = value;
-
-        if (min < 10) {
-            min = "0" + min
-        }
-
-        if (secs < 10) {
-            secs = "0" + secs
-        }
+        if (secs < 10) secs = "0" + secs
+        if (min < 10) min = "0" + min
+        if (hour < 10) hour = "0" + hour
 
         return hour + ":" + min + ":" + secs
     }
-
 }

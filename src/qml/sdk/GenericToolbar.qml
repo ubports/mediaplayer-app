@@ -84,7 +84,6 @@ Item {
         property int pressedY
         onPressed: {
             pressedY = mouse.y;
-            mouse.accepted = true;
         }
 
         onPositionChanged: {

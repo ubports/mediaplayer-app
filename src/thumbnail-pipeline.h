@@ -27,7 +27,6 @@
 
 #include <gst/gst.h>
 
-class ThumbnailRequest;
 class ThumbnailPipeline : public QObject
 {
     Q_OBJECT
@@ -45,9 +44,6 @@ Q_SIGNALS:
     void newImage(qint64 time, const QImage &img);
 
 private:
-    QQueue<ThumbnailRequest*> m_requests;
-    QMap<qint64, ThumbnailRequest*> m_cache;
-
     GstElement *m_pipeline;
     GstElement *m_sink;
     bool m_running;

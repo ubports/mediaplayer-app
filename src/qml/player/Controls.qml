@@ -31,11 +31,9 @@ GenericToolbar {
     signal fullscreenButtonClicked
     signal playbackButtonClicked
     signal seekRequested(int time)
+    signal settingsClicked
 
     focus: true
-    Component.onCompleted: {
-        var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
-    }
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
@@ -43,7 +41,6 @@ GenericToolbar {
 
     Item {
         id: _contents
-        z: 1
 
         anchors.fill: parent
 
@@ -61,14 +58,6 @@ GenericToolbar {
             id: _sharePopover
 
             visible: false
-
-            onVisibleChanged: {
-                if (visible) {
-                    activityStart("share")
-                } else {
-                    activityEnd("share")
-                }
-            }
         }
 
         Item {
@@ -89,8 +78,6 @@ GenericToolbar {
                 onSceneSelected: {
                     controls.seekRequested(start)
                 }
-
-                z: 1
             }
 
             HLine {
@@ -107,7 +94,7 @@ GenericToolbar {
                 iconSource: "artwork/full_scrn_icon.png"
                 iconSize: units.gu(3)
                 anchors {
-                    left: parent.left
+                    left: parent.leftSharePopover
                     top: _divLine.bottom
                     topMargin: units.gu(2)
                 }
@@ -125,7 +112,7 @@ GenericToolbar {
                 iconSize: units.gu(3)
                 anchors {
                     left: _fullScreenButton.right
-                    leftMargin: units.gu(9)
+                    leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(2)
                     top: _divLine.bottom
                     topMargin: units.gu(2)
                 }
@@ -146,6 +133,10 @@ GenericToolbar {
                     topMargin: units.gu(2)
                 }
                 height: units.gu(3)
+
+                // does not show the slider if the space on the screen is not enough
+                visible: (_timeLineAnchor.width > units.gu(5))
+
 
                 TimeLine {
                     id: _timeline
@@ -220,7 +211,7 @@ GenericToolbar {
                 height: units.gu(3)
 
                 onClicked: {
-                    controls.clicked()
+                    settingsClicked()
                 }
             }
         }

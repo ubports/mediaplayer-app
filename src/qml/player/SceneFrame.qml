@@ -56,7 +56,7 @@ MouseArea {
         image: Image {
             id: _image
 
-            fillMode: Image.PreserveAspectFit
+            fillMode: Image.PreserveAspectCrop
             smooth: true
             asynchronous: true
         }
