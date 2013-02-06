@@ -34,7 +34,13 @@ ListView {
         source: model.thumbnail
 
         width: active ? units.gu(27) : units.gu(20)
-        height: _sceneList.height
+        anchors {
+            top: parent.top
+            topMargin: units.gu(2)
+            bottom: parent.bottom
+        }
+
+        //height: _sceneList.height
 
         onClicked: {
             currentIndex = index
