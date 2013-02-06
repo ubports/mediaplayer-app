@@ -10,6 +10,7 @@ set(CMAKE_AUTOMOC ON)
 
 find_package(Qt5Qml)
 find_package(Qt5Quick)
+find_package(Qt5Gui)
 
 include(FindPkgConfig)
 pkg_check_modules(GSTLIB REQUIRED gstreamer-1.0)

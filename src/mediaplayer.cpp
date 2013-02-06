@@ -34,7 +34,7 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
-#include <QtGui/5.0.0/QtGui/qpa/qplatformnativeinterface.h>
+#include <qpa/qplatformnativeinterface.h>
 #include "config.h"
 
 static void printUsage(const QStringList& arguments)

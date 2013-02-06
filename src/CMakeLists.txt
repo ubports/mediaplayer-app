@@ -6,7 +6,7 @@ include_directories(
     ${CMAKE_BINARY_DIR}
     ${sdkhelper_SOURCE_DIR}
     ${GSTLIB_INCLUDE_DIRS}
-    "/usr/include/qt5/QtGui/5.0.0/QtGui"
+    ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
     )
 
 set(mediaplayer_HDRS
