@@ -17,22 +17,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef THUMBNAIL_PIPELINE_H
-#define THUMBNAIL_PIPELINE_H
+#ifndef THUMBNAIL_PIPELINE_GST_010_H
+#define THUMBNAIL_PIPELINE_GST_010_H
 
-#include <QObject>
 #include <QImage>
-#include <QQueue>
-#include <QMap>
-
 #include <gst/gst.h>
 
-class ThumbnailPipeline : public QObject
+typedef GstBuffer ThumbnailImageData;
+class ThumbnailPipeline 
 {
-    Q_OBJECT
-
 public:
-    ThumbnailPipeline(QObject *parent);
+    ThumbnailPipeline();
     ~ThumbnailPipeline();
 
     void setUri(const QString &uri);
@@ -40,20 +35,16 @@ public:
 
     QImage request(qint64 time);
 
-Q_SIGNALS:
-    void newImage(qint64 time, const QImage &img);
-
 private:
     GstElement *m_pipeline;
-    GstElement *m_sink;
-    bool m_running;
-    QString m_uri;
+    GstCaps *m_caps;
+    gchar *m_uri;
+    qint64 m_duration;
 
     void setup();
     bool start();
     void stop();
-    QImage parseImage(GstSample *sample);
-    void prepareNextFrame();
+    QImage parseImage(ThumbnailImageData *buffer);
 };
 
 #endif

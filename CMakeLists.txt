@@ -13,7 +13,7 @@ find_package(Qt5Quick)
 find_package(Qt5Gui)
 
 include(FindPkgConfig)
-pkg_check_modules(GSTLIB REQUIRED gstreamer-1.0)
+pkg_check_modules(GSTLIB REQUIRED gstreamer-0.10)
 
 # Standard install paths
 include(GNUInstallDirs)
