@@ -22,6 +22,7 @@ import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 0.1
 import "../common"
+import "../sdk"
 
 AbstractPlayer {
     id: player
@@ -54,32 +55,48 @@ AbstractPlayer {
 //        videoOutput: player.videoOutput
 //    }
 
-    Controls {
+    GenericToolbar {
         id: _controls
 
-        state: player.state
-        video: player.video
-        height: units.gu(29)
-        sceneSelectorHeight: units.gu(18)
+
         anchors {
             left: parent.left
             right: parent.right
+            bottom: parent.bottom
         }
+        height: units.gu(29)
 
-        onPlaybackButtonClicked: {
-            if (["paused", "playing"].indexOf(state) != -1) {
-                player.togglePause()
-            } else {
+        lock: active
+        Controls {
+            state: player.state
+            video: player.video
+            anchors.fill:  parent
+            sceneSelectorHeight: units.gu(18)
+
+
+            onPlaybackButtonClicked: {
+                if (["paused", "playing"].indexOf(state) != -1) {
+                    player.togglePause()
+                } else {
+                    player.play()
+                }
+            }
+
+            onFullscreenButtonClicked: {
+                //TODO: wait for shell supports fullscreen
+            }
+
+            onSeekRequested: {
+                player.video.seek(time)
+            }
+
+            onPauseRequested: {
+                player.pause()
+            }
+
+            onPlayRequested: {
                 player.play()
             }
-        }
-
-        onFullscreenButtonClicked: {
-            //TODO: wait for shell supports fullscreen
-        }
-
-        onSeekRequested: {
-            player.video.seek(time)
         }
     }
 
@@ -89,11 +106,12 @@ AbstractPlayer {
         anchors {
             left: parent.left
             right: parent.right
-            verticalCenter: parent.verticalCenter
-            verticalCenterOffset: -_controls.height / 2
+            top: parent.top
+            bottom: _controls.top
         }
 
         horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
         visible: player.paused ? 1 : 0
         fontSize: "x-large"
         color: "white"
@@ -108,5 +126,23 @@ AbstractPlayer {
             else return video.source.toString().replace(/.*\//, '')
         }
         Behavior on opacity { NumberAnimation {} }
+    }
+
+    MouseArea {
+        id: _mouseArea
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: _controls.top
+        }
+
+        onClicked: {
+            console.debug("Clickedddd")
+            if (_controls.active) {
+                _controls.active = false
+            }
+        }
     }
 }
