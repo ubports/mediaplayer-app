@@ -12,14 +12,7 @@ find_package(Qt5Qml)
 find_package(Qt5Quick)
 
 include(FindPkgConfig)
-pkg_check_modules(GSTLIB gstreamer-1.0)
-if (NOT GSTLIB_FOUND)
-    pkg_check_modules(GSTLIB REQUIRED gstreamer-0.10)
-endif()
-
-if (NOT GSTLIB_FOUND)
-    message (FATAL_ERROR "Gstreamer 1.0 or 0.10 not found.")
-endif()
+pkg_check_modules(GSTLIB REQUIRED gstreamer-0.10)
 
 # Standard install paths
 include(GNUInstallDirs)

@@ -96,11 +96,7 @@ bool ThumbnailPipeline::start()
 
 	GstFormat fmt = GST_FORMAT_TIME;
 	gint64 len = -1;
-#if (GST_VERSION_MAJOR  == 1)
-	if (gst_element_query_duration (m_pipeline, fmt, &len)) {
-#else
 	if (gst_element_query_duration (m_pipeline, &fmt, &len)) {
-#endif
         if (len > 0) {
     		m_duration = len / GST_MSECOND;
             return true;
@@ -116,13 +112,6 @@ void ThumbnailPipeline::setup()
         GstElement *asink;
         GstElement *vsink;
 
-#if (GST_VERSION_MAJOR  == 1)
-        m_pipeline = gst_element_factory_make ("playbin", "play");
-        m_caps = gst_caps_new_simple ("video/x-raw",
-                                      "format", G_TYPE_STRING, "RGB",
-                                      "pixel-aspect-ratio", GST_TYPE_FRACTION, 1, 1,
-                                      NULL);
-#else
         m_pipeline = gst_element_factory_make ("playbin2", "play");
         m_caps = gst_caps_new_simple ("video/x-raw-rgb",
                                       "bpp", G_TYPE_INT, 24,
@@ -133,7 +122,6 @@ void ThumbnailPipeline::setup()
                                       "green_mask", G_TYPE_INT, 0x00ff00,
                                       "blue_mask", G_TYPE_INT, 0x0000ff,
                                       NULL);
-#endif
         asink = gst_element_factory_make ("fakesink", "audio-fake-sink");
         vsink = gst_element_factory_make ("fakesink", "video-fake-sink");
         g_object_set (vsink, "sync", TRUE, NULL);
@@ -143,46 +131,6 @@ void ThumbnailPipeline::setup()
                   NULL);
     }
 }
-
-#if (GST_VERSION_MAJOR  == 1)
-static void destroy_frame_data (void *data)
-{
-    gst_sample_unref (GST_SAMPLE (data));
-}
-
-QImage parseImageGst(ThumbnailImageData *buffer)
-{
-    if (buffer) {
-        GstCaps *caps = gst_sample_get_caps (buffer);
-        if (caps == 0) {
-            qWarning() << "Invalid frame caps";
-            return QImage();
-        }
-        
-        
-        gint width, height;
-        GstStructure *s = gst_caps_get_structure (caps, 0);
-        gboolean res = gst_structure_get_int (s, "width", &width);
-        res |= gst_structure_get_int (s, "height", &height);
-        if (!res) {
-            qWarning() << "could not get snapshot dimension";
-            return QImage();
-        }
-
-        GstMapInfo info;
-        GstMemory *memory = gst_buffer_get_memory (gst_sample_get_buffer (buffer), 0);
-        gst_memory_map (memory, &info, GST_MAP_READ);
-        QImage img = QImage(info.data, width, height, QImage::Format_RGB888, destroy_frame_data, buffer);
-        gst_memory_unmap (memory, &info);
-        return img;
-    } else {
-        qWarning() << "Invalid frame data";
-    }
-
-    return QImage();
-}
-
-#else
 
 static void destroy_frame_data (void *data)
 {
@@ -206,7 +154,6 @@ QImage parseImageGst(ThumbnailImageData *buffer)
 
     return QImage();
 }
-#endif
 
 QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
 {
@@ -231,11 +178,7 @@ QImage ThumbnailPipeline::request(qint64 time)
     /* get frame */
     ThumbnailImageData *buf = 0;
 
-#if (GST_VERSION_MAJOR  == 1)
-    g_signal_emit_by_name (m_pipeline, "convert-sample", m_caps, &buf);
-#else
     g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
-#endif
     QImage img = parseImage (buf);
 
     return img;
