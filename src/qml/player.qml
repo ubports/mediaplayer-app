@@ -20,6 +20,7 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Window 2.0
 import QtMultimedia 5.0
 import QtSensors 5.0
 
@@ -28,9 +29,11 @@ Rectangle {
     width: screenWidth
     height: screenHeight
 
-    property string orientation: portrait ? (screenHeight <= screenWidth ? "270" : "0") : ""
+    property string orientation: "0"
     property string formFactor: "tv"
     property real volume: playerLoader.item.volume
+
+    property variant nativeOrientation: Screen.primaryOrientation
 
     Loader {
         id: playerLoader
@@ -123,19 +126,44 @@ Rectangle {
 
             // Causes the media player UI to rotate when the target device is rotated
             onReadingChanged: {
-                if (reading.orientation == OrientationReading.LeftUp) {
-                    mediaPlayer.orientation = "270"
-                }
-                else if (reading.orientation == OrientationReading.RightUp) {
-                    mediaPlayer.orientation = "90"
-                }
-                else if (reading.orientation == OrientationReading.TopUp) {
-                    mediaPlayer.orientation = "0"
-                }
-                else if (reading.orientation == OrientationReading.TopDown) {
-                    mediaPlayer.orientation = "180"
-                }
+                setOrientation("sensor", reading.orientation)
             }
+        }
+    }
+
+     onNativeOrientationChanged:  {
+        setOrientation("qpa", nativeOrientation)
+    }
+
+    function setOrientation(type, orient) {
+        // Set the orientation based on the orientation sensor
+        if (type == "sensor") {
+            if (orient == OrientationReading.LeftUp) {
+                mediaPlayer.orientation = "270"
+            }
+            else if (orient == OrientationReading.RightUp) {
+                mediaPlayer.orientation = "90"
+            }
+            else if (orient == OrientationReading.TopUp) {
+                mediaPlayer.orientation = "0"
+            }
+            else if (orient == OrientationReading.TopDown) {
+                mediaPlayer.orientation = "180"
+            }
+        }
+        else if (type == "qpa") {
+            // Set the orientation based on the QPlatformScreen from qpa
+            if (orient == Qt.LandscapeOrientation)
+                mediaPlayer.orientation = "270"
+            else if (orient == Qt.InvertedLandscapeOrientation)
+                mediaPlayer.orientation = "90"
+            else if (orient == Qt.PortraitOrientation)
+                mediaPlayer.orientation = "0"
+            else if (orient == Qt.InvertedPortraitOrientation)
+                mediaPlayer.orientation = "180"
+        }
+        else {
+            console.log("Unknown type: " + type + ", error setting orientation.")
         }
     }
 
