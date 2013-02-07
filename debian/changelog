@@ -1,12 +1,3 @@
-media-player (0.7.1) quantal; urgency=low
-
-  * Implement using the new native orientation from qtubuntu. Also added an
-    explicit landscape argument.
-  * Find and use the Qt5Gui dependency properly, allowing for a cleaner
-    #include path for qpa/qplatformnativeinterface.h
-
- -- Jim Hodapp <jim.hodapp@canonical.com>  Wed, 06 Feb 2013 12:12:02 -0500
-
 media-player (0.7) quantal; urgency=low
 
   * Updated visual design.
