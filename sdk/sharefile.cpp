@@ -21,19 +21,78 @@
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
 #include <QtCore/QDebug>
+#include <QtCore/QTemporaryFile>
+#include <QtGui/QImageWriter>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlContext>
+#include <QtQuick/QQuickImageProvider>
 
 ShareFile::ShareFile(QObject *parent) :
     QObject(parent)
 {
 }
 
+QString ShareFile::saveImageFromProvider(const QString &imageUri)
+{
+    QFile imageFile(imageUri);
+    QByteArray allData;
+    QPixmap *pix;
+
+    // Get image provider
+    QQmlContext *ctx =  QQmlEngine::contextForObject(this);
+    if (ctx == 0) {
+        qWarning() << "Share object does not have a QML context.";
+        return QString();
+    }
+
+    QQmlEngine *eng = ctx->engine();
+    if (eng == 0) {
+        qWarning() << "Share object does not have a QML engine.";
+        return QString();
+    }
+
+    // parse uri (image://<provider>/<file-id>)
+    QString tempUri(imageUri.mid(8));
+    QStringList uriParts = tempUri.split("/");
+    if (uriParts.count() < 2) {
+        qWarning() << "Invalid image uri.";
+        return QString();
+    }
+
+    QString providerName = uriParts.takeFirst();
+    QQmlImageProviderBase *provider = eng->imageProvider(providerName);
+    if (provider == 0) {
+        qWarning() << "Image proveider not found: " << provider;
+        return QString();
+    }
+
+    QQuickImageProvider *qprovider = (QQuickImageProvider*) provider;
+    QSize size;
+    QImage img = qprovider->requestImage(uriParts.join("/"), &size, QSize());
+
+    QTemporaryFile tempFile;
+    tempFile.setAutoRemove(false);
+    QImageWriter imgWriter(&tempFile, "png");
+    if (imgWriter.write(img)) {
+        return tempFile.fileName();
+    } else {
+        qWarning() << "Fail to save image from provider.";
+        return QString();
+    }
+}
+
 void ShareFile::writeShareFile(const QString &path)
 {
+    QString newPath = path;
+    if (path.startsWith("image://")) {
+        newPath = saveImageFromProvider(path);
+    }
+
     QFileInfo imageFilePath(QDir::tempPath() + QDir::separator() + "sharelocation");
     QFile imageFile(imageFilePath.absoluteFilePath());
     if (imageFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         QTextStream stream(&imageFile);
-        stream << path;
+        stream << newPath;
         imageFile.close();
     } else {
         qWarning() << "Failed to open share file for writing";
