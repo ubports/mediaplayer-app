@@ -75,7 +75,6 @@ AbstractPlayer {
             anchors.fill:  parent
             sceneSelectorHeight: units.gu(18)
 
-
             onPlaybackButtonClicked: {
                 if (["paused", "playing"].indexOf(state) != -1) {
                     player.togglePause()

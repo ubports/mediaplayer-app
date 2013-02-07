@@ -77,6 +77,7 @@ Item {
 
                 property bool show: false
                 property int yOffset: 0
+                property bool parentActive: _controls.active
 
                 y: (parent.y + units.gu(2)) + yOffset
                 opacity: 0
@@ -90,6 +91,12 @@ Item {
 
                 onSceneSelected: {
                     controls.seekRequested(start)
+                }
+
+                onParentActiveChanged: {
+                    if (!parentActive) {
+                        show = false
+                    }
                 }
 
                 ParallelAnimation {
