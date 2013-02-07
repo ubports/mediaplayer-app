@@ -1,3 +1,15 @@
+media-player (0.8) quantal; urgency=low
+
+  * Used smooth icon for controls;
+  * Fixed the playback button state;
+  * Avoid resize the activity indicator during the scene load.
+  * Fixed thumbnail provider cache.
+  * Ported thumbnail pipeline to use playbin element.
+  * Fixed Controls behavior.
+  * Changed SceneSelector behavior based on designer request.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 07 Feb 2013 10:42:11 -0300
+
 media-player (0.7) quantal; urgency=low
 
   * Updated visual design.
