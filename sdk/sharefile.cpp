@@ -22,7 +22,6 @@
 #include <QtCore/QTextStream>
 #include <QtCore/QDebug>
 #include <QtCore/QTemporaryFile>
-#include <QtGui/QImageWriter>
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
 #include <QtQuick/QQuickImageProvider>
@@ -34,10 +33,6 @@ ShareFile::ShareFile(QObject *parent) :
 
 QString ShareFile::saveImageFromProvider(const QString &imageUri)
 {
-    QFile imageFile(imageUri);
-    QByteArray allData;
-    QPixmap *pix;
-
     // Get image provider
     QQmlContext *ctx =  QQmlEngine::contextForObject(this);
     if (ctx == 0) {
@@ -62,7 +57,7 @@ QString ShareFile::saveImageFromProvider(const QString &imageUri)
     QString providerName = uriParts.takeFirst();
     QQmlImageProviderBase *provider = eng->imageProvider(providerName);
     if (provider == 0) {
-        qWarning() << "Image proveider not found: " << provider;
+        qWarning() << "Image provider not found: " << provider;
         return QString();
     }
 
@@ -72,8 +67,7 @@ QString ShareFile::saveImageFromProvider(const QString &imageUri)
 
     QTemporaryFile tempFile;
     tempFile.setAutoRemove(false);
-    QImageWriter imgWriter(&tempFile, "png");
-    if (imgWriter.write(img)) {
+    if (img.save(&tempFile, "png")) {
         return tempFile.fileName();
     } else {
         qWarning() << "Fail to save image from provider.";
