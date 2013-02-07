@@ -22,16 +22,18 @@ import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../sdk"
 
-GenericToolbar {
+Item {
     id: controls
 
     property variant video: null
-    property alias sceneSelectorHeight : _sceneSelector.height
+    property int sceneSelectorHeight : 0
 
     signal fullscreenButtonClicked
     signal playbackButtonClicked
-    signal seekRequested(int time)
     signal settingsClicked
+    signal seekRequested(int time)
+    signal startSeek
+    signal endSeek
 
     focus: true
 
@@ -43,12 +45,6 @@ GenericToolbar {
         id: _contents
 
         anchors.fill: parent
-
-        Rectangle {
-            anchors.fill: parent
-            opacity: 0.7
-            color: "black"
-        }
 
         ListModel {
             id: _sceneSelectorModel
@@ -63,28 +59,68 @@ GenericToolbar {
         Item {
             id: _mainContainer
 
+            Rectangle {
+                color: "black"
+                opacity: 0.7
+                anchors {
+                    top: _sceneSelector.visible ? _sceneSelector.top : _divLine.top
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
             anchors.fill: parent
+
             SceneSelector {
                 id: _sceneSelector
 
+                property bool show: false
+                property int yOffset: 0
+                property bool parentActive: _controls.active
+
+                y: (parent.y + units.gu(2)) + yOffset
+                opacity: 0
+                visible: opacity > 0
+                height: controls.sceneSelectorHeight
                 model: _sceneSelectorModel
                 anchors {
                     left: parent.left
-                    right: parent.right
-                    top: parent.top
-                    topMargin: units.gu(2)
+                    right: parent.right                    
                 }
 
                 onSceneSelected: {
                     controls.seekRequested(start)
+                }
+
+                onParentActiveChanged: {
+                    if (!parentActive) {
+                        show = false
+                    }
+                }
+
+                ParallelAnimation {
+                    id: _showAnimation
+
+                    running: _sceneSelector.show
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: 0; duration: 150 }
+                }
+
+                ParallelAnimation {
+                    id: _hideAnimation
+
+                    running: !_sceneSelector.show
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: units.gu(2); duration: 150 }
                 }
             }
 
             HLine {
                 id: _divLine
                 anchors {
-                    top: _sceneSelector.bottom
-                    topMargin: units.gu(2)
+                    bottom: _fullScreenButton.top
+                    bottomMargin: units.gu(2)
                 }
             }
 
@@ -95,8 +131,8 @@ GenericToolbar {
                 iconSize: units.gu(3)
                 anchors {
                     left: parent.leftSharePopover
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -107,14 +143,14 @@ GenericToolbar {
                 id: _playbackButtom
 
                 property string icon
-                iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
 
+                iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors {
                     left: _fullScreenButton.right
                     leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(2)
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -129,22 +165,23 @@ GenericToolbar {
                     left: _playbackButtom.right
                     right: _shareButton.left
                     rightMargin: units.gu(2)
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 height: units.gu(3)
 
                 // does not show the slider if the space on the screen is not enough
                 visible: (_timeLineAnchor.width > units.gu(5))
 
-
                 TimeLine {
                     id: _timeline
 
                     property int maximumWidth: units.gu(82)
+                    property bool seeking: false
 
-                    anchors {
-                        verticalCenter: parent.verticalCenter
+                    anchors {                        
+                        top: parent.top
+                        bottom: parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
 
@@ -152,15 +189,37 @@ GenericToolbar {
                     minimumValue: 0
                     maximumValue: video ? video.duration / 1000 : 0
                     value: video ? video.position / 1000 : 0
-                    onValueChanged: {
-                        if (video) {
-                            // Try to discover if the value was changed dua a user interaction or just the movie position update
-                            if (Math.abs((video.position / 1000) - value) > 1)  {
-                                // request a sekk with a new position if the user has interacted with the control
-                                controls.seekRequested(value * 1000)
-                            }
 
-                            _sceneSelector.selectSceneAt(video.position)
+                    // pause the video during the seek
+                    onPressedChanged: {
+                       if (!pressed && seeking) {
+                            endSeek()
+                            seeking = false
+                       }
+                    }
+
+                    // Live value is the real slider value. Ex: User dragging the slider
+                    onLiveValueChanged: {
+                        if (video && pressed)  {
+                            var changed = Math.abs(liveValue - value)
+                            if (changed > 1) {
+                                if (!seeking) {
+                                    startSeek()
+                                    seeking = true
+                                }
+                                seekRequested(liveValue * 1000)
+                                _sceneSelector.selectSceneAt(liveValue * 1000)
+                            }
+                        }
+                    }
+
+                    onValueChanged: _sceneSelector.selectSceneAt(video.position)
+
+                    onClicked: {
+                        if (insideThumb) {
+                            _sceneSelector.show = !_sceneSelector.show
+                        } else {
+                            _sceneSelector.show = true
                         }
                     }
                 }
@@ -173,8 +232,8 @@ GenericToolbar {
                 iconSize: units.gu(3)
                 anchors {
                     right: _settingsButton.left
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -203,8 +262,8 @@ GenericToolbar {
                 iconSize: units.gu(3)
                 anchors {
                     right: parent.right
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
 
                 width: units.gu(9)

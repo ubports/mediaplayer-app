@@ -19,16 +19,25 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import "../sdk"
 
 Item {
     id: _timeLine
 
     property alias minimumValue: _slider.minimumValue
     property alias maximumValue: _slider.maximumValue
-    property alias value: _slider.value
+    property alias pressed: _slider.pressed
+    property alias liveValue: _slider.value
+    property real value: 0
     property string currentTime
     property string remainingTime
-    property alias pressed: _slider.pressed
+
+    signal clicked(bool insideThumb)
+
+    // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
+    // The Slider components break the binding when the user interact with the component because of that a simple
+    // "property alias value: _slider.value" does not work
+    Binding { target: _slider; property: "value"; value: _timeLine.value }
 
     Component.onCompleted: {
         var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
@@ -47,9 +56,7 @@ Item {
 
         minimumValue: 0
         maximumValue: 1000
-        value: 100
         live: true
-
         onValueChanged: {
             if (value > 0) {
                 _timeLine.currentTime = formatProgress(value)
@@ -61,6 +68,10 @@ Item {
             } else {
                 _timeLine.currentTime = "0:00:00"
             }
+        }
+
+        onSliderClicked: {
+            _timeLine.clicked(onThumb)
         }
     }
 

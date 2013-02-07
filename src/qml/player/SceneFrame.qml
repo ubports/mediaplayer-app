@@ -29,7 +29,7 @@ MouseArea {
     property bool active: false
 
     Behavior on width {
-        NumberAnimation { duration: 175 }
+        NumberAnimation { duration: 150; easing.type: Easing.InOutQuart }
     }
 
     UbuntuShape {
@@ -44,11 +44,11 @@ MouseArea {
             rightMargin: units.gu(1)
 
             Behavior on topMargin {
-                NumberAnimation { duration: 175 }
+                NumberAnimation { duration: 150; easing.type: Easing.InOutQuart }
             }
 
             Behavior on bottomMargin {
-                NumberAnimation { duration: 175 }
+                NumberAnimation { duration: 150; easing.type: Easing.InOutQuart }
             }
         }
 
