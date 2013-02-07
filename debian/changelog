@@ -5,12 +5,6 @@ media-player (0.7) quantal; urgency=low
 
  -- Renato Araujo Oliveira Filho <renato@canonical.com>  Fri, 01 Feb 2013 17:23:37 -0300
 
-media-player (0.6.6) quantal; urgency=low
-
-  * Make the check for gstreamer1.0 be required for cmake.
-
- -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 01 Feb 2013 08:55:12 -0500
-
 media-player (0.6) quantal; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
