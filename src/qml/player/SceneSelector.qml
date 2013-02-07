@@ -40,8 +40,6 @@ ListView {
             bottom: parent.bottom
         }
 
-        //height: _sceneList.height
-
         onClicked: {
             currentIndex = index
             sceneSelected(start, duration)
