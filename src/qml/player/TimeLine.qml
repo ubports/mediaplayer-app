@@ -19,6 +19,7 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
+import "../sdk"
 
 Item {
     id: _timeLine
@@ -30,6 +31,8 @@ Item {
     property real value: 0
     property string currentTime
     property string remainingTime
+
+    signal clicked(bool insideThumb)
 
     // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
     // The Slider components break the binding when the user interact with the component because of that a simple
@@ -65,6 +68,10 @@ Item {
             } else {
                 _timeLine.currentTime = "0:00:00"
             }
+        }
+
+        onSliderClicked: {
+            _timeLine.clicked(onThumb)
         }
     }
 

@@ -26,7 +26,7 @@ Item {
     id: controls
 
     property variant video: null
-    property alias sceneSelectorHeight : _sceneSelector.height
+    property int sceneSelectorHeight : 0
 
     signal fullscreenButtonClicked
     signal playbackButtonClicked
@@ -46,12 +46,6 @@ Item {
 
         anchors.fill: parent
 
-        Rectangle {
-            anchors.fill: parent
-            opacity: 0.7
-            color: "black"
-        }
-
         ListModel {
             id: _sceneSelectorModel
         }
@@ -65,28 +59,68 @@ Item {
         Item {
             id: _mainContainer
 
+            Rectangle {
+                color: "black"
+                opacity: 0.7
+                anchors {
+                    top: _sceneSelector.visible ? _sceneSelector.top : _divLine.top
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
+            }
+
             anchors.fill: parent
+
             SceneSelector {
                 id: _sceneSelector
 
+                property bool show: false
+                property int yOffset: 0
+                property bool parentActive: _controls.active
+
+                y: (parent.y + units.gu(2)) + yOffset
+                opacity: 0
+                visible: opacity > 0
+                height: controls.sceneSelectorHeight
                 model: _sceneSelectorModel
                 anchors {
                     left: parent.left
-                    right: parent.right
-                    top: parent.top
-                    topMargin: units.gu(2)
+                    right: parent.right                    
                 }
 
                 onSceneSelected: {
                     controls.seekRequested(start)
+                }
+
+                onParentActiveChanged: {
+                    if (!parentActive) {
+                        show = false
+                    }
+                }
+
+                ParallelAnimation {
+                    id: _showAnimation
+
+                    running: _sceneSelector.show
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: 0; duration: 150 }
+                }
+
+                ParallelAnimation {
+                    id: _hideAnimation
+
+                    running: !_sceneSelector.show
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: units.gu(2); duration: 150 }
                 }
             }
 
             HLine {
                 id: _divLine
                 anchors {
-                    top: _sceneSelector.bottom
-                    topMargin: units.gu(2)
+                    bottom: _fullScreenButton.top
+                    bottomMargin: units.gu(2)
                 }
             }
 
@@ -97,8 +131,8 @@ Item {
                 iconSize: units.gu(3)
                 anchors {
                     left: parent.leftSharePopover
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -115,8 +149,8 @@ Item {
                 anchors {
                     left: _fullScreenButton.right
                     leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(2)
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -131,8 +165,8 @@ Item {
                     left: _playbackButtom.right
                     right: _shareButton.left
                     rightMargin: units.gu(2)
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 height: units.gu(3)
 
@@ -147,7 +181,7 @@ Item {
 
                     anchors {                        
                         top: parent.top
-                        bottom:  parent.bottom
+                        bottom: parent.bottom
                         horizontalCenter: parent.horizontalCenter
                     }
 
@@ -158,24 +192,36 @@ Item {
 
                     // pause the video during the seek
                     onPressedChanged: {
-                        if (pressed && !seeking) {
-                            startSeek()
-                            seeking = true
-                        } else if (!pressed && seeking) {
+                       if (!pressed && seeking) {
                             endSeek()
                             seeking = false
-                        }
+                       }
                     }
 
                     // Live value is the real slider value. Ex: User dragging the slider
                     onLiveValueChanged: {
                         if (video && pressed)  {
-                            seekRequested(liveValue * 1000)
-                            _sceneSelector.selectSceneAt(liveValue * 1000)
+                            var changed = Math.abs(liveValue - value)
+                            if (changed > 1) {
+                                if (!seeking) {
+                                    startSeek()
+                                    seeking = true
+                                }
+                                seekRequested(liveValue * 1000)
+                                _sceneSelector.selectSceneAt(liveValue * 1000)
+                            }
                         }
                     }
 
                     onValueChanged: _sceneSelector.selectSceneAt(video.position)
+
+                    onClicked: {
+                        if (insideThumb) {
+                            _sceneSelector.show = !_sceneSelector.show
+                        } else {
+                            _sceneSelector.show = true
+                        }
+                    }
                 }
             }
 
@@ -186,8 +232,8 @@ Item {
                 iconSize: units.gu(3)
                 anchors {
                     right: _settingsButton.left
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
                 width: units.gu(9)
                 height: units.gu(3)
@@ -216,8 +262,8 @@ Item {
                 iconSize: units.gu(3)
                 anchors {
                     right: parent.right
-                    top: _divLine.bottom
-                    topMargin: units.gu(2)
+                    bottom: parent.bottom
+                    bottomMargin: units.gu(2)
                 }
 
                 width: units.gu(9)
