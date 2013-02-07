@@ -81,8 +81,6 @@ Item {
     Image {
         id: thumbShape
 
-        property bool pressed: false
-
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         //y: backgroundShape.y + thumbSpacing
         anchors.verticalCenter: backgroundShape.verticalCenter
