@@ -34,7 +34,6 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
-#include <qpa/qplatformnativeinterface.h>
 #include "config.h"
 
 static void printUsage(const QStringList& arguments)
@@ -44,8 +43,6 @@ static void printUsage(const QStringList& arguments)
     qDebug();
     qDebug() << "options:";
     qDebug() << "\t-w --windowed: start windowed";
-    qDebug() << "\t-p --portrait: start in portrait";
-    qDebug() << "\t-l --landscape: start in landscape";
 }
 
 MediaPlayer::MediaPlayer(int &argc, char **argv)
@@ -56,14 +53,6 @@ MediaPlayer::MediaPlayer(int &argc, char **argv)
 bool MediaPlayer::setup()
 {
     QStringList args = arguments();
-    bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
-    bool landscape = args.removeAll("-l") + args.removeAll("--landscape") > 0;
-    if (portrait and landscape) {
-        qCritical() << "Specify portrait or landscape, but not both." << endl;
-        printUsage(args);
-        return false;
-    }
-
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
@@ -105,18 +94,6 @@ bool MediaPlayer::setup()
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
     connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
-
-    if (!portrait && !landscape) {
-        // Set the UI orientation based on the device's native orientation
-        QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
-        const Qt::ScreenOrientation norientation =
-                *reinterpret_cast<Qt::ScreenOrientation*>(
-                    native->nativeResourceForWindow("nativeorientation", m_view));
-        qDebug() << "native orientation: " << ((norientation == Qt::LandscapeOrientation) ? "landscape" : "portrait") << endl;
-        portrait = (norientation == Qt::PortraitOrientation);
-    }
-
-    m_view->rootContext()->setContextProperty("portrait", portrait);
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);
