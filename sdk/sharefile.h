@@ -29,6 +29,9 @@ public:
 
 public Q_SLOTS:
     void writeShareFile(const QString& path);
+
+private:
+    QString saveImageFromProvider(const QString &imageUri);
 };
 
 #endif // SHAREFILE_H
