@@ -1,3 +1,13 @@
+media-player (0.9) quantal; urgency=low
+
+  [ Jim Hodapp ]
+  * Implemented orientation control using Sreen QML component;
+  
+  [ Renato Araujo Oliveira Filho ]
+  * Implemented support for image providers in sharefile component.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Fri, 08 Feb 2013 17:55:04 -0300
+
 media-player (0.8) quantal; urgency=low
 
   * Used smooth icon for controls;
