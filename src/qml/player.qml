@@ -32,8 +32,15 @@ Rectangle {
     property string orientation: "0"
     property string formFactor: "tv"
     property real volume: playerLoader.item.volume
+    property bool appActive: Qt.application.active
 
     property variant nativeOrientation: Screen.primaryOrientation
+
+    onAppActiveChanged: {
+        if (!appActive && playerLoader.item) {
+            playerLoader.item.pause()
+        }
+    }
 
     Loader {
         id: playerLoader
@@ -131,7 +138,7 @@ Rectangle {
         }
     }
 
-     onNativeOrientationChanged:  {
+    onNativeOrientationChanged:  {
         setOrientation("qpa", nativeOrientation)
     }
 
