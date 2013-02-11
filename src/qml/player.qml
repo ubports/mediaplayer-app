@@ -23,6 +23,7 @@ import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
 import QtSensors 5.0
+import Ubuntu.HUD 0.1 as HUD
 
 Rectangle {
     id: mediaPlayer
@@ -173,6 +174,13 @@ Rectangle {
             if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
                 Qt.quit()
             }
+        }
+    }
+
+    HUD.HUD {
+        applicationIdentifier: "media-player" // this must match the .desktop file!
+        HUD.Context {
+            toolbar.quitAction.onTriggered: Qt.quit()
         }
     }
 
