@@ -103,16 +103,16 @@ Item {
                     id: _showAnimation
 
                     running: _sceneSelector.show
-                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 150 }
-                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: 0; duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: 0; duration: 175 }
                 }
 
                 ParallelAnimation {
                     id: _hideAnimation
 
                     running: !_sceneSelector.show
-                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 150 }
-                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: units.gu(2); duration: 150 }
+                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
+                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: units.gu(2); duration: 175 }
                 }
             }
 

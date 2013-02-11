@@ -96,7 +96,7 @@ Item {
             PropertyAnimation {
                 target: bar
                 properties: "y"
-                duration: 100
+                duration: 175
                 easing.type: Easing.OutQuad
             }
         },
@@ -105,7 +105,7 @@ Item {
             PropertyAnimation {
                 target: bar
                 properties: "y"
-                duration: 100
+                duration: 175
                 easing.type: Easing.OutQuad
             }
         },
@@ -114,7 +114,7 @@ Item {
             PropertyAnimation {
                 target: bar
                 properties: "y"
-                duration: 100
+                duration: 175
                 easing.type: Easing.OutQuad
             }
         }
