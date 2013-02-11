@@ -75,7 +75,7 @@ AbstractPlayer {
             anchors.fill:  parent
             sceneSelectorHeight: units.gu(18)
 
-            onPlaybackButtonClicked: {
+            onPlaybackClicked: {
                 if (["paused", "playing"].indexOf(state) != -1) {
                     player.togglePause()
                 } else {
@@ -83,8 +83,9 @@ AbstractPlayer {
                 }
             }
 
-            onFullscreenButtonClicked: {
+            onFullscreenClicked: {
                 //TODO: wait for shell supports fullscreen
+                Qt.quit()
             }
 
             onSeekRequested: {

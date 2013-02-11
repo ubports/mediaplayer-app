@@ -28,8 +28,8 @@ Item {
     property variant video: null
     property int sceneSelectorHeight : 0
 
-    signal fullscreenButtonClicked
-    signal playbackButtonClicked
+    signal fullscreenClicked
+    signal playbackClicked
     signal settingsClicked
     signal seekRequested(int time)
     signal startSeek
@@ -127,7 +127,8 @@ Item {
             IconButton {
                 id: _fullScreenButton
 
-                iconSource: "artwork/full_scrn_icon.png"
+                //TODO: use the correct icon based on window state
+                iconSource: "artwork/icon_exitfscreen.png"
                 iconSize: units.gu(3)
                 anchors {
                     left: parent.leftSharePopover
@@ -144,7 +145,7 @@ Item {
 
                 property string icon
 
-                iconSource: icon ? "artwork/%1_icon.png".arg(icon) : ""
+                iconSource: icon ? "artwork/icon_%1.png".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors {
                     left: _fullScreenButton.right
@@ -155,7 +156,7 @@ Item {
                 width: units.gu(9)
                 height: units.gu(3)
 
-                onClicked: controls.playbackButtonClicked()
+                onClicked: controls.playbackClicked()
             }
 
             Item {
@@ -228,7 +229,7 @@ Item {
             IconButton {
                 id: _shareButton
 
-                iconSource: "artwork/share_icon.png"
+                iconSource: "artwork/icon_share.png"
                 iconSize: units.gu(3)
                 anchors {
                     right: _settingsButton.left
@@ -258,7 +259,7 @@ Item {
             IconButton {
                 id: _settingsButton
 
-                iconSource: "artwork/settings_icon.png"
+                iconSource: "artwork/icon_settings.png"
                 iconSize: units.gu(3)
                 anchors {
                     right: parent.right
