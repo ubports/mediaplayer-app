@@ -104,34 +104,6 @@ AbstractPlayer {
         }
     }
 
-    Label {
-        id: title
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            bottom: _controls.top
-        }
-
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        visible: player.paused ? 1 : 0
-        fontSize: "x-large"
-        color: "white"
-        fontSizeMode: Text.Fit
-        elide: {
-            if (player.nfo.video || video.metaData.title !== undefined) return Text.ElideMiddle
-            else return Text.ElideLeft
-        }
-        text: {
-            if (player.nfo.video) return player.nfo.video.title
-            else if (video.metaData.title !== undefined) return video.metaData.title
-            else return video.source.toString().replace(/.*\//, '')
-        }
-        Behavior on opacity { NumberAnimation {} }
-    }
-
     MouseArea {
         id: _mouseArea
 
