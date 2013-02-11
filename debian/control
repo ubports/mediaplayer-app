@@ -28,4 +28,5 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
          gstreamer0.10-plugins-good,
-Description: Media player
+Description: Ubuntu Media player
+ A QML Media player service used by Ubuntu shell to play video sources.
