@@ -1,3 +1,16 @@
+media-player (0.10) quantal; urgency=low
+
+  * Added missing file (COPYING);
+  * Updated debian maintainer;
+  * Updated debian scripts to follow Ubuntu standard;
+  * Removed video title during the pause;
+  * Increased slider handle size;
+  * Decreased toolbar animation speed.
+  * Updated controls icons;
+  * Pause video if application lost focus;
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Mon, 11 Feb 2013 16:14:31 -0300
+
 media-player (0.9) quantal; urgency=low
 
   [ Jim Hodapp ]
