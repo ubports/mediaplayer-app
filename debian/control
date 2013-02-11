@@ -15,6 +15,7 @@ Build-Depends:
     libgstreamer0.10-dev,
 Standards-Version: 3.9.3
 Vcs-Browser: https://code.launchpad.net/ubuntu-media-player
+Vcs-Bzr: lp:ubuntu-media-player
 
 Package: media-player
 Architecture: any
