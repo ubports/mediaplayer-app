@@ -1,3 +1,9 @@
+media-player (0.11) quantal; urgency=low
+
+  * Support absolute URIs
+
+ -- Michał Sawicz <michal.sawicz@canonical.com>  Tue, 12 Feb 2013 15:21:32 +0100
+
 media-player (0.10) quantal; urgency=low
 
   * Added missing file (COPYING);
