@@ -24,7 +24,7 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qt-components-ubuntu,
-	 libhud-qt-qml,
+         libhud-qt-qml,
          qtubuntu-sensors,
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
