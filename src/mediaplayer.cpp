@@ -85,7 +85,10 @@ bool MediaPlayer::setup()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
     if (args.count() >= 2) {
-        QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
+        QUrl uri(args[1]);
+        if (uri.isRelative()) {
+            uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
+        }
         m_view->rootContext()->setContextProperty("playUri", uri);
     }
 
