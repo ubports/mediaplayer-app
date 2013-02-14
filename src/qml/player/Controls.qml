@@ -228,7 +228,8 @@ Item {
             iconSize: units.gu(3)
             anchors {
                 right: _settingsButton.left
-                verticalCenter: parent.verticalCenter
+                top: parent.top
+                bottom: parent.bottom
             }
             width: units.gu(9)
             height: units.gu(3)
