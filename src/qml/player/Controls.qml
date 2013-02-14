@@ -26,7 +26,10 @@ Item {
     id: controls
 
     property variant video: null
-    property int sceneSelectorHeight : 0
+    property int maximumHeight: 0
+    property alias sceneSelectorHeight: _sceneSelector.height
+    property alias sceneSelectorVisible: _sceneSelector.visible
+    property int heightOffset: 0
 
     signal fullscreenClicked
     signal playbackClicked
@@ -36,244 +39,231 @@ Item {
     signal endSeek
 
     focus: true
+    height: sceneSelectorVisible ? maximumHeight - heightOffset : _toolbar.height
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
     }
 
-    Item {
-        id: _contents
+    ListModel {
+        id: _sceneSelectorModel
+    }
 
+    SharePopover {
+        id: _sharePopover
+
+        visible: false
+    }
+
+    Rectangle {
+        id: _bgColor
+
+        color: "black"
+        opacity: 0.7
         anchors.fill: parent
+    }
 
-        ListModel {
-            id: _sceneSelectorModel
+    SceneSelector {
+        id: _sceneSelector
+
+        property bool show: false
+
+        property bool parentActive: _controls.active
+
+        opacity: 0
+        visible: opacity > 0
+        model: _sceneSelectorModel
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
         }
 
-        SharePopover {
-            id: _sharePopover
+        onSceneSelected: controls.seekRequested(start)
+        onParentActiveChanged: {
+            if (!parentActive) {
+                show = false
+            }
+        }
 
-            visible: false
+        ParallelAnimation {
+            id: _showAnimation
+
+            running: _sceneSelector.show
+            NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
+            NumberAnimation { target: controls; property: "heightOffset"; to: 0; duration: 175 }
+        }
+
+        ParallelAnimation {
+            id: _hideAnimation
+
+            running: !_sceneSelector.show
+            NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
+            NumberAnimation { target: controls; property: "heightOffset"; to: units.gu(2); duration: 175 }
+        }
+    }
+
+    Item {
+        id: _toolbar
+        anchors {
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        height: units.gu(7)
+
+        HLine {
+            id: _divLine
+            anchors.top: parent.top
+        }
+
+        IconButton {
+            id: _fullScreenButton
+
+            //TODO: use the correct icon based on window state
+            iconSource: "artwork/icon_exitfscreen.png"
+            iconSize: units.gu(3)
+            anchors {
+                left: parent.left
+                verticalCenter: parent.verticalCenter
+            }
+            width: units.gu(9)
+            height: units.gu(3)
+            onClicked: controls.fullscreenClicked()
+        }
+
+        IconButton {
+            id: _playbackButtom
+
+            property string icon
+
+            iconSource: icon ? "artwork/icon_%1.png".arg(icon) : ""
+            iconSize: units.gu(3)
+            anchors {
+                left: _fullScreenButton.right
+                leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(0)
+                verticalCenter: parent.verticalCenter
+            }
+            width: units.gu(9)
+            height: units.gu(3)
+
+            onClicked: controls.playbackClicked()
         }
 
         Item {
-            id: _mainContainer
+            id: _timeLineAnchor
 
-            Rectangle {
-                color: "black"
-                opacity: 0.7
+
+            anchors {
+                // use fullScreenButton as anchor to avoid binding loop
+                left: _fullScreenButton.right
+                leftMargin: units.gu(18)
+                right: _shareButton.left
+                rightMargin: units.gu(2)
+                verticalCenter: parent.verticalCenter
+            }
+            height: units.gu(4)
+
+            // does not show the slider if the space on the screen is not enough
+            visible: (width > units.gu(5))
+
+            TimeLine {
+                id: _timeline
+
+                property int maximumWidth: units.gu(82)
+                property bool seeking: false
+
                 anchors {
-                    top: _sceneSelector.visible ? _sceneSelector.top : _divLine.top
+                    top: parent.top
                     bottom: parent.bottom
-                    left: parent.left
-                    right: parent.right
-                }
-            }
-
-            anchors.fill: parent
-
-            SceneSelector {
-                id: _sceneSelector
-
-                property bool show: false
-                property int yOffset: 0
-                property bool parentActive: _controls.active
-
-                y: (parent.y + units.gu(2)) + yOffset
-                opacity: 0
-                visible: opacity > 0
-                height: controls.sceneSelectorHeight
-                model: _sceneSelectorModel
-                anchors {
-                    left: parent.left
-                    right: parent.right                    
+                    horizontalCenter: parent.horizontalCenter
                 }
 
-                onSceneSelected: {
-                    controls.seekRequested(start)
+                width: _timeLineAnchor.width >= maximumWidth ? maximumWidth : _timeLineAnchor.width
+                minimumValue: 0
+                maximumValue: video ? video.duration / 1000 : 0
+                value: video ? video.position / 1000 : 0
+
+
+                // pause the video during the seek
+                onPressedChanged: {
+                   if (!pressed && seeking) {
+                        endSeek()
+                        seeking = false
+                   }
                 }
 
-                onParentActiveChanged: {
-                    if (!parentActive) {
-                        show = false
-                    }
-                }
-
-                ParallelAnimation {
-                    id: _showAnimation
-
-                    running: _sceneSelector.show
-                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
-                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: 0; duration: 175 }
-                }
-
-                ParallelAnimation {
-                    id: _hideAnimation
-
-                    running: !_sceneSelector.show
-                    NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
-                    NumberAnimation { target: _sceneSelector; property: "yOffset"; to: units.gu(2); duration: 175 }
-                }
-            }
-
-            HLine {
-                id: _divLine
-                anchors {
-                    bottom: _fullScreenButton.top
-                    bottomMargin: units.gu(2)
-                }
-            }
-
-            IconButton {
-                id: _fullScreenButton
-
-                //TODO: use the correct icon based on window state
-                iconSource: "artwork/icon_exitfscreen.png"
-                iconSize: units.gu(3)
-                anchors {
-                    left: parent.leftSharePopover
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
-                }
-                width: units.gu(9)
-                height: units.gu(3)
-                onClicked: controls.fullscreenClicked()
-            }
-
-            IconButton {
-                id: _playbackButtom
-
-                property string icon
-
-                iconSource: icon ? "artwork/icon_%1.png".arg(icon) : ""
-                iconSize: units.gu(3)
-                anchors {
-                    left: _fullScreenButton.right
-                    leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(2)
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
-                }
-                width: units.gu(9)
-                height: units.gu(3)
-
-                onClicked: controls.playbackClicked()
-            }
-
-            Item {
-                id: _timeLineAnchor
-
-                anchors {
-                    left: _playbackButtom.right
-                    right: _shareButton.left
-                    rightMargin: units.gu(2)
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
-                }
-                height: units.gu(3)
-
-                // does not show the slider if the space on the screen is not enough
-                visible: (_timeLineAnchor.width > units.gu(5))
-
-                TimeLine {
-                    id: _timeline
-
-                    property int maximumWidth: units.gu(82)
-                    property bool seeking: false
-
-                    anchors {                        
-                        top: parent.top
-                        bottom: parent.bottom
-                        horizontalCenter: parent.horizontalCenter
-                    }
-
-                    width: _timeLineAnchor.width >= maximumWidth ? maximumWidth : _timeLineAnchor.width
-                    minimumValue: 0
-                    maximumValue: video ? video.duration / 1000 : 0
-                    value: video ? video.position / 1000 : 0
-
-                    // pause the video during the seek
-                    onPressedChanged: {
-                       if (!pressed && seeking) {
-                            endSeek()
-                            seeking = false
-                       }
-                    }
-
-                    // Live value is the real slider value. Ex: User dragging the slider
-                    onLiveValueChanged: {
-                        if (video && pressed)  {
-                            var changed = Math.abs(liveValue - value)
-                            if (changed > 1) {
-                                if (!seeking) {
-                                    startSeek()
-                                    seeking = true
-                                }
-                                seekRequested(liveValue * 1000)
-                                _sceneSelector.selectSceneAt(liveValue * 1000)
+                // Live value is the real slider value. Ex: User dragging the slider
+                onLiveValueChanged: {
+                    if (video && pressed)  {
+                        var changed = Math.abs(liveValue - value)
+                        if (changed > 1) {
+                            if (!seeking) {
+                                startSeek()
+                                seeking = true
                             }
-                        }
-                    }
-
-                    onValueChanged: _sceneSelector.selectSceneAt(video.position)
-
-                    onClicked: {
-                        if (insideThumb) {
-                            _sceneSelector.show = !_sceneSelector.show
-                        } else {
-                            _sceneSelector.show = true
+                            seekRequested(liveValue * 1000)
+                            _sceneSelector.selectSceneAt(liveValue * 1000)
                         }
                     }
                 }
-            }
 
-            IconButton {
-                id: _shareButton
-
-                iconSource: "artwork/icon_share.png"
-                iconSize: units.gu(3)
-                anchors {
-                    right: _settingsButton.left
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
-                }
-                width: units.gu(9)
-                height: units.gu(3)
+                onValueChanged: _sceneSelector.selectSceneAt(video.position)
 
                 onClicked: {
-                    var position = video.position
-                    if (position === 0) {
-                        if (video.duration > 10000) {
-                            position = 10000;
-                        } else if (video.duration > 0){
-                            position = video.duration / 2
-                        }
+                    if (insideThumb) {
+                        _sceneSelector.show = !_sceneSelector.show
+                    } else {
+                        _sceneSelector.show = true
                     }
-                    if (position >= 0) {
-                        _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
-                    }
-                    _sharePopover.caller = _shareButton
-                    _sharePopover.show()
                 }
             }
+        }
 
-            IconButton {
-                id: _settingsButton
+        IconButton {
+            id: _shareButton
 
-                iconSource: "artwork/icon_settings.png"
-                iconSize: units.gu(3)
-                anchors {
-                    right: parent.right
-                    bottom: parent.bottom
-                    bottomMargin: units.gu(2)
-                }
-
-                width: units.gu(9)
-                height: units.gu(3)
-
-                onClicked: {
-                    settingsClicked()
-                }
+            iconSource: "artwork/icon_share.png"
+            iconSize: units.gu(3)
+            anchors {
+                right: _settingsButton.left
+                verticalCenter: parent.verticalCenter
             }
+            width: units.gu(9)
+            height: units.gu(3)
+
+            onClicked: {
+                var position = video.position
+                if (position === 0) {
+                    if (video.duration > 10000) {
+                        position = 10000;
+                    } else if (video.duration > 0){
+                        position = video.duration / 2
+                    }
+                }
+                if (position >= 0) {
+                    _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
+                }
+                _sharePopover.caller = _shareButton
+                _sharePopover.show()
+            }
+        }
+
+        IconButton {
+            id: _settingsButton
+
+            iconSource: "artwork/icon_settings.png"
+            iconSize: units.gu(3)
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+            }
+
+            width: units.gu(9)
+            height: units.gu(3)
+
+            onClicked: settingsClicked()
         }
     }
 

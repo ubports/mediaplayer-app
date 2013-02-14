@@ -57,22 +57,28 @@ AbstractPlayer {
 
     GenericToolbar {
         id: _controls
-
-
         anchors {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
-        height: units.gu(29)
+
+        height: _controlsContents.height
 
         Controls {
+            id: _controlsContents
 
             property bool isPaused: false
 
             state: player.state
             video: player.video
-            anchors.fill:  parent
+            anchors {
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+
+            maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
 
             onPlaybackClicked: {
