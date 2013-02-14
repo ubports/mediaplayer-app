@@ -1,3 +1,12 @@
+media-player (0.12) quantal; urgency=low
+
+  * Fixed binding loop on Controls visibility;
+  * Fixed Controls dynamic height;
+  * Removed unnecessary elements from control component;
+  * Align the share popover menu above the controls bar;
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 14 Feb 2013 19:23:17 -0300
+
 media-player (0.11) quantal; urgency=low
 
   * Support absolute URIs
