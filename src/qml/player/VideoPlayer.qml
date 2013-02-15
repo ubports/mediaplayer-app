@@ -122,7 +122,7 @@ AbstractPlayer {
         }
 
         onClicked: {
-            if (_controls.active) {
+            if (_controls.ready) {
                 _controls.active = false
             }
         }

@@ -26,11 +26,7 @@ import "mathUtils.js" as MathUtils
 */
 Item {
     id: bottomBar
-    anchors {
-        left: parent.left
-        right: parent.right
-        bottom: parent.bottom
-    }
+
     default property alias contents: bar.data
 
     /*!
@@ -39,25 +35,38 @@ Item {
       The active property is not updated until the swipe gesture is completed.
      */
     property bool active: false
-    onActiveChanged: {
-        if (active) state = "spread";
-        else state = "";
-    }
 
     /*!
       Disable bottom edge swipe to activate/deactivate the toolbar.
      */
     property bool lock: false
-    onLockChanged: {
-        if (state == "hint" || state == "moving") {
-            draggingArea.finishMoving();
-        }
-    }
 
     /*!
       How much of the toolbar to show when starting interaction.
      */
     property real hintSize: units.gu(1)
+
+    /*!
+      If the toolbar is ready to use (all animations done)
+     */
+    readonly property bool ready: bar.y === 0
+
+    anchors {
+        left: parent.left
+        right: parent.right
+        bottom: parent.bottom
+    }
+
+    onActiveChanged: {
+        if (active) state = "spread";
+        else state = "";
+    }
+
+    onLockChanged: {
+        if (state == "hint" || state == "moving") {
+            draggingArea.finishMoving();
+        }
+    }
 
     states: [
         State {
@@ -90,36 +99,6 @@ Item {
         }
     ]
 
-    transitions: [
-        Transition {
-            to: ""
-            PropertyAnimation {
-                target: bar
-                properties: "y"
-                duration: 175
-                easing.type: Easing.OutQuad
-            }
-        },
-        Transition {
-            to: "hint"
-            PropertyAnimation {
-                target: bar
-                properties: "y"
-                duration: 175
-                easing.type: Easing.OutQuad
-            }
-        },
-        Transition {
-            to: "spread"
-            PropertyAnimation {
-                target: bar
-                properties: "y"
-                duration: 175
-                easing.type: Easing.OutQuad
-            }
-        }
-    ]
-
     QtObject {
         id: internal
         property string previousState: ""
@@ -148,6 +127,13 @@ Item {
         }
 
         y: bottomBar.active ? 0 : height
+
+        Behavior on y {
+            PropertyAnimation {
+                duration: 175
+                easing.type: Easing.OutQuad
+            }
+        }
     }
 
     DraggingArea {
