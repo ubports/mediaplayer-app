@@ -1,3 +1,10 @@
+media-player (0.13-0ubuntu1) quantal; urgency=low
+
+  * Show toolbar when user taps the screen to avoid edge swipe overloading
+    issues.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 15 Feb 2013 16:48:19 -0500
+
 media-player (0.12) quantal; urgency=low
 
   * Fixed binding loop on Controls visibility;
