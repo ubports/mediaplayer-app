@@ -129,6 +129,7 @@ Item {
         y: bottomBar.active ? 0 : height
 
         Behavior on y {
+            enabled: (state != "moving")
             PropertyAnimation {
                 duration: 175
                 easing.type: Easing.OutQuad
