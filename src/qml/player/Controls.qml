@@ -273,18 +273,15 @@ Item {
         onDurationChanged: {
             _sceneSelector.currentIndex = -1
             _sceneSelectorModel.clear()
-            // Only create thumbnails if video is bigger than 1min
-            if (video.duration > 60000) {
-                var frameSize = video.duration/10;
-                for (var i = 0; i < 10; ++i) {
-                    // TODO: discuss this with designers
-                    // shift 3s to avoid black frame in the position 0
-                    var pos = Math.floor(i * frameSize);
-                    _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
-                                                "start" : pos,
-                                                "duration" : frameSize})
-                }
-            }
+            var frameSize = video.duration / 10;
+            for (var i = 0; i < 10; ++i) {
+                // TODO: discuss this with designers
+                // shift 3s to avoid black frame in the position 0
+                var pos = Math.floor(i * frameSize);
+                _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
+                                            "start" : pos,
+                                            "duration" : frameSize})
+             }
         }
     }
 
