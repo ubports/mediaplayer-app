@@ -121,10 +121,6 @@ AbstractPlayer {
             bottom: _controls.top
         }
 
-        onClicked: {
-            if (_controls.active) {
-                _controls.active = false
-            }
-        }
+        onClicked: _controls.active = !_controls.active
     }
 }
