@@ -188,6 +188,14 @@ Rectangle {
         applicationIdentifier: "media-player" // this must match the .desktop file!
         HUD.Context {
             toolbar.quitAction.onTriggered: Qt.quit()
+            HUD.Action {
+                label: "Play / Pause"
+                keywords: "Pause or Resume Playhead"
+            }
+            HUD.Action {
+                label: "Share"
+                keywords: "Post;Upload;Attach"
+            }
         }
     }
 
