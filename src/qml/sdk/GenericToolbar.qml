@@ -148,17 +148,6 @@ Item {
         internal.previousState = state;
     }
 
-    Item {
-        id: bar
-        height: parent.height
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        y: bottomBar.active ? 0 : height
-    }
-
     DraggingArea {
         orientation: Qt.Vertical
         id: draggingArea
@@ -192,7 +181,8 @@ Item {
             mouse.accepted = false
         }
         // Mouse cursor moving out of the window while pressed on desktop
-        onCanceled: finishMoving()
+        // TODO: Comment it for now since this is causing toolbar to flick on device due the several mouse areas overlaping
+        // onCanceled: finishMoving()
 
         // FIXME: Make all parameters below themable.
         //  The value of 44 was copied from the Launcher.
@@ -205,5 +195,16 @@ Item {
                 bottomBar.state = (bar.y < bar.height / 2) ? "spread" : "";
             }
         }
+    }
+
+    Item {
+        id: bar
+        height: parent.height
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
+        y: bottomBar.active ? 0 : height
     }
 }
