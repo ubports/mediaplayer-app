@@ -175,15 +175,6 @@ Rectangle {
         }
     }
 
-    Connections {
-        target: playerLoader.item
-        onStatusChanged: {
-            if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
-                Qt.quit()
-            }
-        }
-    }
-
     HUD.HUD {
         applicationIdentifier: "media-player" // this must match the .desktop file!
         HUD.Context {
