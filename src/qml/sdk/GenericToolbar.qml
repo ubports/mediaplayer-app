@@ -26,11 +26,7 @@ import "mathUtils.js" as MathUtils
 */
 Item {
     id: bottomBar
-    anchors {
-        left: parent.left
-        right: parent.right
-        bottom: parent.bottom
-    }
+
     default property alias contents: bar.data
 
     /*!
@@ -39,25 +35,33 @@ Item {
       The active property is not updated until the swipe gesture is completed.
      */
     property bool active: false
-    onActiveChanged: {
-        if (active) state = "spread";
-        else state = "";
-    }
 
     /*!
       Disable bottom edge swipe to activate/deactivate the toolbar.
      */
     property bool lock: false
-    onLockChanged: {
-        if (state == "hint" || state == "moving") {
-            draggingArea.finishMoving();
-        }
-    }
 
     /*!
       How much of the toolbar to show when starting interaction.
      */
     property real hintSize: units.gu(1)
+
+    anchors {
+        left: parent.left
+        right: parent.right
+        bottom: parent.bottom
+    }
+
+    onActiveChanged: {
+        if (active) state = "spread";
+        else state = "";
+    }
+
+    onLockChanged: {
+        if (state == "hint" || state == "moving") {
+            draggingArea.finishMoving();
+        }
+    }
 
     states: [
         State {
@@ -139,17 +143,6 @@ Item {
         internal.previousState = state;
     }
 
-    Item {
-        id: bar
-        height: parent.height
-        anchors {
-            left: parent.left
-            right: parent.right
-        }
-
-        y: bottomBar.active ? 0 : height
-    }
-
     DraggingArea {
         orientation: Qt.Vertical
         id: draggingArea
@@ -183,7 +176,8 @@ Item {
             mouse.accepted = false
         }
         // Mouse cursor moving out of the window while pressed on desktop
-        onCanceled: finishMoving()
+        // TODO: Comment it for now since this is causing toolbar to flick on device due the several mouse areas overlaping
+        // onCanceled: finishMoving()
 
         // FIXME: Make all parameters below themable.
         //  The value of 44 was copied from the Launcher.
@@ -196,5 +190,16 @@ Item {
                 bottomBar.state = (bar.y < bar.height / 2) ? "spread" : "";
             }
         }
+    }
+
+    Item {
+        id: bar
+        height: parent.height
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
+        y: bottomBar.active ? 0 : height
     }
 }
