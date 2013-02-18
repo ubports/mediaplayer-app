@@ -1,3 +1,10 @@
+media-player (0.14) quantal; urgency=low
+
+  * Does not close the application after movie is played until end. (LP: #1129365)
+  * Does not cancel toolbar moving action if the mouse event got canceled. (LP: #1126186)
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Mon, 18 Feb 2013 17:40:10 -0300
+
 media-player (0.13) quantal; urgency=low
 
   * Show toolbar when user taps the screen to avoid edge swipe overloading
