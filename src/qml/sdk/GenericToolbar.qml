@@ -99,6 +99,36 @@ Item {
         }
     ]
 
+    transitions: [
+        Transition {
+            to: ""
+            PropertyAnimation {
+                target: bar
+                properties: "y"
+                duration: 175
+                easing.type: Easing.OutQuad
+            }
+        },
+        Transition {
+            to: "hint"
+            PropertyAnimation {
+                target: bar
+                properties: "y"
+                duration: 175
+                easing.type: Easing.OutQuad
+            }
+        },
+        Transition {
+            to: "spread"
+            PropertyAnimation {
+                target: bar
+                properties: "y"
+                duration: 175
+                easing.type: Easing.OutQuad
+            }
+        }
+    ]
+
     QtObject {
         id: internal
         property string previousState: ""
@@ -127,14 +157,6 @@ Item {
         }
 
         y: bottomBar.active ? 0 : height
-
-        Behavior on y {
-            enabled: (state != "moving")
-            PropertyAnimation {
-                duration: 175
-                easing.type: Easing.OutQuad
-            }
-        }
     }
 
     DraggingArea {
