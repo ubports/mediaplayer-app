@@ -46,11 +46,6 @@ Item {
      */
     property real hintSize: units.gu(1)
 
-    /*!
-      If the toolbar is ready to use (all animations done)
-     */
-    readonly property bool ready: bar.y === 0
-
     anchors {
         left: parent.left
         right: parent.right
