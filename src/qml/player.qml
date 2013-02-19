@@ -140,7 +140,7 @@ Rectangle {
     }
 
     onNativeOrientationChanged:  {
-        // discovery the device based on native orientation
+        // Discover the device based on native orientation
         // This is necessary because the Screen.currentOrientation does not notify
         // about orientation changes and we need translate the sensors information
         // TODO: remove it when "Screen.currentOrientation" get fixed
