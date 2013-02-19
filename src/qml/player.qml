@@ -141,8 +141,9 @@ Rectangle {
 
     onNativeOrientationChanged:  {
         // discovery the device based on native orientation
-        // TODO: this is necessary because the Screen.currentOrientation does not notify
+        // This is necessary because the Screen.currentOrientation does not notify
         // about orientation changes and we need translate the sensors information
+        // TODO: remove it when "Screen.currentOrientation" get fixed
         if (nativeOrientation == Qt.LandscapeOrientation)
             formFactor = "tablet"
         else
