@@ -1,10 +1,6 @@
 /*
  * Copyright (C) 2013 Canonical, Ltd.
  *
- * Authors:
- *  Ugo Riboni <ugo.riboni@canonical.com>
- *  Michał Sawicz <michal.sawicz@canonical.com>
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
@@ -43,7 +39,6 @@ static void printUsage(const QStringList& arguments)
     qDebug();
     qDebug() << "options:";
     qDebug() << "\t-w --windowed: start windowed";
-    qDebug() << "\t-p --portrait: start in portrait";
 }
 
 MediaPlayer::MediaPlayer(int &argc, char **argv)
@@ -55,14 +50,13 @@ bool MediaPlayer::setup()
 {
     QStringList args = arguments();
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
-    bool portrait = args.removeAll("-p") + args.removeAll("--portrait") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
     // The testability driver is only loaded by QApplication but not by
     // QGuiApplication.
     // However, QApplication depends on QWidget which would add some
     // unneeded overhead => Let's load the testability driver on our own.
-    if(testability) {
+    if (testability) {
         QLibrary testLib(QLatin1String("qttestability"));
         if (testLib.load()) {
             typedef void (*TasInitialize)(void);
@@ -87,7 +81,10 @@ bool MediaPlayer::setup()
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
     if (args.count() >= 2) {
-        QUrl uri(QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1])));
+        QUrl uri(args[1]);
+        if (uri.isRelative()) {
+            uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
+        }
         m_view->rootContext()->setContextProperty("playUri", uri);
     }
 
@@ -96,8 +93,6 @@ bool MediaPlayer::setup()
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
     connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
-
-    m_view->rootContext()->setContextProperty("portrait", portrait);
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);

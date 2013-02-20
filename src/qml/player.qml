@@ -20,17 +20,28 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Window 2.0
 import QtMultimedia 5.0
 import QtSensors 5.0
+import Ubuntu.HUD 0.1 as HUD
 
 Rectangle {
     id: mediaPlayer
     width: screenWidth
     height: screenHeight
 
-    property string orientation: portrait ? (screenHeight <= screenWidth ? "270" : "0") : ""
-    property string formFactor: "tv"
+    property string orientation: "0"
+    property string formFactor: "phone"
     property real volume: playerLoader.item.volume
+    property bool appActive: Qt.application.active
+
+    property variant nativeOrientation: Screen.primaryOrientation
+
+    onAppActiveChanged: {
+        if (!appActive && playerLoader.item) {
+            playerLoader.item.pause()
+        }
+    }
 
     Loader {
         id: playerLoader
@@ -123,27 +134,77 @@ Rectangle {
 
             // Causes the media player UI to rotate when the target device is rotated
             onReadingChanged: {
-                if (reading.orientation == OrientationReading.LeftUp) {
-                    mediaPlayer.orientation = "270"
-                }
-                else if (reading.orientation == OrientationReading.RightUp) {
-                    mediaPlayer.orientation = "90"
-                }
-                else if (reading.orientation == OrientationReading.TopUp) {
-                    mediaPlayer.orientation = "0"
-                }
-                else if (reading.orientation == OrientationReading.TopDown) {
-                    mediaPlayer.orientation = "180"
-                }
+                setOrientation("sensor", reading.orientation)
             }
         }
     }
 
-    Connections {
-        target: playerLoader.item
-        onStatusChanged: {
-            if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
-                Qt.quit()
+    onNativeOrientationChanged:  {
+        // Discover the device based on native orientation
+        // This is necessary because the Screen.currentOrientation does not notify
+        // about orientation changes and we need translate the sensors information
+        // TODO: remove it when "Screen.currentOrientation" get fixed
+        if (nativeOrientation == Qt.LandscapeOrientation)
+            formFactor = "tablet"
+        else
+            formFactor = "phone"
+
+        setOrientation("qpa", nativeOrientation)
+    }
+
+    function setOrientation(type, orient) {
+        var newOrientation = Qt.LandscapeOrientation
+        if (type === "sensor") {
+            // translate sensors information based on formFactor
+            switch (orient)
+            {
+            case OrientationReading.LeftUp:
+                if (formFactor == "tablet") {
+                    newOrientation = Qt.InvertedPortraitOrientation
+                } else {
+                    newOrientation = Qt.LandscapeOrientation
+                }
+                break;
+            case OrientationReading.RightUp:
+                if (formFactor == "tablet") {
+                    newOrientation = Qt.PortraitOrientation
+                } else {
+                    newOrientation = Qt.InvertedLandscapeOrientation
+                }
+                break;
+            case OrientationReading.TopUp:
+                if (formFactor == "tablet") {
+                    newOrientation = Qt.LandscapeOrientation
+                } else {
+                    newOrientation = Qt.PortraitOrientation
+                }
+                break;
+            case OrientationReading.TopDown:
+                if (formFactor == "tablet") {
+                    newOrientation = Qt.InvertedLandscapeOrientation
+                } else {
+                    newOrientation = Qt.InvertedPortraitOrientation
+                }
+                break;
+            }
+        } else {
+            newOrientation = orient
+        }
+
+        mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, newOrientation)
+    }
+
+    HUD.HUD {
+        applicationIdentifier: "media-player" // this must match the .desktop file!
+        HUD.Context {
+            toolbar.quitAction.onTriggered: Qt.quit()
+            HUD.Action {
+                label: "Play / Pause"
+                keywords: "Pause or Resume Playhead"
+            }
+            HUD.Action {
+                label: "Share"
+                keywords: "Post;Upload;Attach"
             }
         }
     }

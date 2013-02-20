@@ -1,9 +1,9 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: media-player
-Source: <https://code.launchpad.net/~amanzi-team/besancon/media-player>
+Upstream-Name: ubuntu-media-player
+Source: <https://code.launchpad.net/ubuntu-media-player>
 
 Files: *
-Copyright: 2012 Canonical Ltd.
+Copyright: 2013 Canonical Ltd.
 License: GPL-3.0
 
 License: GPL-3.0

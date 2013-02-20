@@ -1,8 +1,79 @@
+media-player (0.16) quantal; urgency=low
+
+  * fix licensing in package
+
+ -- Michael Zanetti <michael.zanetti@canonical.com>  Wed, 20 Feb 2013 22:28:56 +0100
+
+media-player (0.15) quantal; urgency=low
+
+  * Fixed video startup orientation on the tablet. (LP: #1130373)
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Tue, 19 Feb 2013 18:35:51 -0300
+
+media-player (0.14) quantal; urgency=low
+
+  * Does not close the application after movie is played until end. (LP: #1129365)
+  * Does not cancel toolbar moving action if the mouse event got canceled. (LP: #1126186)
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Mon, 18 Feb 2013 17:40:10 -0300
+
+media-player (0.13) quantal; urgency=low
+
+  * Show toolbar when user taps the screen to avoid edge swipe overloading
+    issues.
+  * Show scenes previews for all movies, even ones less than 60 seconds.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Fri, 15 Feb 2013 17:04:46 -0500
+
+media-player (0.12) quantal; urgency=low
+
+  * Fixed binding loop on Controls visibility;
+  * Fixed Controls dynamic height;
+  * Removed unnecessary elements from control component;
+  * Align the share popover menu above the controls bar;
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 14 Feb 2013 19:23:17 -0300
+
+media-player (0.11) quantal; urgency=low
+
+  * Support absolute URIs
+
+ -- Michał Sawicz <michal.sawicz@canonical.com>  Tue, 12 Feb 2013 15:21:32 +0100
+
+media-player (0.10) quantal; urgency=low
+
+  * Added missing file (COPYING);
+  * Updated debian maintainer;
+  * Updated debian scripts to follow Ubuntu standard;
+  * Removed video title during the pause;
+  * Increased slider handle size;
+  * Decreased toolbar animation speed.
+  * Updated controls icons;
+  * Pause video if application lost focus;
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Mon, 11 Feb 2013 16:14:31 -0300
+
+media-player (0.9) quantal; urgency=low
+
+  [ Jim Hodapp ]
+  * Implemented orientation control using Sreen QML component;
+  
+  [ Renato Araujo Oliveira Filho ]
+  * Implemented support for image providers in sharefile component.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Fri, 08 Feb 2013 17:55:04 -0300
+
 media-player (0.8) quantal; urgency=low
 
-  * fix licensing
+  * Used smooth icon for controls;
+  * Fixed the playback button state;
+  * Avoid resize the activity indicator during the scene load.
+  * Fixed thumbnail provider cache.
+  * Ported thumbnail pipeline to use playbin element.
+  * Fixed Controls behavior.
+  * Changed SceneSelector behavior based on designer request.
 
- -- Michael Zanetti <michael.zanetti@canonical.com>  Wed, 20 Feb 2013 22:15:05 +0100
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 07 Feb 2013 10:42:11 -0300
 
 media-player (0.7) quantal; urgency=low
 

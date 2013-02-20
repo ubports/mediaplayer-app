@@ -30,7 +30,7 @@ Item {
     property Item thumb: thumbShape
 
     // private properties
-    property real thumbSpacing: StyleUtils.itemStyleProperty("thumbSpacing", units.dp(2))
+    property real thumbSpacing: StyleUtils.itemStyleProperty("thumbSpacing", 0)
     property real liveValue: SliderUtils.liveValue(item)
     property real normalizedValue: SliderUtils.normalizedValue(item)
 
@@ -84,8 +84,8 @@ Item {
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
         //y: backgroundShape.y + thumbSpacing
         anchors.verticalCenter: backgroundShape.verticalCenter
-        width: sourceSize.width
-        height: sourceSize.height
+        width: thumbWidth
+        height: thumbWidth
         source: "artwork/slider_handle.png"
     }
 }

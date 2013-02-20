@@ -1,9 +1,9 @@
 Source: media-player
 Section: video
 Priority: extra
-Maintainer: The Amanzi Team <phablet@lists.canonical.com>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Build-Depends:
-    debhelper (>= 8.0.0),
+    debhelper (>= 9.0.0),
     cmake,
     qtbase5-dev,
     qtdeclarative5-dev,
@@ -14,7 +14,8 @@ Build-Depends:
     libgles2-mesa-dev[armhf],
     libgstreamer0.10-dev,
 Standards-Version: 3.9.3
-Vcs-Browser: https://code.launchpad.net/~amanzi-team/besancon/media-player
+Vcs-Browser: https://code.launchpad.net/ubuntu-media-player
+Vcs-Bzr: lp:ubuntu-media-player
 
 Package: media-player
 Architecture: any
@@ -23,8 +24,10 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qt-components-ubuntu,
+         libhud-qt-qml,
          qtubuntu-sensors,
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
          gstreamer0.10-plugins-good,
-Description: Media player
+Description: Ubuntu Media player
+ A QML Media player service used by Ubuntu shell to play video sources.
