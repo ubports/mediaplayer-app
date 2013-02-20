@@ -153,7 +153,7 @@ Rectangle {
     }
 
     function setOrientation(type, orient) {
-        var newOrientation = Qt.LandscapeOrientation
+        var newOrientation = null
         if (type === "sensor") {
             // translate sensors information based on formFactor
             switch (orient)
@@ -191,7 +191,9 @@ Rectangle {
             newOrientation = orient
         }
 
-        mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, newOrientation)
+        if (newOrientation) {
+            mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, newOrientation)
+        }
     }
 
     HUD.HUD {
