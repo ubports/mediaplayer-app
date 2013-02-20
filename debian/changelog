@@ -1,3 +1,9 @@
+media-player (0.16) quantal; urgency=low
+
+  * fix licensing in package
+
+ -- Michael Zanetti <michael.zanetti@canonical.com>  Wed, 20 Feb 2013 22:28:56 +0100
+
 media-player (0.15) quantal; urgency=low
 
   * Fixed video startup orientation on the tablet. (LP: #1130373)
