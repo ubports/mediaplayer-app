@@ -115,7 +115,6 @@ Rectangle {
     VideoOutput {
         id: _videoOutput
 
-        objectName: "videoOutput"
         source: mediaPlayer
         anchors.fill: parent
         smooth: true

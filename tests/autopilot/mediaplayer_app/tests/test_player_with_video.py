@@ -37,14 +37,15 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.mouse.move_to_object(video_area)
         self.mouse.click()
 
-    """ Test scene selector visibility """
-    def test_scene_selector(self):
-        self.show_controls()
-
-        """ Pause video to avoid problems durint the test """
+    def pause_video(self):
         playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
         self.mouse.move_to_object(playback_buttom)
         self.mouse.click()
+
+    """ Test scene selector visibility """
+    def test_scene_selector_visibility(self):
+        self.show_controls()
+        self.pause_video()
 
         scene_selector = self.main_window.get_object("Controls.SceneSelector")
         slider = self.main_window.get_object("TimeLine.Slider")
@@ -61,4 +62,19 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.mouse.click()
         self.assertProperty(scene_selector, visible=False)
 
+    def test_scene_selector_operation(self):
+        self.show_controls()
+        self.pause_video()
+
+        scene_selector = self.main_window.get_object("Controls.SceneSelector")
+        slider = self.main_window.get_object("TimeLine.Slider")
+        time_line = self.main_window.get_object("TimeLine")
+
+        self.mouse.move_to_object(slider)
+        self.mouse.click()
+
+        self.mouse.move_to_object(scene_selector)
+        self.mouse.click()
+
+        self.assertProperty(time_line, value=1.67)
 
