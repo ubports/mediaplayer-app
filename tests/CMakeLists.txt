@@ -1,0 +1,8 @@
+find_program(AUTOPILOT_BIN NAME autopilot PATHS "/usr/bin")
+message(STATUS "Autopilot: ${AUTOPILOT_BIN}")
+if(AUTOPILOT_BIN)
+    message(STATUS "Autopilot app found. Autopilot tests ename. Use: make autopilot")
+    add_subdirectory(autopilot)
+else()
+    message(STATUS "Autopilot app not found. Autopilot tests disabled.")
+endif()

@@ -33,4 +33,4 @@ class TestPlayer(MediaplayerAppTestCase):
 
     """Dummy test"""
     def test_dummy(self):
-        self.assertThat(1, Equaly(1))
+        self.assertThat(1, Equals(1))

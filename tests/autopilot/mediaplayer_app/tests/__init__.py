@@ -9,6 +9,7 @@
 
 from os import remove
 import os.path
+import os
 
 from autopilot.introspection.qt import QtIntrospectionTestMixin
 from autopilot.testcase import AutopilotTestCase
@@ -28,17 +29,20 @@ class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
             self.launch_test_local()
 
     def launch_test_local(self):
-        self.app = self.launch_test_application(
-            "../../mediaplayer-app")
+        mp_app = os.environ['MEDIAPLAYER_APP']
+        if mp_app:
+            self.app = self.launch_test_application(mp_app)
+        else:
+            self.app = None
 
     def launch_test_installed(self):
         if self.running_on_device():
             self.app = self.launch_test_application(
-               "mediaplyer-app",
+               "media-plyer",
                "--fullscreen")
         else:
             self.app = self.launch_test_application(
-               "mediaplayer-app")
+               "media-player")
 
     @staticmethod
     def running_on_device():
