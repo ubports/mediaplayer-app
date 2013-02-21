@@ -31,3 +31,16 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          gstreamer0.10-plugins-good,
 Description: Ubuntu Media player
  A QML Media player service used by Ubuntu shell to play video sources.
+
+Package: media-player-autopilot
+Architecture: all
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         python-support (>= 0.90),
+         media-player (= ${source:Version}),
+         libautopilot-qt,
+         libqt5test5,
+         libqt5widgets5,
+Description: Test package for the media-player app
+ Autopilot tests for the media-player package
+
