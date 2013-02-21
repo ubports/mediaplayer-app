@@ -26,19 +26,26 @@ class TestPlayer(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayer, self).setUp()
+        self.launch_app()
         self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayer, self).tearDown()
 
-    """Dummy test"""
+    """ Test if the toolbar appears with mouse click over the video area """
     def test_controls_visibility(self):
-        controls = self.main_window.get_controls()
+        controls = self.main_window.get_object("controls")
+
+        """ The toolbar is invisible by default """
         self.assertProperty(controls, visible=False)
 
-        video_area = self.main_window.get_video_area()
-        print "Video Area:>>>>>>>>>>>", video_area
-        #self.mouse.move_to_object(video_area)
-        #self.mouse.click()
+        """ Toolbar must apper when clicked in the video area """
+        video_area = self.main_window.get_object("player")
+        self.mouse.move_to_object(video_area)
+        self.mouse.click()
+        self.assertProperty(controls, visible=True)
 
-        #self.assertProperty(controls, visible=True)
+        """ Toolbar must disappear when clicked in the video area again """
+        self.mouse.click()
+        self.assertProperty(controls, visible=True)
+

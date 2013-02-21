@@ -46,6 +46,7 @@ Item {
     Slider {
         id: _slider
 
+        objectName: "TimeLine.Slider"
         anchors {
             top: parent.top
             bottom: parent.bottom

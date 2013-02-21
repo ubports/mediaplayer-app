@@ -22,27 +22,37 @@ class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
 
     def setUp(self):
         super(MediaplayerAppTestCase, self).setUp()
+
+    def launch_app(self, movie_file=None):
+        if movie_file == None:
+            movie_file = ""
         # Lets assume we are installed system wide if this file is somewhere in /usr
         if os.path.realpath(__file__).startswith("/usr/"):
-            self.launch_test_installed()
+            self.launch_test_installed(movie_file)
         else:
-            self.launch_test_local()
+            self.launch_test_local(movie_file)
 
-    def launch_test_local(self):
+    def launch_test_local(self, movie_file):
         mp_app = os.environ['MEDIAPLAYER_APP']
         if mp_app:
-            self.app = self.launch_test_application(mp_app)
+            self.app = self.launch_test_application(
+                    mp_app,
+                    "-w",
+                    movie_file)
         else:
             self.app = None
 
-    def launch_test_installed(self):
+    def launch_test_installed(self, movie_file):
         if self.running_on_device():
             self.app = self.launch_test_application(
                "media-plyer",
-               "--fullscreen")
+               "--fullscreen ",
+               movie_file)
         else:
             self.app = self.launch_test_application(
-               "media-player")
+               "media-player",
+               "-w",
+               movie_file)
 
     @staticmethod
     def running_on_device():

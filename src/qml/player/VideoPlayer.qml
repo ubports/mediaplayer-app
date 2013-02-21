@@ -35,6 +35,7 @@ AbstractPlayer {
 
     signal timeClicked
 
+    objectName: "player"
     nfo: VideoInfo {
         uri: source
     }

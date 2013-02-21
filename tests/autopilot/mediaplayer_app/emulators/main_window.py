@@ -15,11 +15,6 @@ class MainWindow(object):
         """Get the main QML view"""
         return self.app.select_single("QQuickView")
 
-    def get_video_area(self):
-        return self.app.select_single("Rectangle", objectName="videoPlayer")
+    def get_object(self, name):
+        return self.app.select_single(objectName=name)
 
-    def get_toolbar(self):
-        return self.app.select_single("GenericToolbar", objectName="toolbar")
-
-    def get_controls(self):
-        return self.app.select_single("Controls", objectName="controls")

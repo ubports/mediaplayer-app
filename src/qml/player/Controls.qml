@@ -70,6 +70,7 @@ Item {
 
         property bool parentActive: _controls.active
 
+        objectName: "Controls.SceneSelector"
         opacity: 0
         visible: opacity > 0
         model: _sceneSelectorModel
@@ -138,6 +139,7 @@ Item {
 
             property string icon
 
+            objectName: "Controls.PlayBackButton"
             iconSource: icon ? "artwork/icon_%1.png".arg(icon) : ""
             iconSize: units.gu(3)
             anchors {
