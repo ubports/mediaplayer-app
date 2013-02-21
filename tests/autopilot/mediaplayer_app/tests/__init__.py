@@ -29,16 +29,16 @@ class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
 
     def launch_test_local(self):
         self.app = self.launch_test_application(
-            "../../mediaplayer-app")
+            "../../src/media-player")
 
     def launch_test_installed(self):
         if self.running_on_device():
             self.app = self.launch_test_application(
-               "mediaplyer-app",
+               "media-plyer",
                "--fullscreen")
         else:
             self.app = self.launch_test_application(
-               "mediaplayer-app")
+               "media-player")
 
     @staticmethod
     def running_on_device():
