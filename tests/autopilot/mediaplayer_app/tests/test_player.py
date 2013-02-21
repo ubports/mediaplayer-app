@@ -32,5 +32,13 @@ class TestPlayer(MediaplayerAppTestCase):
         super(TestPlayer, self).tearDown()
 
     """Dummy test"""
-    def test_dummy(self):
-        self.assertThat(1, Equals(1))
+    def test_controls_visibility(self):
+        controls = self.main_window.get_controls()
+        self.assertProperty(controls, visible=False)
+
+        video_area = self.main_window.get_video_area()
+        print "Video Area:>>>>>>>>>>>", video_area
+        #self.mouse.move_to_object(video_area)
+        #self.mouse.click()
+
+        #self.assertProperty(controls, visible=True)

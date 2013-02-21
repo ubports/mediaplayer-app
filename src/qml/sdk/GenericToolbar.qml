@@ -200,6 +200,7 @@ Item {
             right: parent.right
         }
 
+        visible: y != height
         y: bottomBar.active ? 0 : height
     }
 }
