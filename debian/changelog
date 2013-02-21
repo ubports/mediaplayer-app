@@ -1,9 +1,15 @@
-media-player (0.16) quantal; urgency=low
+media-player (0.17) quantal; urgency=low
 
   * Does not use "Qt.LandscapeOrientation" as default orientation, and ignore
     FaceUp or FaceDown events.
 
  -- Renato Araujo Oliveira Filho <renato@canonical.com>  Wed, 20 Feb 2013 20:47:31 -0300
+
+media-player (0.16) quantal; urgency=low
+
+  * fix licensing in package
+
+ -- Michael Zanetti <michael.zanetti@canonical.com>  Wed, 20 Feb 2013 22:28:56 +0100
 
 media-player (0.15) quantal; urgency=low
 
