@@ -25,3 +25,4 @@ add_subdirectory(src)
 add_subdirectory(tests)
 
 configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
+
