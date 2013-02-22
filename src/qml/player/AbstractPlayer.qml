@@ -40,6 +40,7 @@ Rectangle {
     property int backwardSeekStep: Math.min(30000, mediaPlayer.duration * 0.025)
 
 
+    objectName: "videoPlayer"
     state: "stopped"
     color: "black"
 
@@ -113,6 +114,7 @@ Rectangle {
 
     VideoOutput {
         id: _videoOutput
+
         source: mediaPlayer
         anchors.fill: parent
         smooth: true

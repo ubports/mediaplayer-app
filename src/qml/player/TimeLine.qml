@@ -34,6 +34,7 @@ Item {
 
     signal clicked(bool insideThumb)
 
+    objectName: "TimeLine"
     // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
     // The Slider components break the binding when the user interact with the component because of that a simple
     // "property alias value: _slider.value" does not work
@@ -46,6 +47,7 @@ Item {
     Slider {
         id: _slider
 
+        objectName: "TimeLine.Slider"
         anchors {
             top: parent.top
             bottom: parent.bottom
@@ -78,6 +80,7 @@ Item {
     Label {
         id: _TimeLabel
 
+        objectName: "TimeLine.TimeLabel"
         anchors {
             verticalCenter: _slider.verticalCenter
             right: parent.right

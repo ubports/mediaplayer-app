@@ -35,6 +35,7 @@ AbstractPlayer {
 
     signal timeClicked
 
+    objectName: "player"
     nfo: VideoInfo {
         uri: source
     }
@@ -57,6 +58,8 @@ AbstractPlayer {
 
     GenericToolbar {
         id: _controls
+
+        objectName: "toolbar"
         anchors {
             left: parent.left
             right: parent.right
@@ -70,6 +73,7 @@ AbstractPlayer {
 
             property bool isPaused: false
 
+            objectName: "controls"
             state: player.state
             video: player.video
             anchors {
@@ -114,6 +118,7 @@ AbstractPlayer {
     MouseArea {
         id: _mouseArea
 
+        objectName: "videoMouseArea"
         anchors {
             left: parent.left
             right: parent.right
