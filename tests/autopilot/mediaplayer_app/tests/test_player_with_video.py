@@ -89,8 +89,12 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
+
         slider = self.main_window.get_object("TimeLine.Slider")
         time_line = self.main_window.get_object("TimeLine")
+        selector = self.main_window.get_object("Controls.SceneSelector")
+        self.assertThat(selector.count, Eventually(GreaterThan(3)))
+
         scene_2 = self.main_window.get_object("SceneSelector.Scene2")
 
         """ Show scene selector """
