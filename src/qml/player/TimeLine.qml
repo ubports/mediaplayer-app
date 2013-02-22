@@ -80,6 +80,7 @@ Item {
     Label {
         id: _TimeLabel
 
+        objectName: "TimeLine.TimeLabel"
         anchors {
             verticalCenter: _slider.verticalCenter
             right: parent.right

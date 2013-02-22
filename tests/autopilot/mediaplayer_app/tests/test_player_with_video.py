@@ -42,7 +42,30 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.mouse.move_to_object(playback_buttom)
         self.mouse.click()
 
-    """ Test scene selector visibility """
+    def test_playback_buttom_states(self):
+        self.show_controls()
+
+        playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
+        player = self.main_window.get_object("player")
+
+        """ Default state after load the video is playing and with pause icon """
+        self.assertProperty(player, playing=True, paused=False)
+        self.assertProperty(playback_buttom, icon="pause")
+
+        self.mouse.move_to_object(playback_buttom)
+        self.mouse.click()
+
+        """ First click must pause the video, change playing state and show play icon """
+        self.assertProperty(player, playing=False, paused=True)
+        self.assertProperty(playback_buttom, icon="play")
+
+        self.mouse.click()
+
+        """ Second click should change the state to playing again """
+        self.assertProperty(player, playing=True, paused=False)
+        self.assertProperty(playback_buttom, icon="pause")
+
+
     def test_scene_selector_visibility(self):
         self.show_controls()
         self.pause_video()
@@ -66,15 +89,42 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        scene_selector = self.main_window.get_object("Controls.SceneSelector")
         slider = self.main_window.get_object("TimeLine.Slider")
         time_line = self.main_window.get_object("TimeLine")
+        scene_2 = self.main_window.get_object("SceneSelector.Scene2")
 
+        """ Show scene selector """
         self.mouse.move_to_object(slider)
         self.mouse.click()
 
-        self.mouse.move_to_object(scene_selector)
+        """ Click in the second scene """
+        self.mouse.move_to_object(scene_2)
         self.mouse.click()
 
-        self.assertProperty(time_line, value=1.67)
+        self.assertProperty(time_line, value=1.113)
+
+    def test_time_display_behavior(self):
+        self.show_controls()
+        self.pause_video()
+
+        time_line = self.main_window.get_object("TimeLine")
+        time_label = self.main_window.get_object("TimeLine.TimeLabel")
+
+        """ Seek to the midle of the movie """
+        self.mouse.move_to_object(time_line)
+        self.mouse.click()
+
+        """ Time label must show the current video time """
+        self.assertProperty(time_label, text="00:00:03")
+
+        """ Click in the label to change the state """
+        self.mouse.move_to_object(time_label)
+        self.mouse.click()
+
+        """ After the click the label must show the remaning time """
+        self.assertProperty(time_label, text="- 00:00:02")
+
+
+
+
 

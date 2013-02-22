@@ -28,6 +28,7 @@ ListView {
     orientation: ListView.Horizontal
 
     delegate: SceneFrame {
+        objectName: "SceneSelector.Scene" + index
         active: (currentIndex == index)
         start: model.start
         duration: model.duration
