@@ -21,12 +21,14 @@ Vcs-Bzr: lp:ubuntu-media-player
 Package: media-player
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-         mediaplayerplugin-aal,
+         mediaplayerplugin-aal[armel],
+         mediaplayerplugin-aal[armhf],
          libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qt-components-ubuntu,
          libhud-qt-qml,
-         qtubuntu-sensors,
+         qtubuntu-sensors[armel],
+         qtubuntu-sensors[armhf],
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
          gstreamer0.10-plugins-good,
