@@ -30,6 +30,7 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtDBus/QDBusConnectionInterface>
+#include <QScreen>
 #include "config.h"
 
 static void printUsage(const QStringList& arguments)
@@ -93,6 +94,12 @@ bool MediaPlayer::setup()
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
     connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
+
+    // Set the orientation changes that this app is interested in being signaled about
+    QGuiApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation |
+            Qt::LandscapeOrientation |
+            Qt::InvertedPortraitOrientation |
+            Qt::InvertedLandscapeOrientation);
 
     QUrl source(mediaPlayerDirectory() + "/qml/player.qml");
     m_view->setSource(source);
