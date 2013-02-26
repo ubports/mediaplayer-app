@@ -43,7 +43,7 @@ Rectangle {
     }
 
     Screen.onOrientationChanged: {
-        console.log("****** Orientation changed!")
+        // Rotate the UI when the device orientation changes
         mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
     }
 
