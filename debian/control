@@ -16,7 +16,7 @@ Build-Depends:
     python2.7,
 Standards-Version: 3.9.3
 Vcs-Browser: https://code.launchpad.net/ubuntu-media-player
-Vcs-Bzr: lp:ubuntu-media-player
+Vcs-Bzr: lp:mediaplayer-app
 
 Package: media-player
 Architecture: any
