@@ -15,8 +15,8 @@ Build-Depends:
     libgstreamer0.10-dev,
     python2.7,
 Standards-Version: 3.9.3
-Vcs-Browser: https://code.launchpad.net/ubuntu-media-player
-Vcs-Bzr: lp:ubuntu-media-player
+Vcs-Browser: https://code.launchpad.net/mediaplayer-app
+Vcs-Bzr: lp:mediaplayer-app
 
 Package: media-player
 Architecture: any
