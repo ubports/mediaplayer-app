@@ -26,7 +26,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        self.launch_app("../videos/small.mp4")
+        self.launch_app("small.mp4")
         self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
