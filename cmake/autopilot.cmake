@@ -9,7 +9,7 @@ if(ENABLE_AUTOPILOT)
     if(AUTOPILOT_BIN)
         message(STATUS "Autopilot tests enabled.")
     else()
-        message(STATUS "Autopilot tests disable: autopilot binary not found")
+        message(STATUS "Autopilot tests disabled: autopilot binary not found")
     endif()
 endif()
 
