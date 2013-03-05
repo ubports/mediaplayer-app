@@ -33,20 +33,20 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         super(TestPlayerWithVideo, self).tearDown()
 
     def show_controls(self):
-        video_area = self.main_window.get_object("player")
+        video_area = self.main_window.get_object("VideoPlayer", "player")
         self.mouse.move_to_object(video_area)
         self.mouse.click()
 
     def pause_video(self):
-        playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
+        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
         self.mouse.move_to_object(playback_buttom)
         self.mouse.click()
 
     def test_playback_buttom_states(self):
         self.show_controls()
 
-        playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
-        player = self.main_window.get_object("player")
+        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
+        player = self.main_window.get_object("VideoPlayer", "player")
 
         """ Default state after load the video is playing and with pause icon """
         self.assertProperty(player, playing=True, paused=False)
@@ -70,8 +70,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        scene_selector = self.main_window.get_object("Controls.SceneSelector")
-        slider = self.main_window.get_object("TimeLine.Slider")
+        scene_selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
+        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
 
         """ Default state is hide """
         self.assertProperty(scene_selector, visible=False)
@@ -90,12 +90,12 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pause_video()
 
 
-        slider = self.main_window.get_object("TimeLine.Slider")
-        time_line = self.main_window.get_object("TimeLine")
-        selector = self.main_window.get_object("Controls.SceneSelector")
+        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
+        time_line = self.main_window.get_object("TimeLine", "TimeLine")
+        selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
         self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
-        scene_2 = self.main_window.get_object("SceneSelector.Scene2")
+        scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
 
         """ Show scene selector """
         self.mouse.move_to_object(slider)
@@ -111,8 +111,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        time_line = self.main_window.get_object("TimeLine")
-        time_label = self.main_window.get_object("TimeLine.TimeLabel")
+        time_line = self.main_window.get_object("TimeLine", "TimeLine")
+        time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
 
         """ Seek to the midle of the movie """
         self.mouse.move_to_object(time_line)
