@@ -27,6 +27,7 @@ MouseArea {
     property int duration
     property alias source: _image.source
     property bool active: false
+    readonly property bool ready: (_image.status === Image.Ready)
 
     Behavior on width {
         NumberAnimation { duration: 150; easing.type: Easing.InOutQuart }
