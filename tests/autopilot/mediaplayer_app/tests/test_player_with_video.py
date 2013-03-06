@@ -114,22 +114,28 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        time_line = self.main_window.get_object("TimeLine", "TimeLine")
+        time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
         time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
 
         """ Seek to the midle of the movie """
         self.mouse.move_to_object(time_line)
         self.mouse.click()
 
-        """ Time label must show the current video time """
-        self.assertProperty(time_label, text="00:00:03")
+        """ Time label must show the current video time
+            - Depends on the resolution the current time can be different due the slider size,
+              because of that we avoid compare the secs
+        """
+        self.assertEqual(time_label.text[0:7], "00:00:0")
 
         """ Click in the label to change the state """
         self.mouse.move_to_object(time_label)
         self.mouse.click()
 
-        """ After the click the label must show the remaning time """
-        self.assertProperty(time_label, text="- 00:00:02")
+        """ After the click the label must show the remaning time
+            - Depends on the resolution the current time can be different due the slider size,
+              because of that we avoid compare the secs
+        """
+        self.assertEqual(time_label.text[0:9], "- 00:00:0")
 
 
 
