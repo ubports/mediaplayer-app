@@ -36,6 +36,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         video_area = self.main_window.get_object("VideoPlayer", "player")
         self.mouse.move_to_object(video_area)
         self.mouse.click()
+        toolbar = self.main_window.get_object("GenericToolbar", "toolbar")
+        self.assertThat(toolbar.state, Eventually(Equals("spread")))
 
     def pause_video(self):
         playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
