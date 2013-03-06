@@ -98,7 +98,10 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
         scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
         self.assertThat(scene_2.ready, Eventually(Equals(True)))
-        self.assertThat(scene_2.x, Eventually(GreaterThan(0)))
+
+        """ Make sure that the scenes are in correct place """
+        scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
+        self.assertThat(scene_0.x, Eventually(GreaterThan(-1)))
 
         """ Show scene selector """
         self.mouse.move_to_object(slider)
@@ -107,6 +110,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         """ Click in the second scene """
         self.mouse.move_to_object(scene_2)
         self.mouse.click()
+        self.assertThat(selector.currentIndex, Eventually(Equals(2)))
 
         self.assertProperty(time_line, value=1.113)
 
