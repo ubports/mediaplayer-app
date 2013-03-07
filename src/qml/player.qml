@@ -22,7 +22,6 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
-import QtSensors 5.0
 import Ubuntu.HUD 0.1 as HUD
 
 Rectangle {
@@ -41,6 +40,11 @@ Rectangle {
         if (!appActive && playerLoader.item) {
             playerLoader.item.pause()
         }
+    }
+
+    Screen.onOrientationChanged: {
+        // Rotate the UI when the device orientation changes
+        mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
     }
 
     Loader {
@@ -127,73 +131,6 @@ Rectangle {
             }
           }
         ]
-
-        OrientationSensor {
-            id: orientationSensor
-            active: true
-
-            // Causes the media player UI to rotate when the target device is rotated
-            onReadingChanged: {
-                setOrientation("sensor", reading.orientation)
-            }
-        }
-    }
-
-    onNativeOrientationChanged:  {
-        // Discover the device based on native orientation
-        // This is necessary because the Screen.currentOrientation does not notify
-        // about orientation changes and we need translate the sensors information
-        // TODO: remove it when "Screen.currentOrientation" get fixed
-        if (nativeOrientation == Qt.LandscapeOrientation)
-            formFactor = "tablet"
-        else
-            formFactor = "phone"
-
-        setOrientation("qpa", nativeOrientation)
-    }
-
-    function setOrientation(type, orient) {
-        var newOrientation = null
-        if (type === "sensor") {
-            // translate sensors information based on formFactor
-            switch (orient)
-            {
-            case OrientationReading.LeftUp:
-                if (formFactor == "tablet") {
-                    newOrientation = Qt.InvertedPortraitOrientation
-                } else {
-                    newOrientation = Qt.LandscapeOrientation
-                }
-                break;
-            case OrientationReading.RightUp:
-                if (formFactor == "tablet") {
-                    newOrientation = Qt.PortraitOrientation
-                } else {
-                    newOrientation = Qt.InvertedLandscapeOrientation
-                }
-                break;
-            case OrientationReading.TopUp:
-                if (formFactor == "tablet") {
-                    newOrientation = Qt.LandscapeOrientation
-                } else {
-                    newOrientation = Qt.PortraitOrientation
-                }
-                break;
-            case OrientationReading.TopDown:
-                if (formFactor == "tablet") {
-                    newOrientation = Qt.InvertedLandscapeOrientation
-                } else {
-                    newOrientation = Qt.InvertedPortraitOrientation
-                }
-                break;
-            }
-        } else {
-            newOrientation = orient
-        }
-
-        if (newOrientation) {
-            mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, newOrientation)
-        }
     }
 
     HUD.HUD {
