@@ -46,6 +46,11 @@ Item {
      */
     property real hintSize: units.gu(1)
 
+    /*!
+     Notify when the toolbar is fully visible
+    */
+    readonly property bool ready: bar.y == 0
+
     anchors {
         left: parent.left
         right: parent.right
@@ -194,6 +199,8 @@ Item {
 
     Item {
         id: bar
+
+        objectName: "GenericToolbar.Bar"
         height: parent.height
         anchors {
             left: parent.left

@@ -144,7 +144,8 @@ Item {
             iconSize: units.gu(3)
             anchors {
                 left: _fullScreenButton.right
-                leftMargin: _timeLineAnchor.visible ? units.gu(9) : units.gu(0)
+                // keep proportion btw different resolutions
+                leftMargin: units.gu(9) * _toolbar.width / units.gu(128)
                 verticalCenter: parent.verticalCenter
             }
             width: units.gu(9)
@@ -156,11 +157,9 @@ Item {
         Item {
             id: _timeLineAnchor
 
-
-            anchors {
-                // use fullScreenButton as anchor to avoid binding loop
-                left: _fullScreenButton.right
-                leftMargin: units.gu(18)
+            anchors {                
+                left: _playbackButtom.right
+                leftMargin: units.gu(2)
                 right: _shareButton.left
                 rightMargin: units.gu(2)
                 verticalCenter: parent.verticalCenter

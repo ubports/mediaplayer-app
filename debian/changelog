@@ -1,8 +1,30 @@
-media-player (0.18) quantal; urgency=low
+media-player (0.19) UNRELEASED; urgency=low
 
   * Release new package version with Qt multithreaded rendering enabled.
+    (LP: #1119659)
 
- -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 14 Mar 2013 13:00:59 -0400
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 14 Mar 2013 13:14:08 -0400
+
+media-player (0.18) quantal; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Created autopilot tests.
+  * Created CMAKE options used by autopilot targed.
+  * Added test video in autopilot package.
+
+  [ Michael Zanetti ]
+  * added missing build dep for python (for autopilot installs).
+  * don't depend on arm specific packages on other archs.
+  * add more needed runtime dependencies.
+
+  [ Jim Hodapp ]
+  * Update the Vcs-Bzr tag in the debian/control file to be accurate to the
+    actual launchpad project/branch name.
+  * Update the Vcs-Browser URL to point to the correct launchpad URL.
+  * Greatly simplified UI orientation/rotation support based on
+    Screen.orientation instead of directly using QtSensors.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Thu, 07 Mar 2013 09:58:57 -0300
 
 media-player (0.17) quantal; urgency=low
 

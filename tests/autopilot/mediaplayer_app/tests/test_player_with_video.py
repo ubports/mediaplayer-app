@@ -26,27 +26,29 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        self.launch_app("../videos/small.mp4")
+        self.launch_app("small.mp4")
         self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayerWithVideo, self).tearDown()
 
     def show_controls(self):
-        video_area = self.main_window.get_object("player")
+        video_area = self.main_window.get_object("VideoPlayer", "player")
         self.mouse.move_to_object(video_area)
         self.mouse.click()
+        toolbar = self.main_window.get_object("GenericToolbar", "toolbar")
+        self.assertThat(toolbar.ready, Eventually(Equals(True)))
 
     def pause_video(self):
-        playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
+        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
         self.mouse.move_to_object(playback_buttom)
         self.mouse.click()
 
     def test_playback_buttom_states(self):
         self.show_controls()
 
-        playback_buttom = self.main_window.get_object("Controls.PlayBackButton")
-        player = self.main_window.get_object("player")
+        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
+        player = self.main_window.get_object("VideoPlayer", "player")
 
         """ Default state after load the video is playing and with pause icon """
         self.assertProperty(player, playing=True, paused=False)
@@ -70,8 +72,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        scene_selector = self.main_window.get_object("Controls.SceneSelector")
-        slider = self.main_window.get_object("TimeLine.Slider")
+        scene_selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
+        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
 
         """ Default state is hide """
         self.assertProperty(scene_selector, visible=False)
@@ -89,21 +91,31 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-
-        slider = self.main_window.get_object("TimeLine.Slider")
-        time_line = self.main_window.get_object("TimeLine")
-        selector = self.main_window.get_object("Controls.SceneSelector")
+        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
+        time_line = self.main_window.get_object("TimeLine", "TimeLine")
+        selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
         self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
-        scene_2 = self.main_window.get_object("SceneSelector.Scene2")
+        scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
+        self.assertThat(scene_2.ready, Eventually(Equals(True)))
+
 
         """ Show scene selector """
         self.mouse.move_to_object(slider)
         self.mouse.click()
 
+        """ Make sure that the scenes are in correct place """
+        selectorRect = selector.globalRect
+        self.pointing_device.drag(selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
+                                  selectorRect[0] + selectorRect[2], selectorRect[1] + selectorRect[3] / 2)
+        scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
+        self.assertThat(scene_0.x, Eventually(GreaterThan(-1)))
+
+
         """ Click in the second scene """
         self.mouse.move_to_object(scene_2)
         self.mouse.click()
+        self.assertThat(selector.currentIndex, Eventually(Equals(2)))
 
         self.assertProperty(time_line, value=1.113)
 
@@ -111,22 +123,28 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        time_line = self.main_window.get_object("TimeLine")
-        time_label = self.main_window.get_object("TimeLine.TimeLabel")
+        time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
+        time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
 
         """ Seek to the midle of the movie """
         self.mouse.move_to_object(time_line)
         self.mouse.click()
 
-        """ Time label must show the current video time """
-        self.assertProperty(time_label, text="00:00:03")
+        """ Time label must show the current video time
+            - Depends on the resolution the current time can be different due the slider size,
+              because of that we avoid compare the secs
+        """
+        self.assertEqual(time_label.text[0:7], "00:00:0")
 
         """ Click in the label to change the state """
         self.mouse.move_to_object(time_label)
         self.mouse.click()
 
-        """ After the click the label must show the remaning time """
-        self.assertProperty(time_label, text="- 00:00:02")
+        """ After the click the label must show the remaning time
+            - Depends on the resolution the current time can be different due the slider size,
+              because of that we avoid compare the secs
+        """
+        self.assertEqual(time_label.text[0:9], "- 00:00:0")
 
 
 
