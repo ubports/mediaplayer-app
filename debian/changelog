@@ -1,3 +1,10 @@
+media-player (0.19) quantal; urgency=low
+
+  * Release new package version with Qt multithreaded rendering enabled.
+    (LP: #1119659)
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 14 Mar 2013 13:35:43 -0400
+
 media-player (0.18) quantal; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
