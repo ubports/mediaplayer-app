@@ -1,3 +1,9 @@
+media-player (0.18) quantal; urgency=low
+
+  * Release new package version with Qt multithreaded rendering enabled.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 14 Mar 2013 13:00:59 -0400
+
 media-player (0.17) quantal; urgency=low
 
   * Does not use "Qt.LandscapeOrientation" as default orientation, and ignore
