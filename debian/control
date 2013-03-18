@@ -23,7 +23,7 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
          mediaplayerplugin-aal[armel],
          mediaplayerplugin-aal[armhf],
-         libqt5declarative5-qtmultimedia-plugin,
+         qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
          qtdeclarative5-window-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qt-components-ubuntu,
