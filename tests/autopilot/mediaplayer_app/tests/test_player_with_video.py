@@ -94,29 +94,26 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         slider = self.main_window.get_object("Slider", "TimeLine.Slider")
         time_line = self.main_window.get_object("TimeLine", "TimeLine")
         selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
-        self.assertThat(selector.count, Eventually(GreaterThan(3)))
-
-        scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
-        self.assertThat(scene_2.ready, Eventually(Equals(True)))
-
+        self.assertThat(selector.count, Eventually(GreaterThan(3)))        
 
         """ Show scene selector """
         self.mouse.move_to_object(slider)
         self.mouse.click()
 
         """ Make sure that the scenes are in correct place """
+        scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
         selectorRect = selector.globalRect
         self.pointing_device.drag(selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
                                   selectorRect[0] + selectorRect[2], selectorRect[1] + selectorRect[3] / 2)
-        scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
-        self.assertThat(scene_0.x, Eventually(GreaterThan(-1)))
-
+        self.assertThat(selector.moving, Eventually(Equals(False)))
+        self.assertThat(scene_0.x, Eventually(Equals(0)))
 
         """ Click in the second scene """
+        scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
+        self.assertThat(scene_2.ready, Eventually(Equals(True)))
         self.mouse.move_to_object(scene_2)
         self.mouse.click()
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
-
         self.assertProperty(time_line, value=1.113)
 
     def test_time_display_behavior(self):
