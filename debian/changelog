@@ -1,3 +1,9 @@
+media-player (0.20) quantal; urgency=low
+
+  * Update package names in debian/control for upgrade to Qt 5.0.1.
+
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Fri, 22 Mar 2013 15:53:45 -0300
+
 media-player (0.19) quantal; urgency=low
 
   * Release new package version with Qt multithreaded rendering enabled.
