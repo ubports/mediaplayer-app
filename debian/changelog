@@ -1,4 +1,4 @@
-media-player (0.20-0phablet1) quantal; urgency=low
+media-player (0.20.1) quantal; urgency=low
 
   * Changing packaging dependencies to work with raring
 
