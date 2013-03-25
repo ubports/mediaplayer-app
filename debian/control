@@ -13,7 +13,7 @@ Build-Depends:
     libgles2-mesa-dev[armel],
     libgles2-mesa-dev[armhf],
     libgstreamer0.10-dev,
-    python2.7,
+    python,
 Standards-Version: 3.9.3
 Vcs-Browser: https://code.launchpad.net/mediaplayer-app
 Vcs-Bzr: lp:mediaplayer-app

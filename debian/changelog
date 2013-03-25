@@ -1,3 +1,9 @@
+media-player (0.20-0phablet1) quantal; urgency=low
+
+  * Changing packaging dependencies to work with raring
+
+ -- Sergio Schvezov <sergio.schvezov@canonical.com>  Mon, 25 Mar 2013 18:19:18 -0300
+
 media-player (0.20) quantal; urgency=low
 
   * Update package names in debian/control for upgrade to Qt 5.0.1.
