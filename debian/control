@@ -2,48 +2,47 @@ Source: media-player
 Section: video
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Build-Depends:
-    debhelper (>= 9.0.0),
-    cmake,
-    qtbase5-dev,
-    qtdeclarative5-dev,
-    qtmultimedia5-dev,
-    libgl-dev[i386],
-    libgl-dev[amd64],
-    libgles2-mesa-dev[armel],
-    libgles2-mesa-dev[armhf],
-    libgstreamer0.10-dev,
-    python,
-Standards-Version: 3.9.3
-Vcs-Browser: https://code.launchpad.net/mediaplayer-app
+Build-Depends: cmake,
+               debhelper (>= 9),
+               libgl1-mesa-dev[i386 amd64] | libgl-dev[i386 amd64],
+               libgles2-mesa-dev[armhf],
+               libgstreamer0.10-dev,
+               python,
+               qtbase5-dev,
+               qtdeclarative5-dev,
+               qtmultimedia5-dev,
+Standards-Version: 3.9.4
+# If you don't have commit rights to lp:mediaplayer-app but need to upload
+# packaging changes, just go ahead.  The developers will notice and sync
+# up the code again.
 Vcs-Bzr: lp:mediaplayer-app
+Vcs-Browser: https://code.launchpad.net/mediaplayer-app
 
 Package: media-player
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-         mediaplayerplugin-aal[armel],
-         mediaplayerplugin-aal[armhf],
-         qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
-         qtdeclarative5-window-plugin,
-         qtdeclarative5-xmllistmodel-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
-         qtmultimedia5-dev,
-         libhud-qt-qml,
+Architecture: i386 amd64 armhf
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
          gstreamer0.10-plugins-good,
+         libhud-qt-qml,
+         qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
+         qtdeclarative5-window-plugin,
+         qtdeclarative5-xmllistmodel-plugin,
+         qtmultimedia5-dev,
+         qtubuntu-media[armhf] | mediaplayerplugin-aal[armhf],
 Description: Ubuntu Media player
  A QML Media player service used by Ubuntu shell to play video sources.
 
 Package: media-player-autopilot
 Architecture: all
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         python-support (>= 0.90),
-         media-player (= ${source:Version}),
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
          libautopilot-qt,
          libqt5test5,
          libqt5widgets5,
+         media-player (>= ${source:Version}),
 Description: Test package for the media-player app
  Autopilot tests for the media-player package
 
