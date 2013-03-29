@@ -1,3 +1,9 @@
+media-player (0.20.2) quantal; urgency=low
+
+  * removed qtmultimedia5-dev from runtime dep  
+
+ -- Bill Filler <bill.filler@canonical.com>  Fri, 29 Mar 2013 12:18:06 -0400
+
 media-player (0.20.1) quantal; urgency=low
 
   * Changing packaging dependencies to work with raring
