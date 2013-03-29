@@ -27,7 +27,6 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
          qtdeclarative5-window-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
-         qtmultimedia5-dev,
          libhud-qt-qml,
          gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
