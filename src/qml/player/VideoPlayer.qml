@@ -32,6 +32,7 @@ AbstractPlayer {
     property bool wasPlaying: false
     property string uri
     property bool rotating: false   
+    property alias controlsActive: _controls.active
 
     signal timeClicked
 
