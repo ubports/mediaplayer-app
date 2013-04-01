@@ -157,26 +157,56 @@ QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
     return parseImageGst(buffer);
 }
 
-QImage ThumbnailPipeline::request(qint64 time)
+bool ThumbnailPipeline::isMeaningful(QImage img)
+{
+    static const float MINIMUN_NON_BLACK_PERCENTAGE = 0.001;
+
+    const int minimumNonBlack = ((img.height() * img.width()) * MINIMUN_NON_BLACK_PERCENTAGE);
+    int nonBlackCount = 0;
+
+    for(int h=0, hMax = img.height(); h < hMax; h++) {
+        for(int w=0, wMax = img.width(); w < wMax; w++) {
+            QRgb rgb = img.pixel(w, h);
+            if ((qRed(rgb) != 0) ||
+                (qGreen(rgb) != 0) ||
+                (qBlue(rgb) != 0)) {
+                nonBlackCount++;
+                if (nonBlackCount > minimumNonBlack) {
+                    return true;
+                }
+
+            }
+        }
+    }
+    return false;
+}
+
+QImage ThumbnailPipeline::request(qint64 time, bool skipBlack)
 {    
     if (m_pipeline == 0) {
         qWarning() << "Pipiline not ready";
         return QImage();
     }
 
-	gst_element_seek (m_pipeline, 1.0,
-                      GST_FORMAT_TIME,  static_cast<GstSeekFlags>(GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT),
-                      GST_SEEK_TYPE_SET, time * GST_MSECOND,
-                      GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
+    while(time < m_duration) {
+        gst_element_seek (m_pipeline, 1.0,
+                          GST_FORMAT_TIME,  static_cast<GstSeekFlags>(GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT),
+                          GST_SEEK_TYPE_SET, time * GST_MSECOND,
+                          GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
 
-	/* And wait for this seek to complete */
-	gst_element_get_state (m_pipeline, NULL, NULL, GST_CLOCK_TIME_NONE);
+        /* And wait for this seek to complete */
+        gst_element_get_state (m_pipeline, NULL, NULL, GST_CLOCK_TIME_NONE);
 
-    /* get frame */
-    ThumbnailImageData *buf = 0;
+        /* get frame */
+        ThumbnailImageData *buf = 0;
 
-    g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
-    QImage img = parseImage (buf);
-
-    return img;
+        g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
+        QImage img = parseImage (buf);
+        if (skipBlack && !isMeaningful(img)) {
+            time += 1000;
+            continue;
+        } else {
+            return img;
+        }
+    }
 }

@@ -30,7 +30,7 @@ public:
     void setUri(const QString &uri);
     QString uri() const;
 
-    QImage request(qint64 time);
+    QImage request(qint64 time, bool skipBlack=true);
 
 private:
     GstElement *m_pipeline;
@@ -42,6 +42,7 @@ private:
     bool start();
     void stop();
     QImage parseImage(ThumbnailImageData *buffer);
+    bool isMeaningful(QImage img);
 };
 
 #endif
