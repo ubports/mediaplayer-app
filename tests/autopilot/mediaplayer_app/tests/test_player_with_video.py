@@ -144,6 +144,27 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertEqual(time_label.text[0:9], "- 00:00:0")
 
 
+    def test_show_controls_at_end(self):
+        self.show_controls()
+        time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
+
+        """ Seek to the midle of the video  """        
+        self.mouse.move_to_object(time_line)
+        self.mouse.click()
+        
+        """ hide controls """
+        video_area = self.main_window.get_object("VideoPlayer", "player")
+        self.mouse.move_to_object(video_area)
+        self.mouse.click()
+
+        """ wait for video ends and control appears"""
+        controls = self.main_window.get_object("Controls", "controls")
+        self.assertProperty(controls, visible=False)
+        self.assertThat(controls.visible, Eventually(Equals(True)))
+
+        
+
+
 
 
 
