@@ -1,3 +1,9 @@
+media-player (0.20.3) quantal; urgency=low
+
+  * Add NoDisplay=true into media-player.desktop.
+
+ -- Ying-Chun Liu (PaulLiu) <paul.liu@canonical.com>  Tue, 02 Apr 2013 22:36:54 +0800
+
 media-player (0.20.2) quantal; urgency=low
 
   * removed qtmultimedia5-dev from runtime dep  
