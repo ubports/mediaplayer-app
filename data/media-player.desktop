@@ -6,3 +6,4 @@ Comment=Media Player
 Exec=media-player %u
 Terminal=false
 Icon=media-player
+NoDisplay=true
