@@ -174,7 +174,6 @@ bool ThumbnailPipeline::isMeaningful(QImage img)
                 if (nonBlackCount > minimumNonBlack) {
                     return true;
                 }
-
             }
         }
     }
