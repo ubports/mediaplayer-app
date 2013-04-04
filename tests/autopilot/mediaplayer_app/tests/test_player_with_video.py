@@ -9,15 +9,10 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals, GreaterThan
+from testtools.matchers import Equals, GreaterThan
 from autopilot.matchers import Eventually
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
-
-import unittest
-import time
-import os
-from os import path
 
 class TestPlayerWithVideo(MediaplayerAppTestCase):
     """Tests the main media player features while playing a video """

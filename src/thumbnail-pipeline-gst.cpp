@@ -160,6 +160,8 @@ QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
 bool ThumbnailPipeline::isMeaningful(QImage img)
 {
     static const float MINIMUN_NON_BLACK_PERCENTAGE = 0.001;
+    if (img.isNull())
+        return false;
 
     const int minimumNonBlack = ((img.height() * img.width()) * MINIMUN_NON_BLACK_PERCENTAGE);
     int nonBlackCount = 0;
@@ -208,4 +210,6 @@ QImage ThumbnailPipeline::request(qint64 time, bool skipBlack)
             return img;
         }
     }
+
+    return QImage();
 }
