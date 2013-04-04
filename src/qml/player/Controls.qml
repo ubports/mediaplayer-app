@@ -276,8 +276,6 @@ Item {
             _sceneSelectorModel.clear()
             var frameSize = video.duration / 10;
             for (var i = 0; i < 10; ++i) {
-                // TODO: discuss this with designers
-                // shift 3s to avoid black frame in the position 0
                 var pos = Math.floor(i * frameSize);
                 if (pos <= video.duration) {
                     _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + pos,
