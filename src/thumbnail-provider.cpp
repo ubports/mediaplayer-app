@@ -88,15 +88,10 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
     if (m_cache.contains(time)) {
         img = m_cache[time];
     } else {
-        img = m_player->request(time).copy();
+        img = m_player->request(time, requestedSize).copy();
         m_cache.insert(time, img);
     }
 
-    if (requestedSize.isValid()) {
-        *size = requestedSize;
-        return img.scaled(requestedSize);
-    } else {
-        *size = img.size();
-        return img;
-    }
+    *size = img.size();
+    return img;
 }

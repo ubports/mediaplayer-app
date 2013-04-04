@@ -16,6 +16,7 @@
 
 #include <QDebug>
 #include <gst/gst.h>
+#include <math.h>
 
 #include "thumbnail-pipeline-gst.h"
 
@@ -157,38 +158,37 @@ QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
     return parseImageGst(buffer);
 }
 
+// uses standard deviation to discovery a good image
 bool ThumbnailPipeline::isMeaningful(QImage img)
-{
-    static const float MINIMUN_NON_BLACK_PERCENTAGE = 0.001;
-    if (img.isNull())
-        return false;
+{   
+    const static int threshold = 15;
+    const float average = (img.height() * img.width()) / 256;
+    int histogram[256];
 
-    const int minimumNonBlack = ((img.height() * img.width()) * MINIMUN_NON_BLACK_PERCENTAGE);
-    int nonBlackCount = 0;
-
+    memset(histogram, 0, sizeof(int) * 256);
     for(int h=0, hMax = img.height(); h < hMax; h++) {
         for(int w=0, wMax = img.width(); w < wMax; w++) {
-            QRgb rgb = img.pixel(w, h);
-            if ((qRed(rgb) != 0) ||
-                (qGreen(rgb) != 0) ||
-                (qBlue(rgb) != 0)) {
-                nonBlackCount++;
-                if (nonBlackCount > minimumNonBlack) {
-                    return true;
-                }
-            }
+            histogram[qGray(img.pixel(w, h))]++;
         }
     }
-    return false;
+
+    float sum = 0;
+    for(int i=0; i < 256; i++) {
+        sum += pow(average - histogram[i], 2);
+    }
+
+    return ((sqrt(sum / 256) / average) <= threshold);
 }
 
-QImage ThumbnailPipeline::request(qint64 time, bool skipBlack)
+QImage ThumbnailPipeline::request(qint64 time, QSize size, bool skipBlack)
 {    
     if (m_pipeline == 0) {
         qWarning() << "Pipiline not ready";
         return QImage();
     }
 
+
+    QImage firstImage;
     while(time < m_duration) {
         gst_element_seek (m_pipeline, 1.0,
                           GST_FORMAT_TIME,  static_cast<GstSeekFlags>(GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT),
@@ -203,7 +203,14 @@ QImage ThumbnailPipeline::request(qint64 time, bool skipBlack)
 
         g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
         QImage img = parseImage (buf);
-        if (skipBlack && !isMeaningful(img)) {
+        if (size.isValid()) {
+            img = img.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        }
+
+        if (skipBlack && !isMeaningful (img)) {
+            if (firstImage.isNull()) {
+                firstImage = img.copy();
+            }
             time += 1000;
             continue;
         } else {
@@ -211,5 +218,6 @@ QImage ThumbnailPipeline::request(qint64 time, bool skipBlack)
         }
     }
 
-    return QImage();
+    // return the original frame if any other was found
+    return firstImage;
 }

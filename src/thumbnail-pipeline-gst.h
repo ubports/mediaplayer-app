@@ -30,7 +30,7 @@ public:
     void setUri(const QString &uri);
     QString uri() const;
 
-    QImage request(qint64 time, bool skipBlack=true);
+    QImage request(qint64 time, QSize size, bool skipBlack=true);
 
 private:
     GstElement *m_pipeline;
