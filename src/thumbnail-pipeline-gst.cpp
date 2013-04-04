@@ -153,12 +153,12 @@ QImage parseImageGst(ThumbnailImageData *buffer)
     return QImage();
 }
 
-QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
+QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer) const
 {
     return parseImageGst(buffer);
 }
 
-// uses standard deviation to discovery a good image
+// use standard deviation of the histogram to discovery a good image
 bool ThumbnailPipeline::isMeaningful(QImage img)
 {   
     const static int threshold = 15;

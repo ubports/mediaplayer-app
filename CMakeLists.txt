@@ -19,6 +19,9 @@ include(GNUInstallDirs)
 
 set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/media-player)
 
+# Tests
+enable_testing()
+
 add_subdirectory(data)
 add_subdirectory(sdk)
 add_subdirectory(src)

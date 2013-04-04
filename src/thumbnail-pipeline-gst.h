@@ -31,6 +31,7 @@ public:
     QString uri() const;
 
     QImage request(qint64 time, QSize size, bool skipBlack=true);
+    static bool isMeaningful(QImage img);
 
 private:
     GstElement *m_pipeline;
@@ -41,8 +42,9 @@ private:
     void setup();
     bool start();
     void stop();
-    QImage parseImage(ThumbnailImageData *buffer);
-    bool isMeaningful(QImage img);
+
+    QImage parseImage(ThumbnailImageData *buffer) const;
+
 };
 
 #endif
