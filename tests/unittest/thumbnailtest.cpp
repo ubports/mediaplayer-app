@@ -28,58 +28,28 @@ class ThumbnailTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
-    /*
-     * Test if a black image is a valid frame
-     */
-    void testImageBlackIsMeaningful()
+    void testImageIsMeaningful_data()
     {
-        QImage blackFrame = QImage(QString(SAMPLE_IMAGES_DIR) + "/frame0.png");
-        QVERIFY(!blackFrame.isNull());
+        QTest::addColumn<QString>("path");
+        QTest::addColumn<bool>("expectedResult");
 
-        // black frame is not acceptable
-        QCOMPARE(ThumbnailPipeline::isMeaningful(blackFrame), false);
+        QTest::newRow("black image") << QString(SAMPLE_IMAGES_DIR) + "/frame0.png" << false;
+        QTest::newRow("non black image") << QString(SAMPLE_IMAGES_DIR) + "/frame10.png" << true;
+        QTest::newRow("collored image") << QString(SAMPLE_IMAGES_DIR) + "/frame20.png" << true;
+        QTest::newRow("almost black image") << QString(SAMPLE_IMAGES_DIR) + "/frame100.png" << false;
     }
 
-    /*
-     * Test if a non black image is a valid frame
-     */
-    void testImageFireworksIsMeaningful()
+    void testImageIsMeaningful()
     {
-        QImage fireworksFrame = QImage(QString(SAMPLE_IMAGES_DIR) + "/frame10.png");
-        QVERIFY(!fireworksFrame.isNull());
+        QFETCH(QString, path);
+        QFETCH(bool, expectedResult);
 
-        // non black frame is acceptable
-        QCOMPARE(ThumbnailPipeline::isMeaningful(fireworksFrame), true);
+        QImage img = QImage(path);
+        QVERIFY(!img.isNull());
+
+        bool result = ThumbnailPipeline::isMeaningful(img);
+        QCOMPARE(result, expectedResult);
     }
-
-
-    /*
-     * Test if a collored image is a valid frame
-     */
-    void testImageUbuntuIsMeaningful()
-    {
-        QImage ubuntuFrame = QImage(QString(SAMPLE_IMAGES_DIR) + "/frame20.png");
-        QVERIFY(!ubuntuFrame.isNull());
-
-        // collored frame is acceptable
-        QCOMPARE(ThumbnailPipeline::isMeaningful(ubuntuFrame), true);
-    }
-
-
-    /*
-     * Test if a almost black image is a valid frame
-     */
-    void testTheEndIsMeaningful()
-    {
-        QImage theEndFrame = QImage(QString(SAMPLE_IMAGES_DIR) + "/frame100.png");
-        QVERIFY(!theEndFrame.isNull());
-
-        // almost black frame is not acceptable
-        QCOMPARE(ThumbnailPipeline::isMeaningful(theEndFrame), false);
-    }
-
-
-
 };
 
 QTEST_MAIN(ThumbnailTest)
