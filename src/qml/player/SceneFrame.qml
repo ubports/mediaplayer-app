@@ -53,13 +53,14 @@ MouseArea {
             }
         }
 
-
         image: Image {
             id: _image
 
             fillMode: Image.PreserveAspectCrop
             smooth: true
             asynchronous: true
+            sourceSize.width: _shape.width
+            sourceSize.height: _shape.height
         }
     }
 
