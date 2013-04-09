@@ -45,7 +45,7 @@ Depends: ${misc:Depends},
          libautopilot-qt,
          libqt5test5,
          libqt5widgets5,
-         media-player (>= ${source:Version}),
+         mediaplayer-app (>= ${source:Version}),
 Conflicts: media-player-autopilot
 Replaces: media-player-autopilot
 Provides: media-player-autopilot
