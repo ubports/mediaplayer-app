@@ -16,6 +16,7 @@
 
 #include <QDebug>
 #include <gst/gst.h>
+#include <math.h>
 
 #include "thumbnail-pipeline-gst.h"
 
@@ -152,31 +153,71 @@ QImage parseImageGst(ThumbnailImageData *buffer)
     return QImage();
 }
 
-QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer)
+QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer) const
 {
     return parseImageGst(buffer);
 }
 
-QImage ThumbnailPipeline::request(qint64 time)
+// use standard deviation of the histogram to discovery a good image
+bool ThumbnailPipeline::isMeaningful(QImage img)
+{   
+    const static int threshold = 15;
+    const float average = (img.height() * img.width()) / 256;
+    int histogram[256];
+
+    memset(histogram, 0, sizeof(int) * 256);
+    for(int h=0, hMax = img.height(); h < hMax; h++) {
+        for(int w=0, wMax = img.width(); w < wMax; w++) {
+            histogram[qGray(img.pixel(w, h))]++;
+        }
+    }
+
+    float sum = 0;
+    for(int i=0; i < 256; i++) {
+        sum += pow(average - histogram[i], 2);
+    }
+
+    return ((sqrt(sum / 256) / average) <= threshold);
+}
+
+QImage ThumbnailPipeline::request(qint64 time, QSize size, bool skipBlack)
 {    
     if (m_pipeline == 0) {
         qWarning() << "Pipiline not ready";
         return QImage();
     }
 
-	gst_element_seek (m_pipeline, 1.0,
-                      GST_FORMAT_TIME,  static_cast<GstSeekFlags>(GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT),
-                      GST_SEEK_TYPE_SET, time * GST_MSECOND,
-                      GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
 
-	/* And wait for this seek to complete */
-	gst_element_get_state (m_pipeline, NULL, NULL, GST_CLOCK_TIME_NONE);
+    QImage firstImage;
+    while(time < m_duration) {
+        gst_element_seek (m_pipeline, 1.0,
+                          GST_FORMAT_TIME,  static_cast<GstSeekFlags>(GST_SEEK_FLAG_FLUSH | GST_SEEK_FLAG_KEY_UNIT),
+                          GST_SEEK_TYPE_SET, time * GST_MSECOND,
+                          GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
 
-    /* get frame */
-    ThumbnailImageData *buf = 0;
+        /* And wait for this seek to complete */
+        gst_element_get_state (m_pipeline, NULL, NULL, GST_CLOCK_TIME_NONE);
 
-    g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
-    QImage img = parseImage (buf);
+        /* get frame */
+        ThumbnailImageData *buf = 0;
 
-    return img;
+        g_signal_emit_by_name (m_pipeline, "convert-frame", m_caps, &buf);
+        QImage img = parseImage (buf);
+        if (size.isValid()) {
+            img = img.scaled(size, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        }
+
+        if (skipBlack && !isMeaningful (img)) {
+            if (firstImage.isNull()) {
+                firstImage = img.copy();
+            }
+            time += 1000;
+            continue;
+        } else {
+            return img;
+        }
+    }
+
+    // return the original frame if any other was found
+    return firstImage;
 }

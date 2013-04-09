@@ -276,12 +276,12 @@ Item {
             _sceneSelectorModel.clear()
             var frameSize = video.duration / 10;
             for (var i = 0; i < 10; ++i) {
-                // TODO: discuss this with designers
-                // shift 3s to avoid black frame in the position 0
                 var pos = Math.floor(i * frameSize);
-                _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + (pos + 3000),
-                                            "start" : pos,
-                                            "duration" : frameSize})
+                if (pos <= video.duration) {
+                    _sceneSelectorModel.append({"thumbnail": "image://video/" + video.source + "/" + pos,
+                                                "start" : pos,
+                                                "duration" : frameSize})
+                }
              }
         }
     }
