@@ -1,4 +1,4 @@
-Source: media-player
+Source: mediaplayer-app
 Section: video
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -18,7 +18,7 @@ Standards-Version: 3.9.4
 Vcs-Bzr: lp:mediaplayer-app
 Vcs-Browser: https://code.launchpad.net/mediaplayer-app
 
-Package: media-player
+Package: mediaplayer-app
 Architecture: i386 amd64 armhf
 Depends: ${misc:Depends},
          ${shlibs:Depends},
@@ -32,10 +32,13 @@ Depends: ${misc:Depends},
          qtdeclarative5-xmllistmodel-plugin,
          qtmultimedia5-dev,
          qtubuntu-media[armhf] | mediaplayerplugin-aal[armhf],
+Conflicts: media-player
+Replaces: media-player
+Provides: media-player
 Description: Ubuntu Media player
  A QML Media player service used by Ubuntu shell to play video sources.
 
-Package: media-player-autopilot
+Package: mediaplayer-app-autopilot
 Architecture: all
 Depends: ${misc:Depends},
          ${shlibs:Depends},
@@ -43,6 +46,9 @@ Depends: ${misc:Depends},
          libqt5test5,
          libqt5widgets5,
          media-player (>= ${source:Version}),
-Description: Test package for the media-player app
- Autopilot tests for the media-player package
+Conflicts: media-player-autopilot
+Replaces: media-player-autopilot
+Provides: media-player-autopilot
+Description: Test package for mediaplayer-app
+ Autopilot tests for the mediaplayer-app package
 

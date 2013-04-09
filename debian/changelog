@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.2) UNRELEASED; urgency=low
+
+  * Rename package to mediaplayer-app
+  * Clean up packaging
+  * Automatic snapshot from revision 65 (bootstrap)
+
+ -- Michael Terry <mterry@ubuntu.com>  Tue, 09 Apr 2013 12:38:26 -0400
+
 media-player (0.20.1) quantal; urgency=low
 
   * Changing packaging dependencies to work with raring
