@@ -46,7 +46,6 @@ Rectangle {
 
     function stop() {
         state = "stopped"
-        source = ""
     }
 
     function play() {
