@@ -1,3 +1,9 @@
+mediaplayer-app (0.20.4-0ubuntu1) UNRELEASED; urgency=low
+
+  * Prepare for daily release
+
+ -- Didier Roche <didrocks@ubuntu.com>  Fri, 19 Apr 2013 08:24:49 +0200
+
 mediaplayer-app (0.20.4) quantal; urgency=low
 
   [ Michael Terry ]
