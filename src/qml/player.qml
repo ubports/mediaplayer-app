@@ -137,6 +137,7 @@ Rectangle {
         target: playerLoader.item
         onStatusChanged: {
             if (playerLoader.item.status === MediaPlayer.EndOfMedia) {
+                playerLoader.item.stop()
                 playerLoader.item.controlsActive = true
             }
         }
