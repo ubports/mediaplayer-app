@@ -124,6 +124,7 @@ void ThumbnailPipeline::setup()
         vsink = gst_element_factory_make ("fakesink", "video-fake-sink");
         g_object_set (vsink, "sync", TRUE, NULL);
         g_object_set (m_pipeline,
+                  "flags", 0x00000001,
                   "audio-sink", asink,
                   "video-sink", vsink,
                   NULL);
@@ -160,7 +161,7 @@ QImage ThumbnailPipeline::parseImage(ThumbnailImageData *buffer) const
 
 // use standard deviation of the histogram to discovery a good image
 bool ThumbnailPipeline::isMeaningful(QImage img)
-{   
+{
     const static int threshold = 15;
     const float average = (img.height() * img.width()) / 256;
     int histogram[256];
@@ -181,7 +182,7 @@ bool ThumbnailPipeline::isMeaningful(QImage img)
 }
 
 QImage ThumbnailPipeline::request(qint64 time, QSize size, bool skipBlack)
-{    
+{
     if (m_pipeline == 0) {
         qWarning() << "Pipiline not ready";
         return QImage();
