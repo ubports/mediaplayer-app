@@ -22,7 +22,6 @@ Package: mediaplayer-app
 Architecture: i386 amd64 armhf
 Depends: ${misc:Depends},
          ${shlibs:Depends},
-         gstreamer0.10-ffmpeg,
          gstreamer0.10-plugins-base,
          gstreamer0.10-plugins-good,
          libhud-qt-qml,

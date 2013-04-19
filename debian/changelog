@@ -1,8 +1,10 @@
-mediaplayer-app (0.20.4-0ubuntu1) UNRELEASED; urgency=low
+mediaplayer-app (0.20.5) quantal; urgency=low
 
-  * Prepare for daily release
+  [ Renato Araujo Oliveira Filho ]
+  * Stop video at EOF
+  * Removed ffmepg codecs from dependency list
 
- -- Didier Roche <didrocks@ubuntu.com>  Fri, 19 Apr 2013 08:24:49 +0200
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Fri, 19 Apr 2013 11:33:59 -0300
 
 mediaplayer-app (0.20.4) quantal; urgency=low
 
