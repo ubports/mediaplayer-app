@@ -72,7 +72,7 @@ Item {
             }
         }
 
-        onSliderClicked: {
+        onTouched: {
             _timeLine.clicked(onThumb)
         }
     }

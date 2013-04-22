@@ -19,7 +19,6 @@
 
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import "/usr/share/themes/Ambiance/qmltheme/styleUtils.js" as StyleUtils
 
 Item {
     id: main
@@ -30,7 +29,7 @@ Item {
     property Item thumb: thumbShape
 
     // private properties
-    property real thumbSpacing: StyleUtils.itemStyleProperty("thumbSpacing", 0)
+    property real thumbSpacing: 0
     property real liveValue: SliderUtils.liveValue(item)
     property real normalizedValue: SliderUtils.normalizedValue(item)
 
@@ -82,7 +81,6 @@ Item {
         id: thumbShape
 
         x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
-        //y: backgroundShape.y + thumbSpacing
         anchors.verticalCenter: backgroundShape.verticalCenter
         width: thumbWidth
         height: thumbWidth
