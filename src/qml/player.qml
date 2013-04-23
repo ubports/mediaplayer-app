@@ -22,7 +22,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
-import Ubuntu.HUD 0.1 as HUD
+import Ubuntu.HUD 1.0 as HUD
 
 Rectangle {
     id: mediaPlayer
@@ -146,7 +146,10 @@ Rectangle {
     HUD.HUD {
         applicationIdentifier: "media-player" // this must match the .desktop file!
         HUD.Context {
-            toolbar.quitAction.onTriggered: Qt.quit()
+            HUD.QuitAction {
+                onTriggered: Qt.quit()
+            }
+
             HUD.Action {
                 label: "Play / Pause"
                 keywords: "Pause or Resume Playhead"
