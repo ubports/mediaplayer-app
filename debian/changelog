@@ -1,5 +1,8 @@
 mediaplayer-app (0.20.5) quantal; urgency=low
 
+  [ Didier Roche ]
+  * Prepare for daily release
+
   [ Renato Araujo Oliveira Filho ]
   * Stop video at EOF
   * Removed ffmepg codecs from dependency list
