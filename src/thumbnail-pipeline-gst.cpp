@@ -124,7 +124,7 @@ void ThumbnailPipeline::setup()
         vsink = gst_element_factory_make ("fakesink", "video-fake-sink");
         g_object_set (vsink, "sync", TRUE, NULL);
         g_object_set (m_pipeline,
-                  "flags", 0x00000001,
+                  "flags", 0x00000001, // Make sure to render only the video stream (we do not need audio here)
                   "audio-sink", asink,
                   "video-sink", vsink,
                   NULL);
