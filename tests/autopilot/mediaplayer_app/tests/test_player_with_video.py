@@ -9,8 +9,8 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, GreaterThan
 from autopilot.matchers import Eventually
+from testtools.matchers import Equals, GreaterThan
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 

@@ -11,12 +11,11 @@ from os import remove
 import os.path
 import os
 
-from autopilot.introspection.qt import QtIntrospectionTestMixin
 from autopilot.testcase import AutopilotTestCase
 
 from mediaplayer_app.emulators.main_window import MainWindow
 
-class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
+class MediaplayerAppTestCase(AutopilotTestCase):
 
     """A common test case class that provides several useful methods for mediaplayer-app tests."""
 
