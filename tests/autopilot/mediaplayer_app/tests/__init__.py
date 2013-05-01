@@ -11,6 +11,8 @@ from os import remove
 import os.path
 import os
 
+from autopilot.input import Mouse, Touch, Pointer
+from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
 from mediaplayer_app.emulators.main_window import MainWindow
@@ -19,7 +21,17 @@ class MediaplayerAppTestCase(AutopilotTestCase):
 
     """A common test case class that provides several useful methods for mediaplayer-app tests."""
 
+    if model() == 'Desktop':
+        scenarios = [
+        ('with mouse', dict(input_device_class=Mouse)),
+        ]
+    else:
+        scenarios = [
+        ('with touch', dict(input_device_class=Touch)),
+        ]
+
     def setUp(self):
+        self.pointing_device = Pointer(self.input_device_class.create())
         super(MediaplayerAppTestCase, self).setUp()
 
     def launch_app(self, movie_file=None):
