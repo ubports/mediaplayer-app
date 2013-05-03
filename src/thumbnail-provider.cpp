@@ -30,7 +30,7 @@ ThumbnailProvider::ThumbnailProvider()
       QQuickImageProvider(QQuickImageProvider::Image),
       m_player(0)
 {
-    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()), Qt::DirectConnection);
     createPlayer();
 }
 
@@ -38,6 +38,7 @@ ThumbnailProvider::~ThumbnailProvider()
 {
     if (m_player) {
         delete m_player;
+        m_player = 0;
     }
 }
 
@@ -48,8 +49,10 @@ void ThumbnailProvider::createPlayer()
 
 void ThumbnailProvider::applicationAboutToQuit()
 {
+    m_mutex.lock();
     delete m_player;
     m_player = 0;
+    m_mutex.unlock();
 }
 
 QString ThumbnailProvider::parseThumbnailName(const QString &id, qint64 *time) const
@@ -79,6 +82,19 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         return QImage();        
     }
 
+    // check if the player exists ( the application still running )
+    if (!m_player) {
+        return QImage();
+    }
+
+    m_mutex.lock();
+
+    // again check if the player exits after lock the mutex
+    if (!m_player) {
+        m_mutex.unlock();
+        return QImage();
+    }
+
     if (uri != m_player->uri()) {
         m_player->setUri(uri);
         m_cache.clear();
@@ -89,8 +105,11 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         img = m_cache[time];
     } else {
         img = m_player->request(time, requestedSize).copy();
-        m_cache.insert(time, img);
+        if (!img.isNull()) {
+            m_cache.insert(time, img);
+        }
     }
+    m_mutex.unlock();
 
     *size = img.size();
     return img;

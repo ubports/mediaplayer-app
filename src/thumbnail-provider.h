@@ -23,6 +23,7 @@
 #include <QtGui/QImage>
 #include <QtCore/QMap>
 #include <QtCore/QQueue>
+#include <QtCore/QMutex>
 
 class ThumbnailPipeline;
 
@@ -42,6 +43,7 @@ class ThumbnailProvider : public QObject, public QQuickImageProvider
     private:
         ThumbnailPipeline *m_player;
         QMap<qint64, QImage> m_cache;
+        QMutex m_mutex;
 
         void createPlayer();
         QString parseThumbnailName(const QString &id, qint64 *time) const;
