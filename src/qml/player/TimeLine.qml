@@ -41,7 +41,8 @@ Item {
     Binding { target: _slider; property: "value"; value: _timeLine.value }
 
     Component.onCompleted: {
-        var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
+        //TODO: waiting for SDK bug fix: https://bugs.launchpad.net/ubuntu-ui-toolkit/+bug/1168006
+        //var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
     }
 
     Slider {
