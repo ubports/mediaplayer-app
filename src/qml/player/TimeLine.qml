@@ -20,6 +20,7 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../sdk"
+import "../theme"
 
 Item {
     id: _timeLine
@@ -40,15 +41,11 @@ Item {
     // "property alias value: _slider.value" does not work
     Binding { target: _slider; property: "value"; value: _timeLine.value }
 
-    Component.onCompleted: {
-        //TODO: waiting for SDK bug fix: https://bugs.launchpad.net/ubuntu-ui-toolkit/+bug/1168006
-        //var result = Theme.loadTheme(Qt.resolvedUrl("../theme/theme.qmltheme"))
-    }
-
     Slider {
         id: _slider
 
         objectName: "TimeLine.Slider"
+        ItemStyle.delegate: VideoSlider {property Item item: _slider}
         anchors {
             top: parent.top
             bottom: parent.bottom
