@@ -20,6 +20,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
 #include <QtCore/QMutex>
+#include <QtCore/QMutexLocker>
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QVideoRendererControl>
 #include <QtMultimedia/QMediaService>
@@ -30,14 +31,16 @@ ThumbnailProvider::ThumbnailProvider()
       QQuickImageProvider(QQuickImageProvider::Image),
       m_player(0)
 {
-    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()));
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(applicationAboutToQuit()), Qt::DirectConnection);
     createPlayer();
 }
 
 ThumbnailProvider::~ThumbnailProvider()
 {
     if (m_player) {
+        QMutexLocker locker(&m_mutex);
         delete m_player;
+        m_player = 0;
     }
 }
 
@@ -48,6 +51,7 @@ void ThumbnailProvider::createPlayer()
 
 void ThumbnailProvider::applicationAboutToQuit()
 {
+    QMutexLocker locker(&m_mutex);
     delete m_player;
     m_player = 0;
 }
@@ -79,6 +83,19 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         return QImage();        
     }
 
+    // check if the player exists ( the application still running )
+    if (!m_player) {
+        return QImage();
+    }
+
+    QMutexLocker locker(&m_mutex);
+
+    // again check if the player exits after lock the mutex, since this function will run in a separed thread,
+    // the application could be destroyed at this point and the function applicationAboutToQuit was called
+    if (!m_player) {
+        return QImage();
+    }
+
     if (uri != m_player->uri()) {
         m_player->setUri(uri);
         m_cache.clear();
@@ -89,7 +106,9 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         img = m_cache[time];
     } else {
         img = m_player->request(time, requestedSize).copy();
-        m_cache.insert(time, img);
+        if (!img.isNull()) {
+            m_cache.insert(time, img);
+        }
     }
 
     *size = img.size();
