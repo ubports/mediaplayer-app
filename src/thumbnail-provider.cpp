@@ -20,6 +20,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QTimer>
 #include <QtCore/QMutex>
+#include <QtCore/QMutexLocker>
 #include <QtCore/QCoreApplication>
 #include <QtMultimedia/QVideoRendererControl>
 #include <QtMultimedia/QMediaService>
@@ -37,6 +38,7 @@ ThumbnailProvider::ThumbnailProvider()
 ThumbnailProvider::~ThumbnailProvider()
 {
     if (m_player) {
+        QMutexLocker locker(&m_mutex);
         delete m_player;
         m_player = 0;
     }
@@ -49,10 +51,9 @@ void ThumbnailProvider::createPlayer()
 
 void ThumbnailProvider::applicationAboutToQuit()
 {
-    m_mutex.lock();
+    QMutexLocker locker(&m_mutex);
     delete m_player;
     m_player = 0;
-    m_mutex.unlock();
 }
 
 QString ThumbnailProvider::parseThumbnailName(const QString &id, qint64 *time) const
@@ -87,11 +88,10 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
         return QImage();
     }
 
-    m_mutex.lock();
+    QMutexLocker locker(&m_mutex);
 
     // again check if the player exits after lock the mutex
     if (!m_player) {
-        m_mutex.unlock();
         return QImage();
     }
 
@@ -109,7 +109,6 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
             m_cache.insert(time, img);
         }
     }
-    m_mutex.unlock();
 
     *size = img.size();
     return img;
