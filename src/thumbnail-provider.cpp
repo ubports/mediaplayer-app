@@ -90,7 +90,8 @@ QImage ThumbnailProvider::requestImage (const QString &id, QSize *size, const QS
 
     QMutexLocker locker(&m_mutex);
 
-    // again check if the player exits after lock the mutex
+    // again check if the player exits after lock the mutex, since this function will run in a separed thread,
+    // the application could be destroyed at this point and the function applicationAboutToQuit was called
     if (!m_player) {
         return QImage();
     }
