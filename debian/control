@@ -31,7 +31,6 @@ Depends: ${misc:Depends},
          qtdeclarative5-window-plugin,
          qtdeclarative5-xmllistmodel-plugin,
          qtubuntu-media[armhf] | mediaplayerplugin-aal[armhf],
-         libqt5multimedia5-plugins
 Conflicts: media-player
 Replaces: media-player
 Provides: media-player
