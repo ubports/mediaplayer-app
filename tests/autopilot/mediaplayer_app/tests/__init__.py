@@ -23,12 +23,10 @@ class MediaplayerAppTestCase(AutopilotTestCase):
 
     if model() == 'Desktop':
         scenarios = [
-        ('with mouse', dict(input_device_class=Mouse)),
-        ]
+        ('with mouse', dict(input_device_class=Mouse)), ]
     else:
         scenarios = [
-        ('with touch', dict(input_device_class=Touch)),
-        ]
+        ('with touch', dict(input_device_class=Touch)), ]
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
@@ -54,20 +52,18 @@ class MediaplayerAppTestCase(AutopilotTestCase):
             self.app = None
 
     def launch_test_installed(self, movie_file):
-        if self.running_on_device():
-            self.app = self.launch_test_application(
-               "media-player",
-               "--fullscreen ",
-               movie_file)
-        else:
+        if model() == 'Desktop':
             self.app = self.launch_test_application(
                "media-player",
                "-w",
                "/usr/share/media-player/videos/" + movie_file)
-
-    @staticmethod
-    def running_on_device():
-        return os.path.isfile('/system/usr/idc/autopilot-finger.idc')
+        else:
+            self.app = self.launch_test_application(
+               "media-player",
+               "--fullscreen ",
+               movie_file,
+               "--desktop_file_hint=/usr/share/applications/mediaplayer-app.desktop",
+               app_type='qt')
 
     @property
     def main_window(self):
