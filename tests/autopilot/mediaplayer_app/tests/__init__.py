@@ -11,16 +11,25 @@ from os import remove
 import os.path
 import os
 
-from autopilot.introspection.qt import QtIntrospectionTestMixin
+from autopilot.input import Mouse, Touch, Pointer
+from autopilot.platform import model
 from autopilot.testcase import AutopilotTestCase
 
 from mediaplayer_app.emulators.main_window import MainWindow
 
-class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
+class MediaplayerAppTestCase(AutopilotTestCase):
 
     """A common test case class that provides several useful methods for mediaplayer-app tests."""
 
+    if model() == 'Desktop':
+        scenarios = [
+        ('with mouse', dict(input_device_class=Mouse)), ]
+    else:
+        scenarios = [
+        ('with touch', dict(input_device_class=Touch)), ]
+
     def setUp(self):
+        self.pointing_device = Pointer(self.input_device_class.create())
         super(MediaplayerAppTestCase, self).setUp()
 
     def launch_app(self, movie_file=None):
@@ -43,20 +52,18 @@ class MediaplayerAppTestCase(AutopilotTestCase, QtIntrospectionTestMixin):
             self.app = None
 
     def launch_test_installed(self, movie_file):
-        if self.running_on_device():
-            self.app = self.launch_test_application(
-               "media-player",
-               "--fullscreen ",
-               movie_file)
-        else:
+        if model() == 'Desktop':
             self.app = self.launch_test_application(
                "media-player",
                "-w",
                "/usr/share/media-player/videos/" + movie_file)
-
-    @staticmethod
-    def running_on_device():
-        return os.path.isfile('/system/usr/idc/autopilot-finger.idc')
+        else:
+            self.app = self.launch_test_application(
+               "media-player",
+               "--fullscreen ",
+               movie_file,
+               "--desktop_file_hint=/usr/share/applications/mediaplayer-app.desktop",
+               app_type='qt')
 
     @property
     def main_window(self):

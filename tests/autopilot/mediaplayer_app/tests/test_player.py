@@ -9,8 +9,8 @@
 
 from __future__ import absolute_import
 
-from testtools.matchers import Equals, NotEquals, GreaterThan
 from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
@@ -41,11 +41,11 @@ class TestPlayer(MediaplayerAppTestCase):
 
         """ Toolbar must apper when clicked in the video area """
         video_area = self.main_window.get_object("VideoPlayer", "player")
-        self.mouse.move_to_object(video_area)
-        self.mouse.click()
+        self.pointing_device.move_to_object(video_area)
+        self.pointing_device.click()
         self.assertProperty(controls, visible=True)
 
         """ Toolbar must disappear when clicked in the video area again """
-        self.mouse.click()
+        self.pointing_device.click()
         self.assertProperty(controls, visible=True)
 
