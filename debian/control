@@ -34,6 +34,7 @@ Depends: ${misc:Depends},
 Conflicts: media-player
 Replaces: media-player
 Provides: media-player
+Recommends: libqt5multimedia5-plugins
 Description: Ubuntu Media player
  A QML Media player service used by Ubuntu shell to play video sources.
 
