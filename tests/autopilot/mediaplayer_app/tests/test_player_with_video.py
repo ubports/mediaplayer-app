@@ -109,7 +109,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pointing_device.move_to_object(scene_2)
         self.pointing_device.click()
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
-        self.assertProperty(time_line, value=1.113)
+        self.assertProperty(time_line, value=1.107)
 
     def test_time_display_behavior(self):
         self.show_controls()
