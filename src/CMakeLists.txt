@@ -1,6 +1,6 @@
 project(mediaplayer_src)
 
-set(MEDIAPLAYER media-player)
+set(MEDIAPLAYER mediaplayer-app)
 
 include_directories(
     ${CMAKE_BINARY_DIR}

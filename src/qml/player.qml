@@ -144,7 +144,7 @@ Rectangle {
     }
 
     HUD.HUD {
-        applicationIdentifier: "media-player" // this must match the .desktop file!
+        applicationIdentifier: "mediaplayer-app" // this must match the .desktop file!
         HUD.Context {
             HUD.QuitAction {
                 onTriggered: Qt.quit()
