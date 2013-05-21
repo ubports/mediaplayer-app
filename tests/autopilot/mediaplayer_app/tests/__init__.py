@@ -54,12 +54,12 @@ class MediaplayerAppTestCase(AutopilotTestCase):
     def launch_test_installed(self, movie_file):
         if model() == 'Desktop':
             self.app = self.launch_test_application(
-               "media-player",
+               "mediaplayer-app",
                "-w",
-               "/usr/share/media-player/videos/" + movie_file)
+               "/usr/share/mediaplayer-app/videos/" + movie_file)
         else:
             self.app = self.launch_test_application(
-               "media-player",
+               "mediaplayer-app",
                "--fullscreen ",
                movie_file,
                "--desktop_file_hint=/usr/share/applications/mediaplayer-app.desktop",

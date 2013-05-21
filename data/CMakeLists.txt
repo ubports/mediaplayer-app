@@ -1,5 +1,5 @@
-set(MEDIAPLAYER_DESKTOP_FILE media-player.desktop)
-set(MEDIAPLAYER_APP_ICON media-player.svg)
+set(MEDIAPLAYER_DESKTOP_FILE mediaplayer-app.desktop)
+set(MEDIAPLAYER_APP_ICON mediaplayer-app.svg)
 
 install(FILES ${MEDIAPLAYER_DESKTOP_FILE}
     DESTINATION ${CMAKE_INSTALL_DATADIR}/applications

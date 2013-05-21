@@ -17,7 +17,7 @@ pkg_check_modules(GSTLIB REQUIRED gstreamer-0.10)
 # Standard install paths
 include(GNUInstallDirs)
 
-set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/media-player)
+set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/mediaplayer-app)
 
 # Tests
 enable_testing()

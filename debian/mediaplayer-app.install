@@ -1,4 +1,4 @@
-/usr/share/applications/media-player.desktop
-/usr/share/icons/hicolor/scalable/apps/media-player.svg
-/usr/bin/media-player
-/usr/share/media-player/qml/*
+/usr/share/applications/mediaplayer-app.desktop
+/usr/share/icons/hicolor/scalable/apps/mediaplayer-app.svg
+/usr/bin/mediaplayer-app
+/usr/share/mediaplayer-app/qml/*
