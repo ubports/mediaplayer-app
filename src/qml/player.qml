@@ -47,6 +47,10 @@ Rectangle {
         mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
     }
 
+    Component.onCompleted: {
+        i18n.domain = "mediaplayer-app"
+    }
+
     Loader {
         id: playerLoader
         source: "player/VideoPlayer.qml"
@@ -151,11 +155,11 @@ Rectangle {
             }
 
             HUD.Action {
-                label: "Play / Pause"
+                label: i18n.tr("Play / Pause")
                 keywords: "Pause or Resume Playhead"
             }
             HUD.Action {
-                label: "Share"
+                label: i18n.tr("Share")
                 keywords: "Post;Upload;Attach"
             }
         }
