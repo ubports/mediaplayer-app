@@ -83,10 +83,19 @@ bool MediaPlayer::setup()
     m_view->setTitle("Media Player");
     if (args.count() >= 2) {
         QUrl uri(args[1]);
-        if (uri.isRelative()) {
-            uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
+        if (uri.isValid()) {
+            QFileInfo info(uri.toString());
+            if (info.exists() && info.isFile()) {
+                if (uri.isRelative()) {
+                    uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
+                }
+                m_view->rootContext()->setContextProperty("playUri", uri);
+            } else {
+                qWarning() << "File not found:" << uri << info.exists() << info.isFile();
+            }
+        } else {
+            qWarning() << "Invalid uri:" << uri;
         }
-        m_view->rootContext()->setContextProperty("playUri", uri);
     }
 
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
