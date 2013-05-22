@@ -17,7 +17,6 @@ foreach(PO_FILE ${PO_FILES})
 endforeach(PO_FILE)
 
 find_program(XGETTEXT_EXECUTABLE xgettext)
-            
 if(XGETTEXT_EXECUTABLE)
     add_custom_target(create-pot)
     add_custom_command(TARGET create-pot

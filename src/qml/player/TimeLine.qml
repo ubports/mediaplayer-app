@@ -99,7 +99,7 @@ Item {
             },
             State {
                 name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: "- " + _timeLine.remainingTime }
+                PropertyChanges { target: _TimeLabel; text: i18n.tr("- %1").arg(_timeLine.remainingTime) }
             }
         ]
 
@@ -126,10 +126,10 @@ Item {
         min = time % 60
         hour = Math.floor(time / 60)
 
-        if (secs < 10) secs = utf8.tr("0") + secs
-        if (min < 10) min = utf8.tr("0") + min
-        if (hour < 10) hour = utf8.tr("0") + hour
+        if (secs < 10) secs = i18n.tr("0") + secs
+        if (min < 10) min = i18n.tr("0") + min
+        if (hour < 10) hour = i18n.tr("0") + hour
 
-        return hour + utf8.tr(":") + min + utf8.tr(":") + secs
+        return  i18n.tr("%1:%2:%3").arg(hour).arg(min).arg(secs)
     }
 }

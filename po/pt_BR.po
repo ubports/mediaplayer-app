@@ -15,6 +15,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: src/qml/player/TimeLine.qml:133
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#: src/qml/player/TimeLine.qml:102
+#, qt-format
+msgid "- %1"
+msgstr "- %1"
+
 #: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
 #: src/qml/player/TimeLine.qml:131
 msgid "0"
@@ -23,10 +33,6 @@ msgstr "0"
 #: src/qml/player/TimeLine.qml:69
 msgid "0:00:00"
 msgstr "0:00:00"
-
-#: src/qml/player/TimeLine.qml:133
-msgid ":"
-msgstr ":"
 
 #: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
@@ -47,4 +53,3 @@ msgstr "Compartilhar"
 #: src/qml/player/TimeLine.qml:66
 msgid "unknown"
 msgstr "desconhecido"
-
