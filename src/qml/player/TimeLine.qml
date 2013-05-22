@@ -63,10 +63,10 @@ Item {
                 if (_slider.maximumValue > 0) {
                     _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
                 } else {
-                    _timeLine.remainingTime = "unknow"
+                    _timeLine.remainingTime = i18n.tr("unknown")
                 }
             } else {
-                _timeLine.currentTime = "0:00:00"
+                _timeLine.currentTime = i18n.tr("0:00:00")
             }
         }
 
@@ -99,7 +99,7 @@ Item {
             },
             State {
                 name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: "- " + _timeLine.remainingTime }
+                PropertyChanges { target: _TimeLabel; text: i18n.tr("- %1").arg(_timeLine.remainingTime) }
             }
         ]
 
@@ -126,10 +126,10 @@ Item {
         min = time % 60
         hour = Math.floor(time / 60)
 
-        if (secs < 10) secs = "0" + secs
-        if (min < 10) min = "0" + min
-        if (hour < 10) hour = "0" + hour
+        if (secs < 10) secs = i18n.tr("0%1").arg(secs)
+        if (min < 10) min = i18n.tr("0%1").arg(min)
+        if (hour < 10) hour = i18n.tr("0%1").arg(hour)
 
-        return hour + ":" + min + ":" + secs
+        return  i18n.tr("%1:%2:%3").arg(hour).arg(min).arg(secs)
     }
 }

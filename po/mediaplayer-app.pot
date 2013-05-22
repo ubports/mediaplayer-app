@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-22 12:36-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/qml/player/TimeLine.qml:133
+#, qt-format
+msgid "%1:%2:%3"
+msgstr ""
+
+#: src/qml/player/TimeLine.qml:102
+#, qt-format
+msgid "- %1"
+msgstr ""
+
+#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
+#: src/qml/player/TimeLine.qml:131
+#, qt-format
+msgid "0%1"
+msgstr ""
+
+#: src/qml/player/TimeLine.qml:69
+msgid "0:00:00"
+msgstr ""
+
+#: src/qml/player.qml:159
+msgid "Pause or Resume Playhead"
+msgstr ""
+
+#: src/qml/player.qml:158
+msgid "Play / Pause"
+msgstr ""
+
+#: src/qml/player.qml:163
+msgid "Post;Upload;Attach"
+msgstr ""
+
+#: src/qml/player.qml:162
+msgid "Share"
+msgstr ""
+
+#: src/qml/player/TimeLine.qml:66
+msgid "unknown"
+msgstr ""
