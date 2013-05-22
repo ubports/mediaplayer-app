@@ -126,9 +126,9 @@ Item {
         min = time % 60
         hour = Math.floor(time / 60)
 
-        if (secs < 10) secs = i18n.tr("0") + secs
-        if (min < 10) min = i18n.tr("0") + min
-        if (hour < 10) hour = i18n.tr("0") + hour
+        if (secs < 10) secs = i18n.tr("0%1").arg(secs)
+        if (min < 10) min = i18n.tr("0%1").arg(min)
+        if (hour < 10) hour = i18n.tr("0%1").arg(hour)
 
         return  i18n.tr("%1:%2:%3").arg(hour).arg(min).arg(secs)
     }
