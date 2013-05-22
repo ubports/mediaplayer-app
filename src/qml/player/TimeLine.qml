@@ -63,10 +63,10 @@ Item {
                 if (_slider.maximumValue > 0) {
                     _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
                 } else {
-                    _timeLine.remainingTime = "unknow"
+                    _timeLine.remainingTime = utf8.tr("unknown")
                 }
             } else {
-                _timeLine.currentTime = "0:00:00"
+                _timeLine.currentTime = utf8.tr("0:00:00")
             }
         }
 
@@ -126,10 +126,10 @@ Item {
         min = time % 60
         hour = Math.floor(time / 60)
 
-        if (secs < 10) secs = "0" + secs
-        if (min < 10) min = "0" + min
-        if (hour < 10) hour = "0" + hour
+        if (secs < 10) secs = utf8.tr("0") + secs
+        if (min < 10) min = utf8.tr("0") + min
+        if (hour < 10) hour = utf8.tr("0") + hour
 
-        return hour + ":" + min + ":" + secs
+        return hour + utf8.tr(":") + min + utf8.tr(":") + secs
     }
 }

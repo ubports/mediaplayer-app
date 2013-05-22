@@ -156,11 +156,11 @@ Rectangle {
 
             HUD.Action {
                 label: i18n.tr("Play / Pause")
-                keywords: "Pause or Resume Playhead"
+                keywords: i18n.tr("Pause or Resume Playhead")
             }
             HUD.Action {
                 label: i18n.tr("Share")
-                keywords: "Post;Upload;Attach"
+                keywords: i18n.tr("Post;Upload;Attach")
             }
         }
     }
