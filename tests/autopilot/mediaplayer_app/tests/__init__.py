@@ -60,8 +60,8 @@ class MediaplayerAppTestCase(AutopilotTestCase):
         else:
             self.app = self.launch_test_application(
                "mediaplayer-app",
+               "/usr/share/mediaplayer-app/videos/" + movie_file
                "--fullscreen ",
-               movie_file,
                "--desktop_file_hint=/usr/share/applications/mediaplayer-app.desktop",
                app_type='qt')
 
