@@ -15,42 +15,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:129
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:130
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
+#: src/qml/player/TimeLine.qml:131
 msgid "0"
 msgstr "0"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:69
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:133
+#: src/qml/player/TimeLine.qml:133
 msgid ":"
 msgstr ":"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:159
+#: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
 msgstr "Pause ou Continue"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:156
+#: src/qml/player.qml:158
 msgid "Play / Pause"
 msgstr "Play / Pause"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:160
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:162
-msgid "Share"
-msgstr "Compartilhar"
-
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:156
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:158
-msgid "Play / Pause"
-msgstr "Play / Pause"
-
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:163
+#: src/qml/player.qml:163
 msgid "Post;Upload;Attach"
 msgstr "Postar;Carregar;Anexar"
 
-#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:66
+#: src/qml/player.qml:162
+msgid "Share"
+msgstr "Compartilhar"
+
+#: src/qml/player/TimeLine.qml:66
 msgid "unknown"
 msgstr "desconhecido"
+
