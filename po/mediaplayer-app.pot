@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-21 11:25-0300\n"
+"POT-Creation-Date: 2013-05-22 10:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:129
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:130
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:131
+msgid "0"
+msgstr ""
+
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:69
+msgid "0:00:00"
+msgstr ""
+
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:133
+msgid ":"
+msgstr ""
+
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:159
+msgid "Pause or Resume Playhead"
+msgstr ""
+
 #: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:156
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:158
 msgid "Play / Pause"
 msgstr ""
 
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:163
+msgid "Post;Upload;Attach"
+msgstr ""
+
 #: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:160
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player.qml:162
 msgid "Share"
+msgstr ""
+
+#: /home/renato/work/phablet/mediaplayer/translation/src/qml/player/TimeLine.qml:66
+msgid "unknown"
 msgstr ""
