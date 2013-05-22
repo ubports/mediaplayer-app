@@ -20,6 +20,6 @@ find_program(XGETTEXT_EXECUTABLE xgettext)
 if(XGETTEXT_EXECUTABLE)
     add_custom_target(${POT_FILE})
     add_custom_command(TARGET ${POT_FILE}
-        COMMAND ${XGETTEXT_EXECUTABLE} --c++ --qt --add-comments=TRANSLATORS --keyword=tr -D ${CMAKE_SOURCE_DIR} -s -kWORD=tr -p ${CMAKE_CURRENT_SOURCE_DIR} -o mediaplayer-app.pot ${QML_SRCS}
+        COMMAND ${XGETTEXT_EXECUTABLE} --c++ --qt --add-comments=TRANSLATORS --keyword=tr --keyword=tr:1,2 -D ${CMAKE_SOURCE_DIR} -s -p ${CMAKE_CURRENT_SOURCE_DIR} -o mediaplayer-app.pot ${QML_SRCS}
     )
 endif()
