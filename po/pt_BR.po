@@ -15,6 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. TRANSLATORS: this refers to a duration/remaining time of the video this can not be translated using date time location
 #: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "%1:%2:%3"
@@ -51,6 +52,7 @@ msgstr "Postar;Carregar;Anexar"
 msgid "Share"
 msgstr "Compartilhar"
 
+#. TRANSLATORS: this refers to an unknown amount of time.
 #: src/qml/player/TimeLine.qml:66
 msgid "unknown"
 msgstr "desconhecido"
