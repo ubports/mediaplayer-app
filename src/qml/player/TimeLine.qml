@@ -63,10 +63,10 @@ Item {
                 if (_slider.maximumValue > 0) {
                     _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
                 } else {
-                    _timeLine.remainingTime = utf8.tr("unknown")
+                    _timeLine.remainingTime = i18n.tr("unknown")
                 }
             } else {
-                _timeLine.currentTime = utf8.tr("0:00:00")
+                _timeLine.currentTime = i18n.tr("0:00:00")
             }
         }
 
