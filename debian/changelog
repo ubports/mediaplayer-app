@@ -1,3 +1,15 @@
+mediaplayer-app (0.20.5daily13.05.23ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Check if the uri passed as argument is a valid file before play it.
+    (LP: #1182961)
+  * Initial support for i18n.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 86 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 23 May 2013 04:40:23 +0000
+
 mediaplayer-app (0.20.5daily13.05.22ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
