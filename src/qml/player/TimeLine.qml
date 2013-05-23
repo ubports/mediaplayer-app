@@ -63,7 +63,7 @@ Item {
                 if (_slider.maximumValue > 0) {
                     _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
                 } else {
-                    // TRANSLATORS: this refers to an unknown amount of time.
+                    // TRANSLATORS: this refers to an unknown duration.
                     _timeLine.remainingTime = i18n.tr("unknown")
                 }
             } else {
@@ -131,7 +131,8 @@ Item {
         if (min < 10) min = i18n.tr("0%1").arg(min)
         if (hour < 10) hour = i18n.tr("0%1").arg(hour)
 
-        // TRANSLATORS: this refers to a duration/remaining time of the video this can not be translated using date time location
+        // TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+        // %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
         return  i18n.tr("%1:%2:%3").arg(hour).arg(min).arg(secs)
     }
 }
