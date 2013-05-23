@@ -12,6 +12,8 @@ from __future__ import absolute_import
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals, GreaterThan
 
+import unittest.skip as skip
+
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
 class TestPlayerWithVideo(MediaplayerAppTestCase):
@@ -21,7 +23,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        self.launch_app("small.ogg")
+        self.launch_app("small.mp4")
         self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
@@ -82,6 +84,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pointing_device.click()
         self.assertProperty(scene_selector, visible=False)
 
+    @skip("fails on touch and is not reliable on different screen resolutions. bug 1183245")
     def test_scene_selector_operation(self):
         self.show_controls()
         self.pause_video()
