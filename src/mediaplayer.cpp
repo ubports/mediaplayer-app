@@ -87,7 +87,7 @@ bool MediaPlayer::setup()
             uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
         }
 
-        // For now we only accpets local files
+        // For now we only accept local files
         if (uri.isValid() && uri.isLocalFile()) {
             QFileInfo info(uri.toLocalFile());
             if (info.exists() && info.isFile()) {
