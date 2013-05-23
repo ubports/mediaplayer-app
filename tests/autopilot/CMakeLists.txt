@@ -8,7 +8,7 @@ install(DIRECTORY ${AUTOPILOT_DIR}
     )
 
 include(${CMAKE_SOURCE_DIR}/cmake/autopilot.cmake)
-declare_autopilot_test(MEDIAPLAYER_APP=${mediaplayer_src_BINARY_DIR}/mediaplayer-app
+declare_autopilot_test("MEDIAPLAYER_APP=${mediaplayer_src_BINARY_DIR}/mediaplayer-app;MEDIAPLAYER_DATA_DIR=${sample_videos_SOURCE_DIR}"
                        ${AUTOPILOT_DIR}
                        ${CMAKE_CURRENT_SOURCE_DIR})
 

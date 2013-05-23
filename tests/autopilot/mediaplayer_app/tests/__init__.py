@@ -43,11 +43,12 @@ class MediaplayerAppTestCase(AutopilotTestCase):
 
     def launch_test_local(self, movie_file):
         mp_app = os.environ['MEDIAPLAYER_APP']
+        mp_data_dir = os.environ['MEDIAPLAYER_DATA_DIR']
         if mp_app:
             self.app = self.launch_test_application(
                     mp_app,
                     "-w",
-                    "../videos/" + movie_file)
+                    "file://%s/%s"%(mp_data_dir, movie_file))
         else:
             self.app = None
 
@@ -60,7 +61,7 @@ class MediaplayerAppTestCase(AutopilotTestCase):
         else:
             self.app = self.launch_test_application(
                "mediaplayer-app",
-               "/usr/share/mediaplayer-app/videos/" + movie_file,
+               "file:///usr/share/mediaplayer-app/videos/" + movie_file,
                "--fullscreen",
                "--desktop_file_hint=/usr/share/applications/mediaplayer-app.desktop",
                app_type='qt')
