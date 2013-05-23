@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 19:08-0300\n"
+"POT-Creation-Date: 2013-05-23 11:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video this can not be translated using date time location
-#: src/qml/player/TimeLine.qml:135
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:136
 #, qt-format
 msgid "%1:%2:%3"
 msgstr ""
@@ -54,7 +55,7 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#. TRANSLATORS: this refers to an unknown amount of time.
+#. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:67
 msgid "unknown"
 msgstr ""
