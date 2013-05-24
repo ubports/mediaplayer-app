@@ -1,3 +1,16 @@
+mediaplayer-app (0.20.5daily13.05.24ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * Fix autopilot tests on touch.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed support for uri as argument. (LP: #1183502)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 89 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 24 May 2013 05:21:30 +0000
+
 mediaplayer-app (0.20.5daily13.05.23ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
