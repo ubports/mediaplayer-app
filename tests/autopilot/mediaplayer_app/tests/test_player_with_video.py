@@ -12,7 +12,7 @@ from __future__ import absolute_import
 from autopilot.matchers import Eventually
 from testtools.matchers import Equals, GreaterThan
 
-import unittest.skip as skip
+from unittest import skip
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
