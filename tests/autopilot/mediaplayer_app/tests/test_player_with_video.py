@@ -16,6 +16,7 @@ from unittest import skip
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
+
 class TestPlayerWithVideo(MediaplayerAppTestCase):
     """Tests the main media player features while playing a video """
 
@@ -24,7 +25,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
         self.launch_app("small.mp4")
-        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        self.assertThat(
+            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayerWithVideo, self).tearDown()
@@ -47,14 +49,17 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
         player = self.main_window.get_object("VideoPlayer", "player")
 
-        """ Default state after load the video is playing and with pause icon """
+        """ Default state after load the video is playing and with pause
+        icon.
+        """
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_buttom, icon="pause")
 
         self.pointing_device.move_to_object(playback_buttom)
         self.pointing_device.click()
 
-        """ First click must pause the video, change playing state and show play icon """
+        """ First click must pause the video, change playing state and show
+        play icon. """
         self.assertProperty(player, playing=False, paused=True)
         self.assertProperty(playback_buttom, icon="play")
 
@@ -63,7 +68,6 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         """ Second click should change the state to playing again """
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_buttom, icon="pause")
-
 
     def test_scene_selector_visibility(self):
         self.show_controls()
@@ -92,7 +96,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         slider = self.main_window.get_object("Slider", "TimeLine.Slider")
         time_line = self.main_window.get_object("TimeLine", "TimeLine")
         selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
-        self.assertThat(selector.count, Eventually(GreaterThan(3)))        
+        self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
         """ Show scene selector """
         self.pointing_device.move_to_object(slider)
@@ -101,8 +105,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         """ Make sure that the scenes are in correct place """
         scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
         selectorRect = selector.globalRect
-        self.pointing_device.drag(selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
-                                  selectorRect[0] + selectorRect[2], selectorRect[1] + selectorRect[3] / 2)
+        self.pointing_device.drag(
+            selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
+            selectorRect[0] + selectorRect[2], selectorRect[1] + selectorRect[3] / 2)
         self.assertThat(selector.moving, Eventually(Equals(False)))
         self.assertThat(scene_0.x, Eventually(Equals(0)))
 
@@ -126,8 +131,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pointing_device.click()
 
         """ Time label must show the current video time
-            - Depends on the resolution the current time can be different due the slider size,
-              because of that we avoid compare the secs
+            - Depends on the resolution the current time can be different due
+              the slider size, because of that we avoid compare the secs
         """
         self.assertEqual(time_label.text[0:7], "00:00:0")
 
@@ -136,20 +141,19 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pointing_device.click()
 
         """ After the click the label must show the remaning time
-            - Depends on the resolution the current time can be different due the slider size,
-              because of that we avoid compare the secs
+            - Depends on the resolution the current time can be different due
+              the slider size, because of that we avoid compare the secs
         """
         self.assertEqual(time_label.text[0:9], "- 00:00:0")
-
 
     def test_show_controls_at_end(self):
         self.show_controls()
         time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
 
-        """ Seek to the midle of the video  """        
+        """ Seek to the midle of the video  """
         self.pointing_device.move_to_object(time_line)
         self.pointing_device.click()
-        
+
         """ hide controls """
         video_area = self.main_window.get_object("VideoPlayer", "player")
         self.pointing_device.move_to_object(video_area)
@@ -159,10 +163,3 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         controls = self.main_window.get_object("Controls", "controls")
         self.assertProperty(controls, visible=False)
         self.assertThat(controls.visible, Eventually(Equals(True)))
-
-        
-
-
-
-
-
