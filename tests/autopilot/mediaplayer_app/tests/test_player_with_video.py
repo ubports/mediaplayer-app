@@ -10,6 +10,8 @@
 from __future__ import absolute_import
 
 from autopilot.matchers import Eventually
+from autopilot.platform import model
+from testtools import skipIf
 from testtools.matchers import Equals, GreaterThan
 
 from unittest import skip
