@@ -10,6 +10,8 @@
 from __future__ import absolute_import
 
 from autopilot.matchers import Eventually
+from autopilot.platform import model
+from testtools import skipIf
 from testtools.matchers import Equals, GreaterThan
 
 from unittest import skip
@@ -64,7 +66,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_buttom, icon="pause")
 
-
+    @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_scene_selector_visibility(self):
         self.show_controls()
         self.pause_video()
@@ -114,6 +116,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
         self.assertProperty(time_line, value=1.107)
 
+    @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_time_display_behavior(self):
         self.show_controls()
         self.pause_video()
@@ -141,7 +144,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         """
         self.assertEqual(time_label.text[0:9], "- 00:00:0")
 
-
+    @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
         self.show_controls()
         time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
