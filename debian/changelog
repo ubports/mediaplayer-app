@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5daily13.05.31ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * Skip tests interacting with the seekbar as its only not visible in
+    landscape mode on phones and we don't have a way to force landscape.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 91 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 31 May 2013 05:14:34 +0000
+
 mediaplayer-app (0.20.5daily13.05.24ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Omer Akram ]
