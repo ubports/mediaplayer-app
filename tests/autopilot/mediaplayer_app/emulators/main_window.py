@@ -5,6 +5,7 @@
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
 
+
 class MainWindow(object):
     """An emulator class that makes it easy to interact with the camera-app."""
 

@@ -19,6 +19,7 @@ import time
 import os
 from os import path
 
+
 class TestPlayer(MediaplayerAppTestCase):
     """Tests the main media player features"""
 
@@ -27,7 +28,8 @@ class TestPlayer(MediaplayerAppTestCase):
     def setUp(self):
         super(TestPlayer, self).setUp()
         self.launch_app()
-        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        self.assertThat(
+            self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayer, self).tearDown()
@@ -48,4 +50,3 @@ class TestPlayer(MediaplayerAppTestCase):
         """ Toolbar must disappear when clicked in the video area again """
         self.pointing_device.click()
         self.assertProperty(controls, visible=True)
-
