@@ -1,6 +1,6 @@
-# Brazilian Portuguese translation for webbrowser-app
-# Copyright (c) 2013 Canonical Ltd 2013
-# This file is distributed under the same license as the webbrowser-app package.
+# Burmese translation for mediaplayer-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the mediaplayer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-22 12:36-0300\n"
-"PO-Revision-Date: 2013-06-04 12:02+0000\n"
-"Last-Translator: Renato Araujo Oliveira Filho <Unknown>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2013-05-28 17:16+0000\n"
+"Last-Translator: Ye Htut Win <ye50351@gmail.com>\n"
+"Language-Team: Burmese <my@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,39 +20,39 @@ msgstr ""
 #: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:102
 #, qt-format
 msgid "- %1"
-msgstr "- %1"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
 #: src/qml/player/TimeLine.qml:131
 #, qt-format
 msgid "0%1"
-msgstr "0%1"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:69
 msgid "0:00:00"
-msgstr "0:00:00"
+msgstr "၀:၀၀:၀၀"
 
 #: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
-msgstr "Pause ou Continue"
+msgstr "ခဏ​ရပ်(သို့) ပြန်​ဖွင့်"
 
 #: src/qml/player.qml:158
 msgid "Play / Pause"
-msgstr "Play / Pause"
+msgstr "ဖွင့်/ ခဏရပ်"
 
 #: src/qml/player.qml:163
 msgid "Post;Upload;Attach"
-msgstr "Postar;Carregar;Anexar"
+msgstr "အသိပေးမည်၊ တင်ပို့မည်၊ တွဲ၍တင်ပြမည်"
 
 #: src/qml/player.qml:162
 msgid "Share"
-msgstr "Compartilhar"
+msgstr "ဝေမျှ"
 
 #: src/qml/player/TimeLine.qml:66
 msgid "unknown"
-msgstr "desconhecido"
+msgstr "အမျိုးအမည်မသိ"

@@ -1,3 +1,50 @@
+mediaplayer-app (0.20.5daily13.06.07-0ubuntu1) saucy; urgency=low
+
+  [ Michael Terry ]
+  * Port to HUD 1.0.
+
+  [ Omer Akram ]
+  * port the mediaplayer-app autopilot tests to 1.3.
+  * Fix autopilot tests on touch.
+  * Skip tests interacting with the seekbar as its only not visible in
+    landscape mode on phones and we don't have a way to force landscape.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Avoid black thumbnails on scene selector. (LP: #1116768)
+  * Stop video at EOF. Does not clear the source property of MediaPlayer
+    inside of the stop function.
+  * Removed use of deprecated functions.
+  * Fixed application exit during the thumbnail generation. Avoid
+    application crashes due a SDK bug. (LP: #1175394)
+  * Added libqt5multimedia5-plugins as recommended package.
+  * [autopilot] Updated video position check after clicking on scene.
+    (LP: #1179972)
+  * Rename binary file from media-player to mediaplayer-app.
+  * Check if the uri passed as argument is a valid file before play it.
+    (LP: #1182961)
+  * Initial support for i18n.
+  * Fixed support for uri as argument. (LP: #1183502)
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * libhud-qt-qml has been renamed to qtdeclarative5-hud1.0. Also,
+    switch code to use HUD 1.0.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 94
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 07 Jun 2013 04:02:25 +0000
+
+mediaplayer-app (0.20.5daily13.05.31ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * Skip tests interacting with the seekbar as its only not visible in
+    landscape mode on phones and we don't have a way to force landscape.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 91 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 31 May 2013 05:14:34 +0000
+
 mediaplayer-app (0.20.5daily13.05.24ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Omer Akram ]
