@@ -1,3 +1,16 @@
+mediaplayer-app (0.20.5daily13.06.11-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * fix quite a few pep8 complaints for the autopilot tests.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed license.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 97
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 11 Jun 2013 04:05:10 +0000
+
 mediaplayer-app (0.20.5daily13.06.07-0ubuntu1) saucy; urgency=low
 
   [ Michael Terry ]
