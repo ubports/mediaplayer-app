@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Media Player
-GenericName=media-player
-Comment=Media Player
+Name=tr("Media Player")
+GenericName=tr("media-player")
+Comment=tr("Media Player")
 Exec=mediaplayer-app %u
 Terminal=false
 Icon=media-player

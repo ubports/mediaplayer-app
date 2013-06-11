@@ -5,7 +5,9 @@ include(FindGettext)
 set(DOMAIN mediaplayer-app)
 set(POT_FILE ${DOMAIN}.pot)
 file(GLOB PO_FILES *.po)
-file(GLOB_RECURSE QML_SRCS RELATIVE ${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/src/*.qml)
+file(GLOB_RECURSE I18N_SRCS RELATIVE ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/src/*.qml
+    ${CMAKE_SOURCE_DIR}/data/*.desktop.in)
 
 foreach(PO_FILE ${PO_FILES})
     get_filename_component(LANG ${PO_FILE} NAME_WE)
@@ -20,6 +22,6 @@ find_program(XGETTEXT_EXECUTABLE xgettext)
 if(XGETTEXT_EXECUTABLE)
     add_custom_target(${POT_FILE})
     add_custom_command(TARGET ${POT_FILE}
-        COMMAND ${XGETTEXT_EXECUTABLE} --c++ --qt --add-comments=TRANSLATORS --keyword=tr --keyword=tr:1,2 -D ${CMAKE_SOURCE_DIR} -s -p ${CMAKE_CURRENT_SOURCE_DIR} -o mediaplayer-app.pot ${QML_SRCS}
+        COMMAND ${XGETTEXT_EXECUTABLE} --c++ --qt --add-comments=TRANSLATORS --keyword=tr --keyword=tr:1,2 -D ${CMAKE_SOURCE_DIR} -s -p ${CMAKE_CURRENT_SOURCE_DIR} -o mediaplayer-app.pot ${I18N_SRCS}
     )
 endif()
