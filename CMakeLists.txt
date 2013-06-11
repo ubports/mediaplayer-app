@@ -21,7 +21,7 @@ set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/mediaplayer-app)
 
 # for dh_translations to extract the domain
 # (regarding syntax consistency, see http://pad.lv/1181187)
-set(GETTEXT_PACKAGE "mediaplayer-app")
+set (GETTEXT_PACKAGE "mediaplayer-app")
 
 # Tests
 enable_testing()
