@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 12:36-0300\n"
+"POT-Creation-Date: 2013-06-12 09:10-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,11 @@ msgstr ""
 
 #: src/qml/player/TimeLine.qml:69
 msgid "0:00:00"
+msgstr ""
+
+#: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
+#: data/mediaplayer-app.desktop.in:5
+msgid "Media Player"
 msgstr ""
 
 #: src/qml/player.qml:159
