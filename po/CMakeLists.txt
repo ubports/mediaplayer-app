@@ -8,6 +8,7 @@ file(GLOB PO_FILES *.po)
 file(GLOB_RECURSE I18N_SRCS RELATIVE ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/src/*.qml
     ${CMAKE_SOURCE_DIR}/data/*.desktop.in)
+list(SORT I18N_SRCS)
 
 foreach(PO_FILE ${PO_FILES})
     get_filename_component(LANG ${PO_FILE} NAME_WE)
