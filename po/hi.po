@@ -8,56 +8,56 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-12 09:10-0300\n"
-"PO-Revision-Date: 2013-06-12 14:00+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-06-13 18:08+0000\n"
+"Last-Translator: Sandeep Kumar Pilakhnawal <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-06-13 06:10+0000\n"
+"X-Launchpad-Export-Date: 2013-06-14 07:05+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 
 #: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "%1:%2:%3"
-msgstr ""
+msgstr "%1:%2:%3"
 
 #: src/qml/player/TimeLine.qml:102
 #, qt-format
 msgid "- %1"
-msgstr ""
+msgstr "- %1"
 
 #: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
 #: src/qml/player/TimeLine.qml:131
 #, qt-format
 msgid "0%1"
-msgstr ""
+msgstr "0%1"
 
 #: src/qml/player/TimeLine.qml:69
 msgid "0:00:00"
-msgstr ""
+msgstr "०:००:००"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr ""
+msgstr "मीडिया प्लेयर"
 
 #: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "पलेहेड रोकें या फिर से शुरू करें"
 
 #: src/qml/player.qml:158
 msgid "Play / Pause"
-msgstr ""
+msgstr "बजाएँ / रोकें"
 
 #: src/qml/player.qml:163
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "पोस्ट;अपलोड;अटैच"
 
 #: src/qml/player.qml:162
 msgid "Share"
-msgstr ""
+msgstr "बाटें"
 
 #: src/qml/player/TimeLine.qml:66
 msgid "unknown"
-msgstr ""
+msgstr "अज्ञात"
