@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-06-12 09:10-0300\n"
-"PO-Revision-Date: 2013-06-04 12:02+0000\n"
-"Last-Translator: Renato Araujo Oliveira Filho <Unknown>\n"
+"PO-Revision-Date: 2013-06-14 14:37+0000\n"
+"Last-Translator: Rafael Neri <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-06-13 06:10+0000\n"
+"X-Launchpad-Export-Date: 2013-06-15 06:21+0000\n"
 "X-Generator: Launchpad (build 16667)\n"
 
 #: src/qml/player/TimeLine.qml:133
@@ -40,19 +40,19 @@ msgstr "0:00:00"
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr ""
+msgstr "Media Player"
 
 #: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
-msgstr "Pause ou Continue"
+msgstr "Pausar ou Continuar"
 
 #: src/qml/player.qml:158
 msgid "Play / Pause"
-msgstr "Play / Pause"
+msgstr "Reproduzir / Pausar"
 
 #: src/qml/player.qml:163
 msgid "Post;Upload;Attach"
-msgstr "Postar;Carregar;Anexar"
+msgstr "Postar;Enviar;Anexar"
 
 #: src/qml/player.qml:162
 msgid "Share"
