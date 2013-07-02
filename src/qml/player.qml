@@ -58,9 +58,9 @@ Rectangle {
         anchors.fill: parent
         clip: true
         onLoaded: {
-            item.focus = true
-            item.playUri(playUri)
+            item.focus = true            
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
+            item.playUri(playUri)
         }
 
         state: mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")

@@ -20,7 +20,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../sdk"
-import "../theme"
 
 Item {
     id: _timeLine
@@ -45,7 +44,7 @@ Item {
         id: _slider
 
         objectName: "TimeLine.Slider"
-        ItemStyle.delegate: VideoSlider {property Item item: _slider}
+        style: VideoSlider {property Item item: _slider}
         anchors {
             top: parent.top
             bottom: parent.bottom
