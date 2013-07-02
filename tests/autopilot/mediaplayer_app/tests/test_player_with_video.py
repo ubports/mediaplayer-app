@@ -29,6 +29,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.launch_app("small.mp4")
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        # wait video player start
+        player = self.main_window.get_object("VideoPlayer", "player")
+        self.assertThat(player.playing, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayerWithVideo, self).tearDown()
