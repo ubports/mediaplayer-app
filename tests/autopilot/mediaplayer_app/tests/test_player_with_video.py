@@ -134,37 +134,26 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.pointing_device.move_to_object(time_line)
         self.pointing_device.click()
 
-        """ Time label must show the current video time
-            - Depends on the resolution the current time can be different due
-              the slider size, because of that we avoid compare the secs
-        """
-        self.assertEqual(time_label.text[0:7], "00:00:0")
+        """ Time label must show the current video time (diff from zero or empty) """
+        self.assertNotEqual(time_label.text, "00:00:00")
+        self.assertNotEqual(time_label.text, "")
 
         """ Click in the label to change the state """
         self.pointing_device.move_to_object(time_label)
         self.pointing_device.click()
 
-        """ After the click the label must show the remaning time
-            - Depends on the resolution the current time can be different due
-              the slider size, because of that we avoid compare the secs
-        """
-        self.assertEqual(time_label.text[0:9], "- 00:00:0")
+        """ After the click the label must show the remaning time (with '-' signal) """
+        self.assertEqual(time_label.text[0:1], "-")
 
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
-        self.show_controls()
         time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
 
-        """ Seek to the midle of the video  """
-        self.pointing_device.move_to_object(time_line)
-        self.pointing_device.click()
-
-        """ hide controls """
-        video_area = self.main_window.get_object("VideoPlayer", "player")
-        self.pointing_device.move_to_object(video_area)
-        self.pointing_device.click()
-
         """ wait for video ends and control appears"""
+        time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
+        self.assertThat(time_label.text, Eventually(Equals("00:00:10")))
+        self.assertThat(time_label.text, Eventually(Equals("00:00:20")))
+        
         controls = self.main_window.get_object("Controls", "controls")
         self.assertProperty(controls, visible=False)
         self.assertThat(controls.visible, Eventually(Equals(True)))
