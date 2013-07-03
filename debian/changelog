@@ -1,3 +1,18 @@
+mediaplayer-app (0.20.5+13.10.20130703-0ubuntu1) saucy; urgency=low
+
+  [ Kaleo ]
+  * * Adapt slider to newer and simpler toolkit's theming
+    infrastructure. * Fixed autopilot tests. * Changed test video file.
+
+  [ Renato Araujo Oliveira Filho ]
+  * * Adapt slider to newer and simpler toolkit's theming
+    infrastructure. * Fixed autopilot tests. * Changed test video file.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 112
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 03 Jul 2013 04:46:10 +0000
+
 mediaplayer-app (0.20.5daily13.06.13-0ubuntu1) saucy; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
