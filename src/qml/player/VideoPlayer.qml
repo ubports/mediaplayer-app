@@ -33,6 +33,7 @@ AbstractPlayer {
     property string uri
     property bool rotating: false   
     property alias controlsActive: _controls.active
+    property bool componentLoaded: false
 
     signal timeClicked
 
@@ -43,7 +44,16 @@ AbstractPlayer {
 
     function playUri(uri) {
         source = uri
-        play()
+        if (componentLoaded) {
+            play()
+        }
+    }
+
+    Component.onCompleted: {
+        componentLoaded = true
+        if ((state !== "playing") && (source != "")) {
+            play()
+        }
     }
 
     function edgeEvent(event) {
