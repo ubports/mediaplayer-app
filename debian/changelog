@@ -161,7 +161,7 @@ mediaplayer-app (0.20.4) quantal; urgency=low
   [ Renato Araujo Oliveira Filho ]
   * Avoid black thumbnails on scene selector.
 
- -- Renato Araujo Oliveira Filho <renato@ubuntu>  Wed, 17 Apr 2013 16:20:46 -0300
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Wed, 17 Apr 2013 16:20:46 -0300
 
 media-player (0.20.3) quantal; urgency=low
 
@@ -353,6 +353,6 @@ media-player (0.2) quantal; urgency=low
 
 media-player (0.1-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release.
 
  -- Michał Sawicz <phablet@lists.canonical.com>  Wed, 24 Oct 2012 15:09:02 +0200
