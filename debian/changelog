@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20130719-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * mediaplayer app crashed with the autopilot sample file we were using
+    before, re-encoded that file and now everything works.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 118
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 19 Jul 2013 06:09:41 +0000
+
 mediaplayer-app (0.20.5+13.10.20130703-0ubuntu1) saucy; urgency=low
 
   [ Kaleo ]
