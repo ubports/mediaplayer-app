@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+13.10.20130731-0ubuntu1) saucy; urgency=low
+
+  [ Sergio Schvezov ]
+  * Adding test xml output and coverage build targets.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 122
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 31 Jul 2013 04:02:06 +0000
+
 mediaplayer-app (0.20.5+13.10.20130719-0ubuntu1) saucy; urgency=low
 
   [ Omer Akram ]
