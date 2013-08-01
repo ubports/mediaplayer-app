@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20130801-0ubuntu1) saucy; urgency=low
+
+  [ David Henningsson ]
+  * Remove dependency on qtubuntu-media (not wanted on PulseAudio
+    image).
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 124
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 01 Aug 2013 04:04:01 +0000
+
 mediaplayer-app (0.20.5+13.10.20130731-0ubuntu1) saucy; urgency=low
 
   [ Sergio Schvezov ]
