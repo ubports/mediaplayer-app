@@ -20,7 +20,7 @@
  */
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import "../sdk"
+import Ubuntu.Components.Extras 0.1
 
 Item {
     id: controls
@@ -51,8 +51,23 @@ Item {
 
     SharePopover {
         id: _sharePopover
-
         visible: false
+        onSelected: {
+            var position = video.position
+            if (position === 0) {
+                if (video.duration > 10000) {
+                    position = 10000;
+                } else if (video.duration > 0){
+                    position = video.duration / 2
+                }
+            }
+            if (position >= 0) {
+                _share.picturePath = "image://video/" + video.source + "/" + position;
+            }
+            _share.userAccountId = accountId;
+            _share.visible = true;
+        }
+
     }
 
     Rectangle {
@@ -236,17 +251,6 @@ Item {
             height: units.gu(3)
 
             onClicked: {
-                var position = video.position
-                if (position === 0) {
-                    if (video.duration > 10000) {
-                        position = 10000;
-                    } else if (video.duration > 0){
-                        position = video.duration / 2
-                    }
-                }
-                if (position >= 0) {
-                    _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
-                }
                 _sharePopover.caller = _shareButton
                 _sharePopover.show()
             }
@@ -284,6 +288,12 @@ Item {
                 }
              }
         }
+    }
+
+    Share {
+        id: _share
+        visible: false
+        anchors.fill: parent
     }
 
     states: [
