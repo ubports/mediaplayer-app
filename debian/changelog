@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20130826.1-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Use the share popover and component from ubuntu-ui-extras instead of
+    the local version.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 127
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 26 Aug 2013 19:16:03 +0000
+
 mediaplayer-app (0.20.5+13.10.20130801-0ubuntu1) saucy; urgency=low
 
   [ David Henningsson ]
