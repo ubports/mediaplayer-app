@@ -147,16 +147,19 @@ Rectangle {
         }
     }
 
-    actions: [
-        UnityActions.Action {
-            text: i18n.tr("Play / Pause")
-            keywords: i18n.tr("Pause or Resume Playhead")
-        },
-        UnityActions.Action {
-            text: i18n.tr("Share")
-            keywords: i18n.tr("Post;Upload;Attach")
-        }
-    ]
+    UnityActions.ActionManager {
+        actions: [
+            UnityActions.Action {
+                text: i18n.tr("Play / Pause")
+                keywords: i18n.tr("Pause or Resume Playhead")
+            },
+            UnityActions.Action {
+                text: i18n.tr("Share")
+                keywords: i18n.tr("Post;Upload;Attach")
+                onTriggered: playerLoader.item.startSharing()
+            }
+        ]
+    }
 
     function rotateClockwise() {
         if (orientation == "") orientation = playerLoader.state

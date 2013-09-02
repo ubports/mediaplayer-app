@@ -20,7 +20,6 @@
  */
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import Ubuntu.Components.Extras 0.1
 
 Item {
     id: controls
@@ -34,6 +33,7 @@ Item {
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
+    signal shareClicked
     signal seekRequested(int time)
     signal startSeek
     signal endSeek
@@ -47,27 +47,6 @@ Item {
 
     ListModel {
         id: _sceneSelectorModel
-    }
-
-    SharePopover {
-        id: _sharePopover
-        visible: false
-        onSelected: {
-            var position = video.position
-            if (position === 0) {
-                if (video.duration > 10000) {
-                    position = 10000;
-                } else if (video.duration > 0){
-                    position = video.duration / 2
-                }
-            }
-            if (position >= 0) {
-                _share.picturePath = "image://video/" + video.source + "/" + position;
-            }
-            _share.userAccountId = accountId;
-            _share.visible = true;
-        }
-
     }
 
     Rectangle {
@@ -250,10 +229,7 @@ Item {
             width: units.gu(9)
             height: units.gu(3)
 
-            onClicked: {
-                _sharePopover.caller = _shareButton
-                _sharePopover.show()
-            }
+            onClicked: controls.shareClicked()
         }
 
         IconButton {
@@ -288,12 +264,6 @@ Item {
                 }
              }
         }
-    }
-
-    Share {
-        id: _share
-        visible: false
-        anchors.fill: parent
     }
 
     states: [
