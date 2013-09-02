@@ -164,9 +164,8 @@ AbstractPlayer {
             if (position >= 0) {
                 _share.fileToShare = "image://video/" + video.source + "/" + position;
             }
-            //_share.caller = _controls;
             _share.userAccountId = accountId;
-            _share.visible = true; //show();
+            _share.visible = true;
         }
     }
 
