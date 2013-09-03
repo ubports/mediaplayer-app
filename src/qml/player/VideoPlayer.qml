@@ -173,5 +173,7 @@ AbstractPlayer {
         id: _share
         visible: false
         anchors.fill: parent
+        onCanceled: _share.visible = false
+        onUploadCompleted: _share.visible = false
     }
 }
