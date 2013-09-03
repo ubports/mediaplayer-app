@@ -67,6 +67,14 @@ AbstractPlayer {
         _sharePopover.show();
     }
 
+    function playPause() {
+        if (["paused", "playing"].indexOf(player.state) != -1) {
+            player.togglePause();
+        } else {
+            player.play();
+        }
+    }
+
 //TODO: blur effect does not work fine without multiple thread rendering
 //    ControlsMask {
 //        anchors.fill: parent
@@ -103,13 +111,7 @@ AbstractPlayer {
             maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
 
-            onPlaybackClicked: {
-                if (["paused", "playing"].indexOf(state) != -1) {
-                    player.togglePause()
-                } else {
-                    player.play()
-                }
-            }
+            onPlaybackClicked: player.playPause()
 
             onFullscreenClicked: {
                 //TODO: wait for shell supports fullscreen

@@ -152,6 +152,7 @@ Rectangle {
             UnityActions.Action {
                 text: i18n.tr("Play / Pause")
                 keywords: i18n.tr("Pause or Resume Playhead")
+                onTriggered: playerLoader.item.playPause()
             },
             UnityActions.Action {
                 text: i18n.tr("Share")
