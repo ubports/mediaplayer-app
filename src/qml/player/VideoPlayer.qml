@@ -63,6 +63,7 @@ AbstractPlayer {
     }
 
     function startSharing() {
+        player.controlsActive = true;
         _sharePopover.caller = _controls;
         _sharePopover.show();
     }
