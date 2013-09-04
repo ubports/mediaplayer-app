@@ -43,8 +43,7 @@ class TestPlayer(MediaplayerAppTestCase):
 
         """ Toolbar must apper when clicked in the video area """
         video_area = self.main_window.get_object("VideoPlayer", "player")
-        self.pointing_device.move_to_object(video_area)
-        self.pointing_device.click()
+        self.pointing_device.click_object(video_area)
         self.assertProperty(controls, visible=True)
 
         """ Toolbar must disappear when clicked in the video area again """

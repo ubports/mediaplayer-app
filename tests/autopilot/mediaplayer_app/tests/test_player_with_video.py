@@ -38,15 +38,13 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
     def show_controls(self):
         video_area = self.main_window.get_object("VideoPlayer", "player")
-        self.pointing_device.move_to_object(video_area)
-        self.pointing_device.click()
+        self.pointing_device.click_object(video_area)
         toolbar = self.main_window.get_object("GenericToolbar", "toolbar")
         self.assertThat(toolbar.ready, Eventually(Equals(True)))
 
     def pause_video(self):
         playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
-        self.pointing_device.move_to_object(playback_buttom)
-        self.pointing_device.click()
+        self.pointing_device.click_object(playback_buttom)
 
     def test_playback_buttom_states(self):
         self.show_controls()
@@ -60,8 +58,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_buttom, icon="pause")
 
-        self.pointing_device.move_to_object(playback_buttom)
-        self.pointing_device.click()
+        self.pointing_device.click_object(playback_buttom)
 
         """ First click must pause the video, change playing state and show
         play icon. """
@@ -86,8 +83,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(scene_selector, visible=False)
 
         """ Scene selector must apper when clicking int the slider handler """
-        self.pointing_device.move_to_object(slider)
-        self.pointing_device.click()
+        self.pointing_device.click_object(slider)
         self.assertProperty(scene_selector, visible=True)
 
         """ click again must dismiss the scene selector """
@@ -105,8 +101,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
         """ Show scene selector """
-        self.pointing_device.move_to_object(slider)
-        self.pointing_device.click()
+        self.pointing_device.click_object(slider)
 
         """ Make sure that the scenes are in correct place """
         scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
@@ -120,8 +115,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         """ Click in the second scene """
         scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
         self.assertThat(scene_2.ready, Eventually(Equals(True)))
-        self.pointing_device.move_to_object(scene_2)
-        self.pointing_device.click()
+        self.pointing_device.click_object(scene_2)
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
         self.assertProperty(time_line, value=1.107)
 
@@ -143,8 +137,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertNotEqual(time_label.text, "")
 
         """ Click in the label to change the state """
-        self.pointing_device.move_to_object(time_label)
-        self.pointing_device.click()
+        self.pointing_device.click_object(time_label)
 
         """ After the click the label must show the remaning time (with '-' signal) """
         self.assertEqual(time_label.text[0:1], "-")
