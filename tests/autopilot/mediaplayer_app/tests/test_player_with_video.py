@@ -144,7 +144,6 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
-        time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
 
         """ wait for video ends and control appears"""
         time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")

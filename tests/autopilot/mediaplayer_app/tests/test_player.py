@@ -14,11 +14,6 @@ from testtools.matchers import Equals
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
-import unittest
-import time
-import os
-from os import path
-
 
 class TestPlayer(MediaplayerAppTestCase):
     """Tests the main media player features"""

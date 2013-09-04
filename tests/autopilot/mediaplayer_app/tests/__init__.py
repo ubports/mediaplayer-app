@@ -7,7 +7,6 @@
 
 """mediaplayer-app autopilot tests."""
 
-from os import remove
 import os.path
 import os
 
