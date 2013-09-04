@@ -43,13 +43,15 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(toolbar.ready, Eventually(Equals(True)))
 
     def pause_video(self):
-        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
+        playback_buttom = self.main_window.get_object(
+            "IconButton", "Controls.PlayBackButton")
         self.pointing_device.click_object(playback_buttom)
 
     def test_playback_buttom_states(self):
         self.show_controls()
 
-        playback_buttom = self.main_window.get_object("IconButton", "Controls.PlayBackButton")
+        playback_buttom = self.main_window.get_object(
+            "IconButton", "Controls.PlayBackButton")
         player = self.main_window.get_object("VideoPlayer", "player")
 
         """ Default state after load the video is playing and with pause
@@ -76,7 +78,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        scene_selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
+        scene_selector = self.main_window.get_object(
+            "SceneSelector", "Controls.SceneSelector")
         slider = self.main_window.get_object("Slider", "TimeLine.Slider")
 
         """ Default state is hide """
@@ -97,14 +100,16 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
         slider = self.main_window.get_object("Slider", "TimeLine.Slider")
         time_line = self.main_window.get_object("TimeLine", "TimeLine")
-        selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
+        selector = self.main_window.get_object(
+            "SceneSelector", "Controls.SceneSelector")
         self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
         """ Show scene selector """
         self.pointing_device.click_object(slider)
 
         """ Make sure that the scenes are in correct place """
-        scene_0 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene0")
+        scene_0 = self.main_window.get_object(
+            "SceneFrame", "SceneSelector.Scene0")
         selectorRect = selector.globalRect
         self.pointing_device.drag(
             selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
@@ -113,7 +118,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(scene_0.x, Eventually(Equals(0)))
 
         """ Click in the second scene """
-        scene_2 = self.main_window.get_object("SceneFrame", "SceneSelector.Scene2")
+        scene_2 = self.main_window.get_object(
+            "SceneFrame", "SceneSelector.Scene2")
         self.assertThat(scene_2.ready, Eventually(Equals(True)))
         self.pointing_device.click_object(scene_2)
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
@@ -126,7 +132,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
         time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
         time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
-        scene_selector = self.main_window.get_object("SceneSelector", "Controls.SceneSelector")
+        scene_selector = self.main_window.get_object(
+            "SceneSelector", "Controls.SceneSelector")
 
         """ Seek to the midle of the movie """
         self.pointing_device.click_object(time_line)
@@ -154,7 +161,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(time_label.text, Eventually(Equals("00:00:15")))
         self.assertThat(time_label.text, Eventually(Equals("00:00:20")))
         self.assertThat(time_label.text, Eventually(Equals("00:00:25")))
-        
+
         controls = self.main_window.get_object("Controls", "controls")
         self.assertProperty(controls, visible=False)
         self.assertThat(controls.visible, Eventually(Equals(True)))
