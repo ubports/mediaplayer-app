@@ -31,16 +31,16 @@ class TestPlayer(MediaplayerAppTestCase):
 
     """ Test if the toolbar appears with mouse click over the video area """
     def test_controls_visibility(self):
-        controls = self.main_window.get_object("Controls", "controls")
+        controls = self.main_window.get_controls()
 
         """ The toolbar is invisible by default """
-        self.assertProperty(controls, visible=False)
+        self.assertFalse(controls.visible)
 
-        """ Toolbar must apper when clicked in the video area """
-        video_area = self.main_window.get_object("VideoPlayer", "player")
+        """ Toolbar must appear when clicked in the video area """
+        video_area = self.main_window.get_video_area()
         self.pointing_device.click_object(video_area)
-        self.assertProperty(controls, visible=True)
+        self.assertThat(controls.visible, Eventually(Equals(True)))
 
         """ Toolbar must disappear when clicked in the video area again """
         self.pointing_device.click()
-        self.assertProperty(controls, visible=True)
+        self.assertThat(controls.visible, Eventually(Equals(False)))

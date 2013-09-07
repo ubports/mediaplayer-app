@@ -30,57 +30,54 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
         # wait video player start
-        player = self.main_window.get_object("VideoPlayer", "player")
+        player = self.main_window.get_player()
         self.assertThat(player.playing, Eventually(Equals(True)))
 
     def tearDown(self):
         super(TestPlayerWithVideo, self).tearDown()
 
     def show_controls(self):
-        video_area = self.main_window.get_object("VideoPlayer", "player")
+        video_area = self.main_window.get_video_area()
         self.pointing_device.click_object(video_area)
-        toolbar = self.main_window.get_object("GenericToolbar", "toolbar")
+        toolbar = self.main_window.get_toolbar()
         self.assertThat(toolbar.ready, Eventually(Equals(True)))
 
     def pause_video(self):
-        playback_buttom = self.main_window.get_object(
-            "IconButton", "Controls.PlayBackButton")
-        self.pointing_device.click_object(playback_buttom)
+        playback_button = self.main_window.get_playback_button()
+        self.pointing_device.click_object(playback_button)
 
-    def test_playback_buttom_states(self):
+    def test_playback_button_states(self):
         self.show_controls()
 
-        playback_buttom = self.main_window.get_object(
-            "IconButton", "Controls.PlayBackButton")
-        player = self.main_window.get_object("VideoPlayer", "player")
+        playback_button = self.main_window.get_playback_button()
+        player = self.main_window.get_player()
 
         """ Default state after load the video is playing and with pause
         icon.
         """
         self.assertProperty(player, playing=True, paused=False)
-        self.assertProperty(playback_buttom, icon="pause")
+        self.assertProperty(playback_button, icon="pause")
 
-        self.pointing_device.click_object(playback_buttom)
+        self.pointing_device.click_object(playback_button)
 
         """ First click must pause the video, change playing state and show
         play icon. """
         self.assertProperty(player, playing=False, paused=True)
-        self.assertProperty(playback_buttom, icon="play")
+        self.assertProperty(playback_button, icon="play")
 
         self.pointing_device.click()
 
         """ Second click should change the state to playing again """
         self.assertProperty(player, playing=True, paused=False)
-        self.assertProperty(playback_buttom, icon="pause")
+        self.assertProperty(playback_button, icon="pause")
 
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_scene_selector_visibility(self):
         self.show_controls()
         self.pause_video()
 
-        scene_selector = self.main_window.get_object(
-            "SceneSelector", "Controls.SceneSelector")
-        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
+        scene_selector = self.main_window.get_scene_selector()
+        slider = self.main_window.get_slider()
 
         """ Default state is hide """
         self.assertProperty(scene_selector, visible=False)
@@ -98,18 +95,16 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        slider = self.main_window.get_object("Slider", "TimeLine.Slider")
-        time_line = self.main_window.get_object("TimeLine", "TimeLine")
-        selector = self.main_window.get_object(
-            "SceneSelector", "Controls.SceneSelector")
+        slider = self.main_window.get_slider()
+        time_line = self.main_window.get_timeline()
+        selector = self.main_window.get_scene_selector()
         self.assertThat(selector.count, Eventually(GreaterThan(3)))
 
         """ Show scene selector """
         self.pointing_device.click_object(slider)
 
         """ Make sure that the scenes are in correct place """
-        scene_0 = self.main_window.get_object(
-            "SceneFrame", "SceneSelector.Scene0")
+        scene_0 = self.main_window.get_scene_0()
         selectorRect = selector.globalRect
         self.pointing_device.drag(
             selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
@@ -118,8 +113,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(scene_0.x, Eventually(Equals(0)))
 
         """ Click in the second scene """
-        scene_2 = self.main_window.get_object(
-            "SceneFrame", "SceneSelector.Scene2")
+        scene_2 = self.main_window.get_scene_2()
         self.assertThat(scene_2.ready, Eventually(Equals(True)))
         self.pointing_device.click_object(scene_2)
         self.assertThat(selector.currentIndex, Eventually(Equals(2)))
@@ -130,10 +124,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.show_controls()
         self.pause_video()
 
-        time_line = self.main_window.get_object("Slider", "TimeLine.Slider")
-        time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
-        scene_selector = self.main_window.get_object(
-            "SceneSelector", "Controls.SceneSelector")
+        time_line = self.main_window.get_slider()
+        time_label = self.main_window.get_time_label()
+        scene_selector = self.main_window.get_scene_selector()
 
         """ Seek to the midle of the movie """
         self.pointing_device.click_object(time_line)
@@ -153,7 +146,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
     def test_show_controls_at_end(self):
 
         """ wait for video ends and control appears"""
-        time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
+        time_label = self.main_window.get_time_label()
 
         """ avoid the test fails due the timeout """
         self.assertThat(time_label.text, Eventually(Equals("00:00:05")))
@@ -162,6 +155,6 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(time_label.text, Eventually(Equals("00:00:20")))
         self.assertThat(time_label.text, Eventually(Equals("00:00:25")))
 
-        controls = self.main_window.get_object("Controls", "controls")
+        controls = self.main_window.get_controls()
         self.assertProperty(controls, visible=False)
         self.assertThat(controls.visible, Eventually(Equals(True)))
