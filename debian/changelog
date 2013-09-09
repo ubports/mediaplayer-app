@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20130905-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * Wait for the scene selector to be visible fully before clicking
+    anything, that may ignore the click.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 132
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 05 Sep 2013 09:03:57 +0000
+
 mediaplayer-app (0.20.5+13.10.20130826.1-0ubuntu1) saucy; urgency=low
 
   [ Ugo Riboni ]
