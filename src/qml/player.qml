@@ -22,7 +22,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
-import Ubuntu.HUD 1.0 as HUD
+import Ubuntu.Unity.Action 1.0 as UnityActions
 
 Rectangle {
     id: mediaPlayer
@@ -147,22 +147,19 @@ Rectangle {
         }
     }
 
-    HUD.HUD {
-        applicationIdentifier: "mediaplayer-app" // this must match the .desktop file!
-        HUD.Context {
-            HUD.QuitAction {
-                onTriggered: Qt.quit()
-            }
-
-            HUD.Action {
-                label: i18n.tr("Play / Pause")
+    UnityActions.ActionManager {
+        actions: [
+            UnityActions.Action {
+                text: i18n.tr("Play / Pause")
                 keywords: i18n.tr("Pause or Resume Playhead")
-            }
-            HUD.Action {
-                label: i18n.tr("Share")
+                onTriggered: playerLoader.item.playPause()
+            },
+            UnityActions.Action {
+                text: i18n.tr("Share")
                 keywords: i18n.tr("Post;Upload;Attach")
+                onTriggered: playerLoader.item.startSharing()
             }
-        }
+        ]
     }
 
     function rotateClockwise() {

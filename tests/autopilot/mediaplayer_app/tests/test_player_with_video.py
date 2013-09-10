@@ -157,11 +157,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         time_label = self.main_window.get_object("Label", "TimeLine.TimeLabel")
 
         """ avoid the test fails due the timeout """
-        self.assertThat(time_label.text, Eventually(Equals("00:00:05")))
-        self.assertThat(time_label.text, Eventually(Equals("00:00:10")))
-        self.assertThat(time_label.text, Eventually(Equals("00:00:15")))
-        self.assertThat(time_label.text, Eventually(Equals("00:00:20")))
-        self.assertThat(time_label.text, Eventually(Equals("00:00:25")))
+        self.assertThat(time_label.text, Eventually(Equals("00:00:25"), timeout=35))
         
         controls = self.main_window.get_object("Controls", "controls")
         self.assertProperty(controls, visible=False)
