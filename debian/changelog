@@ -1,3 +1,18 @@
+mediaplayer-app (0.20.5+13.10.20130918.1-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Use the new actions API instead of passing actions directly to the
+    HUD. (LP: #1221344)
+
+  [ Omer Akram ]
+  * Use the new actions API instead of passing actions directly to the
+    HUD. (LP: #1221344)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 135
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 18 Sep 2013 08:00:30 +0000
+
 mediaplayer-app (0.20.5+13.10.20130905-0ubuntu1) saucy; urgency=low
 
   [ Omer Akram ]
