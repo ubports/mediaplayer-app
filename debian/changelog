@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+13.10.20130923-0ubuntu1) saucy; urgency=low
+
+  [ Ted Gould ]
+  * Adding single instance marker to the desktop file.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 137
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 23 Sep 2013 07:49:57 +0000
+
 mediaplayer-app (0.20.5+13.10.20130918.1-0ubuntu1) saucy; urgency=low
 
   [ Ugo Riboni ]
