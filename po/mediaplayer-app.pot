@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-12 09:10-0300\n"
+"POT-Creation-Date: 2013-09-23 15:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/qml/player/TimeLine.qml:133
+#: src/qml/player/TimeLine.qml:132
 #, qt-format
 msgid "%1:%2:%3"
 msgstr ""
 
-#: src/qml/player/TimeLine.qml:102
+#: src/qml/player/TimeLine.qml:101
 #, qt-format
 msgid "- %1"
 msgstr ""
 
-#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
-#: src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:128 src/qml/player/TimeLine.qml:129
+#: src/qml/player/TimeLine.qml:130
 #, qt-format
 msgid "0%1"
 msgstr ""
 
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:68
 msgid "0:00:00"
 msgstr ""
 
@@ -42,22 +42,22 @@ msgstr ""
 msgid "Media Player"
 msgstr ""
 
-#: src/qml/player.qml:159
+#: src/qml/player.qml:154
 msgid "Pause or Resume Playhead"
 msgstr ""
 
-#: src/qml/player.qml:158
+#: src/qml/player.qml:153
 msgid "Play / Pause"
 msgstr ""
 
-#: src/qml/player.qml:163
+#: src/qml/player.qml:159
 msgid "Post;Upload;Attach"
 msgstr ""
 
-#: src/qml/player.qml:162
+#: src/qml/player.qml:158
 msgid "Share"
 msgstr ""
 
-#: src/qml/player/TimeLine.qml:66
+#: src/qml/player/TimeLine.qml:65
 msgid "unknown"
 msgstr ""

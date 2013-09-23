@@ -91,12 +91,11 @@ bool ThumbnailPipeline::start()
         return false;
     }
 
-
-	GstFormat fmt = GST_FORMAT_TIME;
-	gint64 len = -1;
-	if (gst_element_query_duration (m_pipeline, &fmt, &len)) {
+    GstFormat fmt = GST_FORMAT_TIME;
+    gint64 len = -1;
+    if (gst_element_query_duration (m_pipeline, fmt, &len)) {
         if (len > 0) {
-    		m_duration = len / GST_MSECOND;
+            m_duration = len / GST_MSECOND;
             return true;
         }
     }
@@ -138,6 +137,8 @@ static void destroy_frame_data (void *data)
 
 QImage parseImageGst(ThumbnailImageData *buffer)
 {
+    // FIXME: needs porting to GStreamer 1.0
+#if 0
     if (buffer && GST_BUFFER_CAPS (buffer)) {
         gint width, height;
         GstStructure *s = gst_caps_get_structure (GST_BUFFER_CAPS (buffer), 0);
@@ -150,6 +151,7 @@ QImage parseImageGst(ThumbnailImageData *buffer)
 
         return QImage(GST_BUFFER_DATA (buffer), width, height, QImage::Format_RGB888, destroy_frame_data, buffer);
     }
+#endif
 
     return QImage();
 }

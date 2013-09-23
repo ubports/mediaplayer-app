@@ -87,7 +87,7 @@ bool MediaPlayer::setup()
             uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
         }
 
-        // For now we only accept local files
+        // Check if it's a local file
         if (uri.isValid() && uri.isLocalFile()) {
             QFileInfo info(uri.toLocalFile());
             if (info.exists() && info.isFile()) {
@@ -95,6 +95,9 @@ bool MediaPlayer::setup()
             } else {
                 qWarning() << "File not found:" << uri << info.exists() << info.isFile();
             }
+        // Otherwise see if it's a remote stream
+        } else if (uri.isValid()) {
+            m_view->rootContext()->setContextProperty("playUri", uri);
         } else {
             qWarning() << "Invalid uri:" << uri;
         }
