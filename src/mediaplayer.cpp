@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "mediaplayer.h"
-#include "thumbnail-provider.h"
+//#include "thumbnail-provider.h"
 #include "sharefile.h"
 
 #include <QtCore/QDir>
@@ -77,7 +77,7 @@ bool MediaPlayer::setup()
     qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
 
     m_view = new QQuickView();
-    m_view->engine()->addImageProvider("video", new ThumbnailProvider);
+    //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
