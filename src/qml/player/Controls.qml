@@ -26,8 +26,8 @@ Item {
 
     property variant video: null
     property int maximumHeight: 0
-    property alias sceneSelectorHeight: _sceneSelector.height
-    property alias sceneSelectorVisible: _sceneSelector.visible
+    //property alias sceneSelectorHeight: _sceneSelector.height
+    //property alias sceneSelectorVisible: _sceneSelector.visible
     property int heightOffset: 0
 
     signal fullscreenClicked
@@ -39,15 +39,18 @@ Item {
     signal endSeek
 
     focus: true
-    height: sceneSelectorVisible ? maximumHeight - heightOffset : _toolbar.height
+    //height: sceneSelectorVisible ? maximumHeight - heightOffset : _toolbar.height
+    height: _toolbar.height
 
     function removeExt(uri) {
         return uri.toString().substring(0, uri.toString().lastIndexOf("."))
     }
 
+    /*
     ListModel {
         id: _sceneSelectorModel
     }
+    */
 
     Rectangle {
         id: _bgColor
@@ -57,6 +60,7 @@ Item {
         anchors.fill: parent
     }
 
+    /*
     SceneSelector {
         id: _sceneSelector
 
@@ -97,6 +101,7 @@ Item {
             NumberAnimation { target: controls; property: "heightOffset"; to: units.gu(2); duration: 175 }
         }
     }
+    */
 
     Item {
         id: _toolbar
@@ -199,11 +204,12 @@ Item {
                                 seeking = true
                             }
                             seekRequested(liveValue * 1000)
-                            _sceneSelector.selectSceneAt(liveValue * 1000)
+                            //_sceneSelector.selectSceneAt(liveValue * 1000)
                         }
                     }
                 }
 
+                /*
                 onValueChanged: _sceneSelector.selectSceneAt(video.position)
 
                 onClicked: {
@@ -213,6 +219,7 @@ Item {
                         _sceneSelector.show = true
                     }
                 }
+                */
             }
         }
 
@@ -249,6 +256,7 @@ Item {
         }
     }
 
+    /*
     Connections {
         target: video
         onDurationChanged: {
@@ -265,6 +273,7 @@ Item {
              }
         }
     }
+    */
 
     states: [
         State {

@@ -110,7 +110,7 @@ AbstractPlayer {
             }
 
             maximumHeight: units.gu(27)
-            sceneSelectorHeight: units.gu(18)
+            //sceneSelectorHeight: units.gu(18)
 
             onPlaybackClicked: player.playPause()
 
