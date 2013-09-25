@@ -33,7 +33,7 @@ AbstractPlayer {
     property int pressCount: 0
     property bool wasPlaying: false
     property string uri
-    property bool rotating: false   
+    property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
 
@@ -110,7 +110,7 @@ AbstractPlayer {
             }
 
             maximumHeight: units.gu(27)
-            //sceneSelectorHeight: units.gu(18)
+            sceneSelectorHeight: units.gu(18)
 
             onPlaybackClicked: player.playPause()
 
