@@ -64,10 +64,16 @@ Item {
 
         property bool parentActive: _controls.active
 
+        function selectSceneAt(time) {
+            // SKIP it for now, we need to fix hybris bug #1231147
+            return
+        }
+
         objectName: "Controls.SceneSelector"
         opacity: 0
         visible: opacity > 0
-        model: _sceneSelectorModel
+        // SKIP it for now, we need to fix hybris bug #1231147
+        //model: _sceneSelectorModel
         anchors {
             left: parent.left
             right: parent.right
@@ -84,7 +90,8 @@ Item {
         ParallelAnimation {
             id: _showAnimation
 
-            running: _sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: 0; duration: 175 }
         }
@@ -92,7 +99,8 @@ Item {
         ParallelAnimation {
             id: _hideAnimation
 
-            running: !_sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //!_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: units.gu(2); duration: 175 }
         }
@@ -151,7 +159,7 @@ Item {
         Item {
             id: _timeLineAnchor
 
-            anchors {                
+            anchors {
                 left: _playbackButtom.right
                 leftMargin: units.gu(2)
                 right: _shareButton.left

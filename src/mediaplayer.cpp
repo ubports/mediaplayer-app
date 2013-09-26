@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "mediaplayer.h"
-#include "thumbnail-provider.h"
+//#include "thumbnail-provider.h"
 #include "sharefile.h"
 
 #include <QtCore/QDir>
@@ -77,7 +77,7 @@ bool MediaPlayer::setup()
     qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
 
     m_view = new QQuickView();
-    m_view->engine()->addImageProvider("video", new ThumbnailProvider);
+    //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
@@ -87,7 +87,7 @@ bool MediaPlayer::setup()
             uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
         }
 
-        // For now we only accept local files
+        // Check if it's a local file
         if (uri.isValid() && uri.isLocalFile()) {
             QFileInfo info(uri.toLocalFile());
             if (info.exists() && info.isFile()) {
@@ -95,6 +95,9 @@ bool MediaPlayer::setup()
             } else {
                 qWarning() << "File not found:" << uri << info.exists() << info.isFile();
             }
+        // Otherwise see if it's a remote stream
+        } else if (uri.isValid()) {
+            m_view->rootContext()->setContextProperty("playUri", uri);
         } else {
             qWarning() << "Invalid uri:" << uri;
         }
