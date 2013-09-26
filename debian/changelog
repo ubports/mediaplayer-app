@@ -1,3 +1,28 @@
+mediaplayer-app (0.20.5+13.10.20130926.1-0ubuntu1) saucy; urgency=low
+
+  [ Jim Hodapp ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Sergio Schvezov ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Renato Araujo Oliveira Filho ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 140
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 26 Sep 2013 08:48:02 +0000
+
 mediaplayer-app (0.20.5+13.10.20130923-0ubuntu1) saucy; urgency=low
 
   [ Ted Gould ]
