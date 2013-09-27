@@ -6,6 +6,5 @@ Comment=tr("Media Player")
 Exec=mediaplayer-app %u
 Terminal=false
 Icon=media-player
-NoDisplay=true
 X-Ubuntu-Gettext-Domain=mediaplayer-app
 X-Ubuntu-Single-Instance=true
