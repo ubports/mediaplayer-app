@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20130930.1-0ubuntu1) saucy; urgency=low
+
+  [ Bill Filler ]
+  * remove NoDisplay=true so that it can be launched via upstart-app-
+    launch
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 144
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 30 Sep 2013 12:39:52 +0000
+
 mediaplayer-app (0.20.5+13.10.20130926.1-0ubuntu1) saucy; urgency=low
 
   [ Jim Hodapp ]
