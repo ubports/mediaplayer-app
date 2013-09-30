@@ -81,6 +81,7 @@ bool MediaPlayer::setup()
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
+    QUrl playUri;
     if (args.count() >= 2) {
         QUrl uri(args[1]);
         if (uri.isRelative()) {
@@ -91,18 +92,19 @@ bool MediaPlayer::setup()
         if (uri.isValid() && uri.isLocalFile()) {
             QFileInfo info(uri.toLocalFile());
             if (info.exists() && info.isFile()) {
-                m_view->rootContext()->setContextProperty("playUri", uri);
+                playUri = uri;
             } else {
                 qWarning() << "File not found:" << uri << info.exists() << info.isFile();
             }
         // Otherwise see if it's a remote stream
         } else if (uri.isValid()) {
-            m_view->rootContext()->setContextProperty("playUri", uri);
+            playUri = uri;
         } else {
             qWarning() << "Invalid uri:" << uri;
         }
     }
 
+    m_view->rootContext()->setContextProperty("playUri", playUri);
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));

@@ -23,6 +23,8 @@ import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.0 as UnityActions
+import Ubuntu.Components 0.1
+import Ubuntu.Components.Popups 0.1 as Popups
 
 Rectangle {
     id: mediaPlayer
@@ -51,6 +53,23 @@ Rectangle {
         i18n.domain = "mediaplayer-app"
     }
 
+    Component {
+        id: dialogNoUrl
+
+        Popups.Dialog {
+            id: dialogue
+
+            title: i18n.tr("Error")
+            text: i18n.tr("No video selected to play. Connect your phone to your computer to transfer videos to the phone. Then select video from Videos lens.")
+
+            Button {
+                text: "Ok"
+                gradient: UbuntuColors.greyGradient
+                onClicked: Qt.quit()
+            }
+        }
+    }
+
     Loader {
         id: playerLoader
         source: "player/VideoPlayer.qml"
@@ -58,9 +77,13 @@ Rectangle {
         anchors.fill: parent
         clip: true
         onLoaded: {
-            item.focus = true            
+            item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
-            item.playUri(playUri)
+            if (playUri != "") {
+                item.playUri(playUri)
+            } else {
+                PopupUtils.open(dialogNoUrl, null)
+            }
         }
 
         state: mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
