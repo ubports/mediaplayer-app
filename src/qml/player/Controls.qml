@@ -227,6 +227,8 @@ Item {
         IconButton {
             id: _shareButton
 
+            /* Disable share button for now until we get some feedback from designers */
+            visible: false
             iconSource: "artwork/icon_share.png"
             iconSize: units.gu(3)
             anchors {
