@@ -23,6 +23,7 @@ import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.0 as UnityActions
+import Ubuntu.Components 0.1
 
 Rectangle {
     id: mediaPlayer
@@ -58,7 +59,7 @@ Rectangle {
         anchors.fill: parent
         clip: true
         onLoaded: {
-            item.focus = true            
+            item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
             item.playUri(playUri)
         }
@@ -189,6 +190,15 @@ Rectangle {
         } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketRight) {
             event.accepted = true
             rotateCounterClockwise()
+        }
+    }
+
+    Connections {
+        target: UriHandler
+        onOpened: {
+            for (var i = 0; i < uris.length; ++i) {
+                playerLoader.item.playUri(uris[i])
+            }
         }
     }
 }
