@@ -214,4 +214,13 @@ Rectangle {
             rotateCounterClockwise()
         }
     }
+
+    Connections {
+        target: UriHandler
+        onOpened: {
+            for (var i = 0; i < uris.length; ++i) {
+                playerLoader.item.playUri(uris[i])
+            }
+        }
+    }
 }
