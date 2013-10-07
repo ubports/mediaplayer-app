@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+13.10.20131007-0ubuntu1) saucy; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Hide share button for now. (LP: #1219817)
+  * uri handler. (LP: #1230404)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 151
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 07 Oct 2013 21:30:51 +0000
+
 mediaplayer-app (0.20.5+13.10.20130930.1-0ubuntu1) saucy; urgency=low
 
   [ Bill Filler ]
