@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-06-13 09:03+0000\n"
+"PO-Revision-Date: 2013-10-13 09:38+0000\n"
 "Last-Translator: Yaron <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-09 05:50+0000\n"
+"X-Launchpad-Export-Date: 2013-10-14 05:33+0000\n"
 "X-Generator: Launchpad (build 16799)\n"
 
 #: src/qml/player/TimeLine.qml:132
@@ -39,7 +39,7 @@ msgstr "0:00:00"
 
 #: src/qml/player.qml:62
 msgid "Error"
-msgstr ""
+msgstr "שגיאה"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
@@ -51,6 +51,8 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
+"לא נבחר שום וידאו להפעלה. נא לחבר את הטלפון למחשב שלך כדי להעביר סרטונים "
+"לטלפון ואז ניתן יהיה לבחור בווידאו מעדשת הווידאו."
 
 #: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
