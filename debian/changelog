@@ -1,3 +1,21 @@
+mediaplayer-app (0.20.5+13.10.20131015.1-0ubuntu1) saucy; urgency=low
+
+  [ Loïc Minier ]
+  * Use QtPowerd to keep display on when playing.
+
+  [ Francis Ginther ]
+  * Show a error message if the app is called without a valid video
+    filename.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Show a error message if the app is called without a valid video
+    filename.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 160
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 15 Oct 2013 11:33:54 +0000
+
 mediaplayer-app (0.20.5+13.10.20131007-0ubuntu1) saucy; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
