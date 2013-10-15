@@ -39,7 +39,9 @@ Rectangle {
     property variant nativeOrientation: Screen.primaryOrientation
 
     onAppActiveChanged: {
-        if (!appActive && playerLoader.item) {
+        if (!appActive &&
+            playerLoader.item &&
+            playerLoader.item.playing) {
             playerLoader.item.pause()
         }
     }
