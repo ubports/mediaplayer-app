@@ -254,6 +254,8 @@ Item {
 
             width: units.gu(9)
             height: units.gu(3)
+            enabled: false
+            opacity: 0.2
 
             onClicked: settingsClicked()
         }
