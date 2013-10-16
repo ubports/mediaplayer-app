@@ -1,3 +1,15 @@
+mediaplayer-app (0.20.5+13.10.20131016.1-0ubuntu1) saucy; urgency=low
+
+  [ Bill Filler ]
+  * disable settings button as there are no settings implemented
+  * Does not call pause video if its is not playing when the app lost
+    focus.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 164
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 16 Oct 2013 14:45:43 +0000
+
 mediaplayer-app (0.20.5+13.10.20131015.1-0ubuntu1) saucy; urgency=low
 
   [ Loïc Minier ]
