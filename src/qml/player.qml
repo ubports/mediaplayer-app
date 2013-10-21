@@ -22,7 +22,9 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtMultimedia 5.0
-import Ubuntu.HUD 1.0 as HUD
+import Ubuntu.Unity.Action 1.0 as UnityActions
+import Ubuntu.Components 0.1
+import Ubuntu.Components.Popups 0.1 as Popups
 
 Rectangle {
     id: mediaPlayer
@@ -37,7 +39,9 @@ Rectangle {
     property variant nativeOrientation: Screen.primaryOrientation
 
     onAppActiveChanged: {
-        if (!appActive && playerLoader.item) {
+        if (!appActive &&
+            playerLoader.item &&
+            playerLoader.item.playing) {
             playerLoader.item.pause()
         }
     }
@@ -51,6 +55,23 @@ Rectangle {
         i18n.domain = "mediaplayer-app"
     }
 
+    Component {
+        id: dialogNoUrl
+
+        Popups.Dialog {
+            id: dialogue
+
+            title: i18n.tr("Error")
+            text: i18n.tr("No video selected to play. Connect your phone to your computer to transfer videos to the phone. Then select video from Videos lens.")
+
+            Button {
+                text: "Ok"
+                gradient: UbuntuColors.greyGradient
+                onClicked: Qt.quit()
+            }
+        }
+    }
+
     Loader {
         id: playerLoader
         source: "player/VideoPlayer.qml"
@@ -58,9 +79,13 @@ Rectangle {
         anchors.fill: parent
         clip: true
         onLoaded: {
-            item.focus = true            
+            item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
-            item.playUri(playUri)
+            if (playUri != "") {
+                item.playUri(playUri)
+            } else {
+                PopupUtils.open(dialogNoUrl, null)
+            }
         }
 
         state: mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
@@ -147,22 +172,19 @@ Rectangle {
         }
     }
 
-    HUD.HUD {
-        applicationIdentifier: "mediaplayer-app" // this must match the .desktop file!
-        HUD.Context {
-            HUD.QuitAction {
-                onTriggered: Qt.quit()
-            }
-
-            HUD.Action {
-                label: i18n.tr("Play / Pause")
+    UnityActions.ActionManager {
+        actions: [
+            UnityActions.Action {
+                text: i18n.tr("Play / Pause")
                 keywords: i18n.tr("Pause or Resume Playhead")
-            }
-            HUD.Action {
-                label: i18n.tr("Share")
+                onTriggered: playerLoader.item.playPause()
+            },
+            UnityActions.Action {
+                text: i18n.tr("Share")
                 keywords: i18n.tr("Post;Upload;Attach")
+                onTriggered: playerLoader.item.startSharing()
             }
-        }
+        ]
     }
 
     function rotateClockwise() {
@@ -192,6 +214,15 @@ Rectangle {
         } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketRight) {
             event.accepted = true
             rotateCounterClockwise()
+        }
+    }
+
+    Connections {
+        target: UriHandler
+        onOpened: {
+            for (var i = 0; i < uris.length; ++i) {
+                playerLoader.item.playUri(uris[i])
+            }
         }
     }
 }

@@ -7,57 +7,70 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-06-12 09:10-0300\n"
-"PO-Revision-Date: 2013-06-13 09:29+0000\n"
+"POT-Creation-Date: 2013-09-30 18:40-0300\n"
+"PO-Revision-Date: 2013-10-19 16:49+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-08-07 05:04+0000\n"
-"X-Generator: Launchpad (build 16721)\n"
+"X-Launchpad-Export-Date: 2013-10-20 05:06+0000\n"
+"X-Generator: Launchpad (build 16807)\n"
 
-#: src/qml/player/TimeLine.qml:133
+#: src/qml/player/TimeLine.qml:132
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:102
+#: src/qml/player/TimeLine.qml:101
 #, qt-format
 msgid "- %1"
 msgstr "— %1"
 
-#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
-#: src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:128 src/qml/player/TimeLine.qml:129
+#: src/qml/player/TimeLine.qml:130
 #, qt-format
 msgid "0%1"
 msgstr "0%1"
 
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:68
 msgid "0:00:00"
 msgstr "0:00:00"
+
+#: src/qml/player.qml:62
+msgid "Error"
+msgstr "Помилка"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
 msgstr "Програвач"
 
-#: src/qml/player.qml:159
+#: src/qml/player.qml:63
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos lens."
+msgstr ""
+"Не вибрано відео для відтворення. З’єднайте телефон з комп’ютером, щоб "
+"записати відео на телефон. Після цього виберіть відео за допомогою лінзи "
+"«Відео»."
+
+#: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
 msgstr "Призупинити або відновити відтворення"
 
-#: src/qml/player.qml:158
+#: src/qml/player.qml:176
 msgid "Play / Pause"
 msgstr "Старт / Пауза"
 
-#: src/qml/player.qml:163
+#: src/qml/player.qml:182
 msgid "Post;Upload;Attach"
 msgstr "допис;вивантажити;долучити"
 
-#: src/qml/player.qml:162
+#: src/qml/player.qml:181
 msgid "Share"
 msgstr "Поділитись"
 
-#: src/qml/player/TimeLine.qml:66
+#: src/qml/player/TimeLine.qml:65
 msgid "unknown"
 msgstr "невідомо"

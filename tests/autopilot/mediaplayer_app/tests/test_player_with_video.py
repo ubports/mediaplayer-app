@@ -71,7 +71,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_button, icon="pause")
 
-    @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
+    @skip("New backend work needed. bug 1231147")
     def test_scene_selector_visibility(self):
         self.show_controls()
         self.pause_video()

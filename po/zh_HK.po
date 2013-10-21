@@ -1,4 +1,4 @@
-# Arabic translation for mediaplayer-app
+# Chinese (Hong Kong) translation for mediaplayer-app
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the mediaplayer-app package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-10-20 19:45+0000\n"
-"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2013-10-19 05:43+0000\n"
+"Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
+"Language-Team: Chinese (Hong Kong) <zh_HK@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-21 04:57+0000\n"
+"X-Launchpad-Export-Date: 2013-10-20 05:06+0000\n"
 "X-Generator: Launchpad (build 16807)\n"
 
 #: src/qml/player/TimeLine.qml:132
@@ -39,37 +39,35 @@ msgstr "0:00:00"
 
 #: src/qml/player.qml:62
 msgid "Error"
-msgstr "خطأ"
+msgstr "出錯"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr "مشغّل الوسائط"
+msgstr "媒體播放"
 
 #: src/qml/player.qml:63
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
-msgstr ""
-"لم يتم اختيار فيديو لتشغيله. أوصل هاتفك بالحاسوب لنقل فيديوهات إلى الهاتف. "
-"ثم اختر فيديو تود تشغيله من عدسة الفيديوهات."
+msgstr "未有選取要播放的影片。將電話連接電腦以轉送影片至電話。然後在「影片濾鏡(Videos lens)」選取影片。"
 
 #: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
-msgstr "أوقف أو استأنف مؤشر التشغيل"
+msgstr "暫停或繼續播放"
 
 #: src/qml/player.qml:176
 msgid "Play / Pause"
-msgstr "شغّل / ألبِث"
+msgstr "播放 / 暫停"
 
 #: src/qml/player.qml:182
 msgid "Post;Upload;Attach"
-msgstr "إرسال؛رفع؛إرفاق"
+msgstr "Post;Upload;Attach"
 
 #: src/qml/player.qml:181
 msgid "Share"
-msgstr "مشاركة"
+msgstr "分享"
 
 #: src/qml/player/TimeLine.qml:65
 msgid "unknown"
-msgstr "مجهول"
+msgstr "不詳"

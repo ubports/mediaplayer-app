@@ -20,7 +20,6 @@
  */
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import Ubuntu.Components.Extras 0.1
 
 Item {
     id: controls
@@ -34,6 +33,7 @@ Item {
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
+    signal shareClicked
     signal seekRequested(int time)
     signal startSeek
     signal endSeek
@@ -47,27 +47,6 @@ Item {
 
     ListModel {
         id: _sceneSelectorModel
-    }
-
-    SharePopover {
-        id: _sharePopover
-        visible: false
-        onSelected: {
-            var position = video.position
-            if (position === 0) {
-                if (video.duration > 10000) {
-                    position = 10000;
-                } else if (video.duration > 0){
-                    position = video.duration / 2
-                }
-            }
-            if (position >= 0) {
-                _share.picturePath = "image://video/" + video.source + "/" + position;
-            }
-            _share.userAccountId = accountId;
-            _share.visible = true;
-        }
-
     }
 
     Rectangle {
@@ -85,10 +64,16 @@ Item {
 
         property bool parentActive: _controls.active
 
+        function selectSceneAt(time) {
+            // SKIP it for now, we need to fix hybris bug #1231147
+            return
+        }
+
         objectName: "Controls.SceneSelector"
         opacity: 0
         visible: opacity > 0
-        model: _sceneSelectorModel
+        // SKIP it for now, we need to fix hybris bug #1231147
+        //model: _sceneSelectorModel
         anchors {
             left: parent.left
             right: parent.right
@@ -105,7 +90,8 @@ Item {
         ParallelAnimation {
             id: _showAnimation
 
-            running: _sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: 0; duration: 175 }
         }
@@ -113,7 +99,8 @@ Item {
         ParallelAnimation {
             id: _hideAnimation
 
-            running: !_sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //!_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: units.gu(2); duration: 175 }
         }
@@ -172,7 +159,7 @@ Item {
         Item {
             id: _timeLineAnchor
 
-            anchors {                
+            anchors {
                 left: _playbackButtom.right
                 leftMargin: units.gu(2)
                 right: _shareButton.left
@@ -240,6 +227,8 @@ Item {
         IconButton {
             id: _shareButton
 
+            /* Disable share button for now until we get some feedback from designers */
+            visible: false
             iconSource: "artwork/icon_share.png"
             iconSize: units.gu(3)
             anchors {
@@ -250,10 +239,7 @@ Item {
             width: units.gu(9)
             height: units.gu(3)
 
-            onClicked: {
-                _sharePopover.caller = _shareButton
-                _sharePopover.show()
-            }
+            onClicked: controls.shareClicked()
         }
 
         IconButton {
@@ -268,6 +254,8 @@ Item {
 
             width: units.gu(9)
             height: units.gu(3)
+            enabled: false
+            opacity: 0.2
 
             onClicked: settingsClicked()
         }
@@ -288,12 +276,6 @@ Item {
                 }
              }
         }
-    }
-
-    Share {
-        id: _share
-        visible: false
-        anchors.fill: parent
     }
 
     states: [

@@ -21,6 +21,8 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 0.1
+import Ubuntu.Components.Extras 0.1
+import Ubuntu.Components.Popups 0.1 as Popups
 import "../common"
 import "../sdk"
 
@@ -31,7 +33,7 @@ AbstractPlayer {
     property int pressCount: 0
     property bool wasPlaying: false
     property string uri
-    property bool rotating: false   
+    property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
 
@@ -58,6 +60,20 @@ AbstractPlayer {
 
     function edgeEvent(event) {
         event.accepted = true
+    }
+
+    function startSharing() {
+        player.controlsActive = true;
+        _sharePopover.caller = _controls;
+        _sharePopover.show();
+    }
+
+    function playPause() {
+        if (["paused", "playing"].indexOf(player.state) != -1) {
+            player.togglePause();
+        } else {
+            player.play();
+        }
     }
 
 //TODO: blur effect does not work fine without multiple thread rendering
@@ -96,13 +112,7 @@ AbstractPlayer {
             maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
 
-            onPlaybackClicked: {
-                if (["paused", "playing"].indexOf(state) != -1) {
-                    player.togglePause()
-                } else {
-                    player.play()
-                }
-            }
+            onPlaybackClicked: player.playPause()
 
             onFullscreenClicked: {
                 //TODO: wait for shell supports fullscreen
@@ -123,6 +133,8 @@ AbstractPlayer {
                     player.play()
                 }
             }
+
+            onShareClicked: player.startSharing()
         }
     }
 
@@ -138,5 +150,33 @@ AbstractPlayer {
         }
 
         onClicked: _controls.active = !_controls.active
+    }
+
+    SharePopover {
+        id: _sharePopover
+        visible: false
+        onSelected: {
+            var position = video.position
+            if (position === 0) {
+                if (video.duration > 10000) {
+                    position = 10000;
+                } else if (video.duration > 0){
+                    position = video.duration / 2
+                }
+            }
+            if (position >= 0) {
+                _share.fileToShare = "image://video/" + video.source + "/" + position;
+            }
+            _share.userAccountId = accountId;
+            _share.visible = true;
+        }
+    }
+
+    Share {
+        id: _share
+        visible: false
+        anchors.fill: parent
+        onCanceled: _share.visible = false
+        onUploadCompleted: _share.visible = false
     }
 }

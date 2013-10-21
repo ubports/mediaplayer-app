@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "mediaplayer.h"
-#include "thumbnail-provider.h"
+//#include "thumbnail-provider.h"
 #include "sharefile.h"
 
 #include <QtCore/QDir>
@@ -77,29 +77,34 @@ bool MediaPlayer::setup()
     qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
 
     m_view = new QQuickView();
-    m_view->engine()->addImageProvider("video", new ThumbnailProvider);
+    //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
     m_view->setTitle("Media Player");
+    QUrl playUri;
     if (args.count() >= 2) {
         QUrl uri(args[1]);
         if (uri.isRelative()) {
             uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
         }
 
-        // For now we only accept local files
+        // Check if it's a local file
         if (uri.isValid() && uri.isLocalFile()) {
             QFileInfo info(uri.toLocalFile());
             if (info.exists() && info.isFile()) {
-                m_view->rootContext()->setContextProperty("playUri", uri);
+                playUri = uri;
             } else {
                 qWarning() << "File not found:" << uri << info.exists() << info.isFile();
             }
+        // Otherwise see if it's a remote stream
+        } else if (uri.isValid()) {
+            playUri = uri;
         } else {
             qWarning() << "Invalid uri:" << uri;
         }
     }
 
+    m_view->rootContext()->setContextProperty("playUri", playUri);
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
