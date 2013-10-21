@@ -48,3 +48,6 @@ class MainWindow(object):
 
     def get_time_label(self):
         return self.app.select_single("Label", objectName="TimeLine.TimeLabel")
+
+    def get_no_video_dialog(self):
+        return self.app.select_single("Dialog", objectName="noMediaDialog")

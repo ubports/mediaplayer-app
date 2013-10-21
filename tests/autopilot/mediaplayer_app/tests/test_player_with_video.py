@@ -126,11 +126,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
         time_line = self.main_window.get_slider()
         time_label = self.main_window.get_time_label()
-        scene_selector = self.main_window.get_scene_selector()
 
         """ Seek to the midle of the movie """
         self.pointing_device.click_object(time_line)
-        self.assertThat(scene_selector.opacity, Eventually(Equals(1)))
 
         """ Time label must show the current video time (diff from zero or empty) """
         self.assertNotEqual(time_label.text, "00:00:00")
