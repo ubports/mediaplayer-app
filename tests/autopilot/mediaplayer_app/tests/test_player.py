@@ -14,11 +14,6 @@ from testtools.matchers import Equals
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
-import unittest
-import time
-import os
-from os import path
-
 
 class TestPlayer(MediaplayerAppTestCase):
     """Tests the main media player features"""
@@ -34,19 +29,12 @@ class TestPlayer(MediaplayerAppTestCase):
     def tearDown(self):
         super(TestPlayer, self).tearDown()
 
-    """ Test if the toolbar appears with mouse click over the video area """
-    def test_controls_visibility(self):
-        controls = self.main_window.get_object("Controls", "controls")
+    def test_no_video_dialog_visible(self):
+        """ Makes sure 'No Video' dialog appears if the meidaplayer is opened
+        without a video file argument.
 
-        """ The toolbar is invisible by default """
-        self.assertProperty(controls, visible=False)
+        """
 
-        """ Toolbar must apper when clicked in the video area """
-        video_area = self.main_window.get_object("VideoPlayer", "player")
-        self.pointing_device.move_to_object(video_area)
-        self.pointing_device.click()
-        self.assertProperty(controls, visible=True)
+        dialog = self.main_window.get_no_video_dialog()        
+        self.assertThat(dialog.visible, Eventually(Equals(True)))
 
-        """ Toolbar must disappear when clicked in the video area again """
-        self.pointing_device.click()
-        self.assertProperty(controls, visible=True)

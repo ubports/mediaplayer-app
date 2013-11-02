@@ -60,6 +60,7 @@ Rectangle {
 
         Popups.Dialog {
             id: dialogue
+            objectName: "noMediaDialog"
 
             title: i18n.tr("Error")
             text: i18n.tr("No video selected to play. Connect your phone to your computer to transfer videos to the phone. Then select video from Videos lens.")

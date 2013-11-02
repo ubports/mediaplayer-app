@@ -7,7 +7,6 @@
 
 """mediaplayer-app autopilot tests."""
 
-from os import remove
 import os.path
 import os
 
@@ -26,11 +25,9 @@ class MediaplayerAppTestCase(AutopilotTestCase):
     """
 
     if model() == 'Desktop':
-        scenarios = [
-            ('with mouse', dict(input_device_class=Mouse))]
+        scenarios = [('with mouse', dict(input_device_class=Mouse))]
     else:
-        scenarios = [
-            ('with touch', dict(input_device_class=Touch))]
+        scenarios = [('with touch', dict(input_device_class=Touch))]
 
     def setUp(self):
         self.pointing_device = Pointer(self.input_device_class.create())
