@@ -1,3 +1,16 @@
+mediaplayer-app (0.20.5+14.04.20131108-0ubuntu1) trusty; urgency=low
+
+  [ Omer Akram ]
+  * Replaced mp4 video to ogg video.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Replaced mp4 video to ogg video.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 173
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 08 Nov 2013 13:19:55 +0000
+
 mediaplayer-app (0.20.5+13.10.20131016.1-0ubuntu1) saucy; urgency=low
 
   [ Bill Filler ]
