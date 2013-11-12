@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-06-20 12:17+0000\n"
-"Last-Translator: londumas <helion331990@gmail.com>\n"
+"PO-Revision-Date: 2013-11-11 10:23+0000\n"
+"Last-Translator: Sylvain Prado <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-10 06:47+0000\n"
+"X-Launchpad-Export-Date: 2013-11-12 06:23+0000\n"
 "X-Generator: Launchpad (build 16820)\n"
 
 #: src/qml/player/TimeLine.qml:132
@@ -39,7 +39,7 @@ msgstr "0:00:00"
 
 #: src/qml/player.qml:62
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
@@ -62,7 +62,7 @@ msgstr "Lecture / Pause"
 
 #: src/qml/player.qml:182
 msgid "Post;Upload;Attach"
-msgstr "Publier;Télécharger;Attacher"
+msgstr "Publier;Télécharger;Joindre"
 
 #: src/qml/player.qml:181
 msgid "Share"
