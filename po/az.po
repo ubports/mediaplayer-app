@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-06-21 10:04+0000\n"
+"PO-Revision-Date: 2013-11-20 10:50+0000\n"
 "Last-Translator: Emin Mastizada <emin25@ovi.com>\n"
 "Language-Team: Azerbaijani <az@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-10 06:47+0000\n"
-"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2013-11-21 06:39+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: src/qml/player/TimeLine.qml:132
 #, qt-format
@@ -39,30 +39,32 @@ msgstr "0:00:00"
 
 #: src/qml/player.qml:62
 msgid "Error"
-msgstr ""
+msgstr "Xəta"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr ""
+msgstr "Media Oxuyucu"
 
 #: src/qml/player.qml:63
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
+"Oynatmaq üçün video seçilməyib. Telefonunuza video yazmaq üçün kompüterə "
+"taxın. Daha sonra Video linzasından videonu seçin."
 
 #: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "Oynatma nöqtəsindən davam et və ya fasilə ver"
 
 #: src/qml/player.qml:176
 msgid "Play / Pause"
-msgstr ""
+msgstr "Oynat / Fasilə ver"
 
 #: src/qml/player.qml:182
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "Göndər;Yüklə;Bərkit"
 
 #: src/qml/player.qml:181
 msgid "Share"
