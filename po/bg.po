@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-12-04 23:47+0000\n"
+"PO-Revision-Date: 2013-12-12 11:46+0000\n"
 "Last-Translator: Atanas Kovachki <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-05 06:11+0000\n"
-"X-Generator: Launchpad (build 16863)\n"
+"X-Launchpad-Export-Date: 2013-12-13 06:43+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
 
 #: src/qml/player/TimeLine.qml:132
 #, qt-format
@@ -25,7 +25,7 @@ msgstr "%1:%2:%3"
 #: src/qml/player/TimeLine.qml:101
 #, qt-format
 msgid "- %1"
-msgstr "- %1"
+msgstr "— %1"
 
 #: src/qml/player/TimeLine.qml:128 src/qml/player/TimeLine.qml:129
 #: src/qml/player/TimeLine.qml:130
@@ -54,7 +54,7 @@ msgstr ""
 
 #: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "Пауза или продължи от точката на възпроизвеждане"
 
 #: src/qml/player.qml:176
 msgid "Play / Pause"
