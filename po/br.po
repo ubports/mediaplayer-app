@@ -1,0 +1,76 @@
+# Breton translation for mediaplayer-app
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-09-30 18:40-0300\n"
+"PO-Revision-Date: 2013-12-16 17:53+0000\n"
+"Last-Translator: Fulup <Unknown>\n"
+"Language-Team: Breton <br@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-12-17 06:14+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
+
+#: src/qml/player/TimeLine.qml:132
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#: src/qml/player/TimeLine.qml:101
+#, qt-format
+msgid "- %1"
+msgstr "- %1"
+
+#: src/qml/player/TimeLine.qml:128 src/qml/player/TimeLine.qml:129
+#: src/qml/player/TimeLine.qml:130
+#, qt-format
+msgid "0%1"
+msgstr "0%1"
+
+#: src/qml/player/TimeLine.qml:68
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player.qml:62
+msgid "Error"
+msgstr "Fazi"
+
+#: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
+#: data/mediaplayer-app.desktop.in:5
+msgid "Media Player"
+msgstr "Lenner liesvedia"
+
+#: src/qml/player.qml:63
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos lens."
+msgstr ""
+"N'eus bet diuzet video ebet da lenn. Kevreit ho pellgomzer ouzh hoc'h "
+"urzhiataer evit treuzkas videoioù d'ho pellgomzer. Goude-se diuzit ar video "
+"e Videos lens"
+
+#: src/qml/player.qml:177
+msgid "Pause or Resume Playhead"
+msgstr ""
+
+#: src/qml/player.qml:176
+msgid "Play / Pause"
+msgstr "Lenn / Ehan"
+
+#: src/qml/player.qml:182
+msgid "Post;Upload;Attach"
+msgstr "Postañ;Enporzhiañ;Stagañ"
+
+#: src/qml/player.qml:181
+msgid "Share"
+msgstr "Kenrannañ"
+
+#: src/qml/player/TimeLine.qml:65
+msgid "unknown"
+msgstr "dianav"
