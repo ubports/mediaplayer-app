@@ -36,6 +36,7 @@ AbstractPlayer {
     property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
+    readonly property int seekStep: 1000
 
     signal timeClicked
 
@@ -178,5 +179,41 @@ AbstractPlayer {
         anchors.fill: parent
         onCanceled: _share.visible = false
         onUploadCompleted: _share.visible = false
+    }
+
+    Keys.onPressed: {
+        switch(event.key) {
+        case Qt.Key_Space:
+            player.playPause()
+            break;
+        case Qt.Key_Right:
+        case Qt.Key_Left:
+        {
+            var currentPos = (video ? video.position : 0)
+            var nextPos = currentPos
+            if (event.key == Qt.Key_Right) {
+                var maxPos = (video ? video.duration : 0)
+                nextPos += player.seekStep
+                if (nextPos > maxPos) {
+                    nextPos = -1;
+                }
+            } else {
+                nextPos -= player.seekStep
+                if (nextPos < 0) {
+                    nextPos = -1
+                }
+            }
+
+            if (nextPos != -1) {
+                player.video.seek(nextPos)
+            }
+            break;
+        }
+        case Qt.Key_F12:
+            mpApplication.toggleFullscreen()
+            break;
+        default:
+            break;
+        }
     }
 }

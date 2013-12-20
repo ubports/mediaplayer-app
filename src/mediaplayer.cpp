@@ -104,6 +104,7 @@ bool MediaPlayer::setup()
         }
     }
 
+    m_view->rootContext()->setContextProperty("mpApplication", this);
     m_view->rootContext()->setContextProperty("playUri", playUri);
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
