@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-09-30 18:40-0300\n"
-"PO-Revision-Date: 2013-11-11 10:23+0000\n"
-"Last-Translator: Sylvain Prado <Unknown>\n"
+"PO-Revision-Date: 2013-12-22 00:23+0000\n"
+"Last-Translator: Pascal Maugendre <pmaugendre@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-12 06:23+0000\n"
-"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2013-12-22 05:57+0000\n"
+"X-Generator: Launchpad (build 16872)\n"
 
 #: src/qml/player/TimeLine.qml:132
 #, qt-format
@@ -51,6 +51,9 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
+"Aucune vidéo sélectionnée pour la lecture. Connectez votre téléphone à votre "
+"ordinateur pour transférer les vidéos vers le téléphone. Ensuite, "
+"sélectionnez la vidéo à partir de la lentille Vidéos."
 
 #: src/qml/player.qml:177
 msgid "Pause or Resume Playhead"
