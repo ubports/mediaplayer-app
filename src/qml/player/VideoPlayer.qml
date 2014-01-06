@@ -209,8 +209,11 @@ AbstractPlayer {
             }
             break;
         }
-        case Qt.Key_F12:
+        case Qt.Key_F11:
             mpApplication.toggleFullscreen()
+            break;
+        case Qt.Key_Escape:
+            mpApplication.leaveFullScreen()
             break;
         default:
             break;
