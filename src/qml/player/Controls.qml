@@ -199,7 +199,7 @@ Item {
 
                 // Live value is the real slider value. Ex: User dragging the slider
                 onLiveValueChanged: {
-                    if (video && pressed)  {
+                    if (video)  {
                         var changed = Math.abs(liveValue - value)
                         if (changed > 1) {
                             if (!seeking) {
