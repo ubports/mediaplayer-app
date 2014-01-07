@@ -42,7 +42,7 @@ public Q_SLOTS:
 
 private:
     QQuickView *m_view;
-    QFileDialog *m_fileChooser;
+    bool m_runningDialog;
 };
 
 #endif // MEDIAPLAYER_H
