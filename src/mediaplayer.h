@@ -33,6 +33,7 @@ public:
 
 public Q_SLOTS:
     void toggleFullscreen();
+    void leaveFullScreen();
     void onWidthChanged(int);
     void onHeightChanged(int);
     bool isDesktopMode() const;

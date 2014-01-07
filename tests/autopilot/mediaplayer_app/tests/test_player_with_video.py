@@ -142,13 +142,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
-
-        """ wait for video ends and control appears"""
-        time_label = self.main_window.get_time_label()
-
-        """ avoid the test fails due the timeout """
-        self.assertThat(time_label.text, Eventually(Equals("00:00:25"), timeout=35))
-
         controls = self.main_window.get_controls()
-        self.assertProperty(controls, visible=False)
-        self.assertThat(controls.visible, Eventually(Equals(True)))
+        """ The controls are invisible by defautl """
+        self.assertThat(controls.visible, Eventually(Equals(False)))
+
+        """ wait for video ends and control appears """
+        self.assertThat(controls.visible, Eventually(Equals(True), timeout=35))

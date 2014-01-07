@@ -152,6 +152,14 @@ MediaPlayer::toggleFullscreen()
 }
 
 void
+MediaPlayer::leaveFullScreen()
+{
+    if (m_view->windowState() == Qt::WindowFullScreen) {
+        m_view->setWindowState(Qt::WindowNoState);
+    }
+}
+
+void
 MediaPlayer::onWidthChanged(int width)
 {
     m_view->rootContext()->setContextProperty("screenWidth", width);
