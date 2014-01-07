@@ -19,6 +19,7 @@
 
 #include <QtQuick/QQuickView>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFileDialog>
 #include <QUrl>
 
 class MediaPlayer : public QApplication
@@ -37,10 +38,11 @@ public Q_SLOTS:
     void onWidthChanged(int);
     void onHeightChanged(int);
     bool isDesktopMode() const;
-    QUrl chooseFile() const;
+    QUrl chooseFile();
 
 private:
     QQuickView *m_view;
+    QFileDialog *m_fileChooser;
 };
 
 #endif // MEDIAPLAYER_H

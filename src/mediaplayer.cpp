@@ -45,7 +45,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 MediaPlayer::MediaPlayer(int &argc, char **argv)
-    : QApplication(argc, argv), m_view(0)
+    : QApplication(argc, argv), m_view(0), m_fileChooser(0)
 {
 }
 
@@ -141,6 +141,10 @@ MediaPlayer::~MediaPlayer()
     if (m_view) {
         delete m_view;
     }
+    if (m_fileChooser) {
+        delete m_fileChooser;
+        m_fileChooser = 0;
+    }
 }
 
 void
@@ -170,10 +174,27 @@ bool MediaPlayer::isDesktopMode() const
     return (qEnvironmentVariableIsSet("DESKTOP_MODE") && (qgetenv("DESKTOP_MODE") == "1"));
 }
 
-QUrl MediaPlayer::chooseFile() const
+QUrl MediaPlayer::chooseFile()
 {
-    return QFileDialog::getOpenFileName(0,
+    QUrl fileName;
+    if (!m_fileChooser) {
+        m_fileChooser = new QFileDialog(0,
                                         tr("Open Video"),
                                         QStandardPaths::writableLocation(QStandardPaths::MoviesLocation),
-                                        tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg)"));
+                                        tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"));
+        m_fileChooser->setModal(true);
+        int result = m_fileChooser->exec();
+        if (result == QDialog::Accepted) {
+            QStringList selectedFiles = m_fileChooser->selectedFiles();
+            if (selectedFiles.count() > 0) {
+                fileName = selectedFiles[0];
+            }
+        }
+        delete m_fileChooser;
+        m_fileChooser = 0;
+    } else {
+        m_fileChooser->raise();
+    }
+
+    return fileName;
 }
