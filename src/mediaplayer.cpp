@@ -53,6 +53,9 @@ bool MediaPlayer::setup()
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
+    // use windowed in desktop as default
+    windowed = windowed || isDesktopMode();
+
     // The testability driver is only loaded by QApplication but not by
     // QGuiApplication.
     // However, QApplication depends on QWidget which would add some
@@ -104,6 +107,7 @@ bool MediaPlayer::setup()
         }
     }
 
+    m_view->rootContext()->setContextProperty("mpApplication", this);
     m_view->rootContext()->setContextProperty("playUri", playUri);
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
@@ -157,4 +161,9 @@ void
 MediaPlayer::onHeightChanged(int height)
 {
     m_view->rootContext()->setContextProperty("screenHeight", height);
+}
+
+bool MediaPlayer::isDesktopMode() const
+{
+    return (qEnvironmentVariableIsSet("DESKTOP_MODE") && (qgetenv("DESKTOP_MODE") == "1"));
 }
