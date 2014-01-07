@@ -147,4 +147,4 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertThat(controls.visible, Eventually(Equals(False)))
 
         """ wait for video ends and control appears """
-        self.assertThat(controls.visible, Eventually(Equals(True)), timeout=35)
+        self.assertThat(controls.visible, Eventually(Equals(True), timeout=35))
