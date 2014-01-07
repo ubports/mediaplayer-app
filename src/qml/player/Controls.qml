@@ -30,6 +30,8 @@ Item {
     property alias sceneSelectorVisible: _sceneSelector.visible
     property int heightOffset: 0
 
+    property alias settingsEnabled: _settingsButton.enabled
+
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
@@ -188,7 +190,6 @@ Item {
                 maximumValue: video ? video.duration / 1000 : 0
                 value: video ? video.position / 1000 : 0
 
-
                 // pause the video during the seek
                 onPressedChanged: {
                    if (!pressed && seeking) {
@@ -255,7 +256,7 @@ Item {
             width: units.gu(9)
             height: units.gu(3)
             enabled: false
-            opacity: 0.2
+            opacity: enabled ? 1.0 : 0.2
 
             onClicked: settingsClicked()
         }

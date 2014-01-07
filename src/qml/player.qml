@@ -26,6 +26,7 @@ import Ubuntu.Unity.Action 1.0 as UnityActions
 import Ubuntu.Components 0.1
 import Ubuntu.Components.Popups 0.1 as Popups
 
+
 Rectangle {
     id: mediaPlayer
     width: screenWidth
@@ -76,6 +77,7 @@ Rectangle {
 
     Loader {
         id: playerLoader
+
         source: "player/VideoPlayer.qml"
         focus: true
         anchors.fill: parent
@@ -86,12 +88,18 @@ Rectangle {
             if (playUri != "") {
                 item.playUri(playUri)
             } else {
-                PopupUtils.open(dialogNoUrl, null)
+                if (mpApplication.desktopMode) {
+                    var videoFile = mpApplication.chooseFile()
+                    if (videoFile != "") {
+                        item.playUri(videoFile)
+                    }
+                } else {
+                    PopupUtils.open(dialogNoUrl, null)
+                }
             }
         }
 
         state: mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
-
         Component.onCompleted: {
             state = Qt.binding(function () {
                 return mediaPlayer.orientation != "" ? mediaPlayer.orientation : (screenHeight <= screenWidth ? "0" : "270")
