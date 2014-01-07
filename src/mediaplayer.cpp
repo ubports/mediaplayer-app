@@ -24,6 +24,7 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QtCore/QTimer>
+#include <QtCore/QStandardPaths>
 #include <QtWidgets/QFileDialog>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlEngine>
@@ -173,5 +174,6 @@ QUrl MediaPlayer::chooseFile() const
 {
     return QFileDialog::getOpenFileName(0,
                                         tr("Open Video"),
-                                        QDir::homePath() + tr("/Videos"), tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg)"));
+                                        QStandardPaths::writableLocation(QStandardPaths::MoviesLocation),
+                                        tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg)"));
 }
