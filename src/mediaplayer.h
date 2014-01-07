@@ -23,6 +23,7 @@
 class MediaPlayer : public QGuiApplication
 {
     Q_OBJECT
+    Q_PROPERTY(bool desktopMode READ isDesktopMode)
 
 public:
     MediaPlayer(int &argc, char **argv);
@@ -34,6 +35,7 @@ public Q_SLOTS:
     void toggleFullscreen();
     void onWidthChanged(int);
     void onHeightChanged(int);
+    bool isDesktopMode() const;
 
 private:
     QQuickView *m_view;
