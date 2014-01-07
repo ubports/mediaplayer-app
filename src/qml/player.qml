@@ -40,6 +40,7 @@ Rectangle {
 
     onAppActiveChanged: {
         if (!appActive &&
+            !mpApplication.desktopMode &&
             playerLoader.item &&
             playerLoader.item.playing) {
             playerLoader.item.pause()

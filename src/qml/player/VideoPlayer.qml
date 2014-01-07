@@ -115,8 +115,11 @@ AbstractPlayer {
             onPlaybackClicked: player.playPause()
 
             onFullscreenClicked: {
-                //TODO: wait for shell supports fullscreen
-                Qt.quit()
+                if (mpApplication.desktopMode) {
+                    mpApplication.toggleFullscreen()
+                } else {
+                    Qt.quit()
+                }
             }
 
             onSeekRequested: {
