@@ -24,7 +24,7 @@ add_executable(${MEDIAPLAYER}
     ${mediaplayer_SRCS}
     )
 
-qt5_use_modules(${MEDIAPLAYER} Gui Core Qml Quick Multimedia)
+qt5_use_modules(${MEDIAPLAYER} Gui Widgets Core Qml Quick Multimedia)
 
 target_link_libraries(${MEDIAPLAYER}
     sdkhelper

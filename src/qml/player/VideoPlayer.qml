@@ -101,6 +101,8 @@ AbstractPlayer {
 
             property bool isPaused: false
 
+            settingsEnabled: mpApplication.desktopMode
+
             objectName: "controls"
             state: player.state
             video: player.video
@@ -139,6 +141,15 @@ AbstractPlayer {
             }
 
             onShareClicked: player.startSharing()
+            onSettingsClicked: {
+                if (mpApplication.desktopMode) {
+                    var videoFile = mpApplication.chooseFile()
+                    if (videoFile != "") {
+                        player.stop()
+                        item.playUri(videoFile)
+                    }
+                }
+            }
         }
     }
 

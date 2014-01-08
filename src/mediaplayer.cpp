@@ -24,6 +24,8 @@
 #include <QtCore/QStringList>
 #include <QtCore/QLibrary>
 #include <QtCore/QTimer>
+#include <QtCore/QStandardPaths>
+#include <QtWidgets/QFileDialog>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlEngine>
 #include <QtQuick/QQuickItem>
@@ -43,7 +45,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 MediaPlayer::MediaPlayer(int &argc, char **argv)
-    : QGuiApplication(argc, argv), m_view(0)
+    : QApplication(argc, argv), m_view(0), m_fileChooser(0)
 {
 }
 
@@ -116,7 +118,7 @@ bool MediaPlayer::setup()
     connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
 
     // Set the orientation changes that this app is interested in being signaled about
-    QGuiApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation |
+    QApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation |
             Qt::LandscapeOrientation |
             Qt::InvertedPortraitOrientation |
             Qt::InvertedLandscapeOrientation);
@@ -138,6 +140,10 @@ MediaPlayer::~MediaPlayer()
 {
     if (m_view) {
         delete m_view;
+    }
+    if (m_fileChooser) {
+        delete m_fileChooser;
+        m_fileChooser = 0;
     }
 }
 
@@ -174,4 +180,29 @@ MediaPlayer::onHeightChanged(int height)
 bool MediaPlayer::isDesktopMode() const
 {
     return (qEnvironmentVariableIsSet("DESKTOP_MODE") && (qgetenv("DESKTOP_MODE") == "1"));
+}
+
+QUrl MediaPlayer::chooseFile()
+{
+    QUrl fileName;
+    if (!m_fileChooser) {
+        m_fileChooser = new QFileDialog(0,
+                                        tr("Open Video"),
+                                        QStandardPaths::writableLocation(QStandardPaths::MoviesLocation),
+                                        tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"));
+        m_fileChooser->setModal(true);
+        int result = m_fileChooser->exec();
+        if (result == QDialog::Accepted) {
+            QStringList selectedFiles = m_fileChooser->selectedFiles();
+            if (selectedFiles.count() > 0) {
+                fileName = selectedFiles[0];
+            }
+        }
+        delete m_fileChooser;
+        m_fileChooser = 0;
+    } else {
+        m_fileChooser->raise();
+    }
+
+    return fileName;
 }
