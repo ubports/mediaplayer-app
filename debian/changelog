@@ -1,3 +1,19 @@
+mediaplayer-app (0.20.5+14.04.20140116-0ubuntu1) trusty; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * clicking/tap anywhere in the scrubber should cause seek directly to
+    that position where you clicked.
+  * Disabled fullscreen as default mode.
+  * respond to key events for play, pause, fast forward, rewind space
+    bar-> toggle the play/pause button. right arrow key-> fast forward.
+    left arror key -> rewind. F12-> toggle fullscreen.
+  * Implemented open file dialog to open a new video.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 195
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 16 Jan 2014 13:19:24 +0000
+
 mediaplayer-app (0.20.5+14.04.20131108-0ubuntu1) trusty; urgency=low
 
   [ Omer Akram ]
