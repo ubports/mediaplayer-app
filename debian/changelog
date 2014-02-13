@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.5+14.04.20140213-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * add desktop icons and remove linking against sharing as it's not
+    being used
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 13 Feb 2014 23:49:33 +0000
+
 mediaplayer-app (0.20.5+14.04.20140116-0ubuntu1) trusty; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
