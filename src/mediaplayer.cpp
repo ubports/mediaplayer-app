@@ -15,7 +15,7 @@
  */
 #include "mediaplayer.h"
 //#include "thumbnail-provider.h"
-#include "sharefile.h"
+//#include "sharefile.h"
 
 #include <QtCore/QDir>
 #include <QtCore/QUrl>
@@ -79,7 +79,7 @@ bool MediaPlayer::setup()
     }
 
     //TODO: move this to SDK/ShareMenu library
-    qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
+    //qmlRegisterType<ShareFile>("SDKHelper", 1, 0, "ShareFile");
 
     m_view = new QQuickView();
     //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
