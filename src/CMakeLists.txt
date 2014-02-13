@@ -27,7 +27,6 @@ add_executable(${MEDIAPLAYER}
 qt5_use_modules(${MEDIAPLAYER} Gui Widgets Core Qml Quick Multimedia)
 
 target_link_libraries(${MEDIAPLAYER}
-    sdkhelper
     #${GSTLIB_LDFLAGS}
     )
 

@@ -2,4 +2,5 @@
 /usr/share/icons/hicolor/scalable/apps/mediaplayer-app.svg
 /usr/bin/mediaplayer-app
 /usr/share/mediaplayer-app/qml/*
+/usr/share/icons
 /usr/share/locale/*/LC_MESSAGES/mediaplayer-app.mo

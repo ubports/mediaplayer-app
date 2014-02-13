@@ -25,7 +25,7 @@
 class MediaPlayer : public QApplication
 {
     Q_OBJECT
-    Q_PROPERTY(bool desktopMode READ isDesktopMode)
+    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
 
 public:
     MediaPlayer(int &argc, char **argv);
