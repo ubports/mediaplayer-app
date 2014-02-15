@@ -7,37 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-09-30 18:40-0300\n"
+"POT-Creation-Date: 2014-02-13 13:21-0500\n"
 "PO-Revision-Date: 2013-05-28 16:16+0000\n"
 "Last-Translator: Jógvan Olsen <jeggy@jebster.net>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-11-10 06:47+0000\n"
-"X-Generator: Launchpad (build 16820)\n"
+"X-Launchpad-Export-Date: 2014-02-15 07:38+0000\n"
+"X-Generator: Launchpad (build 16916)\n"
 
-#: src/qml/player/TimeLine.qml:132
+#: src/qml/player/TimeLine.qml:135
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:101
+#: src/qml/player/TimeLine.qml:104
 #, qt-format
 msgid "- %1"
 msgstr "- %1"
 
-#: src/qml/player/TimeLine.qml:128 src/qml/player/TimeLine.qml:129
-#: src/qml/player/TimeLine.qml:130
+#: src/qml/player/TimeLine.qml:131 src/qml/player/TimeLine.qml:132
+#: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "0%1"
 msgstr "0%1"
 
-#: src/qml/player/TimeLine.qml:68
+#: src/qml/player/TimeLine.qml:71
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player.qml:62
+#: src/qml/player.qml:67
 msgid "Error"
 msgstr ""
 
@@ -46,28 +46,28 @@ msgstr ""
 msgid "Media Player"
 msgstr ""
 
-#: src/qml/player.qml:63
+#: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
 
-#: src/qml/player.qml:177
+#: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
 msgstr ""
 
-#: src/qml/player.qml:176
+#: src/qml/player.qml:188
 msgid "Play / Pause"
 msgstr ""
 
-#: src/qml/player.qml:182
+#: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
 msgstr ""
 
-#: src/qml/player.qml:181
+#: src/qml/player.qml:193
 msgid "Share"
 msgstr "Deil"
 
-#: src/qml/player/TimeLine.qml:65
+#: src/qml/player/TimeLine.qml:68
 msgid "unknown"
 msgstr "ókent"
