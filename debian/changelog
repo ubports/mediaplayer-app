@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+14.04.20140331-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * change check for desktopMode to use platform name rather than env
+    var
+
+  [ CI bot ]
+  * Resync trunk
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 31 Mar 2014 16:36:42 +0000
+
 mediaplayer-app (0.20.5+14.04.20140306-0ubuntu1) trusty; urgency=low
 
   * New rebuild forced
