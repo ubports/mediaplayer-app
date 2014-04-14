@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+14.04.20140331-0ubuntu2) trusty; urgency=medium
+
+  * debian/control:
+    - Remove arch constraints in gl/gles build-deps
+    - Alternatively depend on the OpenGLES version of
+      qtdeclarative5-qtmultimedia-plugin and
+      qtdeclarative5-ubuntu-ui-toolkit-plugin
+
+ -- Ricardo Salveti de Araujo <ricardo.salveti@canonical.com>  Mon, 14 Apr 2014 17:25:08 -0300
+
 mediaplayer-app (0.20.5+14.04.20140331-0ubuntu1) trusty; urgency=low
 
   [ Bill Filler ]
