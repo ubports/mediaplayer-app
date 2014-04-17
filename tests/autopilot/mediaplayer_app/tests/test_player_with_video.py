@@ -26,7 +26,11 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        self.launch_app("h264.avi")
+        print model()
+        if model() == 'Nexus 4' or model() == 'Galaxy Nexus' or model() == "Nexus 7 (2013) Wi-Fi" or model() == "Nexus 10":
+            self.launch_app("h264.avi")
+        else:
+            self.launch_app("small.ogg")
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
         # wait video player start
