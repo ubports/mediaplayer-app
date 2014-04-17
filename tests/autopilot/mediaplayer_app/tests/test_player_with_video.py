@@ -26,7 +26,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        self.launch_app("small.ogg")
+        self.launch_app("h264.avi")
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
         # wait video player start
@@ -143,7 +143,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
         controls = self.main_window.get_controls()
-        """ The controls are invisible by defautl """
+        """ The controls are invisible by default """
         self.assertThat(controls.visible, Eventually(Equals(False)))
 
         """ wait for video ends and control appears """
