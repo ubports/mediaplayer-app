@@ -20,7 +20,6 @@
  */
 import QtQuick 2.0
 import QtMultimedia 5.0
-import QtPowerd 0.1
 import "../common"
 import "../common/utils.js" as Utils
 
@@ -28,7 +27,6 @@ Rectangle {
     id: player
 
     property bool playing: state == "playing"
-    onPlayingChanged: QtPowerd.keepDisplayOn = playing
     property bool paused: state == "paused"
     property real aspectRatio: width / height
     property variant video: mediaPlayer
