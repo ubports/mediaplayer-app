@@ -1,3 +1,12 @@
+mediaplayer-app (0.20.5+14.10.20140429-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Get rid of qtpowerd dependency
+  * Use a video that actually works with hardware video decoding and
+    media-hub
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 29 Apr 2014 13:43:21 +0000
+
 mediaplayer-app (0.20.5+14.04.20140331-0ubuntu2) trusty; urgency=medium
 
   * debian/control:
