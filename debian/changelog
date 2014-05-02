@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Fix the AP tests for non-desktop devices
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 02 May 2014 13:43:16 +0000
+
 mediaplayer-app (0.20.5+14.10.20140429-0ubuntu1) utopic; urgency=low
 
   [ Jim Hodapp ]
