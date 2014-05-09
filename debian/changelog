@@ -1,4 +1,4 @@
-mediaplayer-app (0.20.5+14.10.20140502-0ubuntu3) UNRELEASED; urgency=medium
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu3) utopic; urgency=medium
 
   * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
     qml-module-qtmultimedia
