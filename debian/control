@@ -23,7 +23,7 @@ Package: mediaplayer-app
 Architecture: i386 amd64 armhf
 Depends: ${misc:Depends},
          ${shlibs:Depends},
-         qtdeclarative5-qtmultimedia-plugin | qtdeclarative5-qtmultimedia-plugin-gles,
+         qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qtdeclarative5-ubuntu-ui-toolkit-plugin-gles,
          qtdeclarative5-ubuntu-ui-extras0.1,
          qtdeclarative5-window-plugin,

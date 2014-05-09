@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu3) UNRELEASED; urgency=medium
+
+  * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
+    qml-module-qtmultimedia
+
+ -- Ricardo Salveti de Araujo <ricardo.salveti@canonical.com>  Fri, 09 May 2014 13:09:43 -0300
+
 mediaplayer-app (0.20.5+14.10.20140502-0ubuntu2) utopic; urgency=medium
 
   * Add a dependency from mediaplayer-app-autopilot to python-autopilot, since
