@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2013-06-13 11:44+0000\n"
+"PO-Revision-Date: 2014-05-22 12:28+0000\n"
 "Last-Translator: Anthony Wong <anthony.wong@ubuntu.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-10 07:56+0000\n"
-"X-Generator: Launchpad (build 16996)\n"
+"X-Launchpad-Export-Date: 2014-05-23 09:09+0000\n"
+"X-Generator: Launchpad (build 17017)\n"
 
 #: src/qml/player/TimeLine.qml:135
 #, qt-format
@@ -39,7 +39,7 @@ msgstr "0:00:00"
 
 #: src/qml/player.qml:67
 msgid "Error"
-msgstr ""
+msgstr "出错"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
@@ -50,7 +50,7 @@ msgstr "媒体播放器"
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
-msgstr ""
+msgstr "未选择视频。连接你的电话到计算机并传输视频到手机，然后从视频界面选择视频。"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
