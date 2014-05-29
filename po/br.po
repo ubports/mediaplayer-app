@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2014-03-06 13:18+0000\n"
+"PO-Revision-Date: 2014-05-28 06:18+0000\n"
 "Last-Translator: Fohanno Thierry <thierry.fohanno@ofis-bzh.org>\n"
 "Language-Team: Breton <br@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-10 07:56+0000\n"
-"X-Generator: Launchpad (build 16996)\n"
+"X-Launchpad-Export-Date: 2014-05-29 05:46+0000\n"
+"X-Generator: Launchpad (build 17017)\n"
 
 #: src/qml/player/TimeLine.qml:135
 #, qt-format
@@ -53,7 +53,7 @@ msgid ""
 msgstr ""
 "N'eus bet diuzet video ebet da lenn. Kevreit ho pellgomzer ouzh hoc'h "
 "urzhiataer evit treuzkas videoioù d'ho pellgomzer. Goude-se diuzit ar video "
-"e Videos lens"
+"e Videos lens."
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
