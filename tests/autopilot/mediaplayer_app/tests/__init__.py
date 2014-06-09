@@ -7,7 +7,6 @@
 
 """mediaplayer-app autopilot tests."""
 
-import os.path
 import os
 
 from autopilot.input import Mouse, Touch, Pointer

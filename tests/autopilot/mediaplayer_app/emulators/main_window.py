@@ -6,7 +6,7 @@
 # by the Free Software Foundation.
 
 
-class MainWindow(object):
+class MainWindow:
     """An emulator class that makes it easy to interact with the camera-app."""
 
     def __init__(self, app):
@@ -17,10 +17,10 @@ class MainWindow(object):
         return self.app.select_single("QQuickView")
 
     def get_controls(self):
-    	return self.app.select_single("Controls", objectName="controls")
+        return self.app.select_single("Controls", objectName="controls")
 
     def get_video_area(self):
-    	return self.app.select_single("VideoPlayer", objectName="player")
+        return self.app.select_single("VideoPlayer", objectName="player")
 
     def get_toolbar(self):
         return self.app.select_single("GenericToolbar", objectName="toolbar")
