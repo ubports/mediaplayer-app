@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+_Name=Media Player
+_GenericName=Media Player
+_Comment=Media Player
+_Keywords=Movies;Movie Player;Video Player
+Exec=mediaplayer-app %u
+Terminal=false
+Icon=media-player
+X-Ubuntu-Single-Instance=true
