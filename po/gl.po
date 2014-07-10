@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2013-10-18 10:47+0000\n"
-"Last-Translator: Marcos Lans <Unknown>\n"
+"PO-Revision-Date: 2014-07-09 14:27+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-05-10 07:56+0000\n"
-"X-Generator: Launchpad (build 16996)\n"
+"X-Launchpad-Export-Date: 2014-07-10 07:27+0000\n"
+"X-Generator: Launchpad (build 17100)\n"
 
 #: src/qml/player/TimeLine.qml:135
 #, qt-format
@@ -51,17 +51,16 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
-"Non hai ningún vídeo seleccionado para reproducir. Conecte o móbil ao "
-"computador para transferir vídeos ao teléfono. Despois seleccione o lente de "
-"vídeos."
+"Non hai ningún vídeo seleccionado. Conecte o teléfono co computador para "
+"transferir vídeos ao móbil. Despois seleccione o lente Vídeos."
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr "Pausar ou continuar a reprodución"
+msgstr "Deter ou continuar a reprodución"
 
 #: src/qml/player.qml:188
 msgid "Play / Pause"
-msgstr "Reproducir / Pausar"
+msgstr "Reproducir / Deter"
 
 #: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
