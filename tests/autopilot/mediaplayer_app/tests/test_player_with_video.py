@@ -75,54 +75,6 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_button, icon="pause")
 
-    @skip("New backend work needed. bug 1231147")
-    def test_scene_selector_visibility(self):
-        self.show_controls()
-        self.pause_video()
-
-        scene_selector = self.main_window.get_scene_selector()
-        slider = self.main_window.get_slider()
-
-        """ Default state is hide """
-        self.assertProperty(scene_selector, visible=False)
-
-        """ Scene selector must apper when clicking int the slider handler """
-        self.pointing_device.click_object(slider)
-        self.assertProperty(scene_selector, visible=True)
-
-        """ click again must dismiss the scene selector """
-        self.pointing_device.click()
-        self.assertProperty(scene_selector, visible=False)
-
-    @skip("fails on touch and is not reliable on different screen resolutions. bug 1183245")
-    def test_scene_selector_operation(self):
-        self.show_controls()
-        self.pause_video()
-
-        slider = self.main_window.get_slider()
-        time_line = self.main_window.get_timeline()
-        selector = self.main_window.get_scene_selector()
-        self.assertThat(selector.count, Eventually(GreaterThan(3)))
-
-        """ Show scene selector """
-        self.pointing_device.click_object(slider)
-
-        """ Make sure that the scenes are in correct place """
-        scene_0 = self.main_window.get_scene_0()
-        selectorRect = selector.globalRect
-        self.pointing_device.drag(
-            selectorRect[0], selectorRect[1] + selectorRect[3] / 2,
-            selectorRect[0] + selectorRect[2], selectorRect[1] + selectorRect[3] / 2)
-        self.assertThat(selector.moving, Eventually(Equals(False)))
-        self.assertThat(scene_0.x, Eventually(Equals(0)))
-
-        """ Click in the second scene """
-        scene_2 = self.main_window.get_scene_2()
-        self.assertThat(scene_2.ready, Eventually(Equals(True)))
-        self.pointing_device.click_object(scene_2)
-        self.assertThat(selector.currentIndex, Eventually(Equals(2)))
-        self.assertProperty(time_line, value=1.107)
-
     @skipIf(model() == 'Nexus 4' or model() == 'Galaxy Nexus', 'Screen width not enough for seekbar')
     def test_time_display_behavior(self):
         self.show_controls()
