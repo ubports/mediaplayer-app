@@ -8,3 +8,4 @@ Terminal=false
 Icon=media-player
 X-Ubuntu-Gettext-Domain=mediaplayer-app
 X-Ubuntu-Single-Instance=true
+OnlyShowIn=neverShow
