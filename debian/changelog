@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu4) UNRELEASED; urgency=medium
+
+  * Port autopilot tests to Python 3.
+  * Bump Standards-Version to 3.9.5.
+
+ -- Barry Warsaw <barry@ubuntu.com>  Mon, 09 Jun 2014 15:47:08 -0400
+
 mediaplayer-app (0.20.5+14.10.20140502-0ubuntu3) utopic; urgency=medium
 
   * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
