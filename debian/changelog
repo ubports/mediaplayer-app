@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.5+14.10.20140717-0ubuntu1) utopic; urgency=low
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * Revert revision 239 (the addition of NoDisplay=true) as it seems
+    this causes the application being unlaunchable completely currently.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 17 Jul 2014 15:31:44 +0000
+
 mediaplayer-app (0.20.5+14.10.20140716-0ubuntu1) utopic; urgency=low
 
   [ Alan Pope ]
