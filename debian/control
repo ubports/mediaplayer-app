@@ -8,11 +8,11 @@ Build-Depends: cmake,
                libgl1-mesa-dev | libgl-dev,
                libgles2-mesa-dev,
                pkg-config,
-               python,
+               python3,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtmultimedia5-dev,
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 # If you don't have commit rights to lp:mediaplayer-app but need to upload
 # packaging changes, just go ahead.  The developers will notice and sync
 # up the code again.
@@ -43,7 +43,7 @@ Depends: ${misc:Depends},
          libqt5test5,
          libqt5widgets5,
          mediaplayer-app (>= ${source:Version}),
-         python-autopilot,
+         python3-autopilot,
 Conflicts: media-player-autopilot
 Replaces: media-player-autopilot
 Provides: media-player-autopilot
