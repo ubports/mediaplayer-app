@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+14.10.20140718.1-0ubuntu1) utopic; urgency=low
+
+  [ Leo Arias ]
+  * Skip the no video dialog test in desktop. (LP: #1341956)
+
+  [ Brendan Donegan ]
+  * We remove the two scene selector tests because this feature is
+    dropped.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 18 Jul 2014 21:28:23 +0000
+
 mediaplayer-app (0.20.5+14.10.20140717-0ubuntu1) utopic; urgency=low
 
   [ Łukasz 'sil2100' Zemczak ]
