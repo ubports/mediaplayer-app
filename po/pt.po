@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2014-07-18 22:03+0000\n"
-"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+"PO-Revision-Date: 2014-07-20 17:42+0000\n"
+"Last-Translator: Tiago Carrondo <tiago@ubuntu-pt.org>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-07-19 06:14+0000\n"
+"X-Launchpad-Export-Date: 2014-07-21 06:54+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
 
 #: src/qml/player/TimeLine.qml:135
@@ -44,7 +44,7 @@ msgstr "Erro"
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr ""
+msgstr "Leitor Multimédia"
 
 #: src/qml/player.qml:68
 msgid ""
@@ -54,7 +54,7 @@ msgstr ""
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "Pausar ou retomar Indicador de reprodução"
 
 #: src/qml/player.qml:188
 msgid "Play / Pause"
