@@ -1,76 +1,73 @@
-# Swedish translation for mediaplayer-app
-# Copyright © 2013-2014 Rosetta Contributors and Canonical Ltd 2013-2014
+# Icelandic translation for mediaplayer-app
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the mediaplayer-app package.
-# Josef Andersson <josef.andersson@fripost.org>, 2014.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2014-07-24 13:55+0000\n"
-"Last-Translator: Josef Andersson <Unknown>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"PO-Revision-Date: 2014-07-24 10:35+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Icelandic <is@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-07-25 07:50+0000\n"
 "X-Generator: Launchpad (build 17114)\n"
-"Language: sv\n"
 
 #: src/qml/player/TimeLine.qml:135
 #, qt-format
 msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:104
 #, qt-format
 msgid "- %1"
-msgstr "- %1"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:131 src/qml/player/TimeLine.qml:132
 #: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "0%1"
-msgstr "0%1"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:71
 msgid "0:00:00"
-msgstr "0.00.00"
+msgstr ""
 
 #: src/qml/player.qml:67
 msgid "Error"
-msgstr "Fel"
+msgstr ""
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr "Mediaspelare"
+msgstr ""
 
 #: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos lens."
 msgstr ""
-"Ingen film vald för uppspelning. Anslut din telefon till din dator för att "
-"överföra filmfiler till telefonen. Välj sedan film från filmvyn."
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr "Pausa eller återuppta"
+msgstr ""
 
 #: src/qml/player.qml:188
 msgid "Play / Pause"
-msgstr "Spela / Pausa"
+msgstr ""
 
 #: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
-msgstr "Publicera;Ladda upp;Bifoga"
+msgstr ""
 
 #: src/qml/player.qml:193
 msgid "Share"
-msgstr "Dela"
+msgstr ""
 
 #: src/qml/player/TimeLine.qml:68
 msgid "unknown"
-msgstr "okänd"
+msgstr ""
