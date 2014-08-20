@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+14.10.20140820-0ubuntu1) utopic; urgency=low
+
+  [ Martin Pitt ]
+  * Mark for using language packs.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 20 Aug 2014 14:01:52 +0000
+
 mediaplayer-app (0.20.5+14.10.20140718.1-0ubuntu1) utopic; urgency=low
 
   [ Leo Arias ]
