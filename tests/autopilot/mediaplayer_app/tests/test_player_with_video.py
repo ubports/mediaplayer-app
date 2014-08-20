@@ -16,7 +16,7 @@ from testtools.matchers import Equals
 from mediaplayer_app.tests import MediaplayerAppTestCase
 
 
-logger = logging.getLoger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class TestPlayerWithVideo(MediaplayerAppTestCase):
