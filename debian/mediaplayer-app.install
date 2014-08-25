@@ -4,3 +4,4 @@
 /usr/share/mediaplayer-app/qml/*
 /usr/share/icons
 /usr/share/locale/*/LC_MESSAGES/mediaplayer-app.mo
+/usr/share/url-dispatcher/urls/*
