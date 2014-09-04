@@ -18,6 +18,7 @@ Standards-Version: 3.9.5
 # up the code again.
 Vcs-Bzr: lp:mediaplayer-app
 Vcs-Browser: https://code.launchpad.net/mediaplayer-app
+X-Ubuntu-Use-Langpack: yes
 
 Package: mediaplayer-app
 Architecture: i386 amd64 armhf
