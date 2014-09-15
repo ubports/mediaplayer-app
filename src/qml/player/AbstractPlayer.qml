@@ -40,6 +40,8 @@ Rectangle {
     property int backwardSeekStep: Math.min(30000, mediaPlayer.duration * 0.025)
 
 
+    signal error(int errorCode, string errorString)
+
     objectName: "videoPlayer"
     state: "stopped"
     color: "black"
@@ -131,7 +133,8 @@ Rectangle {
         property int heightMargin: aspectRatio != -1 ? (aspectRatio < parent.aspectRatio ? 0 : (height - realHeight) / 2) : -1
 
         onError: {
-            console.log("AbstractPlayer: " + errorString)
+            console.error("AbstractPlayer: " + error + ":" + errorString)
+            player.error(error, errorString)
         }
     }
 

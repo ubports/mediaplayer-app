@@ -37,6 +37,7 @@ AbstractPlayer {
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
     readonly property int seekStep: 1000
+    property var errorDialog: null
 
     signal timeClicked
 
@@ -195,6 +196,52 @@ AbstractPlayer {
             mpApplication.leaveFullScreen()
             break;
         default:
+            break;
+        }
+    }
+
+    Component {
+        id: dialogPlayerError
+
+        Popups.Dialog {
+            id: dialogue
+            objectName: "playError"
+
+            property string errorString: ""
+
+            title: i18n.tr("Error playing video")
+            text: errorString
+
+            Button {
+                text: i18n.tr("Close")
+                onClicked: PopupUtils.close(dialogue)
+            }
+
+            Component.onDestruction: player.errorDialog = null
+        }
+    }
+
+    onError: {
+        if (player.errorDialog !== null)
+
+            return
+
+        player.errorDialog = PopupUtils.open(dialogPlayerError, null)
+        switch(errorCode) {
+        case 1:
+            player.errorDialog.errorString = i18n.tr("Fail to open the source video.")
+            break;
+        case 2:
+            player.errorDialog.errorString = i18n.tr("Video format not supported.")
+            break;
+        case 3:
+            player.errorDialog.errorString = i18n.tr("A network error occurred.")
+            break;
+        case 4:
+            player.errorDialog.errorString = i18n.tr("There are not the appropriate permissions to play a media resource.")
+            break;
+        case 5:
+            player.errorDialog.errorString = i18n.tr("Fail to connect with playback backend.")
             break;
         }
     }
