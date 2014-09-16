@@ -1,5 +1,6 @@
 set(MEDIAPLAYER_DESKTOP_FILE mediaplayer-app.desktop)
-set(MEDIAPLAYER_APP_ICON mediaplayer-app.svg)
+set(MEDIAPLAYER_APP_ICON mediaplayer-app.png)
+set(MEDIAPLAYER_APP_SYMBOLIC_ICON mediaplayer-app-symbolic.svg)
 
 file(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/${MEDIAPLAYER_DESKTOP_FILE})
 file(STRINGS ${MEDIAPLAYER_DESKTOP_FILE}.in DESKTOP_FILE_CONTENTS)
