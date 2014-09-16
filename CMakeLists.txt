@@ -48,7 +48,6 @@ add_subdirectory(data)
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(po)
-add_subdirectory(desktop)
 
 configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 
