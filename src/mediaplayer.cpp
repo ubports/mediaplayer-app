@@ -90,6 +90,11 @@ bool MediaPlayer::setup()
     QUrl playUri;
     if (args.count() >= 2) {
         QUrl uri(args[1]);
+
+        if (uri.scheme() == "video") {
+            uri.setScheme("file");
+        }
+
         if (uri.isRelative()) {
             uri = QUrl::fromLocalFile(QDir::current().absoluteFilePath(args[1]));
         }
