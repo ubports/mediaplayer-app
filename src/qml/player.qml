@@ -68,7 +68,7 @@ Rectangle {
             text: i18n.tr("No video selected to play. Connect your phone to your computer to transfer videos to the phone. Then select video from Videos lens.")
 
             Button {
-                text: "Ok"
+                text: i18n.tr("Ok")
                 gradient: UbuntuColors.greyGradient
                 onClicked: Qt.quit()
             }
