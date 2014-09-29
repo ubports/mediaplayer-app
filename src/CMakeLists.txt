@@ -5,17 +5,17 @@ set(MEDIAPLAYER mediaplayer-app)
 include_directories(
     ${CMAKE_BINARY_DIR}
     ${sdkhelper_SOURCE_DIR}
-    ${GSTLIB_INCLUDE_DIRS}
+    #${GSTLIB_INCLUDE_DIRS}
     )
 
 set(mediaplayer_HDRS
-    thumbnail-provider.h
-    thumbnail-pipeline-gst.h
+    #thumbnail-provider.h
+    #thumbnail-pipeline-gst.h
     mediaplayer.h)
 
 set(mediaplayer_SRCS
-    thumbnail-provider.cpp
-    thumbnail-pipeline-gst.cpp
+    #thumbnail-provider.cpp
+    #thumbnail-pipeline-gst.cpp
     mediaplayer.cpp
     main.cpp)
 
@@ -24,11 +24,10 @@ add_executable(${MEDIAPLAYER}
     ${mediaplayer_SRCS}
     )
 
-qt5_use_modules(${MEDIAPLAYER} Gui Core Qml Quick Multimedia)
+qt5_use_modules(${MEDIAPLAYER} Gui Widgets Core Qml Quick Multimedia)
 
 target_link_libraries(${MEDIAPLAYER}
-    sdkhelper
-    ${GSTLIB_LDFLAGS}
+    #${GSTLIB_LDFLAGS}
     )
 
 install(TARGETS ${MEDIAPLAYER}

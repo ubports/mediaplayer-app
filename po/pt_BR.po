@@ -6,14 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-05-16 18:13+0200\n"
-"PO-Revision-Date: 2013-05-17 14:27+0000\n"
-"Last-Translator: Renato Araujo Oliveira Filho <renato@canonical.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-23 11:11-0300\n"
+"PO-Revision-Date: 2014-02-05 12:22+0000\n"
+"Last-Translator: Douglas Massolari <douglasmassolari@hotmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-09-26 06:48+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -22,32 +25,32 @@ msgstr ""
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:102
+#: src/qml/player/TimeLine.qml:103
 #, qt-format
 msgid "- %1"
 msgstr "- %1"
 
-#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
-#: src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:130 src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:132
 #, qt-format
 msgid "0%1"
 msgstr "0%1"
 
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:70
 msgid "0:00:00"
 msgstr "0:00:00"
 
 #: src/qml/player.qml:159
 msgid "Pause or Resume Playhead"
-msgstr "Pause ou Continue"
+msgstr "Pausar ou continuar reprodução"
 
 #: src/qml/player.qml:158
 msgid "Play / Pause"
-msgstr "Play / Pause"
+msgstr "Reproduzir / pausar"
 
 #: src/qml/player.qml:163
 msgid "Post;Upload;Attach"
-msgstr "Postar;Carregar;Anexar"
+msgstr "Postar;Enviar;Anexar"
 
 #: src/qml/player.qml:162
 msgid "Share"
@@ -57,3 +60,17 @@ msgstr "Compartilhar"
 #: src/qml/player/TimeLine.qml:67
 msgid "unknown"
 msgstr "desconhecido"
+
+#~ msgid "Error"
+#~ msgstr "Erro"
+
+#~ msgid "Media Player"
+#~ msgstr "Reprodutor de mídia"
+
+#~ msgid ""
+#~ "No video selected to play. Connect your phone to your computer to "
+#~ "transfer videos to the phone. Then select video from Videos lens."
+#~ msgstr ""
+#~ "Nenhum vídeo selecionado. Conecte o telefone ao computador para "
+#~ "transferir vídeos para o telefone. Em seguida selecione o vídeo na lente "
+#~ "de Vídeo."

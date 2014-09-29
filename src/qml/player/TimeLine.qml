@@ -20,7 +20,6 @@
 import QtQuick 2.0
 import Ubuntu.Components 0.1
 import "../sdk"
-import "../theme"
 
 Item {
     id: _timeLine
@@ -29,7 +28,7 @@ Item {
     property alias maximumValue: _slider.maximumValue
     property alias pressed: _slider.pressed
     property alias liveValue: _slider.value
-    property real value: 0
+    property real value: 0.0
     property string currentTime
     property string remainingTime
 
@@ -39,13 +38,16 @@ Item {
     // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
     // The Slider components break the binding when the user interact with the component because of that a simple
     // "property alias value: _slider.value" does not work
-    Binding { target: _slider; property: "value"; value: _timeLine.value }
-
+    onValueChanged: {
+        if (!_slider.pressed) {
+            _slider.value = _timeLine.value
+        }
+    }
     Slider {
         id: _slider
 
         objectName: "TimeLine.Slider"
-        ItemStyle.delegate: VideoSlider {property Item item: _slider}
+        style: VideoSlider {property Item item: _slider}
         anchors {
             top: parent.top
             bottom: parent.bottom

@@ -4,34 +4,31 @@ Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Build-Depends: cmake,
                debhelper (>= 9),
-               gettext,
-               libgl1-mesa-dev[i386 amd64] | libgl-dev[i386 amd64],
-               libgles2-mesa-dev[armhf],
-               libgstreamer0.10-dev,
-               python,
+               dh-translations,
+               libgl1-mesa-dev | libgl-dev,
+               libgles2-mesa-dev,
+               pkg-config,
+               python3,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtmultimedia5-dev,
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 # If you don't have commit rights to lp:mediaplayer-app but need to upload
 # packaging changes, just go ahead.  The developers will notice and sync
 # up the code again.
 Vcs-Bzr: lp:mediaplayer-app
 Vcs-Browser: https://code.launchpad.net/mediaplayer-app
+X-Ubuntu-Use-Langpack: yes
 
 Package: mediaplayer-app
 Architecture: i386 amd64 armhf
 Depends: ${misc:Depends},
          ${shlibs:Depends},
-         gstreamer0.10-plugins-base,
-         gstreamer0.10-plugins-good,
-         gstreamer0.10-ffmpeg,
-         qtdeclarative5-hud1.0,
-         qtdeclarative5-qtmultimedia-plugin | libqt5declarative5-qtmultimedia-plugin,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qt-components-ubuntu,
+         qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin | qtdeclarative5-ubuntu-ui-toolkit-plugin-gles,
+         qtdeclarative5-ubuntu-ui-extras0.1,
          qtdeclarative5-window-plugin,
          qtdeclarative5-xmllistmodel-plugin,
-         qtubuntu-media[armhf] | mediaplayerplugin-aal[armhf],
 Conflicts: media-player
 Replaces: media-player
 Provides: media-player
@@ -47,6 +44,7 @@ Depends: ${misc:Depends},
          libqt5test5,
          libqt5widgets5,
          mediaplayer-app (>= ${source:Version}),
+         python3-autopilot,
 Conflicts: media-player-autopilot
 Replaces: media-player-autopilot
 Provides: media-player-autopilot

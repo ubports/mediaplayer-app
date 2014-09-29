@@ -1,3 +1,411 @@
+mediaplayer-app (0.20.5+14.10.20140918-0ubuntu1) utopic; urgency=medium
+
+  [ Ted Gould ]
+  * Register for video:/// URLs in URL dispatcher
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 18 Sep 2014 17:57:42 +0000
+
+mediaplayer-app (0.20.5+14.10.20140820-0ubuntu1) utopic; urgency=low
+
+  [ Martin Pitt ]
+  * Mark for using language packs.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 20 Aug 2014 14:01:52 +0000
+
+mediaplayer-app (0.20.5+14.10.20140718.1-0ubuntu1) utopic; urgency=low
+
+  [ Leo Arias ]
+  * Skip the no video dialog test in desktop. (LP: #1341956)
+
+  [ Brendan Donegan ]
+  * We remove the two scene selector tests because this feature is
+    dropped.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 18 Jul 2014 21:28:23 +0000
+
+mediaplayer-app (0.20.5+14.10.20140717-0ubuntu1) utopic; urgency=low
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * Revert revision 239 (the addition of NoDisplay=true) as it seems
+    this causes the application being unlaunchable completely currently.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 17 Jul 2014 15:31:44 +0000
+
+mediaplayer-app (0.20.5+14.10.20140716-0ubuntu2) UNRELEASED; urgency=medium
+
+  * Port autopilot tests to Python 3.
+  * Bump Standards-Version to 3.9.5.
+
+ -- Barry Warsaw <barry@ubuntu.com>  Wed, 16 Jul 2014 13:11:12 -0400
+
+mediaplayer-app (0.20.5+14.10.20140716-0ubuntu1) utopic; urgency=low
+
+  [ Alan Pope ]
+  * Prevent the mediaplayer app icon from showing in the app scope, so
+    people don't click it.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 16 Jul 2014 14:47:24 +0000
+
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu3) utopic; urgency=medium
+
+  * Renaming dep package qtdeclarative5-qtmultimedia-plugin to
+    qml-module-qtmultimedia
+
+ -- Ricardo Salveti de Araujo <ricardo.salveti@canonical.com>  Fri, 09 May 2014 13:09:43 -0300
+
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu2) utopic; urgency=medium
+
+  * Add a dependency from mediaplayer-app-autopilot to python-autopilot, since
+    this will in the future not be included in the image by default.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 07 May 2014 16:30:37 -0700
+
+mediaplayer-app (0.20.5+14.10.20140502-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Fix the AP tests for non-desktop devices
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 02 May 2014 13:43:16 +0000
+
+mediaplayer-app (0.20.5+14.10.20140429-0ubuntu1) utopic; urgency=low
+
+  [ Jim Hodapp ]
+  * Get rid of qtpowerd dependency
+  * Use a video that actually works with hardware video decoding and
+    media-hub
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 29 Apr 2014 13:43:21 +0000
+
+mediaplayer-app (0.20.5+14.04.20140331-0ubuntu2) trusty; urgency=medium
+
+  * debian/control:
+    - Remove arch constraints in gl/gles build-deps
+    - Alternatively depend on the OpenGLES version of
+      qtdeclarative5-qtmultimedia-plugin and
+      qtdeclarative5-ubuntu-ui-toolkit-plugin
+
+ -- Ricardo Salveti de Araujo <ricardo.salveti@canonical.com>  Mon, 14 Apr 2014 17:25:08 -0300
+
+mediaplayer-app (0.20.5+14.04.20140331-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * change check for desktopMode to use platform name rather than env
+    var
+
+  [ CI bot ]
+  * Resync trunk
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 31 Mar 2014 16:36:42 +0000
+
+mediaplayer-app (0.20.5+14.04.20140306-0ubuntu1) trusty; urgency=low
+
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 06 Mar 2014 08:15:28 +0000
+
+mediaplayer-app (0.20.5+14.04.20140213-0ubuntu1) trusty; urgency=low
+
+  [ Bill Filler ]
+  * add desktop icons and remove linking against sharing as it's not
+    being used
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 13 Feb 2014 23:49:33 +0000
+
+mediaplayer-app (0.20.5+14.04.20140116-0ubuntu1) trusty; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * clicking/tap anywhere in the scrubber should cause seek directly to
+    that position where you clicked.
+  * Disabled fullscreen as default mode.
+  * respond to key events for play, pause, fast forward, rewind space
+    bar-> toggle the play/pause button. right arrow key-> fast forward.
+    left arror key -> rewind. F12-> toggle fullscreen.
+  * Implemented open file dialog to open a new video.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 195
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 16 Jan 2014 13:19:24 +0000
+
+mediaplayer-app (0.20.5+14.04.20131108-0ubuntu1) trusty; urgency=low
+
+  [ Omer Akram ]
+  * Replaced mp4 video to ogg video.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Replaced mp4 video to ogg video.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 173
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 08 Nov 2013 13:19:55 +0000
+
+mediaplayer-app (0.20.5+13.10.20131016.1-0ubuntu1) saucy; urgency=low
+
+  [ Bill Filler ]
+  * disable settings button as there are no settings implemented
+  * Does not call pause video if its is not playing when the app lost
+    focus.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 164
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 16 Oct 2013 14:45:43 +0000
+
+mediaplayer-app (0.20.5+13.10.20131015.1-0ubuntu1) saucy; urgency=low
+
+  [ Loïc Minier ]
+  * Use QtPowerd to keep display on when playing.
+
+  [ Francis Ginther ]
+  * Show a error message if the app is called without a valid video
+    filename.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Show a error message if the app is called without a valid video
+    filename.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 160
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 15 Oct 2013 11:33:54 +0000
+
+mediaplayer-app (0.20.5+13.10.20131007-0ubuntu1) saucy; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Hide share button for now. (LP: #1219817)
+  * uri handler. (LP: #1230404)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 151
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 07 Oct 2013 21:30:51 +0000
+
+mediaplayer-app (0.20.5+13.10.20130930.1-0ubuntu1) saucy; urgency=low
+
+  [ Bill Filler ]
+  * remove NoDisplay=true so that it can be launched via upstart-app-
+    launch
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 144
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 30 Sep 2013 12:39:52 +0000
+
+mediaplayer-app (0.20.5+13.10.20130926.1-0ubuntu1) saucy; urgency=low
+
+  [ Jim Hodapp ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Sergio Schvezov ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Renato Araujo Oliveira Filho ]
+  * * Drop support for thumbnail as we can't depend on gstreamer
+    directly until qtmultimedia supports gst1.0 (currently only the -
+    touch fork supports it) * Remove gstreamer related packages from
+    build-dependencies.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 140
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 26 Sep 2013 08:48:02 +0000
+
+mediaplayer-app (0.20.5+13.10.20130923-0ubuntu1) saucy; urgency=low
+
+  [ Ted Gould ]
+  * Adding single instance marker to the desktop file.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 137
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 23 Sep 2013 07:49:57 +0000
+
+mediaplayer-app (0.20.5+13.10.20130918.1-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Use the new actions API instead of passing actions directly to the
+    HUD. (LP: #1221344)
+
+  [ Omer Akram ]
+  * Use the new actions API instead of passing actions directly to the
+    HUD. (LP: #1221344)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 135
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 18 Sep 2013 08:00:30 +0000
+
+mediaplayer-app (0.20.5+13.10.20130905-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * Wait for the scene selector to be visible fully before clicking
+    anything, that may ignore the click.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 132
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 05 Sep 2013 09:03:57 +0000
+
+mediaplayer-app (0.20.5+13.10.20130826.1-0ubuntu1) saucy; urgency=low
+
+  [ Ugo Riboni ]
+  * Use the share popover and component from ubuntu-ui-extras instead of
+    the local version.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 127
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Mon, 26 Aug 2013 19:16:03 +0000
+
+mediaplayer-app (0.20.5+13.10.20130801-0ubuntu1) saucy; urgency=low
+
+  [ David Henningsson ]
+  * Remove dependency on qtubuntu-media (not wanted on PulseAudio
+    image).
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 124
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 01 Aug 2013 04:04:01 +0000
+
+mediaplayer-app (0.20.5+13.10.20130731-0ubuntu1) saucy; urgency=low
+
+  [ Sergio Schvezov ]
+  * Adding test xml output and coverage build targets.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 122
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 31 Jul 2013 04:02:06 +0000
+
+mediaplayer-app (0.20.5+13.10.20130719-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * mediaplayer app crashed with the autopilot sample file we were using
+    before, re-encoded that file and now everything works.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 118
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 19 Jul 2013 06:09:41 +0000
+
+mediaplayer-app (0.20.5+13.10.20130703-0ubuntu1) saucy; urgency=low
+
+  [ Kaleo ]
+  * * Adapt slider to newer and simpler toolkit's theming
+    infrastructure. * Fixed autopilot tests. * Changed test video file.
+
+  [ Renato Araujo Oliveira Filho ]
+  * * Adapt slider to newer and simpler toolkit's theming
+    infrastructure. * Fixed autopilot tests. * Changed test video file.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 112
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 03 Jul 2013 04:46:10 +0000
+
+mediaplayer-app (0.20.5daily13.06.13-0ubuntu1) saucy; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Added support for i18n in the mediaplayer-app.desktop file.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 100
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 13 Jun 2013 04:08:02 +0000
+
+mediaplayer-app (0.20.5daily13.06.11-0ubuntu1) saucy; urgency=low
+
+  [ Omer Akram ]
+  * fix quite a few pep8 complaints for the autopilot tests.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed license.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 97
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 11 Jun 2013 04:05:10 +0000
+
+mediaplayer-app (0.20.5daily13.06.07-0ubuntu1) saucy; urgency=low
+
+  [ Michael Terry ]
+  * Port to HUD 1.0.
+
+  [ Omer Akram ]
+  * port the mediaplayer-app autopilot tests to 1.3.
+  * Fix autopilot tests on touch.
+  * Skip tests interacting with the seekbar as its only not visible in
+    landscape mode on phones and we don't have a way to force landscape.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Avoid black thumbnails on scene selector. (LP: #1116768)
+  * Stop video at EOF. Does not clear the source property of MediaPlayer
+    inside of the stop function.
+  * Removed use of deprecated functions.
+  * Fixed application exit during the thumbnail generation. Avoid
+    application crashes due a SDK bug. (LP: #1175394)
+  * Added libqt5multimedia5-plugins as recommended package.
+  * [autopilot] Updated video position check after clicking on scene.
+    (LP: #1179972)
+  * Rename binary file from media-player to mediaplayer-app.
+  * Check if the uri passed as argument is a valid file before play it.
+    (LP: #1182961)
+  * Initial support for i18n.
+  * Fixed support for uri as argument. (LP: #1183502)
+
+  [ Łukasz 'sil2100' Zemczak ]
+  * libhud-qt-qml has been renamed to qtdeclarative5-hud1.0. Also,
+    switch code to use HUD 1.0.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 94
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 07 Jun 2013 04:02:25 +0000
+
+mediaplayer-app (0.20.5daily13.05.31ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * Skip tests interacting with the seekbar as its only not visible in
+    landscape mode on phones and we don't have a way to force landscape.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 91 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 31 May 2013 05:14:34 +0000
+
+mediaplayer-app (0.20.5daily13.05.24ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Omer Akram ]
+  * Fix autopilot tests on touch.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed support for uri as argument. (LP: #1183502)
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 89 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 24 May 2013 05:21:30 +0000
+
+mediaplayer-app (0.20.5daily13.05.23ubuntu.unity.next-0ubuntu1) raring; urgency=low
+
+  [ Renato Araujo Oliveira Filho ]
+  * Check if the uri passed as argument is a valid file before play it.
+    (LP: #1182961)
+  * Initial support for i18n.
+
+  [ Ubuntu daily release ]
+  * Automatic snapshot from revision 86 (ubuntu-unity/next)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 23 May 2013 04:40:23 +0000
+
 mediaplayer-app (0.20.5daily13.05.22ubuntu.unity.next-0ubuntu1) raring; urgency=low
 
   [ Renato Araujo Oliveira Filho ]
@@ -51,7 +459,7 @@ mediaplayer-app (0.20.4) quantal; urgency=low
   [ Renato Araujo Oliveira Filho ]
   * Avoid black thumbnails on scene selector.
 
- -- Renato Araujo Oliveira Filho <renato@ubuntu>  Wed, 17 Apr 2013 16:20:46 -0300
+ -- Renato Araujo Oliveira Filho <renato@canonical.com>  Wed, 17 Apr 2013 16:20:46 -0300
 
 media-player (0.20.3) quantal; urgency=low
 
@@ -243,6 +651,6 @@ media-player (0.2) quantal; urgency=low
 
 media-player (0.1-1) unstable; urgency=low
 
-  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+  * Initial release.
 
  -- Michał Sawicz <phablet@lists.canonical.com>  Wed, 24 Oct 2012 15:09:02 +0200

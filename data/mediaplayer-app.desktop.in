@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=tr("Media Player")
+GenericName=tr("Media Player")
+Comment=tr("Media Player")
+Exec=mediaplayer-app %u
+Terminal=false
+Icon=media-player
+X-Ubuntu-Gettext-Domain=mediaplayer-app
+X-Ubuntu-Single-Instance=true

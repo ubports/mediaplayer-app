@@ -18,11 +18,14 @@
 #define MEDIAPLAYER_H
 
 #include <QtQuick/QQuickView>
-#include <QGuiApplication>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QFileDialog>
+#include <QUrl>
 
-class MediaPlayer : public QGuiApplication
+class MediaPlayer : public QApplication
 {
     Q_OBJECT
+    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
 
 public:
     MediaPlayer(int &argc, char **argv);
@@ -32,11 +35,15 @@ public:
 
 public Q_SLOTS:
     void toggleFullscreen();
+    void leaveFullScreen();
     void onWidthChanged(int);
     void onHeightChanged(int);
+    bool isDesktopMode() const;
+    QUrl chooseFile();
 
 private:
     QQuickView *m_view;
+    QFileDialog *m_fileChooser;
 };
 
 #endif // MEDIAPLAYER_H
