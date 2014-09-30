@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 18:01-0300\n"
+"POT-Creation-Date: 2014-09-30 09:49-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,6 @@ msgstr ""
 #: src/qml/player/TimeLine.qml:138
 #, qt-format
 msgid "%1:%2:%3"
-msgstr ""
-
-#: src/qml/player/TimeLine.qml:105
-#, qt-format
-msgid "- %1"
-msgstr ""
-
-#: src/qml/player/TimeLine.qml:132 src/qml/player/TimeLine.qml:133
-#: src/qml/player/TimeLine.qml:134
-#, qt-format
-msgid "0%1"
 msgstr ""
 
 #: src/qml/player/TimeLine.qml:72

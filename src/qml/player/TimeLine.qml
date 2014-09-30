@@ -102,7 +102,7 @@ Item {
             },
             State {
                 name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: i18n.tr("- %1").arg(_timeLine.remainingTime) }
+                PropertyChanges { target: _TimeLabel; text: "- %1".arg(_timeLine.remainingTime) }
             }
         ]
 
@@ -129,9 +129,9 @@ Item {
         min = time % 60
         hour = Math.floor(time / 60)
 
-        if (secs < 10) secs = i18n.tr("0%1").arg(secs)
-        if (min < 10) min = i18n.tr("0%1").arg(min)
-        if (hour < 10) hour = i18n.tr("0%1").arg(hour)
+        if (secs < 10) secs = "0%1".arg(secs)
+        if (min < 10) min = "0%1".arg(min)
+        if (hour < 10) hour = "0%1".arg(hour)
 
         // TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
         // %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
