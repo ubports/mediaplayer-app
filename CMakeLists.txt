@@ -35,7 +35,7 @@ include(FindPkgConfig)
 # Standard install paths
 include(GNUInstallDirs)
 
-set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/mediaplayer-app)
+set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_FULL_DATADIR}/mediaplayer-app)
 
 # for dh_translations to extract the domain
 # (regarding syntax consistency, see http://pad.lv/1181187)
