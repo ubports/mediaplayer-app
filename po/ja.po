@@ -7,57 +7,68 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-06-12 09:10-0300\n"
-"PO-Revision-Date: 2013-06-14 22:11+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-03-27 18:44-0400\n"
+"PO-Revision-Date: 2014-08-07 07:59+0000\n"
+"Last-Translator: Mitsuya Shibata <mty.shibata@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-06-15 06:21+0000\n"
-"X-Generator: Launchpad (build 16667)\n"
+"X-Launchpad-Export-Date: 2014-09-26 06:48+0000\n"
+"X-Generator: Launchpad (build 17196)\n"
 
-#: src/qml/player/TimeLine.qml:133
+#: src/qml/player/TimeLine.qml:135
 #, qt-format
 msgid "%1:%2:%3"
-msgstr ""
+msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:102
+#: src/qml/player/TimeLine.qml:104
 #, qt-format
 msgid "- %1"
-msgstr ""
+msgstr "- %1"
 
-#: src/qml/player/TimeLine.qml:129 src/qml/player/TimeLine.qml:130
-#: src/qml/player/TimeLine.qml:131
+#: src/qml/player/TimeLine.qml:131 src/qml/player/TimeLine.qml:132
+#: src/qml/player/TimeLine.qml:133
 #, qt-format
 msgid "0%1"
-msgstr ""
+msgstr "0%1"
 
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:71
 msgid "0:00:00"
-msgstr ""
+msgstr "0:00:00"
+
+#: src/qml/player.qml:67
+msgid "Error"
+msgstr "エラー"
 
 #: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
 #: data/mediaplayer-app.desktop.in:5
 msgid "Media Player"
-msgstr ""
+msgstr "メディアプレイヤー"
 
-#: src/qml/player.qml:159
+#: src/qml/player.qml:68
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos lens."
+msgstr ""
+"再生できる動画がありません。コンピューターに接続し、動画をスマートフォンに転送してください。その後、Video Lensから動画を選択してください。"
+
+#: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "再生を一時停止もしくは再開します"
 
-#: src/qml/player.qml:158
+#: src/qml/player.qml:188
 msgid "Play / Pause"
-msgstr ""
+msgstr "再生/一時停止"
 
-#: src/qml/player.qml:163
+#: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "Post;Upload;Attach;投稿;アップロード;添付"
 
-#: src/qml/player.qml:162
+#: src/qml/player.qml:193
 msgid "Share"
-msgstr ""
+msgstr "共有"
 
-#: src/qml/player/TimeLine.qml:66
+#: src/qml/player/TimeLine.qml:68
 msgid "unknown"
-msgstr ""
+msgstr "不明"

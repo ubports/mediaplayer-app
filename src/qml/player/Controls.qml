@@ -20,7 +20,6 @@
  */
 import QtQuick 2.0
 import Ubuntu.Components 0.1
-import "../sdk"
 
 Item {
     id: controls
@@ -31,9 +30,12 @@ Item {
     property alias sceneSelectorVisible: _sceneSelector.visible
     property int heightOffset: 0
 
+    property alias settingsEnabled: _settingsButton.enabled
+
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
+    signal shareClicked
     signal seekRequested(int time)
     signal startSeek
     signal endSeek
@@ -47,12 +49,6 @@ Item {
 
     ListModel {
         id: _sceneSelectorModel
-    }
-
-    SharePopover {
-        id: _sharePopover
-
-        visible: false
     }
 
     Rectangle {
@@ -70,10 +66,16 @@ Item {
 
         property bool parentActive: _controls.active
 
+        function selectSceneAt(time) {
+            // SKIP it for now, we need to fix hybris bug #1231147
+            return
+        }
+
         objectName: "Controls.SceneSelector"
         opacity: 0
         visible: opacity > 0
-        model: _sceneSelectorModel
+        // SKIP it for now, we need to fix hybris bug #1231147
+        //model: _sceneSelectorModel
         anchors {
             left: parent.left
             right: parent.right
@@ -90,7 +92,8 @@ Item {
         ParallelAnimation {
             id: _showAnimation
 
-            running: _sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 1; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: 0; duration: 175 }
         }
@@ -98,7 +101,8 @@ Item {
         ParallelAnimation {
             id: _hideAnimation
 
-            running: !_sceneSelector.show
+            // SKIP it for now, we need to fix hybris bug #1231147
+            running: false //!_sceneSelector.show
             NumberAnimation { target: _sceneSelector; property: "opacity"; to: 0; duration: 175 }
             NumberAnimation { target: controls; property: "heightOffset"; to: units.gu(2); duration: 175 }
         }
@@ -157,7 +161,7 @@ Item {
         Item {
             id: _timeLineAnchor
 
-            anchors {                
+            anchors {
                 left: _playbackButtom.right
                 leftMargin: units.gu(2)
                 right: _shareButton.left
@@ -186,7 +190,6 @@ Item {
                 maximumValue: video ? video.duration / 1000 : 0
                 value: video ? video.position / 1000 : 0
 
-
                 // pause the video during the seek
                 onPressedChanged: {
                    if (!pressed && seeking) {
@@ -197,7 +200,7 @@ Item {
 
                 // Live value is the real slider value. Ex: User dragging the slider
                 onLiveValueChanged: {
-                    if (video && pressed)  {
+                    if (video)  {
                         var changed = Math.abs(liveValue - value)
                         if (changed > 1) {
                             if (!seeking) {
@@ -225,6 +228,8 @@ Item {
         IconButton {
             id: _shareButton
 
+            /* Disable share button for now until we get some feedback from designers */
+            visible: false
             iconSource: "artwork/icon_share.png"
             iconSize: units.gu(3)
             anchors {
@@ -235,21 +240,7 @@ Item {
             width: units.gu(9)
             height: units.gu(3)
 
-            onClicked: {
-                var position = video.position
-                if (position === 0) {
-                    if (video.duration > 10000) {
-                        position = 10000;
-                    } else if (video.duration > 0){
-                        position = video.duration / 2
-                    }
-                }
-                if (position >= 0) {
-                    _sharePopover.picturePath = "image://video/" + video.source + "/" + position;
-                }
-                _sharePopover.caller = _shareButton
-                _sharePopover.show()
-            }
+            onClicked: controls.shareClicked()
         }
 
         IconButton {
@@ -264,6 +255,8 @@ Item {
 
             width: units.gu(9)
             height: units.gu(3)
+            enabled: false
+            opacity: enabled ? 1.0 : 0.2
 
             onClicked: settingsClicked()
         }

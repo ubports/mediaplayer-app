@@ -21,6 +21,8 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 0.1
+import Ubuntu.Components.Extras 0.1
+import Ubuntu.Components.Popups 0.1 as Popups
 import "../common"
 import "../sdk"
 
@@ -31,9 +33,10 @@ AbstractPlayer {
     property int pressCount: 0
     property bool wasPlaying: false
     property string uri
-    property bool rotating: false   
+    property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
+    readonly property int seekStep: 1000
 
     signal timeClicked
 
@@ -60,6 +63,14 @@ AbstractPlayer {
         event.accepted = true
     }
 
+    function playPause() {
+        if (["paused", "playing"].indexOf(player.state) != -1) {
+            player.togglePause();
+        } else {
+            player.play();
+        }
+    }
+
 //TODO: blur effect does not work fine without multiple thread rendering
 //    ControlsMask {
 //        anchors.fill: parent
@@ -84,6 +95,8 @@ AbstractPlayer {
 
             property bool isPaused: false
 
+            settingsEnabled: mpApplication.desktopMode
+
             objectName: "controls"
             state: player.state
             video: player.video
@@ -96,17 +109,14 @@ AbstractPlayer {
             maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
 
-            onPlaybackClicked: {
-                if (["paused", "playing"].indexOf(state) != -1) {
-                    player.togglePause()
-                } else {
-                    player.play()
-                }
-            }
+            onPlaybackClicked: player.playPause()
 
             onFullscreenClicked: {
-                //TODO: wait for shell supports fullscreen
-                Qt.quit()
+                if (mpApplication.desktopMode) {
+                    mpApplication.toggleFullscreen()
+                } else {
+                    Qt.quit()
+                }
             }
 
             onSeekRequested: {
@@ -121,6 +131,16 @@ AbstractPlayer {
             onEndSeek: {
                 if (!isPaused) {
                     player.play()
+                }
+            }
+
+            onSettingsClicked: {
+                if (mpApplication.desktopMode) {
+                    var videoFile = mpApplication.chooseFile()
+                    if (videoFile != "") {
+                        player.stop()
+                        item.playUri(videoFile)
+                    }
                 }
             }
         }
@@ -138,5 +158,44 @@ AbstractPlayer {
         }
 
         onClicked: _controls.active = !_controls.active
+    }
+
+    Keys.onPressed: {
+        switch(event.key) {
+        case Qt.Key_Space:
+            player.playPause()
+            break;
+        case Qt.Key_Right:
+        case Qt.Key_Left:
+        {
+            var currentPos = (video ? video.position : 0)
+            var nextPos = currentPos
+            if (event.key == Qt.Key_Right) {
+                var maxPos = (video ? video.duration : 0)
+                nextPos += player.seekStep
+                if (nextPos > maxPos) {
+                    nextPos = -1;
+                }
+            } else {
+                nextPos -= player.seekStep
+                if (nextPos < 0) {
+                    nextPos = -1
+                }
+            }
+
+            if (nextPos != -1) {
+                player.video.seek(nextPos)
+            }
+            break;
+        }
+        case Qt.Key_F11:
+            mpApplication.toggleFullscreen()
+            break;
+        case Qt.Key_Escape:
+            mpApplication.leaveFullScreen()
+            break;
+        default:
+            break;
+        }
     }
 }

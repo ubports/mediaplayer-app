@@ -28,7 +28,7 @@ Item {
     property alias maximumValue: _slider.maximumValue
     property alias pressed: _slider.pressed
     property alias liveValue: _slider.value
-    property real value: 0
+    property real value: 0.0
     property string currentTime
     property string remainingTime
 
@@ -38,8 +38,11 @@ Item {
     // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
     // The Slider components break the binding when the user interact with the component because of that a simple
     // "property alias value: _slider.value" does not work
-    Binding { target: _slider; property: "value"; value: _timeLine.value }
-
+    onValueChanged: {
+        if (!_slider.pressed) {
+            _slider.value = _timeLine.value
+        }
+    }
     Slider {
         id: _slider
 
