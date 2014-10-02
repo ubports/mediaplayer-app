@@ -1,5 +1,5 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
-# Copyright 2012 Canonical
+# Copyright 2012-2014 Canonical
 #
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
@@ -7,14 +7,16 @@
 
 """Tests for the Mediaplayer App"""
 
-from autopilot.matchers import Eventually
-from autopilot.platform import model
-from testtools import skipIf
-from testtools.matchers import Equals, GreaterThan
+import logging
 
-from unittest import skip
+from autopilot import platform
+from autopilot.matchers import Eventually
+from testtools.matchers import Equals
 
 from mediaplayer_app.tests import MediaplayerAppTestCase
+
+
+logger = logging.getLogger(__name__)
 
 
 class TestPlayerWithVideo(MediaplayerAppTestCase):
@@ -24,8 +26,8 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         In the testfarm, the application may take some time to show up."""
     def setUp(self):
         super(TestPlayerWithVideo, self).setUp()
-        print(model())
-        if model() in (
+        logger.info(platform.model())
+        if platform.model() in (
                 'Nexus 4', 'Galaxy Nexus', "Nexus 7 (2013) Wi-Fi", "Nexus 10"):
             self.launch_app("h264.avi")
         else:
@@ -35,6 +37,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         # wait video player start
         player = self.main_window.get_player()
         self.assertThat(player.playing, Eventually(Equals(True)))
+
+    def has_seekbar(self):
+        return platform.model() == 'Desktop' or platform.is_tablet()
 
     def show_controls(self):
         video_area = self.main_window.get_video_area()
@@ -69,9 +74,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         self.assertProperty(player, playing=True, paused=False)
         self.assertProperty(playback_button, icon="pause")
 
-    @skipIf(model() in ('Nexus 4', 'Galaxy Nexus'),
-            'Screen width not enough for seekbar')
     def test_time_display_behavior(self):
+        if not self.has_seekbar():
+            self.skipTest('Screen width not enough for seekbar.')
         self.show_controls()
         self.pause_video()
 
@@ -92,9 +97,9 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         # signal)
         self.assertEqual(time_label.text[0:1], "-")
 
-    @skipIf(model() in ('Nexus 4', 'Galaxy Nexus'),
-            'Screen width not enough for seekbar')
     def test_show_controls_at_end(self):
+        if not self.has_seekbar():
+            self.skipTest('Screen width not enough for seekbar.')
         controls = self.main_window.get_controls()
         # The controls are invisible by default
         self.assertThat(controls.visible, Eventually(Equals(False)))
