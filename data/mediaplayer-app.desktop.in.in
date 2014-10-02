@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+_Name=Media Player
+_GenericName=Media Player
+_Comment=Media Player
+_Keywords=Movies;Movie Player;Video Player
+Exec=mediaplayer-app %u
+Terminal=false
+Icon=@MEDIAPLAYER_DIR@/@MEDIAPLAYER_APP_ICON@
+X-Ubuntu-SymbolicIcon=@MEDIAPLAYER_DIR@/@MEDIAPLAYER_APP_SYMBOLIC_ICON@
+X-Ubuntu-Gettext-Domain=mediaplayer-app
+X-Ubuntu-Single-Instance=true

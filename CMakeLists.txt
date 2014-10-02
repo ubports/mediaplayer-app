@@ -4,9 +4,13 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(DESKTOP_FILE mediaplayer-app.desktop)
 
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
+
+find_program(INTLTOOL_MERGE intltool-merge)
+find_program(INTLTOOL_EXTRACT intltool-extract)
 
 string(TOLOWER "${CMAKE_BUILD_TYPE}" cmake_build_type_lower)
 
@@ -35,7 +39,7 @@ include(FindPkgConfig)
 # Standard install paths
 include(GNUInstallDirs)
 
-set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_DATADIR}/mediaplayer-app)
+set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_FULL_DATADIR}/mediaplayer-app)
 
 # for dh_translations to extract the domain
 # (regarding syntax consistency, see http://pad.lv/1181187)
@@ -48,7 +52,6 @@ add_subdirectory(data)
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(po)
-add_subdirectory(desktop)
 
 configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h @ONLY)
 
