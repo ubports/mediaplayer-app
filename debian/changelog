@@ -1,3 +1,36 @@
+mediaplayer-app (0.20.5+14.10.20141002-0ubuntu1) 14.09; urgency=low
+
+  [ Akiva Avraham ]
+  * upgrade: import Ubuntu.Components 1.1 import Ubuntu.Components.xxxx
+    1.0 except: import Ubuntu.Components.Extras 0.1 // stayed the same
+    because I could not find 1.0 in use in any other projects after a
+    google search
+
+  [ Alan Pope ]
+  * Fix text.
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Leo Arias ]
+  * Skip the seekbar tests on the devices that do not have space for it.
+    (LP: #1359040)
+
+  [ Pawel Stolowski ]
+  * Added X-Ubuntu-Default-Department-ID key to the desktop file. This
+    is required by click scope to support departments for preinstalled
+    applications.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Added comments for TRANSLATORS.
+  * Show a proper message if the video format is not supported. (LP:
+    #1365497)
+  * Fixed images copyright. (LP: #1194916)
+  * Update application icon. Avoid using themed icons for application
+    icon. Added symbolic icon. (LP: #1365408)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 02 Oct 2014 19:12:00 +0000
+
 mediaplayer-app (0.20.5+14.10.20140918-0ubuntu1) utopic; urgency=medium
 
   [ Ted Gould ]
