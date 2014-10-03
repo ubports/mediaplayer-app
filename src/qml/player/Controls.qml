@@ -158,8 +158,11 @@ Item {
             onClicked: controls.playbackClicked()
         }
 
-        Item {
-            id: _timeLineAnchor
+        TimeLine {
+            id: _timeline
+
+            property bool seeking: false
+
 
             anchors {
                 left: _playbackButtom.right
@@ -170,57 +173,39 @@ Item {
             }
             height: units.gu(4)
 
-            // does not show the slider if the space on the screen is not enough
-            visible: (width > units.gu(5))
+            minimumValue: 0
+            maximumValue: video ? video.duration / 1000 : 0
+            value: video ? video.position / 1000 : 0
 
-            TimeLine {
-                id: _timeline
+            // pause the video during the seek
+            onPressedChanged: {
+               if (!pressed && seeking) {
+                    endSeek()
+                    seeking = false
+               }
+            }
 
-                property int maximumWidth: units.gu(82)
-                property bool seeking: false
-
-                anchors {
-                    top: parent.top
-                    bottom: parent.bottom
-                    horizontalCenter: parent.horizontalCenter
-                }
-
-                width: _timeLineAnchor.width >= maximumWidth ? maximumWidth : _timeLineAnchor.width
-                minimumValue: 0
-                maximumValue: video ? video.duration / 1000 : 0
-                value: video ? video.position / 1000 : 0
-
-                // pause the video during the seek
-                onPressedChanged: {
-                   if (!pressed && seeking) {
-                        endSeek()
-                        seeking = false
-                   }
-                }
-
-                // Live value is the real slider value. Ex: User dragging the slider
-                onLiveValueChanged: {
-                    if (video)  {
-                        var changed = Math.abs(liveValue - value)
-                        if (changed > 1) {
-                            if (!seeking) {
-                                startSeek()
-                                seeking = true
-                            }
-                            seekRequested(liveValue * 1000)
-                            _sceneSelector.selectSceneAt(liveValue * 1000)
+            // Live value is the real slider value. Ex: User dragging the slider
+            onLiveValueChanged: {
+                if (video)  {
+                    var changed = Math.abs(liveValue - value)
+                    if (changed > 1) {
+                        if (!seeking) {
+                            startSeek()
+                            seeking = true
                         }
+                        seekRequested(liveValue * 1000)
+                        _sceneSelector.selectSceneAt(liveValue * 1000)
                     }
                 }
+            }
 
-                onValueChanged: _sceneSelector.selectSceneAt(video.position)
-
-                onClicked: {
-                    if (insideThumb) {
-                        _sceneSelector.show = !_sceneSelector.show
-                    } else {
-                        _sceneSelector.show = true
-                    }
+            onValueChanged: _sceneSelector.selectSceneAt(video.position)
+            onClicked: {
+                if (insideThumb) {
+                    _sceneSelector.show = !_sceneSelector.show
+                } else {
+                    _sceneSelector.show = true
                 }
             }
         }

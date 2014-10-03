@@ -56,6 +56,7 @@ Item {
             rightMargin: units.gu(2)
         }
 
+        visible: parent.width > units.gu(20)
         minimumValue: 0
         maximumValue: 1000
         live: true
