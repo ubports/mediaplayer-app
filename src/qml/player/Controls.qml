@@ -131,10 +131,11 @@ Item {
             iconSize: units.gu(3)
             anchors {
                 left: parent.left
+                leftMargin: units.gu(2)
                 verticalCenter: parent.verticalCenter
             }
-            width: units.gu(9)
-            height: units.gu(3)
+            width: units.gu(4)
+            height: units.gu(4)
             onClicked: controls.fullscreenClicked()
         }
 
@@ -148,13 +149,11 @@ Item {
             iconSize: units.gu(3)
             anchors {
                 left: _fullScreenButton.right
-                // keep proportion btw different resolutions
-                leftMargin: units.gu(9) * _toolbar.width / units.gu(128)
+                leftMargin: units.gu(4)
                 verticalCenter: parent.verticalCenter
             }
-            width: units.gu(9)
-            height: units.gu(3)
-
+            width: units.gu(4)
+            height: units.gu(4)
             onClicked: controls.playbackClicked()
         }
 
@@ -196,7 +195,7 @@ Item {
                         }
                         seekRequested(liveValue * 1000)
                         _sceneSelector.selectSceneAt(liveValue * 1000)
-                    }
+                     }
                 }
             }
 
@@ -222,7 +221,7 @@ Item {
                 top: parent.top
                 bottom: parent.bottom
             }
-            width: units.gu(9)
+            width: visible ? units.gu(4) : 0
             height: units.gu(3)
 
             onClicked: controls.shareClicked()
