@@ -7,53 +7,63 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-03-27 18:44-0400\n"
-"PO-Revision-Date: 2014-08-03 07:54+0000\n"
+"POT-Creation-Date: 2014-10-03 09:06+0200\n"
+"PO-Revision-Date: 2014-10-03 19:11+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-09-26 06:47+0000\n"
+"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
-#: src/qml/player/TimeLine.qml:135
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:138
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:104
-#, qt-format
-msgid "- %1"
-msgstr "- %1"
-
-#: src/qml/player/TimeLine.qml:131 src/qml/player/TimeLine.qml:132
-#: src/qml/player/TimeLine.qml:133
-#, qt-format
-msgid "0%1"
-msgstr "0%1"
-
-#: src/qml/player/TimeLine.qml:71
+#: src/qml/player/TimeLine.qml:72
 msgid "0:00:00"
 msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:238
+msgid "A network error occurred."
+msgstr "Er is een netwerkfout opgetreden."
+
+#: src/qml/player/VideoPlayer.qml:216
+msgid "Close"
+msgstr "Sluiten"
 
 #: src/qml/player.qml:67
 msgid "Error"
 msgstr "Fout"
 
-#: data/mediaplayer-app.desktop.in:3 data/mediaplayer-app.desktop.in:4
-#: data/mediaplayer-app.desktop.in:5
-msgid "Media Player"
-msgstr "Mediaspeler"
+#: src/qml/player/VideoPlayer.qml:212
+msgid "Error playing video"
+msgstr "Fout bij afspelen video"
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Fail to connect with playback backend."
+msgstr "Kon geen verbinding maken met afspeelmodule."
+
+#: src/qml/player/VideoPlayer.qml:232
+msgid "Fail to open the source video."
+msgstr "Kon de bronvideo niet openen."
 
 #: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
-"videos to the phone. Then select video from Videos lens."
+"videos to the phone. Then select video from Videos scope."
 msgstr ""
-"Geen video geselecteerd om af te kunnen spelen. Verbind uw telefoon met uw "
-"computer om video's te kopiëren naar uw telefoon. Selecteer daarna de video "
-"in de Video-lens."
+"Geen video geselecteerd om af te spelen. Verbind uw telefoon met uw computer "
+"om video's te kopiëren naar uw telefoon. Selecteer daarna de video in de "
+"Video-scope."
+
+#: src/qml/player.qml:71
+msgid "Ok"
+msgstr "Ok"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -71,6 +81,35 @@ msgstr "Post;Upload;Attach;Posten;Uploaden;Bijvoegen"
 msgid "Share"
 msgstr "Delen"
 
-#: src/qml/player/TimeLine.qml:68
+#: src/qml/player/VideoPlayer.qml:241
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr ""
+"U heeft niet de benodigde rechten om mediabestanden af te kunnen spelen."
+
+#: src/qml/player/VideoPlayer.qml:235
+msgid "Video format not supported."
+msgstr "Videoformaat wordt niet ondersteund."
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:69
 msgid "unknown"
 msgstr "Onbekend"
+
+#~ msgid "Media Player"
+#~ msgstr "Mediaspeler"
+
+#, qt-format
+#~ msgid "0%1"
+#~ msgstr "0%1"
+
+#, qt-format
+#~ msgid "- %1"
+#~ msgstr "- %1"
+
+#~ msgid ""
+#~ "No video selected to play. Connect your phone to your computer to transfer "
+#~ "videos to the phone. Then select video from Videos lens."
+#~ msgstr ""
+#~ "Geen video geselecteerd om af te kunnen spelen. Verbind uw telefoon met uw "
+#~ "computer om video's te kopiëren naar uw telefoon. Selecteer daarna de video "
+#~ "in de Video-lens."
