@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-10-04 01:11+0000\n"
+"PO-Revision-Date: 2014-10-04 15:39+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
+"X-Launchpad-Export-Date: 2014-10-05 06:35+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -30,7 +30,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
-msgstr ""
+msgstr "የ ኔትዎርክ ስህተት ተፈጥሯል"
 
 #: src/qml/player/VideoPlayer.qml:216
 msgid "Close"
@@ -42,7 +42,7 @@ msgstr "ስህተት"
 
 #: src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
-msgstr ""
+msgstr "ቪዲዮ በማጫወት ላይ እንዳለ ስህተት ተፈጥሯል"
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
@@ -50,7 +50,7 @@ msgstr ""
 
 #: src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "የ ቪዲዮውን ምንጭ መክፈት አልተቻለም"
 
 #: src/qml/player.qml:68
 msgid ""
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
-msgstr ""
+msgstr "የ ቪዲዮው አቀራረብ የተደገፈ አይደለም"
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:69
