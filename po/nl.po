@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-10-03 19:11+0000\n"
+"PO-Revision-Date: 2014-10-05 08:43+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
+"X-Launchpad-Export-Date: 2014-10-06 06:58+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -46,7 +46,7 @@ msgstr "Fout bij afspelen video"
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
-msgstr "Kon geen verbinding maken met afspeelmodule."
+msgstr "Kon geen verbinding maken met afspeelapp."
 
 #: src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
