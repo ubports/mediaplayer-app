@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-04-25 15:41+0000\n"
-"Last-Translator: Sylvain Prado <Unknown>\n"
+"PO-Revision-Date: 2014-10-06 19:14+0000\n"
+"Last-Translator: Jean Marc <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
+"X-Launchpad-Export-Date: 2014-10-07 06:55+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -30,11 +30,11 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
-msgstr ""
+msgstr "Une erreur réseau s'est produite."
 
 #: src/qml/player/VideoPlayer.qml:216
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: src/qml/player.qml:67
 msgid "Error"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "Valider"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
-msgstr ""
+msgstr "Format vidéo non pris en charge."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:69
