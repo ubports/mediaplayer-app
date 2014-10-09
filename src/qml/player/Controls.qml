@@ -24,6 +24,7 @@ import Ubuntu.Components 1.1
 Item {
     id: controls
 
+    readonly property string orientation: controls.width >= units.gu(60) ? "LANDSCAPE" : "PORTRAIT"
     property variant video: null
     property int maximumHeight: 0
     property alias sceneSelectorHeight: _sceneSelector.height
@@ -55,7 +56,7 @@ Item {
         id: _bgColor
 
         color: "black"
-        opacity: 0.7
+        opacity: 0.8
         anchors.fill: parent
     }
 
@@ -108,141 +109,181 @@ Item {
         }
     }
 
-    Item {
+    HLine {
+        id: _divLine
+        anchors {
+            left: _toolbar.left
+            right: _toolbar.right
+            top: parent.top
+        }
+    }
+    Column {
         id: _toolbar
+
         anchors {
             bottom: parent.bottom
             left: parent.left
             right: parent.right
         }
+        height: childrenRect.height
 
-        height: units.gu(7)
+        Item {
+            id: timelinePlaceHolder
 
-        HLine {
-            id: _divLine
-            anchors.top: parent.top
-        }
-
-        IconButton {
-            id: _fullScreenButton
-
-            //TODO: use the correct icon based on window state
-            iconSource: "artwork/icon_exitfscreen.png"
-            iconSize: units.gu(3)
             anchors {
                 left: parent.left
-                leftMargin: units.gu(2)
-                verticalCenter: parent.verticalCenter
-            }
-            width: units.gu(4)
-            height: units.gu(4)
-            onClicked: controls.fullscreenClicked()
-        }
-
-        IconButton {
-            id: _playbackButtom
-
-            property string icon
-
-            objectName: "Controls.PlayBackButton"
-            iconSource: icon ? "artwork/icon_%1.png".arg(icon) : ""
-            iconSize: units.gu(3)
-            anchors {
-                left: _fullScreenButton.right
-                leftMargin: units.gu(4)
-                verticalCenter: parent.verticalCenter
-            }
-            width: units.gu(4)
-            height: units.gu(4)
-            onClicked: controls.playbackClicked()
-        }
-
-        TimeLine {
-            id: _timeline
-
-            property bool seeking: false
-
-
-            anchors {
-                left: _playbackButtom.right
-                leftMargin: units.gu(2)
-                right: _shareButton.left
-                rightMargin: units.gu(2)
-                verticalCenter: parent.verticalCenter
-            }
-            height: units.gu(4)
-
-            minimumValue: 0
-            maximumValue: video ? video.duration / 1000 : 0
-            value: video ? video.position / 1000 : 0
-
-            // pause the video during the seek
-            onPressedChanged: {
-               if (!pressed && seeking) {
-                    endSeek()
-                    seeking = false
-               }
-            }
-
-            // Live value is the real slider value. Ex: User dragging the slider
-            onLiveValueChanged: {
-                if (video)  {
-                    var changed = Math.abs(liveValue - value)
-                    if (changed > 1) {
-                        if (!seeking) {
-                            startSeek()
-                            seeking = true
-                        }
-                        seekRequested(liveValue * 1000)
-                        _sceneSelector.selectSceneAt(liveValue * 1000)
-                     }
-                }
-            }
-
-            onValueChanged: _sceneSelector.selectSceneAt(video.position)
-            onClicked: {
-                if (insideThumb) {
-                    _sceneSelector.show = !_sceneSelector.show
-                } else {
-                    _sceneSelector.show = true
-                }
-            }
-        }
-
-        IconButton {
-            id: _shareButton
-
-            /* Disable share button for now until we get some feedback from designers */
-            visible: false
-            iconSource: "artwork/icon_share.png"
-            iconSize: units.gu(3)
-            anchors {
-                right: _settingsButton.left
-                top: parent.top
-                bottom: parent.bottom
-            }
-            width: visible ? units.gu(4) : 0
-            height: units.gu(3)
-
-            onClicked: controls.shareClicked()
-        }
-
-        IconButton {
-            id: _settingsButton
-
-            iconSource: "artwork/icon_settings.png"
-            iconSize: units.gu(3)
-            anchors {
                 right: parent.right
-                verticalCenter: parent.verticalCenter
+            }
+            height: controls.orientation === "PORTRAIT" ? units.gu(5) : 0
+        }
+
+        Row {
+            id: controlsRow
+            anchors {
+                left: parent.left
+                right: parent.right
+            }
+            height: units.gu(5)
+            spacing: units.gu(2)
+
+            IconButton {
+                id: _fullScreenButton
+
+                //TODO: use the correct icon based on window state
+                iconSource: mpApplication.desktopMode ? "artwork/icon_exitfscreen.png" : "image://theme/back"
+                iconSize: units.gu(3)
+                anchors.verticalCenter: parent.verticalCenter
+                width: units.gu(7)
+                height: units.gu(4)
+                onClicked: controls.fullscreenClicked()
             }
 
-            width: units.gu(9)
-            height: units.gu(3)
-            enabled: false
-            opacity: enabled ? 1.0 : 0.2
+            VLine {
+            }
 
-            onClicked: settingsClicked()
+            IconButton {
+                id: _playbackButtom
+                objectName: "Controls.PlayBackButton"
+
+                property string icon
+
+                iconSource: icon ? "image://theme/media-playback-%1".arg(icon) : ""
+                iconSize: units.gu(3)
+                anchors.verticalCenter: parent.verticalCenter
+                width: units.gu(7)
+                height: units.gu(4)
+                onClicked: controls.playbackClicked()
+            }
+
+            VLine {
+            }
+
+            TimeLine {
+                id: _timeline
+
+                property bool seeking: false
+
+                anchors.verticalCenter: parent.verticalCenter
+                parent: controls.orientation === "PORTRAIT" ? timelinePlaceHolder : controlsRow
+                width: controls.orientation === "PORTRAIT" ? parent.width :
+                       controlsRow.width -
+                       _fullScreenButton.width -
+                       _playbackButtom.width -
+                       _timeLabel.width -
+                       _shareButton.width -
+                       _settingsButton.width -
+                       (controlsRow.spacing * (controlsRow.children.length - 4))
+                height: units.gu(5)
+                minimumValue: 0
+                maximumValue: video ? video.duration / 1000 : 0
+                videoPosition: video ? video.position / 1000 : 0
+
+                // pause the video during the seek
+                onPressedChanged: {
+                   if (!pressed && seeking) {
+                        endSeek()
+                        seeking = false
+                   }
+                }
+
+                // Live value is the real slider value. Ex: User dragging the slider
+                onLiveValueChanged: {
+                    if (video)  {
+                        var changed = Math.abs(liveValue - videoPosition)
+                        if (changed > 1) {
+                            if (!seeking) {
+                                startSeek()
+                                seeking = true
+                            }
+                            seekRequested(liveValue * 1000)
+                            _sceneSelector.selectSceneAt(liveValue * 1000)
+                         }
+                    }
+                }
+
+                onValueChanged: _sceneSelector.selectSceneAt(video.position)
+                onClicked: {
+                    if (insideThumb) {
+                        _sceneSelector.show = !_sceneSelector.show
+                    } else {
+                        _sceneSelector.show = true
+                    }
+                }
+            }
+
+            VLine {}
+
+            TimeLabel {
+                id: _timeLabel
+
+                remainingTime: _timeline.remainingTime
+                currentTime: _timeline.currentTime
+
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: units.gu(10)
+            }
+
+            VLine {
+                visible: _shareButton.visible
+            }
+
+            IconButton {
+                id: _shareButton
+
+                /* Disable share button for now until we get some feedback from designers */
+                visible: false
+                iconSource: "artwork/icon_share.png"
+                iconSize: units.gu(3)
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: visible ? units.gu(4) : 0
+                onClicked: controls.shareClicked()
+            }
+
+            VLine {
+                visible: _settingsButton.visible
+            }
+
+            IconButton {
+                id: _settingsButton
+
+                visible: false
+                iconSource: "artwork/icon_settings.png"
+                iconSize: units.gu(3)
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: visible ? units.gu(9) : 0
+                enabled: false
+                opacity: enabled ? 1.0 : 0.2
+                onClicked: settingsClicked()
+            }
         }
     }
 
@@ -266,7 +307,7 @@ Item {
     states: [
         State {
             name: "stopped"
-            PropertyChanges { target: _playbackButtom; icon: "play" }
+            PropertyChanges { target: _playbackButtom; icon: "start" }
         },
 
         State {
@@ -276,7 +317,7 @@ Item {
 
         State {
             name: "paused"
-            PropertyChanges { target: _playbackButtom; icon: "play" }
+            PropertyChanges { target: _playbackButtom; icon: "start" }
         }
     ]
 }
