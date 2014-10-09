@@ -128,7 +128,7 @@ Item {
         height: childrenRect.height
 
         Item {
-            id: timelinePlaceHolder
+            id: timelinePlaceHolderPortrait
 
             anchors {
                 left: parent.left
@@ -144,7 +144,6 @@ Item {
                 right: parent.right
             }
             height: units.gu(5)
-            spacing: units.gu(2)
 
             IconButton {
                 id: _fullScreenButton
@@ -178,60 +177,76 @@ Item {
             VLine {
             }
 
-            TimeLine {
-                id: _timeline
+            Item {
+                id: timelinePlaceHolderLandscape
 
-                property bool seeking: false
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
 
-                anchors.verticalCenter: parent.verticalCenter
-                parent: controls.orientation === "PORTRAIT" ? timelinePlaceHolder : controlsRow
-                width: controls.orientation === "PORTRAIT" ? parent.width :
-                       controlsRow.width -
+                width: controlsRow.width -
                        _fullScreenButton.width -
                        _playbackButtom.width -
                        _timeLabel.width -
                        _shareButton.width -
                        _settingsButton.width -
-                       (controlsRow.spacing * (controlsRow.children.length - 4))
-                height: units.gu(5)
-                minimumValue: 0
-                maximumValue: video ? video.duration / 1000 : 0
-                videoPosition: video ? video.position / 1000 : 0
+                       units.gu(2)
 
-                // pause the video during the seek
-                onPressedChanged: {
-                   if (!pressed && seeking) {
-                        endSeek()
-                        seeking = false
-                   }
-                }
+                TimeLine {
+                    id: _timeline
 
-                // Live value is the real slider value. Ex: User dragging the slider
-                onLiveValueChanged: {
-                    if (video)  {
-                        var changed = Math.abs(liveValue - videoPosition)
-                        if (changed > 1) {
-                            if (!seeking) {
-                                startSeek()
-                                seeking = true
-                            }
-                            seekRequested(liveValue * 1000)
-                            _sceneSelector.selectSceneAt(liveValue * 1000)
-                         }
+                    property bool seeking: false
+
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        margins: units.gu(2)
+                        verticalCenter: parent.verticalCenter
                     }
-                }
+                    height: units.gu(4)
+                    parent: controls.orientation === "PORTRAIT" ? timelinePlaceHolderPortrait : timelinePlaceHolderLandscape
+                    minimumValue: 0
+                    maximumValue: video ? video.duration / 1000 : 0
+                    videoPosition: video ? video.position / 1000 : 0
 
-                onValueChanged: _sceneSelector.selectSceneAt(video.position)
-                onClicked: {
-                    if (insideThumb) {
-                        _sceneSelector.show = !_sceneSelector.show
-                    } else {
-                        _sceneSelector.show = true
+                    // pause the video during the seek
+                    onPressedChanged: {
+                       if (!pressed && seeking) {
+                            endSeek()
+                            seeking = false
+                       }
+                    }
+
+                    // Live value is the real slider value. Ex: User dragging the slider
+                    onLiveValueChanged: {
+                        if (video)  {
+                            var changed = Math.abs(liveValue - videoPosition)
+                            if (changed > 1) {
+                                if (!seeking) {
+                                    startSeek()
+                                    seeking = true
+                                }
+                                seekRequested(liveValue * 1000)
+                                _sceneSelector.selectSceneAt(liveValue * 1000)
+                             }
+                        }
+                    }
+
+                    onValueChanged: _sceneSelector.selectSceneAt(video.position)
+                    onClicked: {
+                        if (insideThumb) {
+                            _sceneSelector.show = !_sceneSelector.show
+                        } else {
+                            _sceneSelector.show = true
+                        }
                     }
                 }
             }
 
-            VLine {}
+            VLine {
+                visible: controls.orientation === "LANDSCAPE"
+            }
 
             TimeLabel {
                 id: _timeLabel
@@ -261,7 +276,7 @@ Item {
                     top: parent.top
                     bottom: parent.bottom
                 }
-                width: visible ? units.gu(4) : 0
+                width: visible ? units.gu(7) : 0
                 onClicked: controls.shareClicked()
             }
 
@@ -279,7 +294,7 @@ Item {
                     top: parent.top
                     bottom: parent.bottom
                 }
-                width: visible ? units.gu(9) : 0
+                width: visible ? units.gu(7) : 0
                 enabled: false
                 opacity: enabled ? 1.0 : 0.2
                 onClicked: settingsClicked()
