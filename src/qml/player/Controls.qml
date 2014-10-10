@@ -142,6 +142,7 @@ Item {
             anchors {
                 left: parent.left
                 right: parent.right
+                margins: units.gu(2)
             }
             height: units.gu(5)
 
@@ -152,9 +153,10 @@ Item {
                 iconSource: mpApplication.desktopMode ? "artwork/icon_exitfscreen.png" : "image://theme/back"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: controls.orientation === "LANDSCAPE" ? units.gu(7) : units.gu(10)
+                width: units.gu(8)
                 height: units.gu(4)
                 onClicked: controls.fullscreenClicked()
+                leftAlignment: true
             }
 
             VLine {
@@ -169,13 +171,12 @@ Item {
                 iconSource: icon ? "image://theme/media-playback-%1".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: controls.orientation === "LANDSCAPE" ? units.gu(7) :
+                width: controls.orientation === "LANDSCAPE" ? units.gu(10) :
                                                               controlsRow.width -
                                                               _fullScreenButton.width -
                                                               _timeLabel.width -
                                                               _shareButton.width -
-                                                              _settingsButton.width -
-                                                              units.gu(2)
+                                                              _settingsButton.width
 
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
@@ -266,7 +267,7 @@ Item {
                     top: parent.top
                     bottom: parent.bottom
                 }
-                width: units.gu(10)
+                width: controls.orientation === "LANDSCAPE" ? units.gu(10) : units.gu(8)
             }
 
             VLine {

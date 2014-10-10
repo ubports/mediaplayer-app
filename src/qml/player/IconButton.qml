@@ -21,8 +21,11 @@ import QtQuick 2.0
 import Ubuntu.Components 1.1
 
 AbstractButton {
+    id: root
+
     property alias iconSource: _image.source
     property alias iconSize: _image.height
+    property bool leftAlignment: false
 
     focus: false
 
@@ -33,7 +36,8 @@ AbstractButton {
         smooth: true
         anchors {
             verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
+            horizontalCenter: root.leftAlignment ? undefined : parent.horizontalCenter
+            left: root.leftAlignment ? parent.left : undefined
         }
     }
 }

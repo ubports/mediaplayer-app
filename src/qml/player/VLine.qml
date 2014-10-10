@@ -20,13 +20,35 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 
-Rectangle {
+Row {
+    id: root
+
     anchors {
         top: parent.top
         topMargin: units.gu(0.5)
         bottom: parent.bottom
         bottomMargin: units.gu(0.5)
     }
-    color: UbuntuColors.coolGrey
-    width: visible ? units.dp(1) : 0
+    width: visible ? units.dp(2) : 0
+
+    Rectangle {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
+
+        color: "white"
+        opacity: 0.08
+        width: root.visible ? units.dp(1) : 0
+    }
+    Rectangle {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
+
+        color: "black"
+        opacity: 0.03
+        width: root.visible ? units.dp(1) : 0
+    }
 }
