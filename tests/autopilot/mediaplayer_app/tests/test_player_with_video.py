@@ -66,7 +66,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         # First click must pause the video, change playing state and show play
         # icon.
         self.assertProperty(player, playing=False, paused=True)
-        self.assertProperty(playback_button, icon="play")
+        self.assertProperty(playback_button, icon="start")
 
         self.pointing_device.click()
 
