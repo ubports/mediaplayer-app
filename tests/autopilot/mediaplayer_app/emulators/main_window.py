@@ -35,7 +35,7 @@ class MainWindow:
         return self.app.select_single("SceneSelector", objectName="Controls.SceneSelector")
 
     def get_slider(self):
-        return self.app.select_single("Slider", objectName="TimeLine.Slider")
+        return self.app.select_single("TimeLine", objectName="TimeLine.Slider")
 
     def get_timeline(self):
         return self.app.select_single("TimeLine", objectName="TimeLine")
@@ -47,7 +47,7 @@ class MainWindow:
         return self.app.select_single("SceneFrame", objectName="SceneSelector.Scene2")
 
     def get_time_label(self):
-        return self.app.select_single("Label", objectName="TimeLine.TimeLabel")
+        return self.app.select_single("TimeLabel", objectName="TimeLine.TimeLabel")
 
     def get_no_video_dialog(self):
         return self.app.select_single("Dialog", objectName="noMediaDialog")

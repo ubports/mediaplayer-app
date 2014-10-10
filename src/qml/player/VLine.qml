@@ -20,24 +20,35 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 
-AbstractButton {
+Row {
     id: root
 
-    property alias iconSource: _image.source
-    property alias iconSize: _image.height
-    property bool leftAlignment: false
+    anchors {
+        top: parent.top
+        topMargin: units.gu(0.5)
+        bottom: parent.bottom
+        bottomMargin: units.gu(0.5)
+    }
+    width: visible ? units.dp(2) : 0
 
-    focus: false
-
-    Image {
-        id: _image
-
-        width: height
-        smooth: true
+    Rectangle {
         anchors {
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: root.leftAlignment ? undefined : parent.horizontalCenter
-            left: root.leftAlignment ? parent.left : undefined
+            top: parent.top
+            bottom: parent.bottom
         }
+
+        color: "white"
+        opacity: 0.08
+        width: root.visible ? units.dp(1) : 0
+    }
+    Rectangle {
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
+
+        color: "black"
+        opacity: 0.03
+        width: root.visible ? units.dp(1) : 0
     }
 }

@@ -164,10 +164,7 @@ Rectangle {
         State {
             name: "playing"
             PropertyChanges { target: mediaPlayer; playbackRate: 1.0; muted: false }
-            StateChangeScript { script: {
-                                console.debug("Media player will play:" + mediaPlayer.source)
-                                mediaPlayer.play() }
-                              }
+            StateChangeScript { script: mediaPlayer.play() }
             PropertyChanges { target: scrubbingTimer; running: false }
         },
 

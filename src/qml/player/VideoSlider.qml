@@ -29,7 +29,7 @@ Item {
     property Item thumb: thumbShape
 
     // private properties
-    property real thumbSpacing: 0
+    property real thumbSpacing: units.gu(1)
     property real liveValue: SliderUtils.liveValue(item)
     property real normalizedValue: SliderUtils.normalizedValue(item)
 
