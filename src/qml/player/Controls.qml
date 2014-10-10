@@ -152,7 +152,7 @@ Item {
                 iconSource: mpApplication.desktopMode ? "artwork/icon_exitfscreen.png" : "image://theme/back"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(7)
+                width: controls.orientation === "LANDSCAPE" ? units.gu(7) : units.gu(10)
                 height: units.gu(4)
                 onClicked: controls.fullscreenClicked()
             }
@@ -169,7 +169,14 @@ Item {
                 iconSource: icon ? "image://theme/media-playback-%1".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(7)
+                width: controls.orientation === "LANDSCAPE" ? units.gu(7) :
+                                                              controlsRow.width -
+                                                              _fullScreenButton.width -
+                                                              _timeLabel.width -
+                                                              _shareButton.width -
+                                                              _settingsButton.width -
+                                                              units.gu(2)
+
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
             }
@@ -185,13 +192,14 @@ Item {
                     bottom: parent.bottom
                 }
 
-                width: controlsRow.width -
+                width: controls.orientation === "LANDSCAPE" ? controlsRow.width -
                        _fullScreenButton.width -
                        _playbackButtom.width -
                        _timeLabel.width -
                        _shareButton.width -
                        _settingsButton.width -
-                       units.gu(2)
+                       units.gu(2) : 0
+
 
                 TimeLine {
                     id: _timeline
