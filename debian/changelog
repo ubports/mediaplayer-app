@@ -1,3 +1,17 @@
+mediaplayer-app (0.20.5+14.10.20141010.2-0ubuntu1) 14.09; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Albert Astals ]
+  * make mediaplayer-app.pot
+
+  [ Renato Araujo Oliveira Filho ]
+  * Use all available space for progress bar. Show timestamp on portrait
+    mode.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 10 Oct 2014 16:12:34 +0000
+
 mediaplayer-app (0.20.5+14.10.20141002-0ubuntu1) 14.09; urgency=low
 
   [ Akiva Avraham ]
