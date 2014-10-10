@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-10-06 19:14+0000\n"
-"Last-Translator: Jean Marc <Unknown>\n"
+"PO-Revision-Date: 2014-10-09 18:58+0000\n"
+"Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-07 06:55+0000\n"
+"X-Launchpad-Export-Date: 2014-10-10 05:20+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -42,21 +42,24 @@ msgstr "Erreur"
 
 #: src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
-msgstr ""
+msgstr "Erreur de lecture de la vidéo"
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Échec de la connexion avec le lecteur en arrière-plan."
 
 #: src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Échec de l'ouverture de la source vidéo."
 
 #: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Aucune vidéo sélectionnée pour la lecture. Connectez votre téléphone à votre "
+"ordinateur pour transférer des vidéos sur le téléphone, puis sélectionnez "
+"une vidéo depuis le moteur de recherche Vidéos."
 
 #: src/qml/player.qml:71
 msgid "Ok"
@@ -81,6 +84,7 @@ msgstr "Partager"
 #: src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
+"Il manque l'autorisation nécessaire pour lire une ressource multimédia."
 
 #: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
@@ -90,22 +94,3 @@ msgstr "Format vidéo non pris en charge."
 #: src/qml/player/TimeLine.qml:69
 msgid "unknown"
 msgstr "inconnu"
-
-#, qt-format
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#, qt-format
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid "Media Player"
-#~ msgstr "Lecteur multimédia"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to transfer "
-#~ "videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Aucune vidéo sélectionnée pour la lecture. Connectez votre téléphone à votre "
-#~ "ordinateur pour transférer les vidéos vers le téléphone. Ensuite, "
-#~ "sélectionnez la vidéo à partir de la lentille Vidéos."

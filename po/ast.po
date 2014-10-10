@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-10-03 22:12+0000\n"
+"PO-Revision-Date: 2014-10-09 09:43+0000\n"
 "Last-Translator: Xuacu Saturio <xuacusk8@gmail.com>\n"
 "Language-Team: Asturian <ast@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
+"X-Launchpad-Export-Date: 2014-10-10 05:20+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -46,7 +46,7 @@ msgstr "Error al reproducir el videu"
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Falló la conexón col backend de reproducción."
 
 #: src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
@@ -57,6 +57,9 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Nun hai nengún videu seleicionáu pa reproducir. Coneuta'l teléfonu al "
+"ordenador pa tresferir videos al teléfonu. Llueu seleiciona'l videu nel "
+"apartáu Videos."
 
 #: src/qml/player.qml:71
 msgid "Ok"
@@ -80,7 +83,7 @@ msgstr "Compartir"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Nun hai los permisos necesarios pa reproducir un recursu multimedia."
 
 #: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
@@ -90,22 +93,3 @@ msgstr "Formatu de videu ensin sofitu."
 #: src/qml/player/TimeLine.qml:69
 msgid "unknown"
 msgstr "desconocíu"
-
-#~ msgid "Media Player"
-#~ msgstr "Reproductor multimedia"
-
-#, qt-format
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#, qt-format
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to transfer "
-#~ "videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Nun s'esbilló nengún videu pa reproducir. Coneuta'l teléfonu al equipu pa "
-#~ "tresferir vídeos al teléfonu. Llueu seleiciona un vídeu dende'l lente de "
-#~ "Vídeos."
