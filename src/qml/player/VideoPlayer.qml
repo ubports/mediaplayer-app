@@ -238,7 +238,7 @@ AbstractPlayer {
             player.errorDialog.errorString = i18n.tr("A network error occurred.")
             break;
         case 4:
-            player.errorDialog.errorString = i18n.tr("There are not the appropriate permissions to play a media resource.")
+            player.errorDialog.errorString = i18n.tr("You don't have the appropriate permissions to play a media resource.")
             break;
         case 5:
             player.errorDialog.errorString = i18n.tr("Fail to connect with playback backend.")
