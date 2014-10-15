@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+14.10.20141015-0ubuntu1) 14.09; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Renato Araujo Oliveira Filho ]
+  * Parse video uri when received from UriHandler. (LP: #1376467)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 15 Oct 2014 21:51:43 +0000
+
 mediaplayer-app (0.20.5+14.10.20141010.2-0ubuntu1) 14.09; urgency=low
 
   [ Ubuntu daily release ]
