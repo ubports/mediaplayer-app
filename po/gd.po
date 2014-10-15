@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-10-03 09:06+0200\n"
-"PO-Revision-Date: 2014-10-06 18:22+0000\n"
-"Last-Translator: GunChleoc <Unknown>\n"
+"PO-Revision-Date: 2014-10-14 10:20+0000\n"
+"Last-Translator: Akerbeltz <fios@akerbeltz.org>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-07 06:55+0000\n"
+"X-Launchpad-Export-Date: 2014-10-15 06:12+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 "Language: gd\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:138
+#: src/qml/player/TimeLine.qml:52
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:72
+#: src/qml/player/TimeLine.qml:75
 msgid "0:00:00"
 msgstr "0:00:00"
 
@@ -83,31 +83,13 @@ msgstr "Co-roinn"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Chan eil cead iomchaidh ann gus meadhanan a chluich."
 
 #: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
 msgstr "Cha chuir sinn taic ri fòrmat a' video."
 
 #. TRANSLATORS: this refers to an unknown duration.
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:72
 msgid "unknown"
 msgstr "chan eil fhios"
-
-#~ msgid "Media Player"
-#~ msgstr "Cluicheadair mheadhanan"
-
-#, qt-format
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#, qt-format
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to transfer "
-#~ "videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Cha deach video a thaghadh. Ceangail am fòn agad ris a' choimpiutair gus "
-#~ "video a ghluasad gun fhòn agus tagh \"Video\" on lionsa video an uairsin."
