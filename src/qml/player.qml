@@ -231,7 +231,8 @@ Rectangle {
         target: UriHandler
         onOpened: {
             for (var i = 0; i < uris.length; ++i) {
-                playerLoader.item.playUri(uris[i])
+                var videoUri = uris[i].replace("video://", "file://")
+                playerLoader.item.playUri(videoUri)
             }
         }
     }
