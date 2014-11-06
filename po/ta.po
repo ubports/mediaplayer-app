@@ -6,17 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
 "PO-Revision-Date: 2013-10-25 07:28+0000\n"
 "Last-Translator: Arun Kumar - அருண் குமார் <thangam.arunx@gmail.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
-"Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:26+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-06 06:35+0000\n"
+"X-Generator: Launchpad (build 17223)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -55,7 +54,7 @@ msgstr ""
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr "ஊடக இயக்கி"
+msgstr ""
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
@@ -99,17 +98,3 @@ msgstr ""
 #: ../src/qml/player/TimeLine.qml:72
 msgid "unknown"
 msgstr "தெரியாதது"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to "
-#~ "transfer videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "இயக்குவதற்கு எந்த படமும் தெர்வு செய்யப்படவில்லை. உங்களுடைய தொலைப்பேசியை கணினியுடன் "
-#~ "இணைத்து தொலைப்பேசிக்கு படங்களை பரிமாற்று. பிறகு படத்தை படவில்லையிலிருந்து "
-#~ "தேர்ந்தெடு."
-
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#~ msgid "- %1"
-#~ msgstr "- %1"

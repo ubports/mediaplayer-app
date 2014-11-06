@@ -6,17 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
 "PO-Revision-Date: 2013-09-23 15:06+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian <id@li.org>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-06 06:35+0000\n"
+"X-Generator: Launchpad (build 17223)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -31,11 +30,11 @@ msgstr "0:00:00"
 
 #: ../src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
-msgstr ""
+msgstr "Terjadi suatu galat jaringan."
 
 #: ../src/qml/player/VideoPlayer.qml:216
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 #: ../src/qml/player.qml:67
 msgid "Error"
@@ -43,19 +42,19 @@ msgstr "Galat"
 
 #: ../src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
-msgstr ""
+msgstr "Galat saat memutar video"
 
 #: ../src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Gagal menyambung ke backend pemutar."
 
 #: ../src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Gagal membuka video sumber."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr "Pemutar Media"
+msgstr ""
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
@@ -66,10 +65,13 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Tak ada video yang dipilih untuk diputar. Sambungkan telepon Anda ke "
+"komputer Anda untuk menyalin video ke telepon. Lalu pilih video dari skup "
+"Video."
 
 #: ../src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -89,27 +91,13 @@ msgstr "Bagikan"
 
 #: ../src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Tak ada izin yang sesuai untuk memutar suatu sumber daya media."
 
 #: ../src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
-msgstr ""
+msgstr "Format video tak didukung."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: ../src/qml/player/TimeLine.qml:72
 msgid "unknown"
 msgstr "tak dikenal"
-
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to "
-#~ "transfer videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Tak ada video yang dipilih untuk diputar. Sambungkan telepon Anda ke "
-#~ "komputer Anda untuk memindah video ke telepon. Lalu pilih video dari "
-#~ "lensa Video."

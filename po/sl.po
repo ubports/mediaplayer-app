@@ -6,17 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
 "PO-Revision-Date: 2014-10-07 11:03+0000\n"
 "Last-Translator: Damir Jerovšek <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
-"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-08 07:36+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2014-11-06 06:35+0000\n"
+"X-Generator: Launchpad (build 17223)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -55,7 +54,7 @@ msgstr "Izvornega videa ni mogoče odpreti."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr "Predvajalnik predstavnosti"
+msgstr ""
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
@@ -101,16 +100,3 @@ msgstr "Zapis videa ni podprt."
 #: ../src/qml/player/TimeLine.qml:72
 msgid "unknown"
 msgstr "neznano"
-
-#~ msgid "0%1"
-#~ msgstr "0%1"
-
-#~ msgid "- %1"
-#~ msgstr "- %1"
-
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to "
-#~ "transfer videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Ni izbranega videa za predvajanje. Povežite telefon na računalnik in "
-#~ "prenesite videe na telefon. Nato izberite video iz leč Videi."
