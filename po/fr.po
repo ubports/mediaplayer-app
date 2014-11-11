@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2014-11-09 21:39+0000\n"
-"Last-Translator: Jean Marc <Unknown>\n"
+"PO-Revision-Date: 2014-11-10 08:14+0000\n"
+"Last-Translator: Anne <anneonyme017@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-11-10 06:07+0000\n"
-"X-Generator: Launchpad (build 17231)\n"
+"X-Launchpad-Export-Date: 2014-11-11 07:08+0000\n"
+"X-Generator: Launchpad (build 17241)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -58,7 +58,7 @@ msgstr "Lecteur multimédia"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
-msgstr ""
+msgstr "Films;Lecteur de films;Lecteur vidéo"
 
 #: ../src/qml/player.qml:68
 msgid ""
