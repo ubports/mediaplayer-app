@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2013-10-18 05:20+0000\n"
+"PO-Revision-Date: 2014-11-19 14:45+0000\n"
 "Last-Translator: Walter Cheuk <wwycheuk@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-11-06 06:35+0000\n"
-"X-Generator: Launchpad (build 17223)\n"
+"X-Launchpad-Export-Date: 2014-11-20 06:24+0000\n"
+"X-Generator: Launchpad (build 17252)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -30,11 +30,11 @@ msgstr "0:00:00"
 
 #: ../src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
-msgstr ""
+msgstr "發生網路錯誤。"
 
 #: ../src/qml/player/VideoPlayer.qml:216
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: ../src/qml/player.qml:67
 msgid "Error"
@@ -42,23 +42,23 @@ msgstr "出錯"
 
 #: ../src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
-msgstr ""
+msgstr "播放影片時發生錯誤"
 
 #: ../src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "未能連接播放後端程式。"
 
 #: ../src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "未能開啟來源視訊。"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr ""
+msgstr "媒體播放"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
-msgstr ""
+msgstr "Movies;Movie Player;Video Player"
 
 #: ../src/qml/player.qml:68
 msgid ""
@@ -68,7 +68,7 @@ msgstr ""
 
 #: ../src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "確定"
 
 #: ../src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -88,11 +88,11 @@ msgstr "分享"
 
 #: ../src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "未有合適權限播放媒體資源。"
 
 #: ../src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
-msgstr ""
+msgstr "不支援的影片格式。"
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: ../src/qml/player/TimeLine.qml:72
