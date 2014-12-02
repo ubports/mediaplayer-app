@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2014-05-23 14:14+0000\n"
+"PO-Revision-Date: 2014-12-01 19:10+0000\n"
 "Last-Translator: GTriderXC <gtriderxc@yahoo.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-11-06 06:35+0000\n"
-"X-Generator: Launchpad (build 17223)\n"
+"X-Launchpad-Export-Date: 2014-12-02 06:10+0000\n"
+"X-Generator: Launchpad (build 17274)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -30,11 +30,11 @@ msgstr "0:00:00"
 
 #: ../src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
-msgstr ""
+msgstr "Wystąpił błąd sieci"
 
 #: ../src/qml/player/VideoPlayer.qml:216
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: ../src/qml/player.qml:67
 msgid "Error"
@@ -42,7 +42,7 @@ msgstr "Błąd"
 
 #: ../src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
-msgstr ""
+msgstr "Błąd odtwarzania wideo"
 
 #: ../src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
@@ -50,11 +50,11 @@ msgstr ""
 
 #: ../src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Otwarcie źródła wideo nie powiodło się"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr ""
+msgstr "Odtwarzacz multimediów"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: ../src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -88,11 +88,11 @@ msgstr "Udostępnij"
 
 #: ../src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Brak uprawnień do odtworzenia tych zasobów multimedialnych."
 
 #: ../src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
-msgstr ""
+msgstr "Nieobsługiwany format wideo."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: ../src/qml/player/TimeLine.qml:72
