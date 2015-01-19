@@ -30,9 +30,21 @@ class TestPlayer(MediaplayerAppTestCase):
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def test_no_video_dialog_visible(self):
-        """ Makes sure 'No Video' dialog appears if the meidaplayer is opened
+        """ Makes sure 'No Video' dialog appears if the mediaplayer is opened
         without a video file argument.
 
         """
         dialog = self.main_window.get_no_video_dialog()
+        self.assertThat(dialog.visible, Eventually(Equals(True)))
+
+    def test_unsupported_video_format_dialog_visible(self):
+        """ Makes sure 'Video format not supported' dialog appears if the mediaplayer is opened
+        with a video codec type that is not supported by default.
+
+        """
+        self.launch_app("small.wmv")
+        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        # wait for video player to start
+        player = self.main_window.get_player()
+        dialog = self.main_window.get_unsupported_video_format_dialog()
         self.assertThat(dialog.visible, Eventually(Equals(True)))

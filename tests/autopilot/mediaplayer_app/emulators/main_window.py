@@ -51,3 +51,6 @@ class MainWindow:
 
     def get_no_video_dialog(self):
         return self.app.select_single("Dialog", objectName="noMediaDialog")
+
+    def get_unsupported_video_format_dialog(self):
+        return self.app.select_single("Dialog", objectName="playError")

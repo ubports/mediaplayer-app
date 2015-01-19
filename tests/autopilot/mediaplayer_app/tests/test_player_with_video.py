@@ -34,7 +34,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
             self.launch_app("small.ogg")
         self.assertThat(
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-        # wait video player start
+        # wait for video player to start
         player = self.main_window.get_player()
         self.assertThat(player.playing, Eventually(Equals(True)))
 
