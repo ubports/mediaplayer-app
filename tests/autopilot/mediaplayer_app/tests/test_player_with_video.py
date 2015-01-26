@@ -28,7 +28,7 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
         super(TestPlayerWithVideo, self).setUp()
         logger.info(platform.model())
         if platform.model() in (
-                'Nexus 4', 'Galaxy Nexus', "Nexus 7 (2013) Wi-Fi", "Nexus 10"):
+                'Nexus 4', 'Galaxy Nexus', "Nexus 7 (2013) Wi-Fi", "Nexus 10", "Aquaris E4.5 Ubuntu Edition"):
             self.launch_app("h264.avi")
         else:
             self.launch_app("small.ogg")
@@ -106,3 +106,24 @@ class TestPlayerWithVideo(MediaplayerAppTestCase):
 
         # wait for video ends and control appears
         self.assertThat(controls.visible, Eventually(Equals(True), timeout=35))
+
+class TestPlayerNoSetup(MediaplayerAppTestCase):
+    """Tests media player features without a complex setup """
+
+    """ This is needed to wait for the application to start.
+        In the testfarm, the application may take some time to show up."""
+    def setUp(self):
+        super(TestPlayerNoSetup, self).setUp()
+        logger.info(platform.model())
+
+    def test_unsupported_video_format_dialog_visible(self):
+        """ Makes sure 'Video format not supported' dialog appears if the mediaplayer is opened
+        with a video codec type that is not supported by default.
+
+        """
+        self.launch_app("small.wmv")
+        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+        # wait for video player to start
+        player = self.main_window.get_player()
+        dialog = self.main_window.get_unsupported_video_format_dialog()
+        self.assertThat(dialog.visible, Eventually(Equals(True)))
