@@ -30,7 +30,7 @@ class TestPlayer(MediaplayerAppTestCase):
             self.main_window.get_qml_view().visible, Eventually(Equals(True)))
 
     def test_no_video_dialog_visible(self):
-        """ Makes sure 'No Video' dialog appears if the meidaplayer is opened
+        """ Makes sure 'No Video' dialog appears if the mediaplayer is opened
         without a video file argument.
 
         """
