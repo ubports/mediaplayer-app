@@ -119,6 +119,10 @@ class TestPlayerNoSetup(MediaplayerAppTestCase):
     def test_unsupported_video_format_dialog_visible(self):
         """ Makes sure 'Video format not supported' dialog appears if the mediaplayer is opened
         with a video codec type that is not supported by default.
+        
+        TODO: This test might become problematic in the future if the WMV codec is shipped on
+              a device by default. If that is the case, there will be a need to modify this test
+              to try a different codec to induce this missing codec error case.
 
         """
         self.launch_app("small.wmv")
