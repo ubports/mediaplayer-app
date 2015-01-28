@@ -125,9 +125,11 @@ class TestPlayerNoSetup(MediaplayerAppTestCase):
               to try a different codec to induce this missing codec error case.
 
         """
-        self.launch_app("small.wmv")
-        self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
-        # wait for video player to start
-        player = self.main_window.get_player()
-        dialog = self.main_window.get_unsupported_video_format_dialog()
-        self.assertThat(dialog.visible, Eventually(Equals(True)))
+        if platform.model() in (
+                'Nexus 4', 'Galaxy Nexus', "Nexus 7 (2013) Wi-Fi", "Nexus 10", "Aquaris E4.5 Ubuntu Edition"):
+            self.launch_app("small.wmv")
+            self.assertThat(self.main_window.get_qml_view().visible, Eventually(Equals(True)))
+            # wait for video player to start
+            player = self.main_window.get_player()
+            dialog = self.main_window.get_unsupported_video_format_dialog()
+            self.assertThat(dialog.visible, Eventually(Equals(True)))
