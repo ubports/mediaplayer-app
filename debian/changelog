@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.5+15.04.20150128-0ubuntu1) vivid; urgency=low
+
+  [ Jim Hodapp ]
+  * Add an autopilot test that tests the missing codec error reporting
+    of media-hub. .
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 28 Jan 2015 12:45:00 +0000
+
 mediaplayer-app (0.20.5+15.04.20150127-0ubuntu1) vivid; urgency=low
 
   [ Jim Hodapp ]
