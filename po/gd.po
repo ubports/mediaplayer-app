@@ -14,42 +14,42 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-11-10 06:07+0000\n"
-"X-Generator: Launchpad (build 17231)\n"
+"X-Launchpad-Export-Date: 2015-02-04 07:11+0000\n"
+"X-Generator: Launchpad (build 17331)\n"
 "Language: gd\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: ../src/qml/player/TimeLine.qml:52
+#: src/qml/player/TimeLine.qml:52
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: ../src/qml/player/TimeLine.qml:75
+#: src/qml/player/TimeLine.qml:75
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: ../src/qml/player/VideoPlayer.qml:238
+#: src/qml/player/VideoPlayer.qml:238
 msgid "A network error occurred."
 msgstr "Thachair mearachd lìonraidh."
 
-#: ../src/qml/player/VideoPlayer.qml:216
+#: src/qml/player/VideoPlayer.qml:216
 msgid "Close"
 msgstr "Dùin"
 
-#: ../src/qml/player.qml:67
+#: src/qml/player.qml:67
 msgid "Error"
 msgstr "Mearachd"
 
-#: ../src/qml/player/VideoPlayer.qml:212
+#: src/qml/player/VideoPlayer.qml:212
 msgid "Error playing video"
 msgstr "Mearachd le cluiche a' video"
 
-#: ../src/qml/player/VideoPlayer.qml:244
+#: src/qml/player/VideoPlayer.qml:244
 msgid "Fail to connect with playback backend."
 msgstr "Cha deach leinn ceangal ri backend na cluiche"
 
-#: ../src/qml/player/VideoPlayer.qml:232
+#: src/qml/player/VideoPlayer.qml:232
 msgid "Fail to open the source video."
 msgstr "Cha deach leinn a' video tùsail fhosgladh."
 
@@ -63,7 +63,7 @@ msgstr ""
 "Movies;Movie Player;Video Player;filmichean;cluicheadair "
 "fhilmichean;cluicheadair videothan;videothan;bhideo;bhìdeo"
 
-#: ../src/qml/player.qml:68
+#: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
@@ -71,35 +71,35 @@ msgstr ""
 "Cha deach video a thaghadh. Ceangail am fòn agad ris a' choimpiutair gus "
 "video a ghluasad gun fhòn agus tagh \"Video\" on sgòp video an uairsin."
 
-#: ../src/qml/player.qml:71
+#: src/qml/player.qml:71
 msgid "Ok"
 msgstr "Ceart ma-thà"
 
-#: ../src/qml/player.qml:189
+#: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
 msgstr "Cuir 'na stad no lean air"
 
-#: ../src/qml/player.qml:188
+#: src/qml/player.qml:188
 msgid "Play / Pause"
 msgstr "Cluich/Cuir 'na stad"
 
-#: ../src/qml/player.qml:194
+#: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
 msgstr "Post;Upload;Attach;postaich;luchdaich suas;ceangail"
 
-#: ../src/qml/player.qml:193
+#: src/qml/player.qml:193
 msgid "Share"
 msgstr "Co-roinn"
 
-#: ../src/qml/player/VideoPlayer.qml:241
+#: src/qml/player/VideoPlayer.qml:241
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr "Chan eil cead iomchaidh ann gus meadhanan a chluich."
 
-#: ../src/qml/player/VideoPlayer.qml:235
+#: src/qml/player/VideoPlayer.qml:235
 msgid "Video format not supported."
 msgstr "Cha chuir sinn taic ri fòrmat a' video."
 
 #. TRANSLATORS: this refers to an unknown duration.
-#: ../src/qml/player/TimeLine.qml:72
+#: src/qml/player/TimeLine.qml:72
 msgid "unknown"
 msgstr "chan eil fhios"
