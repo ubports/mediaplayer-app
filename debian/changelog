@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+15.04.20150212-0ubuntu1) vivid; urgency=medium
+
+  [ Bill Filler ]
+  * drop depends on ui-extras
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 12 Feb 2015 17:36:39 +0000
+
 mediaplayer-app (0.20.5+15.04.20150128-0ubuntu1) vivid; urgency=low
 
   [ Jim Hodapp ]
