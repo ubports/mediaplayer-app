@@ -1,0 +1,102 @@
+# Punjabi translation for mediaplayer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"PO-Revision-Date: 2015-02-15 05:12+0000\n"
+"Last-Translator: Gursharnjit_Singh <ubuntuser13@gmail.com>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-02-15 06:31+0000\n"
+"X-Generator: Launchpad (build 17341)\n"
+
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:52
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#: src/qml/player/TimeLine.qml:75
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:237
+msgid "A network error occurred."
+msgstr "ਨੈੱਟਵਰਕ ਖਾਮੀ ਆਈ।"
+
+#: src/qml/player/VideoPlayer.qml:215
+msgid "Close"
+msgstr "ਬੰਦ"
+
+#: src/qml/player.qml:67
+msgid "Error"
+msgstr "ਖਾਮੀ"
+
+#: src/qml/player/VideoPlayer.qml:211
+msgid "Error playing video"
+msgstr "ਵੀਡੀਓ ਚਲਾਉਣ ਸਮੇਂ ਖਾਮੀ"
+
+#: src/qml/player/VideoPlayer.qml:243
+msgid "Fail to connect with playback backend."
+msgstr "ਪਲੇਬੈਕ ਬੈਕਐਡ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਵਿੱਚ ਫ਼ੇਲ੍ਹ।"
+
+#: src/qml/player/VideoPlayer.qml:231
+msgid "Fail to open the source video."
+msgstr "ਸੋਰਸ ਵੀਡੀਓ ਖੋਲ੍ਹਣ ਵਿੱਚ ਫ਼ੇਲ੍ਹ।"
+
+#: ../data/mediaplayer-app.desktop.in.in.h:1
+msgid "Media Player"
+msgstr "ਮੀਡਿਆ ਪਲੇਅਰ"
+
+#: ../data/mediaplayer-app.desktop.in.in.h:2
+msgid "Movies;Movie Player;Video Player"
+msgstr "ਫ਼ਿਲਮ;ਫ਼ਿਲਮ ਪਲੇਅਰ;ਵੀਡੀਓ ਪਲੇਅਰ"
+
+#: src/qml/player.qml:68
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos scope."
+msgstr ""
+"ਚਲਾਉਣ ਲਈ ਕੋਈ ਵੀਡੀਓ ਨਹੀਂ ਚੁਣੀ। ਫ਼ੋਨ ਵਿੱਚ ਵੀਡੀਓ ਦੇ ਤਬਾਦਲੇ ਲਈ ਆਪਣੇ ਫ਼ੋਨ ਨੂੰ ਆਪਣੇ "
+"ਕੰਪਿਊਟਰ ਨਾਲ ਕੁਨੇਕਟ ਕਰੋ। ਬਾਅਦ ਵਿੱਚ ਵੀਡੀਓ ਸਕੋਪ ਤੋਂ ਵੀਡੀਓ ਚੁਣੋ।"
+
+#: src/qml/player.qml:71
+msgid "Ok"
+msgstr "ਠੀਕ"
+
+#: src/qml/player.qml:189
+msgid "Pause or Resume Playhead"
+msgstr "ਪਲੇਹੈੱਡ ਵਿਰਾਮ ਜਾਂ ਚਲਾਓ"
+
+#: src/qml/player.qml:188
+msgid "Play / Pause"
+msgstr "ਚਲਾਓ / ਵਿਰਾਮ"
+
+#: src/qml/player.qml:194
+msgid "Post;Upload;Attach"
+msgstr "ਪੋਸਟ;ਅੱਪਲੋਡ;ਨੱਥੀ ਕਰੋ"
+
+#: src/qml/player.qml:193
+msgid "Share"
+msgstr "ਸਾਂਝਾ ਕਰੋ"
+
+#: src/qml/player/VideoPlayer.qml:240
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "ਇੱਕ ਮੀਡੀਆ ਵਸੀਲਾ ਚਲਾਉਣ ਲਈ ਇੱਥੇ ਠੀਕ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ।"
+
+#: src/qml/player/VideoPlayer.qml:234
+msgid "Video format not supported."
+msgstr "ਵੀਡੀਓ ਫ਼ਾਰਮੇਟ ਸਹਿਯੋਗ ਨਹੀਂ ਕਰਦਾ।"
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:72
+msgid "unknown"
+msgstr "ਅਣਜਾਣ"
