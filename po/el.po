@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2015-02-13 12:11+0000\n"
-"Last-Translator: Simos Xenitellis <Unknown>\n"
+"PO-Revision-Date: 2015-02-16 10:44+0000\n"
+"Last-Translator: Filippos Kolyvas <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-14 06:32+0000\n"
+"X-Launchpad-Export-Date: 2015-02-17 06:26+0000\n"
 "X-Generator: Launchpad (build 17341)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
@@ -30,7 +30,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:237
 msgid "A network error occurred."
-msgstr ""
+msgstr "Εμφανίστηκε ένα σφάλμα δικτύου."
 
 #: src/qml/player/VideoPlayer.qml:215
 msgid "Close"
@@ -46,11 +46,11 @@ msgstr "Σφάλμα στην αναπαραγωγή βίντεο"
 
 #: src/qml/player/VideoPlayer.qml:243
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Αποτυχία σύνδεσης με το backend αναπαραγωγής"
 
 #: src/qml/player/VideoPlayer.qml:231
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Αποτυχία ανοίγματος του πηγαίου βίντεο."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
@@ -58,13 +58,16 @@ msgstr "Αναπαραγωγή πολυμέσων"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
-msgstr ""
+msgstr "Ταινίες;Αναπαραγωγή;Βίντεο;Φιλμ"
 
 #: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Δεν επιλέχθηκε βίντεο για αναπαραγωγή. Συνδέστε το τηλέφωνό σας στον "
+"υπολογιστή σας για να μεταφέρετε αρχεία βίντεο στο τηλέφωνο. Μετά επιλέξτε "
+"το βίντεο από το επισκόπιο βίντεο."
 
 #: src/qml/player.qml:71
 msgid "Ok"
@@ -72,7 +75,7 @@ msgstr "Εντάξει"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "Παύση ή συνέχιση αναπαραγωγής"
 
 #: src/qml/player.qml:188
 msgid "Play / Pause"
@@ -80,7 +83,7 @@ msgstr "Αναπαραγωγή / παύση"
 
 #: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "Δημοσίευση;Ανεβάσμα;Επισύναψη"
 
 #: src/qml/player.qml:193
 msgid "Share"
@@ -89,10 +92,12 @@ msgstr "Διαμοιρασμός"
 #: src/qml/player/VideoPlayer.qml:240
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
+"Δεν υπάρχουν τα κατάλληλα δικαιώματα για την αναπαραγωγή αυτής της πηγής "
+"μέσων."
 
 #: src/qml/player/VideoPlayer.qml:234
 msgid "Video format not supported."
-msgstr ""
+msgstr "Η μορφή του βίντεο δεν υποστηρίζεται."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:72
