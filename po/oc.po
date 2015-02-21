@@ -1,0 +1,103 @@
+# Occitan (post 1500) translation for mediaplayer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"PO-Revision-Date: 2015-02-20 15:34+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-02-21 05:33+0000\n"
+"X-Generator: Launchpad (build 17355)\n"
+
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:52
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#: src/qml/player/TimeLine.qml:75
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:237
+msgid "A network error occurred."
+msgstr "Una error de ret s'es produsida."
+
+#: src/qml/player/VideoPlayer.qml:215
+msgid "Close"
+msgstr "Tampar"
+
+#: src/qml/player.qml:67
+msgid "Error"
+msgstr "Error"
+
+#: src/qml/player/VideoPlayer.qml:211
+msgid "Error playing video"
+msgstr "Error de lectura de la vidèo"
+
+#: src/qml/player/VideoPlayer.qml:243
+msgid "Fail to connect with playback backend."
+msgstr "Fracàs de la connexion amb lo lector en rèire plan."
+
+#: src/qml/player/VideoPlayer.qml:231
+msgid "Fail to open the source video."
+msgstr "Fracàs de la dobertura de la font vidèo."
+
+#: ../data/mediaplayer-app.desktop.in.in.h:1
+msgid "Media Player"
+msgstr ""
+
+#: ../data/mediaplayer-app.desktop.in.in.h:2
+msgid "Movies;Movie Player;Video Player"
+msgstr ""
+
+#: src/qml/player.qml:68
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos scope."
+msgstr ""
+"Cap de vidèo pas seleccionada per la lectura. Connectatz vòstre telefòn a "
+"vòstre ordenador per transferir de vidèos sul telefòn, puèi seleccionatz una "
+"vidèo dempuèi lo motor de recèrca Vidèos."
+
+#: src/qml/player.qml:71
+msgid "Ok"
+msgstr "D'acòrdi"
+
+#: src/qml/player.qml:189
+msgid "Pause or Resume Playhead"
+msgstr "Pausa o represa de la lectura"
+
+#: src/qml/player.qml:188
+msgid "Play / Pause"
+msgstr "Lectura / pausa"
+
+#: src/qml/player.qml:194
+msgid "Post;Upload;Attach"
+msgstr "Publicar;Telecargar;Jónher"
+
+#: src/qml/player.qml:193
+msgid "Share"
+msgstr "Partejar"
+
+#: src/qml/player/VideoPlayer.qml:240
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "Manca l'autorizacion necessària per legir una ressorsa multimèdia."
+
+#: src/qml/player/VideoPlayer.qml:234
+msgid "Video format not supported."
+msgstr "Format vidèo pas pres en carga."
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:72
+msgid "unknown"
+msgstr "desconegut"
