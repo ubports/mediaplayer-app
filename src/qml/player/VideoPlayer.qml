@@ -129,7 +129,9 @@ AbstractPlayer {
             }
 
             onEndSeek: {
-                if (!isPaused) {
+                // Only automatically resume playing after a seek that is not to the
+                // end of stream (i.e. position == duration)
+                if (player.status != MediaPlayer.EndOfMedia && !isPaused) {
                     player.play()
                 }
             }
