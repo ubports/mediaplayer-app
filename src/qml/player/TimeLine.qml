@@ -63,9 +63,6 @@ Slider {
         {
             // On EndOfMedia status, make sure the slider returns to the beginning
             _slider.value = 0
-        } else if (pressed && _slider.videoPosition == 0) {
-            // Ignore when GStreamer returns a 0 position while seeking
-            return
         } else {
             // Else, pass all new positions through to the slider UI
             _slider.value = _slider.videoPosition
