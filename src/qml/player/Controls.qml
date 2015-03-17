@@ -217,7 +217,6 @@ Item {
                     parent: controls.orientation === "PORTRAIT" ? timelinePlaceHolderPortrait : timelinePlaceHolderLandscape
                     minimumValue: 0
                     maximumValue: video ? video.duration / 1000 : 0
-                    videoPosition: video ? video.position / 1000 : 0
 
                     // pause the video during the seek
                     onPressedChanged: {
@@ -325,6 +324,15 @@ Item {
                                                 "duration" : frameSize})
                 }
              }
+        }
+
+        onPositionChanged: {
+          // To get position to be smooth and accurate during seeking, do
+          // not use the reported value for position from media-hub but instead
+          // use the value that the user move the scrubber to. This makes seeking
+          // silky smooth.
+          if (!_timeline.seeking)
+            _timeline.videoPosition = video ? video.position / 1000 : 0
         }
     }
 
