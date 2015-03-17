@@ -108,6 +108,7 @@ AbstractPlayer {
 
             maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
+            playerStatus: player.status
 
             onPlaybackClicked: player.playPause()
 
@@ -129,7 +130,9 @@ AbstractPlayer {
             }
 
             onEndSeek: {
-                if (!isPaused) {
+                // Only automatically resume playing after a seek that is not to the
+                // end of stream (i.e. position == duration)
+                if (player.status != MediaPlayer.EndOfMedia && !isPaused) {
                     player.play()
                 }
             }

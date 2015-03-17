@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.1
 
 Item {
@@ -30,6 +31,7 @@ Item {
     property alias sceneSelectorHeight: _sceneSelector.height
     property alias sceneSelectorVisible: _sceneSelector.visible
     property int heightOffset: 0
+    property variant playerStatus: MediaPlayer.NoMedia
 
     property alias settingsEnabled: _settingsButton.enabled
 
@@ -333,6 +335,14 @@ Item {
           // silky smooth.
           if (!_timeline.seeking)
             _timeline.videoPosition = video ? video.position / 1000 : 0
+        }
+    }
+
+    Connections {
+        target: controls
+        onPlayerStatusChanged: {
+            console.debug("onPlayerStatusChanged")
+            _timeline.playerStatus = controls.playerStatus
         }
     }
 
