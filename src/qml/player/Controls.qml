@@ -165,7 +165,7 @@ Item {
             }
 
             IconButton {
-                id: _playbackButtom
+                id: playbackButton
                 objectName: "Controls.PlayBackButton"
 
                 property string icon
@@ -197,7 +197,7 @@ Item {
 
                 width: controls.orientation === "LANDSCAPE" ? controlsRow.width -
                        _fullScreenButton.width -
-                       _playbackButtom.width -
+                       playbackButton.width -
                        _timeLabel.width -
                        _shareButton.width -
                        _settingsButton.width -
@@ -349,17 +349,17 @@ Item {
     states: [
         State {
             name: "stopped"
-            PropertyChanges { target: _playbackButtom; icon: "start" }
+            PropertyChanges { target: playbackButton; icon: "start" }
         },
 
         State {
             name: "playing"
-            PropertyChanges { target: _playbackButtom; icon: "pause" }
+            PropertyChanges { target: playbackButton; icon: "pause" }
         },
 
         State {
             name: "paused"
-            PropertyChanges { target: _playbackButtom; icon: "start" }
+            PropertyChanges { target: playbackButton; icon: "start" }
         }
     ]
 }

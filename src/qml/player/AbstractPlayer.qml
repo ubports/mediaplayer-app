@@ -136,6 +136,16 @@ Rectangle {
             console.error("AbstractPlayer: " + error + ":" + errorString)
             player.error(error, errorString)
         }
+
+        onPlaybackStateChanged: {
+            // Make sure that the app toggles the play/pause button when playbackStatus
+            // changes from underneath it in media-hub/qtubuntu-media
+            if (mediaPlayer.playbackState == MediaPlayer.PausedState) {
+                player.pause()
+            } else if (mediaPlayer.playbackState == MediaPlayer.PlayingState) {
+                player.play()
+            }
+        }
     }
 
     Timer {
