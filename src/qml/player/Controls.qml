@@ -332,8 +332,8 @@ Item {
           // To get position to be smooth and accurate during seeking, do
           // not use the reported value for position from media-hub but instead
           // use the value that the user move the scrubber to. This makes seeking
-          // silky smooth.
-          if (!_timeline.seeking)
+          // silky smooth. Report correctly on normal advance, or EOS.
+          if (!_timeline.seeking || controls.playerStatus == MediaPlayer.EndOfMedia)
             _timeline.videoPosition = video ? video.position / 1000 : 0
         }
     }
