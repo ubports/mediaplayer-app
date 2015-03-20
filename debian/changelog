@@ -1,3 +1,25 @@
+mediaplayer-app (0.20.5+15.04.20150320.1-0ubuntu1) vivid; urgency=medium
+
+  [ Jim Hodapp ]
+  * Improves the slider handling logic to make sure we don't display any
+    0 positions passed through by GStreamer while seeking, and also to
+    reset the slider bar to the beginning on EndOfMedia status. No
+    longer need to ignore a 0 position while seeking since media-hub
+    takes care of this issue now. Make position silky smooth while
+    seeking by disconnecting the value from the reported position()
+    while seeking.
+
+  [ Ricardo Mendoza ]
+  * Improves the slider handling logic to make sure we don't display any
+    0 positions passed through by GStreamer while seeking, and also to
+    reset the slider bar to the beginning on EndOfMedia status. No
+    longer need to ignore a 0 position while seeking since media-hub
+    takes care of this issue now. Make position silky smooth while
+    seeking by disconnecting the value from the reported position()
+    while seeking.
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 20 Mar 2015 17:36:28 +0000
+
 mediaplayer-app (0.20.5+15.04.20150213-0ubuntu1) vivid; urgency=medium
 
   [ Bill Filler ]
