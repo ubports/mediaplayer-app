@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.1
 
 Item {
@@ -30,6 +31,7 @@ Item {
     property alias sceneSelectorHeight: _sceneSelector.height
     property alias sceneSelectorVisible: _sceneSelector.visible
     property int heightOffset: 0
+    property variant playerStatus: MediaPlayer.NoMedia
 
     property alias settingsEnabled: _settingsButton.enabled
 
@@ -163,7 +165,7 @@ Item {
             }
 
             IconButton {
-                id: _playbackButtom
+                id: playbackButton
                 objectName: "Controls.PlayBackButton"
 
                 property string icon
@@ -195,7 +197,7 @@ Item {
 
                 width: controls.orientation === "LANDSCAPE" ? controlsRow.width -
                        _fullScreenButton.width -
-                       _playbackButtom.width -
+                       playbackButton.width -
                        _timeLabel.width -
                        _shareButton.width -
                        _settingsButton.width -
@@ -217,7 +219,6 @@ Item {
                     parent: controls.orientation === "PORTRAIT" ? timelinePlaceHolderPortrait : timelinePlaceHolderLandscape
                     minimumValue: 0
                     maximumValue: video ? video.duration / 1000 : 0
-                    videoPosition: video ? video.position / 1000 : 0
 
                     // pause the video during the seek
                     onPressedChanged: {
@@ -326,22 +327,39 @@ Item {
                 }
              }
         }
+
+        onPositionChanged: {
+          // To get position to be smooth and accurate during seeking, do
+          // not use the reported value for position from media-hub but instead
+          // use the value that the user move the scrubber to. This makes seeking
+          // silky smooth. Report correctly on normal advance, or EOS.
+          if (!_timeline.seeking || controls.playerStatus == MediaPlayer.EndOfMedia)
+            _timeline.videoPosition = video ? video.position / 1000 : 0
+        }
+    }
+
+    Connections {
+        target: controls
+        onPlayerStatusChanged: {
+            console.debug("onPlayerStatusChanged")
+            _timeline.playerStatus = controls.playerStatus
+        }
     }
 
     states: [
         State {
             name: "stopped"
-            PropertyChanges { target: _playbackButtom; icon: "start" }
+            PropertyChanges { target: playbackButton; icon: "start" }
         },
 
         State {
             name: "playing"
-            PropertyChanges { target: _playbackButtom; icon: "pause" }
+            PropertyChanges { target: playbackButton; icon: "pause" }
         },
 
         State {
             name: "paused"
-            PropertyChanges { target: _playbackButtom; icon: "start" }
+            PropertyChanges { target: playbackButton; icon: "start" }
         }
     ]
 }

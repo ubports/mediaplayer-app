@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.1
 import "../sdk"
 
@@ -27,6 +28,7 @@ Slider {
 
     readonly property alias liveValue: _slider.value
     property real videoPosition: -1
+    property variant playerStatus: MediaPlayer.NoMedia
     property string currentTime
     property string remainingTime
 
@@ -57,7 +59,12 @@ Slider {
     maximumValue: 1000
     live: true
     onVideoPositionChanged: {
-        if (!_slider.pressed) {
+        if (_slider.playerStatus == MediaPlayer.EndOfMedia)
+        {
+            // On EndOfMedia status, make sure the slider returns to the beginning
+            _slider.value = 0
+        } else {
+            // Else, pass all new positions through to the slider UI
             _slider.value = _slider.videoPosition
         }
     }
