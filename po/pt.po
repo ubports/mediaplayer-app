@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2015-02-07 20:38+0000\n"
+"PO-Revision-Date: 2015-03-28 12:42+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-02-08 06:09+0000\n"
-"X-Generator: Launchpad (build 17331)\n"
+"X-Launchpad-Export-Date: 2015-03-29 05:43+0000\n"
+"X-Generator: Launchpad (build 17413)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -28,11 +28,11 @@ msgstr "%1:%2:%3"
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:238
+#: src/qml/player/VideoPlayer.qml:237
 msgid "A network error occurred."
 msgstr "Ocorreu um erro de rede."
 
-#: src/qml/player/VideoPlayer.qml:216
+#: src/qml/player/VideoPlayer.qml:215
 msgid "Close"
 msgstr "Fechar"
 
@@ -40,15 +40,15 @@ msgstr "Fechar"
 msgid "Error"
 msgstr "Erro"
 
-#: src/qml/player/VideoPlayer.qml:212
+#: src/qml/player/VideoPlayer.qml:211
 msgid "Error playing video"
 msgstr "Erro ao reproduzir o vídeo"
 
-#: src/qml/player/VideoPlayer.qml:244
+#: src/qml/player/VideoPlayer.qml:243
 msgid "Fail to connect with playback backend."
 msgstr "Falha ao conectar com o backend de reprodução."
 
-#: src/qml/player/VideoPlayer.qml:232
+#: src/qml/player/VideoPlayer.qml:231
 msgid "Fail to open the source video."
 msgstr "Falha ao abrir a origem do vídeo."
 
@@ -65,9 +65,8 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
-"Nenhum vídeo selecionado para reproduzir. Ligue o seu telemóvel ao "
-"computador para transferir vídeos para o telemóvel. Depois escolha da scope "
-"de vídeos."
+"Nenhum vídeo selecionado. Ligue o seu telemóvel ao computador para "
+"transferir vídeos. Depois escolha da scope de vídeos."
 
 #: src/qml/player.qml:71
 msgid "Ok"
@@ -89,12 +88,12 @@ msgstr "Publicar;Carregar;Anexar"
 msgid "Share"
 msgstr "Partilhar"
 
-#: src/qml/player/VideoPlayer.qml:241
+#: src/qml/player/VideoPlayer.qml:240
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
 "Não existem as permissões adequadas para reproduzir um recurso de multimédia."
 
-#: src/qml/player/VideoPlayer.qml:235
+#: src/qml/player/VideoPlayer.qml:234
 msgid "Video format not supported."
 msgstr "Formato de vídeo não suportado."
 
