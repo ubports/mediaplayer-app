@@ -14,25 +14,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-03-29 05:43+0000\n"
+"X-Launchpad-Export-Date: 2015-04-02 05:49+0000\n"
 "X-Generator: Launchpad (build 17413)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:52
+#: src/qml/player/TimeLine.qml:54
 #, qt-format
 msgid "%1:%2:%3"
 msgstr "%1:%2:%3"
 
-#: src/qml/player/TimeLine.qml:75
+#: src/qml/player/TimeLine.qml:82
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:237
+#: src/qml/player/VideoPlayer.qml:240
 msgid "A network error occurred."
 msgstr "Ocorreu um erro de rede."
 
-#: src/qml/player/VideoPlayer.qml:215
+#: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
 msgstr "Fechar"
 
@@ -40,15 +40,15 @@ msgstr "Fechar"
 msgid "Error"
 msgstr "Erro"
 
-#: src/qml/player/VideoPlayer.qml:211
+#: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
 msgstr "Erro ao reproduzir o vídeo"
 
-#: src/qml/player/VideoPlayer.qml:243
+#: src/qml/player/VideoPlayer.qml:246
 msgid "Fail to connect with playback backend."
 msgstr "Falha ao conectar com o backend de reprodução."
 
-#: src/qml/player/VideoPlayer.qml:231
+#: src/qml/player/VideoPlayer.qml:234
 msgid "Fail to open the source video."
 msgstr "Falha ao abrir a origem do vídeo."
 
@@ -88,16 +88,16 @@ msgstr "Publicar;Carregar;Anexar"
 msgid "Share"
 msgstr "Partilhar"
 
-#: src/qml/player/VideoPlayer.qml:240
+#: src/qml/player/VideoPlayer.qml:243
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
 "Não existem as permissões adequadas para reproduzir um recurso de multimédia."
 
-#: src/qml/player/VideoPlayer.qml:234
+#: src/qml/player/VideoPlayer.qml:237
 msgid "Video format not supported."
 msgstr "Formato de vídeo não suportado."
 
 #. TRANSLATORS: this refers to an unknown duration.
-#: src/qml/player/TimeLine.qml:72
+#: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "desconhecido"
