@@ -26,8 +26,7 @@ import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0 as Popups
 
-
-Rectangle {
+Item {
     id: mediaPlayer
     width: screenWidth
     height: screenHeight
@@ -81,7 +80,6 @@ Rectangle {
         source: "player/VideoPlayer.qml"
         focus: true
         anchors.fill: parent
-        clip: true
         onLoaded: {
             item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
