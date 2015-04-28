@@ -1,3 +1,14 @@
+mediaplayer-app (0.20.5+15.04.20150428-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk.
+
+  [ Ricardo Mendoza ]
+  * Bug #1417006 Performance/Rendering fixes:  * Remove clipping on
+    video loader  * Remove unused rectangles (overdraw) (LP: #1417006)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 28 Apr 2015 20:06:50 +0000
+
 mediaplayer-app (0.20.5+15.04.20150320.1-0ubuntu1) vivid; urgency=medium
 
   [ Jim Hodapp ]
