@@ -23,7 +23,7 @@ import QtMultimedia 5.0
 import "../common"
 import "../common/utils.js" as Utils
 
-Rectangle {
+Item {
     id: player
 
     property bool playing: state == "playing"
@@ -44,7 +44,6 @@ Rectangle {
 
     objectName: "videoPlayer"
     state: "stopped"
-    color: "black"
 
     function stop() {
         state = "stopped"
