@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2014-01-08 09:35+0000\n"
-"Last-Translator: Tadeáš Pařík <tadeas.parik@gmail.com>\n"
+"PO-Revision-Date: 2015-05-06 19:21+0000\n"
+"Last-Translator: Vojtěch Daněk <vdanek@outlook.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-04-02 05:49+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-05-07 05:32+0000\n"
+"X-Generator: Launchpad (build 17474)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -30,11 +30,11 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:240
 msgid "A network error occurred."
-msgstr ""
+msgstr "Došlo k chybě sítě"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: src/qml/player.qml:67
 msgid "Error"
@@ -42,33 +42,35 @@ msgstr "Chyba"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr ""
+msgstr "Chyba přehrávání videa"
 
 #: src/qml/player/VideoPlayer.qml:246
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Nepodařilo se spojit se zdrojem přehrávání."
 
 #: src/qml/player/VideoPlayer.qml:234
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Nepodařilo se otevřít zdroj videa."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr ""
+msgstr "Přehrávač médií"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
-msgstr ""
+msgstr "Filmy;Přehrávač Filmů;Přehrávač Videí"
 
 #: src/qml/player.qml:68
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Žádné video k přehrání. Připojte váš telefon k počítači a přesuňte videa do "
+"telefonu. Poté zvolte video z rozsahu videí."
 
 #: src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
@@ -88,11 +90,11 @@ msgstr "Sdílet"
 
 #: src/qml/player/VideoPlayer.qml:243
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Nemáte dostatečná práva k přehrání média."
 
 #: src/qml/player/VideoPlayer.qml:237
 msgid "Video format not supported."
-msgstr ""
+msgstr "Formát videa není podporován."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
