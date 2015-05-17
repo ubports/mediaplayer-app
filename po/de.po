@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2014-11-12 14:08+0000\n"
-"Last-Translator: Niklas Wenzel <nikwen.developer@gmail.com>\n"
+"PO-Revision-Date: 2015-05-16 17:06+0000\n"
+"Last-Translator: Tobias Bannert <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-04-02 05:49+0000\n"
-"X-Generator: Launchpad (build 17413)\n"
+"X-Launchpad-Export-Date: 2015-05-17 05:22+0000\n"
+"X-Generator: Launchpad (build 17493)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -30,7 +30,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:240
 msgid "A network error occurred."
-msgstr "Ein Netzwerk-Fehler ist aufgetreten."
+msgstr "Ein Netzwerkfehler ist aufgetreten."
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
@@ -66,8 +66,8 @@ msgid ""
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
 "Kein Video zum Abspielen ausgewählt. Verbinden Sie das Telefon mit dem "
-"Computer, um Videos auf das Telefon zu übertragen. Danach ein Video aus dem "
-"Video-Filter auswählen."
+"Rechner, um Videos auf das Telefon zu übertragen. Danach ein Video aus dem "
+"Videofilter auswählen."
 
 #: src/qml/player.qml:71
 msgid "Ok"
