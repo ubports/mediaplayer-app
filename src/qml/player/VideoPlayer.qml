@@ -216,7 +216,14 @@ AbstractPlayer {
 
             Button {
                 text: i18n.tr("Close")
-                onClicked: PopupUtils.close(dialogue)
+                onClicked: {
+                    PopupUtils.close(dialogue)
+                    if (player.state != MediaPlayer.PlayingState)
+                    {
+                        console.debug("Warning: Quitting app due to fatal playback error.")
+                        Qt.quit()
+                    }
+                }
             }
 
             Component.onDestruction: player.errorDialog = null
