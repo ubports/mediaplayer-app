@@ -14,43 +14,43 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-04-29 05:26+0000\n"
-"X-Generator: Launchpad (build 17453)\n"
+"X-Launchpad-Export-Date: 2015-05-30 05:30+0000\n"
+"X-Generator: Launchpad (build 17532)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
 #: src/qml/player/TimeLine.qml:54
 #, qt-format
 msgid "%1:%2:%3"
-msgstr ""
+msgstr "%1:%2:%3"
 
 #: src/qml/player/TimeLine.qml:82
 msgid "0:00:00"
-msgstr ""
+msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:240
 msgid "A network error occurred."
-msgstr ""
+msgstr "Un error de rete occurreva."
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
-msgstr ""
+msgstr "Clauder"
 
 #: src/qml/player.qml:67
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr ""
+msgstr "Error in le reproduction del video"
 
 #: src/qml/player/VideoPlayer.qml:246
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Falta in le connexion del backend del reproduction."
 
 #: src/qml/player/VideoPlayer.qml:234
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Falta in le apertura del video fonte."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
@@ -65,36 +65,40 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Necun video seligite pro le reproduction. Connecte tu telephono al "
+"computator pro transferer le videos al telephono, pois selige un video ex "
+"Videos scope."
 
 #: src/qml/player.qml:71
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/qml/player.qml:189
 msgid "Pause or Resume Playhead"
-msgstr ""
+msgstr "Pausar o resumer le playhead"
 
 #: src/qml/player.qml:188
 msgid "Play / Pause"
-msgstr ""
+msgstr "Reproduction / Pausa"
 
 #: src/qml/player.qml:194
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "Postar;Ajornar;Annexar"
 
 #: src/qml/player.qml:193
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
 #: src/qml/player/VideoPlayer.qml:243
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
+"Il non ha permissiones appropriate pro reproducer un ressource de media."
 
 #: src/qml/player/VideoPlayer.qml:237
 msgid "Video format not supported."
-msgstr ""
+msgstr "Formato del video non supportate."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
-msgstr ""
+msgstr "incognite"
