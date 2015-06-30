@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+15.10.20150630-0ubuntu1) wily; urgency=medium
+
+  [ Renato Araujo Oliveira Filho ]
+  * Updated app icon. (LP: #1457424)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 30 Jun 2015 17:57:26 +0000
+
 mediaplayer-app (0.20.5+15.10.20150522-0ubuntu1) wily; urgency=medium
 
   [ Jim Hodapp ]
