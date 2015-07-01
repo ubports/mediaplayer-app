@@ -29,12 +29,10 @@ Item {
     property Item thumb: thumbShape
 
     // private properties
-    property real thumbSpacing: units.gu(1)
-    property real liveValue: SliderUtils.liveValue(item)
-    property real normalizedValue: SliderUtils.normalizedValue(item)
-
-    property real thumbSpace: backgroundShape.width - (2.0 * thumbSpacing + thumbWidth)
-    property real thumbWidth: item.height - thumbSpacing
+    readonly property real thumbSpacing: units.gu(1)
+    readonly property real liveValue: SliderUtils.liveValue(item)
+    readonly property real normalizedValue: SliderUtils.normalizedValue(item)
+    readonly property real thumbWidth: item.height - thumbSpacing
 
     BorderImage {
         id: backgroundFilledShape
@@ -54,7 +52,7 @@ Item {
             leftMargin: units.gu(0.2)
         }
         height: units.gu(1)
-        width: normalizedValue * thumbSpace + thumbSpacing + (thumbShape.width  / 2)
+        width: (normalizedValue * backgroundShape.width)
     }
 
     BorderImage {
@@ -70,7 +68,7 @@ Item {
         verticalTileMode: BorderImage.Repeat
         source: "artwork/slider_bg.png"
         anchors {
-            verticalCenter:  parent.verticalCenter
+            verticalCenter: parent.verticalCenter
             left: parent.left
             right: parent.right
         }
@@ -80,7 +78,7 @@ Item {
     Image {
         id: thumbShape
 
-        x: backgroundShape.x + thumbSpacing + normalizedValue * thumbSpace
+        x: backgroundShape.x + backgroundFilledShape.width - (width / 2)
         anchors.verticalCenter: backgroundShape.verticalCenter
         width: thumbWidth
         height: thumbWidth
