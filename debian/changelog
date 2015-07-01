@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+15.10.20150701-0ubuntu1) wily; urgency=medium
+
+  [ Bill Filler ]
+  * use OnlyShowIn=Old to hide from Apps scope (LP: #1387691)
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed slider positioning. (LP: #1470331)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Wed, 01 Jul 2015 21:53:38 +0000
+
 mediaplayer-app (0.20.5+15.10.20150630-0ubuntu1) wily; urgency=medium
 
   [ Renato Araujo Oliveira Filho ]
