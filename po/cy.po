@@ -1,0 +1,102 @@
+# Welsh translation for mediaplayer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"PO-Revision-Date: 2015-07-28 15:29+0000\n"
+"Last-Translator: Owen Llywelyn <owen.llywelyn@gmail.com>\n"
+"Language-Team: Welsh <cy@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-07-29 05:53+0000\n"
+"X-Generator: Launchpad (build 17646)\n"
+
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "Digwyddodd gwall rhwydwaith"
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "Cau"
+
+#: src/qml/player.qml:66
+msgid "Error"
+msgstr "Gwall"
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "Gwall wrth chwarae fideo"
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr "Methwyd cysylltu â chefndir chwarae nôl."
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "Methwyd agor ffynhonnell y fideo."
+
+#: ../data/mediaplayer-app.desktop.in.in.h:1
+msgid "Media Player"
+msgstr "Chwaraewr Cyfryngau"
+
+#: ../data/mediaplayer-app.desktop.in.in.h:2
+msgid "Movies;Movie Player;Video Player"
+msgstr "Ffilmiau; Chwaraewr Ffilmiau;Chwaraewr Fideo"
+
+#: src/qml/player.qml:67
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos scope."
+msgstr ""
+"Heb ddewis fideo i chwarae. Cysylltwch eich ffôn i'ch cyfrifiadur i "
+"drosglwyddo fideos i'r ffôn. Wedyn dewiswch fideo o'r Maes Fideos."
+
+#: src/qml/player.qml:70
+msgid "Ok"
+msgstr "Iawn"
+
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "Seibio neu Ailgychwyn Chwarae"
+
+#: src/qml/player.qml:186
+msgid "Play / Pause"
+msgstr "Chwarae / Seibio"
+
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Postio;Llwytho;Atodi"
+
+#: src/qml/player.qml:191
+msgid "Share"
+msgstr "Rhannu"
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "Nid rhain yw'r hawliau cywir i chwarae ffeil gyfrwng."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "Dim cefnogaeth i'r fformat fideo."
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:79
+msgid "unknown"
+msgstr "anhysbys"
