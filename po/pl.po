@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2015-02-19 15:23+0000\n"
-"Last-Translator: igosoft <igosoft@gmail.com>\n"
+"PO-Revision-Date: 2015-10-13 12:01+0000\n"
+"Last-Translator: Bartosz Kosiorek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-07-08 05:44+0000\n"
-"X-Generator: Launchpad (build 17608)\n"
+"X-Launchpad-Export-Date: 2015-10-14 05:56+0000\n"
+"X-Generator: Launchpad (build 17812)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -28,15 +28,15 @@ msgstr "%1:%2:%3"
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:240
+#: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr "Wystąpił błąd sieci"
+msgstr "Wystąpił błąd sieci."
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
 msgstr "Zamknij"
 
-#: src/qml/player.qml:67
+#: src/qml/player.qml:66
 msgid "Error"
 msgstr "Błąd"
 
@@ -44,13 +44,13 @@ msgstr "Błąd"
 msgid "Error playing video"
 msgstr "Błąd odtwarzania wideo"
 
-#: src/qml/player/VideoPlayer.qml:246
+#: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
 msgstr "Nie udało się nawiązać połączenia."
 
-#: src/qml/player/VideoPlayer.qml:234
+#: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr "Otwarcie źródła wideo nie powiodło się"
+msgstr "Otwarcie źródła wideo nie powiodło się."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
@@ -60,7 +60,7 @@ msgstr "Odtwarzacz multimediów"
 msgid "Movies;Movie Player;Video Player"
 msgstr "Filmy;Odtwarzacz filmów;Odtwarzacz wideo"
 
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
@@ -68,31 +68,31 @@ msgstr ""
 "Nie wybrano plików wideo. Podłącz telefon do komputera, by skopiować pliki "
 "wideo do telefonu i odtworzać je z telefonu."
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
-msgstr "OK"
+msgstr "Ok"
 
-#: src/qml/player.qml:189
+#: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
 msgstr "Pauza lub kontynuacja odtwarzania"
 
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Odtwarzanie/pauza"
 
-#: src/qml/player.qml:194
+#: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
 msgstr "Wyślij;Pobierz;Załącz"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "Udostępnij"
 
-#: src/qml/player/VideoPlayer.qml:243
+#: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr "Brak uprawnień do odtworzenia tych zasobów multimedialnych."
 
-#: src/qml/player/VideoPlayer.qml:237
+#: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
 msgstr "Nieobsługiwany format wideo."
 
