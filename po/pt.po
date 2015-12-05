@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2015-09-21 16:52+0000\n"
+"PO-Revision-Date: 2015-12-05 01:01+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-09-22 05:59+0000\n"
-"X-Generator: Launchpad (build 17749)\n"
+"X-Launchpad-Export-Date: 2015-12-05 05:39+0000\n"
+"X-Generator: Launchpad (build 17862)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -54,7 +54,7 @@ msgstr "Falha ao abrir a origem do vídeo."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
-msgstr "Leitor multimédia"
+msgstr "Leitor de multimédia"
 
 #: ../data/mediaplayer-app.desktop.in.in.h:2
 msgid "Movies;Movie Player;Video Player"
