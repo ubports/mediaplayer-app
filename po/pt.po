@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2014-11-05 14:28-0300\n"
-"PO-Revision-Date: 2015-12-05 01:01+0000\n"
+"PO-Revision-Date: 2015-12-14 12:33+0000\n"
 "Last-Translator: Ivo Xavier <ivofernandes12@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-12-06 06:03+0000\n"
-"X-Generator: Launchpad (build 17862)\n"
+"X-Launchpad-Export-Date: 2015-12-15 05:35+0000\n"
+"X-Generator: Launchpad (build 17865)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -74,7 +74,7 @@ msgstr "Ok"
 
 #: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
-msgstr "Pausar ou retomar Indicador de reprodução"
+msgstr "Pausar ou retomar indicador de reprodução"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
@@ -90,8 +90,7 @@ msgstr "Partilhar"
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
-"Não existem as permissões adequadas para reproduzir um recurso de multimédia."
+msgstr "Sem permissões adequadas para reproduzir um recurso de multimédia."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
