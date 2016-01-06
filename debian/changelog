@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.5+16.04.20160106.1-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello ]
+  * Add X-Ubuntu-Touch=true to desktop file (LP: #1521773)
+  * Translate app title (LP: #1521186)
+
+ -- Bill Filler <ci-train-bot@canonical.com>  Wed, 06 Jan 2016 17:11:48 +0000
+
 mediaplayer-app (0.20.5+15.10.20150701-0ubuntu2~gcc5.1) wily; urgency=medium
 
   * No-change test rebuild for g++5 ABI transition
