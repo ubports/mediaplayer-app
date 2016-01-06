@@ -86,7 +86,7 @@ bool MediaPlayer::setup()
     //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
-    m_view->setTitle("Media Player");
+    m_view->setTitle(tr("Media Player"));
     QUrl playUri;
     if (args.count() >= 2) {
         QUrl uri(args[1]);
