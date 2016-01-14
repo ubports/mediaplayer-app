@@ -1,3 +1,11 @@
+mediaplayer-app (0.20.5+16.04.20160114-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello ]
+  * Update po/CMakeLists.txt to search for string on cpp files Update
+    pot file (LP: #1521186)
+
+ -- Bill Filler <ci-train-bot@canonical.com>  Thu, 14 Jan 2016 20:46:39 +0000
+
 mediaplayer-app (0.20.5+16.04.20160106.1-0ubuntu1) xenial; urgency=medium
 
   [ Arthur Mello ]
