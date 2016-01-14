@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-07-08 05:44+0000\n"
-"X-Generator: Launchpad (build 17608)\n"
+"X-Launchpad-Export-Date: 2016-01-14 05:52+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -28,7 +28,7 @@ msgstr "%1:%2:%3"
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:240
+#: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
 msgstr "ਨੈੱਟਵਰਕ ਖਾਮੀ ਆਈ।"
 
@@ -36,7 +36,7 @@ msgstr "ਨੈੱਟਵਰਕ ਖਾਮੀ ਆਈ।"
 msgid "Close"
 msgstr "ਬੰਦ"
 
-#: src/qml/player.qml:67
+#: src/qml/player.qml:66
 msgid "Error"
 msgstr "ਖਾਮੀ"
 
@@ -44,11 +44,11 @@ msgstr "ਖਾਮੀ"
 msgid "Error playing video"
 msgstr "ਵੀਡੀਓ ਚਲਾਉਣ ਸਮੇਂ ਖਾਮੀ"
 
-#: src/qml/player/VideoPlayer.qml:246
+#: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
 msgstr "ਪਲੇਬੈਕ ਬੈਕਐਡ ਨਾਲ ਸੰਪਰਕ ਕਰਨ ਵਿੱਚ ਫ਼ੇਲ੍ਹ।"
 
-#: src/qml/player/VideoPlayer.qml:234
+#: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
 msgstr "ਸੋਰਸ ਵੀਡੀਓ ਖੋਲ੍ਹਣ ਵਿੱਚ ਫ਼ੇਲ੍ਹ।"
 
@@ -60,7 +60,7 @@ msgstr "ਮੀਡਿਆ ਪਲੇਅਰ"
 msgid "Movies;Movie Player;Video Player"
 msgstr "ਫ਼ਿਲਮ;ਫ਼ਿਲਮ ਪਲੇਅਰ;ਵੀਡੀਓ ਪਲੇਅਰ"
 
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
@@ -68,31 +68,31 @@ msgstr ""
 "ਚਲਾਉਣ ਲਈ ਕੋਈ ਵੀਡੀਓ ਨਹੀਂ ਚੁਣੀ। ਫ਼ੋਨ ਵਿੱਚ ਵੀਡੀਓ ਦੇ ਤਬਾਦਲੇ ਲਈ ਆਪਣੇ ਫ਼ੋਨ ਨੂੰ ਆਪਣੇ "
 "ਕੰਪਿਊਟਰ ਨਾਲ ਕੁਨੇਕਟ ਕਰੋ। ਬਾਅਦ ਵਿੱਚ ਵੀਡੀਓ ਸਕੋਪ ਤੋਂ ਵੀਡੀਓ ਚੁਣੋ।"
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
 msgstr "ਠੀਕ"
 
-#: src/qml/player.qml:189
+#: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
 msgstr "ਪਲੇਹੈੱਡ ਵਿਰਾਮ ਜਾਂ ਚਲਾਓ"
 
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "ਚਲਾਓ / ਵਿਰਾਮ"
 
-#: src/qml/player.qml:194
+#: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
 msgstr "ਪੋਸਟ;ਅੱਪਲੋਡ;ਨੱਥੀ ਕਰੋ"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "ਸਾਂਝਾ ਕਰੋ"
 
-#: src/qml/player/VideoPlayer.qml:243
+#: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr "ਇੱਕ ਮੀਡੀਆ ਵਸੀਲਾ ਚਲਾਉਣ ਲਈ ਇੱਥੇ ਠੀਕ ਅਧਿਕਾਰ ਨਹੀਂ ਹਨ।"
 
-#: src/qml/player/VideoPlayer.qml:237
+#: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
 msgstr "ਵੀਡੀਓ ਫ਼ਾਰਮੇਟ ਸਹਿਯੋਗ ਨਹੀਂ ਕਰਦਾ।"
 

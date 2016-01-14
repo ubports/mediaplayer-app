@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-07-08 05:44+0000\n"
-"X-Generator: Launchpad (build 17608)\n"
+"X-Launchpad-Export-Date: 2016-01-14 05:51+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -28,7 +28,7 @@ msgstr "%1:%2:%3"
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:240
+#: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
 msgstr "Er is een netwerkfout opgetreden."
 
@@ -36,7 +36,7 @@ msgstr "Er is een netwerkfout opgetreden."
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/qml/player.qml:67
+#: src/qml/player.qml:66
 msgid "Error"
 msgstr "Fout"
 
@@ -44,11 +44,11 @@ msgstr "Fout"
 msgid "Error playing video"
 msgstr "Fout bij afspelen video"
 
-#: src/qml/player/VideoPlayer.qml:246
+#: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
 msgstr "Kon geen verbinding maken met afspeelapp."
 
-#: src/qml/player/VideoPlayer.qml:234
+#: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
 msgstr "Kon de bronvideo niet openen."
 
@@ -60,7 +60,7 @@ msgstr "Mediaspeler"
 msgid "Movies;Movie Player;Video Player"
 msgstr "Movies;Movie Player;Video Player;Film;Filmspeler;Videospeler"
 
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
@@ -69,32 +69,32 @@ msgstr ""
 "om video's te kopiëren naar uw telefoon. Selecteer daarna de video in de "
 "Video-scope."
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
 msgstr "Ok"
 
-#: src/qml/player.qml:189
+#: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
 msgstr "Pauzeren / hervatten-knop"
 
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Afspelen / pauzeren"
 
-#: src/qml/player.qml:194
+#: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
 msgstr "Post;Upload;Attach;Posten;Uploaden;Bijvoegen"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "Delen"
 
-#: src/qml/player/VideoPlayer.qml:243
+#: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
 "U heeft niet de benodigde rechten om mediabestanden af te kunnen spelen."
 
-#: src/qml/player/VideoPlayer.qml:237
+#: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
 msgstr "Videoformaat wordt niet ondersteund."
 

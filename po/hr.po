@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-07-08 05:44+0000\n"
-"X-Generator: Launchpad (build 17608)\n"
+"X-Launchpad-Export-Date: 2016-01-14 05:52+0000\n"
+"X-Generator: Launchpad (build 17886)\n"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -28,29 +28,29 @@ msgstr "%1:%2:%3"
 msgid "0:00:00"
 msgstr "0:00:00"
 
-#: src/qml/player/VideoPlayer.qml:240
+#: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr ""
+msgstr "Dogodila se mrežna greška."
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
-#: src/qml/player.qml:67
+#: src/qml/player.qml:66
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr ""
+msgstr "Greška reprodukcije snimke"
 
-#: src/qml/player/VideoPlayer.qml:246
+#: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Neuspjelo povezivanje s pozadinskim programom reprodukcije."
 
-#: src/qml/player/VideoPlayer.qml:234
+#: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Neuspjleo otvaranje izvora video snimke."
 
 #: ../data/mediaplayer-app.desktop.in.in.h:1
 msgid "Media Player"
@@ -60,39 +60,42 @@ msgstr ""
 msgid "Movies;Movie Player;Video Player"
 msgstr ""
 
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"Nema odabrane video snimke za reprodukciju. Povežite vaš telefon s računalom "
+"za prijenos video snimke na vaš telefon. Zatim odaberite video snimku sa "
+"Snimke djelokruga."
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
+msgstr "U redu"
+
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
 msgstr ""
 
-#: src/qml/player.qml:189
-msgid "Pause or Resume Playhead"
-msgstr "Zaustavi ili nastavi Playhead"
-
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
-msgstr "Reproduciranje / Pauza"
+msgstr ""
 
-#: src/qml/player.qml:194
+#: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
 msgstr "Objavi;Prenesi;Priloži"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "Podijeli"
 
-#: src/qml/player/VideoPlayer.qml:243
+#: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "Nemate prikladne ovlasti za reprodukciju medijskog resursa."
 
-#: src/qml/player/VideoPlayer.qml:237
+#: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
-msgstr ""
+msgstr "Format video snimke nije podržan."
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
