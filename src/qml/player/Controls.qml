@@ -19,6 +19,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.0
+import QtQuick.Window 2.2
 import QtMultimedia 5.0
 import Ubuntu.Components 1.1
 
@@ -152,13 +153,16 @@ Item {
                 id: _fullScreenButton
 
                 //TODO: use the correct icon based on window state
-                iconSource: mpApplication.desktopMode ? "artwork/icon_exitfscreen.png" : "image://theme/back"
+                iconSource: mpApplication.desktopMode ?
+                                Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen" :
+                                "image://theme/close"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: units.gu(8)
+                width: visible ? units.gu(8) : 0
                 height: units.gu(4)
                 onClicked: controls.fullscreenClicked()
                 leftAlignment: true
+                visible: (mpApplication.desktopMode || (Window.visibility ===  Window.FullScreen))
             }
 
             VLine {
