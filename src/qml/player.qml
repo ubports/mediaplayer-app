@@ -212,14 +212,10 @@ Item {
     }
 
     Keys.onReleased: {
-        if (!event.isAutoRepeat
-            && (event.key == Qt.Key_F11 || event.key == Qt.Key_F)) {
-            event.accepted = true
-            application.toggleFullscreen();
-        } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketLeft) {
+       if (!event.isAutoRepeat && event.key === Qt.Key_BracketLeft) {
             event.accepted = true
             rotateClockwise()
-        } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketRight) {
+        } else if (!event.isAutoRepeat && event.key === Qt.Key_BracketRight) {
             event.accepted = true
             rotateCounterClockwise()
         }
