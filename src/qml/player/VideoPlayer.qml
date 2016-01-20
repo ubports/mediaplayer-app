@@ -103,22 +103,35 @@ AbstractPlayer {
             id: _controlsContents
 
             property bool isPaused: false
+            property int seekPosition: 0
 
             function aboutToSeek()
             {
+                dismissControls.stop()
                 isPaused = (state == "paused")
                 player.pause()
                 _controls.active = true
+                _controlsContents.seekPosition = video.position
             }
 
             function seekDone()
             {
+                 _controlsContents.seekPosition = -1
                 // Only automatically resume playing after a seek that is not to the
                 // end of stream (i.e. position == duration)
                 if (player.status !== MediaPlayer.EndOfMedia && !isPaused) {
                     player.play()
                     dismissControls.restart()
                 }
+            }
+
+            function seek(time)
+            {
+                //keep trak of last seek position in case of the last seek does not complete in time
+                //sometimes the seek is too fast and we can not rely on the video position to calculate
+                //the next seek position.
+                _controlsContents.seekPosition = time
+                player.video.seek(time)
             }
 
             settingsEnabled: mpApplication.desktopMode
@@ -148,9 +161,7 @@ AbstractPlayer {
 
             onStartSeek: aboutToSeek()
             onEndSeek: seekDone()
-            onSeekRequested: {
-                player.video.seek(time)
-            }
+            onSeekRequested: seek(time)
 
             onSettingsClicked: {
                 if (mpApplication.desktopMode) {
@@ -181,8 +192,9 @@ AbstractPlayer {
 
     Keys.onReleased:
     {
-        if (event.isAutoRepeat)
+        if (event.isAutoRepeat) {
             return
+        }
 
         switch(event.key) {
             case Qt.Key_Right:
@@ -202,11 +214,13 @@ AbstractPlayer {
         case Qt.Key_Right:
         case Qt.Key_Left:
         {
-            if (!event.isAutoRepeat)
+            if (!event.isAutoRepeat) {
                 _controlsContents.aboutToSeek()
+            }
 
-            var currentPos = (video ? video.position : 0)
-            var nextPos = currentPos
+            var nextPos = _controlsContents.seekPosition >=  0 ?
+                        _controlsContents.seekPosition : 0
+
             if (event.key === Qt.Key_Right) {
                 var maxPos = (video ? video.duration : 0)
                 nextPos += player.seekStep
@@ -221,7 +235,7 @@ AbstractPlayer {
             }
 
             if (nextPos !== -1) {
-                player.video.seek(nextPos)
+                _controlsContents.seek(nextPos)
             }
             break;
         }

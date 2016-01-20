@@ -252,7 +252,7 @@ Item {
                 if (mpApplication.desktopMode) {
                     var videoFile = mpApplication.chooseFile()
                     if (videoFile != "") {
-                        item.playUri(videoFile)
+                        playerLoader.item.playUri(videoFile)
                     }
                 } else {
                     PopupUtils.open(dialogNoUrl, null)
