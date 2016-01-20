@@ -92,6 +92,8 @@ Item {
                     if (videoFile != "") {
                         item.playUri(videoFile)
                     }
+                } else if (!ContentHub.ContentHub.hasPending) {
+                     PopupUtils.open(dialogNoUrl, null)
                 }
             }
         }
