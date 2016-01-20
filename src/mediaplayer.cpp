@@ -263,7 +263,9 @@ QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
             } while (newFile.exists());
         }
 
-        if (!QFile::copy(originalFile.absoluteFilePath(), newFile.absoluteFilePath())) {
+        if (QFile::copy(originalFile.absoluteFilePath(), newFile.absoluteFilePath())) {
+            result <<  QUrl::fromLocalFile(newFile.absoluteFilePath());
+        } else {
             qWarning() << "Fail to copy file from:" << originalFile.absoluteFilePath() << "to" << newFile.absoluteFilePath();
         }
     }
