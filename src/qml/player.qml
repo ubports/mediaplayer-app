@@ -36,7 +36,6 @@ Item {
     property string formFactor: "phone"
     property real volume: playerLoader.item.volume
     property bool appActive: Qt.application.active
-
     property variant nativeOrientation: Screen.primaryOrientation
 
     onAppActiveChanged: {
@@ -55,9 +54,6 @@ Item {
 
     Component.onCompleted: {
         i18n.domain = "mediaplayer-app"
-        if ((playUri === "") && !ContentHub.ContentHub.hasPending) {
-            PopupUtils.open(dialogNoUrl, null)
-        }
     }
 
     Component {
@@ -88,14 +84,8 @@ Item {
             item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
             if (playUri != "") {
+                lateUrlCheck.stop()
                 item.playUri(playUri)
-            } else {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        item.playUri(videoFile)
-                    }
-                }
             }
         }
 
@@ -227,6 +217,7 @@ Item {
         target: UriHandler
         onOpened: {
             for (var i = 0; i < uris.length; ++i) {
+                lateUrlCheck.stop()
                 var videoUri = uris[i].replace("video://", "file://")
                 playerLoader.item.playUri(videoUri)
             }
@@ -236,6 +227,7 @@ Item {
     Connections {
         target: ContentHub.ContentHub
         onImportRequested: {
+            lateUrlCheck.stop()
             if (transfer.state === ContentHub.ContentTransfer.Charged) {
                 var urls = []
                 for(var i=0; i < transfer.items.length; i++) {
@@ -249,4 +241,23 @@ Item {
         }
     }
 
+    Timer {
+        id: lateUrlCheck
+
+        interval: 1000
+        repeat: false
+        running: true
+        onTriggered: {
+            if ((playUri == "") && !ContentHub.ContentHub.hasPending) {
+                if (mpApplication.desktopMode) {
+                    var videoFile = mpApplication.chooseFile()
+                    if (videoFile != "") {
+                        item.playUri(videoFile)
+                    }
+                } else {
+                    PopupUtils.open(dialogNoUrl, null)
+                }
+            }
+        }
+    }
 }
