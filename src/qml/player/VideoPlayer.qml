@@ -78,6 +78,15 @@ AbstractPlayer {
 //        videoOutput: player.videoOutput
 //    }
 
+    Timer {
+        id: dismissControls
+
+        running: false
+        interval: 1000
+        repeat: false
+        onTriggered: _controls.active = false
+    }
+
     GenericToolbar {
         id: _controls
 
@@ -94,6 +103,23 @@ AbstractPlayer {
             id: _controlsContents
 
             property bool isPaused: false
+
+            function aboutToSeek()
+            {
+                isPaused = (state == "paused")
+                player.pause()
+                _controls.active = true
+            }
+
+            function seekDone()
+            {
+                // Only automatically resume playing after a seek that is not to the
+                // end of stream (i.e. position == duration)
+                if (player.status !== MediaPlayer.EndOfMedia && !isPaused) {
+                    player.play()
+                    dismissControls.restart()
+                }
+            }
 
             settingsEnabled: mpApplication.desktopMode
 
@@ -120,21 +146,10 @@ AbstractPlayer {
                 }
             }
 
+            onStartSeek: aboutToSeek()
+            onEndSeek: seekDone()
             onSeekRequested: {
                 player.video.seek(time)
-            }
-
-            onStartSeek: {
-                isPaused = (state == "paused")
-                player.pause()
-            }
-
-            onEndSeek: {
-                // Only automatically resume playing after a seek that is not to the
-                // end of stream (i.e. position == duration)
-                if (player.status != MediaPlayer.EndOfMedia && !isPaused) {
-                    player.play()
-                }
             }
 
             onSettingsClicked: {
@@ -163,6 +178,22 @@ AbstractPlayer {
         onClicked: _controls.active = !_controls.active
     }
 
+
+    Keys.onReleased:
+    {
+        if (event.isAutoRepeat)
+            return
+
+        switch(event.key) {
+            case Qt.Key_Right:
+            case Qt.Key_Left:
+                _controlsContents.seekDone()
+                break;
+            default:
+                break
+        }
+    }
+
     Keys.onPressed: {
         switch(event.key) {
         case Qt.Key_Space:
@@ -171,9 +202,12 @@ AbstractPlayer {
         case Qt.Key_Right:
         case Qt.Key_Left:
         {
+            if (!event.isAutoRepeat)
+                _controlsContents.aboutToSeek()
+
             var currentPos = (video ? video.position : 0)
             var nextPos = currentPos
-            if (event.key == Qt.Key_Right) {
+            if (event.key === Qt.Key_Right) {
                 var maxPos = (video ? video.duration : 0)
                 nextPos += player.seekStep
                 if (nextPos > maxPos) {
@@ -186,7 +220,7 @@ AbstractPlayer {
                 }
             }
 
-            if (nextPos != -1) {
+            if (nextPos !== -1) {
                 player.video.seek(nextPos)
             }
             break;
