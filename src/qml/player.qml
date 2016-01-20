@@ -55,6 +55,9 @@ Item {
 
     Component.onCompleted: {
         i18n.domain = "mediaplayer-app"
+        if ((playUri === "") && !ContentHub.ContentHub.hasPending) {
+            PopupUtils.open(dialogNoUrl, null)
+        }
     }
 
     Component {
@@ -92,8 +95,6 @@ Item {
                     if (videoFile != "") {
                         item.playUri(videoFile)
                     }
-                } else if (!ContentHub.ContentHub.hasPending) {
-                     PopupUtils.open(dialogNoUrl, null)
                 }
             }
         }
@@ -247,4 +248,5 @@ Item {
             }
         }
     }
+
 }
