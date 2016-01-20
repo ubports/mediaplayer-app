@@ -5,3 +5,4 @@
 /usr/share/mediaplayer-app/qml/*
 /usr/share/locale/*/LC_MESSAGES/mediaplayer-app.mo
 /usr/share/url-dispatcher/urls/*
+/usr/share/content-hub/peers/mediaplayer-app

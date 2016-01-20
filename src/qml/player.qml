@@ -25,6 +25,7 @@ import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0 as Popups
+import Ubuntu.Content 0.1 as ContentHub
 
 Item {
     id: mediaPlayer
@@ -91,8 +92,6 @@ Item {
                     if (videoFile != "") {
                         item.playUri(videoFile)
                     }
-                } else {
-                    PopupUtils.open(dialogNoUrl, null)
                 }
             }
         }
@@ -227,6 +226,22 @@ Item {
             for (var i = 0; i < uris.length; ++i) {
                 var videoUri = uris[i].replace("video://", "file://")
                 playerLoader.item.playUri(videoUri)
+            }
+        }
+    }
+
+    Connections {
+        target: ContentHub.ContentHub
+        onImportRequested: {
+            if (transfer.state === ContentHub.ContentTransfer.Charged) {
+                var urls = []
+                for(var i=0; i < transfer.items.length; i++) {
+                    urls.push(transfer.items[i].url)
+                }
+
+                var result = mpApplication.copyFiles(urls);
+                if (result.length > 0)
+                    playerLoader.item.playUri(result[result.length - 1])
             }
         }
     }

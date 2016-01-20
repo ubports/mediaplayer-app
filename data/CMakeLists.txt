@@ -2,6 +2,7 @@ set(MEDIAPLAYER_DESKTOP_FILE mediaplayer-app.desktop)
 set(MEDIAPLAYER_APP_ICON mediaplayer-app.png)
 set(MEDIAPLAYER_APP_SYMBOLIC_ICON mediaplayer-app-symbolic.svg)
 set(MEDIAPLAYER_URL_DISPATCHER mediaplayer-app.url-dispatcher)
+set(MEDIAPLAYER_CONTENT_HUB mediaplayer-app-content.json)
 
 configure_file(${DESKTOP_FILE}.in.in ${DESKTOP_FILE}.in)
 add_custom_target(${DESKTOP_FILE} ALL
@@ -20,3 +21,7 @@ install(FILES ${MEDIAPLAYER_APP_ICON} ${MEDIAPLAYER_APP_SYMBOLIC_ICON}
 install(FILES ${MEDIAPLAYER_URL_DISPATCHER}
         DESTINATION ${CMAKE_INSTALL_DATADIR}/url-dispatcher/urls
 )
+
+install(FILES ${MEDIAPLAYER_CONTENT_HUB}
+        DESTINATION ${CMAKE_INSTALL_DATADIR}/content-hub/peers
+        RENAME mediaplayer-app)
