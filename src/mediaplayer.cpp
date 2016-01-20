@@ -120,7 +120,6 @@ bool MediaPlayer::setup()
     m_view->rootContext()->setContextProperty("playUri", playUri);
     m_view->rootContext()->setContextProperty("screenWidth", m_view->size().width());
     m_view->rootContext()->setContextProperty("screenHeight", m_view->size().height());
-    m_view->setVisibility(QWindow::AutomaticVisibility);
     connect(m_view, SIGNAL(widthChanged(int)), SLOT(onWidthChanged(int)));
     connect(m_view, SIGNAL(heightChanged(int)), SLOT(onHeightChanged(int)));
     connect(m_view->engine(), SIGNAL(quit()), SLOT(quit()));
