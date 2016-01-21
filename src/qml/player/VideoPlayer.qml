@@ -78,16 +78,8 @@ AbstractPlayer {
 //        videoOutput: player.videoOutput
 //    }
 
-    Timer {
-        id: dismissControls
 
-        running: false
-        interval: 1000
-        repeat: false
-        onTriggered: _controls.active = false
-    }
-
-    GenericToolbar {
+    ToolBar {
         id: _controls
 
         objectName: "toolbar"
@@ -98,17 +90,18 @@ AbstractPlayer {
         }
 
         height: _controlsContents.height
-
         Controls {
             id: _controlsContents
 
-            property bool isPaused: false
+            property bool wasPausedBeforeSeek: false
+            property bool wasVisibleBeforeSeek: false
             property int seekPosition: 0
 
             function aboutToSeek()
             {
-                dismissControls.stop()
-                isPaused = (state == "paused")
+                _controls.abortDismiss()
+                wasPausedBeforeSeek = (state == "paused")
+                wasVisibleBeforeSeek = _controls.active
                 player.pause()
                 _controls.active = true
                 _controlsContents.seekPosition = video.position
@@ -116,13 +109,19 @@ AbstractPlayer {
 
             function seekDone()
             {
-                 _controlsContents.seekPosition = -1
                 // Only automatically resume playing after a seek that is not to the
                 // end of stream (i.e. position == duration)
-                if (player.status !== MediaPlayer.EndOfMedia && !isPaused) {
+                if (player.status !== MediaPlayer.EndOfMedia && !_controlsContents.wasPausedBeforeSeek) {
                     player.play()
-                    dismissControls.restart()
                 }
+
+                if (!_controlsContents.wasVisibleBeforeSeek) {
+                    _controls.dismiss()
+                }
+
+                _controlsContents.seekPosition = -1
+                _controlsContents.wasPausedBeforeSeek = false
+                _controlsContents.wasVisibleBeforeSeek = false
             }
 
             function seek(time)
@@ -217,6 +216,9 @@ AbstractPlayer {
             if (!event.isAutoRepeat) {
                 _controlsContents.aboutToSeek()
             }
+            // wait controls be fully visbile
+            if (!_controls.fullVisible)
+                return
 
             var nextPos = _controlsContents.seekPosition >=  0 ?
                         _controlsContents.seekPosition : 0
