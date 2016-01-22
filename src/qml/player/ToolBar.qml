@@ -46,9 +46,8 @@ InverseMouseArea {
         active = true
     }
 
-    onEntered: {
-        dismiss()
-    }
+    onEntered: dismiss()
+    onClicked: active = !active
 
     Timer {
         id: dismissControls
