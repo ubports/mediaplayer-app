@@ -79,6 +79,15 @@ AbstractPlayer {
 //    }
 
 
+    /*
+     * This toolbar implement a special behaviour:
+     * - It will be always visible if the user requested it to appear by clicking
+     * on the video or the mouse is over it
+     * - It will appear automatically if the video is paused or the user is using
+     * arrows keys to seek on video
+     * - It will automatically dissapear after 3 secs if the video is playing,
+     * the mouse is not over it and was not opened by user click
+     */
     ToolBar {
         id: _controls
 
@@ -89,6 +98,7 @@ AbstractPlayer {
             bottom: parent.bottom
         }
 
+        anchored: player.paused || _mouseArea.showControls
         height: _controlsContents.height
         Controls {
             id: _controlsContents
@@ -96,12 +106,12 @@ AbstractPlayer {
             property bool wasPausedBeforeSeek: false
             property bool wasVisibleBeforeSeek: false
             property int seekPosition: 0
+            property bool isSeeking: false
 
             function aboutToSeek()
             {
+                _controlsContents.isSeeking = true
                 wasPausedBeforeSeek = (state == "paused")
-                wasVisibleBeforeSeek = _controls.active && !_controls.aboutToDismiss
-                _controls.abortDismiss()
                 player.pause()
                 _controls.active = true
                 _controlsContents.seekPosition = video.position
@@ -115,13 +125,10 @@ AbstractPlayer {
                     player.play()
                 }
 
-                if (!_controlsContents.wasVisibleBeforeSeek) {
-                    _controls.dismiss()
-                }
-
+                _controls.active = false
                 _controlsContents.seekPosition = -1
                 _controlsContents.wasPausedBeforeSeek = false
-                _controlsContents.wasVisibleBeforeSeek = false
+                _controlsContents.isSeeking = false
             }
 
             function seek(time)
@@ -175,19 +182,27 @@ AbstractPlayer {
     }
 
     MouseArea {
-            id: _mouseArea
+        id: _mouseArea
 
-            objectName: "videoMouseArea"
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: _controls.top
+        property bool showControls: false
+
+        objectName: "videoMouseArea"
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: _controls.top
+        }
+        enabled: player.playing
+        onClicked: {
+            var show = !showControls
+            if (!show) {
+                _controls.hide()
             }
 
-            onClicked: _controls.active = !_controls.active
+            showControls = show
         }
-
+    }
 
     Keys.onReleased:
     {
