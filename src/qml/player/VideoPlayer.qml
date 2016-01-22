@@ -99,9 +99,9 @@ AbstractPlayer {
 
             function aboutToSeek()
             {
-                _controls.abortDismiss()
                 wasPausedBeforeSeek = (state == "paused")
-                wasVisibleBeforeSeek = _controls.active
+                wasVisibleBeforeSeek = _controls.active && !_controls.aboutToDismiss
+                _controls.abortDismiss()
                 player.pause()
                 _controls.active = true
                 _controlsContents.seekPosition = video.position
@@ -173,6 +173,21 @@ AbstractPlayer {
             }
         }
     }
+
+    MouseArea {
+            id: _mouseArea
+
+            objectName: "videoMouseArea"
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                bottom: _controls.top
+            }
+
+            onClicked: _controls.active = !_controls.active
+        }
+
 
     Keys.onReleased:
     {

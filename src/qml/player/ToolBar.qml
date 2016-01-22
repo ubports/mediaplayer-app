@@ -21,10 +21,11 @@ import QtQuick 2.0
 import Ubuntu.Components 1.1
 
 
-InverseMouseArea {
+MouseArea {
     id: root
 
     property bool active: false
+    readonly property alias aboutToDismiss: dismissControls.running
     default property alias controls: contents.children
     readonly property bool fullVisible: (spacer.height === 0)
 
@@ -36,24 +37,23 @@ InverseMouseArea {
     function abortDismiss()
     {
         dismissControls.stop()
-    }
-
-    sensingArea: parent
-
-    hoverEnabled: true
-    onExited: {
-        abortDismiss()
         active = true
     }
 
-    onEntered: dismiss()
-    onClicked: active = !active
+    onActiveChanged: dismissControls.stop()
+
+    hoverEnabled: true
+    onExited: dismiss()
+    onEntered: {
+        abortDismiss()
+        active = true
+    }
 
     Timer {
         id: dismissControls
 
         running: false
-        interval: 5000
+        interval: 3000
         repeat: false
         onTriggered: root.active = false
     }
