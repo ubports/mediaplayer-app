@@ -345,7 +345,6 @@ Item {
     Connections {
         target: controls
         onPlayerStatusChanged: {
-            console.debug("onPlayerStatusChanged")
             _timeline.playerStatus = controls.playerStatus
         }
     }
