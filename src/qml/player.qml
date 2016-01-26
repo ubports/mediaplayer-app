@@ -25,6 +25,7 @@ import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.1
 import Ubuntu.Components.Popups 1.0 as Popups
+import Ubuntu.Content 0.1 as ContentHub
 
 Item {
     id: mediaPlayer
@@ -35,7 +36,6 @@ Item {
     property string formFactor: "phone"
     property real volume: playerLoader.item.volume
     property bool appActive: Qt.application.active
-
     property variant nativeOrientation: Screen.primaryOrientation
 
     onAppActiveChanged: {
@@ -84,16 +84,8 @@ Item {
             item.focus = true
             item.rotating = Qt.binding(function () { return rotatingTransition.running } )
             if (playUri != "") {
+                lateUrlCheck.stop()
                 item.playUri(playUri)
-            } else {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        item.playUri(videoFile)
-                    }
-                } else {
-                    PopupUtils.open(dialogNoUrl, null)
-                }
             }
         }
 
@@ -212,14 +204,10 @@ Item {
     }
 
     Keys.onReleased: {
-        if (!event.isAutoRepeat
-            && (event.key == Qt.Key_F11 || event.key == Qt.Key_F)) {
-            event.accepted = true
-            application.toggleFullscreen();
-        } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketLeft) {
+       if (!event.isAutoRepeat && event.key === Qt.Key_BracketLeft) {
             event.accepted = true
             rotateClockwise()
-        } else if (!event.isAutoRepeat && event.key == Qt.Key_BracketRight) {
+        } else if (!event.isAutoRepeat && event.key === Qt.Key_BracketRight) {
             event.accepted = true
             rotateCounterClockwise()
         }
@@ -229,8 +217,46 @@ Item {
         target: UriHandler
         onOpened: {
             for (var i = 0; i < uris.length; ++i) {
+                lateUrlCheck.stop()
                 var videoUri = uris[i].replace("video://", "file://")
                 playerLoader.item.playUri(videoUri)
+            }
+        }
+    }
+
+    Connections {
+        target: ContentHub.ContentHub
+        onImportRequested: {
+            lateUrlCheck.stop()
+            if (transfer.state === ContentHub.ContentTransfer.Charged) {
+                var urls = []
+                for(var i=0; i < transfer.items.length; i++) {
+                    urls.push(transfer.items[i].url)
+                }
+
+                var result = mpApplication.copyFiles(urls);
+                if (result.length > 0)
+                    playerLoader.item.playUri(result[result.length - 1])
+            }
+        }
+    }
+
+    Timer {
+        id: lateUrlCheck
+
+        interval: 1000
+        repeat: false
+        running: true
+        onTriggered: {
+            if ((playUri == "") && !ContentHub.ContentHub.hasPending) {
+                if (mpApplication.desktopMode) {
+                    var videoFile = mpApplication.chooseFile()
+                    if (videoFile != "") {
+                        playerLoader.item.playUri(videoFile)
+                    }
+                } else {
+                    PopupUtils.open(dialogNoUrl, null)
+                }
             }
         }
     }

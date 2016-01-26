@@ -40,6 +40,7 @@ public Q_SLOTS:
     void onHeightChanged(int);
     bool isDesktopMode() const;
     QUrl chooseFile();
+    QList<QUrl> copyFiles(const QList<QUrl> &urls);
 
 private:
     QQuickView *m_view;

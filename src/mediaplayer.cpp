@@ -25,6 +25,7 @@
 #include <QtCore/QLibrary>
 #include <QtCore/QTimer>
 #include <QtCore/QStandardPaths>
+#include <QtCore/QMimeDatabase>
 #include <QtWidgets/QFileDialog>
 #include <QtQml/QQmlContext>
 #include <QtQml/QQmlEngine>
@@ -215,4 +216,58 @@ QUrl MediaPlayer::chooseFile()
     }
 
     return fileName;
+}
+
+QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
+{
+    static QString moviesDir = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+
+    QList<QUrl> result;
+
+    Q_FOREACH(const QUrl &url, urls) {
+        if (!url.isLocalFile()) {
+            qWarning() << "Remote files not supported:" << url;
+            continue;
+        }
+
+        QFileInfo originalFile(url.toLocalFile());
+
+        QString filename = originalFile.fileName();
+        QString suffix = originalFile.completeSuffix();
+        QString filenameWithoutSuffix;
+        if (suffix.isEmpty()) {
+            QMimeDatabase mdb;
+            QMimeType mt = mdb.mimeTypeForFile(originalFile.absoluteFilePath());
+
+            // If the filename doesn't have an extension add one from the
+            // detected mimetype
+            if(!mt.preferredSuffix().isEmpty()) {
+                suffix = mt.preferredSuffix();
+            }
+            filenameWithoutSuffix = filename;
+        } else {
+            filenameWithoutSuffix = originalFile.baseName();
+        }
+
+        QFileInfo newFile(moviesDir, QString("%1.%2").arg(filenameWithoutSuffix).arg(suffix));
+        if (newFile.exists()) {
+            // find a alternative name
+            int index = 1;
+            do {
+                newFile = QFileInfo(moviesDir,
+                                      QString("%1(%2).%3")
+                                        .arg(filenameWithoutSuffix)
+                                        .arg(index)
+                                        .arg(suffix));
+                index++;
+            } while (newFile.exists());
+        }
+
+        if (QFile::copy(originalFile.absoluteFilePath(), newFile.absoluteFilePath())) {
+            result <<  QUrl::fromLocalFile(newFile.absoluteFilePath());
+        } else {
+            qWarning() << "Fail to copy file from:" << originalFile.absoluteFilePath() << "to" << newFile.absoluteFilePath();
+        }
+    }
+    return result;
 }
