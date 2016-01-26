@@ -1,3 +1,16 @@
+mediaplayer-app (0.20.5+16.04.20160126.1-0ubuntu1) xenial; urgency=medium
+
+  [ Jeffrey Flaker ]
+  * Fixing Bug #1377918, fixed the grammatical error (LP: #1377918)
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixing Bug #1377918, fixed the grammatical error (LP: #1377918)
+  * Implement support for content hub. Use themed icons for full screen
+    button. (LP: #1312659, #1518332)
+  * Updated to SDK 1.3
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Tue, 26 Jan 2016 22:06:57 +0000
+
 mediaplayer-app (0.20.5+16.04.20160114-0ubuntu1) xenial; urgency=medium
 
   [ Arthur Mello ]
