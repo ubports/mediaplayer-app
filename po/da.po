@@ -8,105 +8,100 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-03 09:06+0200\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2014-07-29 21:48+0000\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
-#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:138
-#, qt-format
-msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
-
-#: src/qml/player/TimeLine.qml:72
-msgid "0:00:00"
-msgstr "0:00:00"
-
-#: src/qml/player/VideoPlayer.qml:238
-msgid "A network error occurred."
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
 msgstr ""
 
-#: src/qml/player/VideoPlayer.qml:216
-msgid "Close"
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
 msgstr ""
 
-#: src/qml/player.qml:67
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
+
+#: src/qml/player.qml:66
 msgid "Error"
 msgstr "Fejl"
 
-#: src/qml/player/VideoPlayer.qml:212
-msgid "Error playing video"
-msgstr ""
-
-#: src/qml/player/VideoPlayer.qml:244
-msgid "Fail to connect with playback backend."
-msgstr ""
-
-#: src/qml/player/VideoPlayer.qml:232
-msgid "Fail to open the source video."
-msgstr ""
-
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
 msgstr ""
 
-# playhead?  Det er nok ligemeget her
-#: src/qml/player.qml:189
-msgid "Pause or Resume Playhead"
-msgstr "Pause eller fortsæt"
-
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Afspil / pause"
 
-#: src/qml/player.qml:194
-msgid "Post;Upload;Attach"
-msgstr "Post;Upload;Send;Vedhæft;Overfør"
+# playhead?  Det er nok ligemeget her
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "Pause eller fortsæt"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "Del"
 
-#: src/qml/player/VideoPlayer.qml:241
-msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Post;Upload;Send;Vedhæft;Overfør"
 
-#: src/qml/player/VideoPlayer.qml:235
-msgid "Video format not supported."
-msgstr ""
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
 
 #. TRANSLATORS: this refers to an unknown duration.
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "ukendt"
 
-#, qt-format
-#~ msgid "0%1"
-#~ msgstr "0%1"
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
 
-#, qt-format
-#~ msgid "- %1"
-#~ msgstr "- %1"
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr ""
 
-#~ msgid "Media Player"
-#~ msgstr "Medieafspiller"
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr ""
 
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to transfer "
-#~ "videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "Ingen video valgt til afspilning. Forbind din telefon til din computer for "
-#~ "at overføre videoer til telefonen. Vælg så videoen fra videoobjektivet."
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr ""

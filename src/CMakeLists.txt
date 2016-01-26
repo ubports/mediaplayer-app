@@ -34,10 +34,10 @@ install(TARGETS ${MEDIAPLAYER}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
-file(GLOB QML_JS_FILES *.js *.qml)
-
 set(QML_DIR qml)
 
 install(DIRECTORY ${QML_DIR}
     DESTINATION ${MEDIAPLAYER_DIR}
     )
+
+add_subdirectory(qml)

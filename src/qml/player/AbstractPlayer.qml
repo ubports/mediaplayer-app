@@ -23,7 +23,7 @@ import QtMultimedia 5.0
 import "../common"
 import "../common/utils.js" as Utils
 
-Rectangle {
+Item {
     id: player
 
     property bool playing: state == "playing"
@@ -44,7 +44,6 @@ Rectangle {
 
     objectName: "videoPlayer"
     state: "stopped"
-    color: "black"
 
     function stop() {
         state = "stopped"
@@ -136,6 +135,16 @@ Rectangle {
             console.error("AbstractPlayer: " + error + ":" + errorString)
             player.error(error, errorString)
         }
+
+        onPlaybackStateChanged: {
+            // Make sure that the app toggles the play/pause button when playbackStatus
+            // changes from underneath it in media-hub/qtubuntu-media
+            if (mediaPlayer.playbackState == MediaPlayer.PausedState) {
+                player.pause()
+            } else if (mediaPlayer.playbackState == MediaPlayer.PlayingState) {
+                player.play()
+            }
+        }
     }
 
     Timer {
@@ -164,10 +173,7 @@ Rectangle {
         State {
             name: "playing"
             PropertyChanges { target: mediaPlayer; playbackRate: 1.0; muted: false }
-            StateChangeScript { script: {
-                                console.debug("Media player will play:" + mediaPlayer.source)
-                                mediaPlayer.play() }
-                              }
+            StateChangeScript { script: mediaPlayer.play() }
             PropertyChanges { target: scrubbingTimer; running: false }
         },
 

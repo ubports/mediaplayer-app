@@ -1,16 +1,16 @@
-# Finnish translation for mediaplayer-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# Interlingua translation for mediaplayer-app
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the mediaplayer-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2014-11-06 09:32+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2015-04-28 02:41+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Interlingua <ia@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr "Mediasoitin"
+msgstr ""
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
@@ -32,35 +32,36 @@ msgstr ""
 
 #: src/qml/player.qml:66
 msgid "Error"
-msgstr "Virhe"
+msgstr "Error"
 
 #: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
-"Videota ei ole valittu toistettavaksi. Liitä puhelimesi tietokoneeseen ja "
-"siirrä videoita puhelimeen. Valitse sitten haluamasi video videonäkymästä."
+"Necun video seligite pro le reproduction. Connecte tu telephono al "
+"computator pro transferer le videos al telephono, pois selige un video ex "
+"Videos scope."
 
 #: src/qml/player.qml:70
 msgid "Ok"
-msgstr "OK"
+msgstr "Ok"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
-msgstr "Toista / keskeytä"
+msgstr "Reproduction / Pausa"
 
 #: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
-msgstr "Keskeytä tai palauta toisto"
+msgstr "Pausar o resumer le playhead"
 
 #: src/qml/player.qml:191
 msgid "Share"
-msgstr "Jaa"
+msgstr "Compartir"
 
 #: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
-msgstr "Post;Upload;Attach;Lähetä;Liitä"
+msgstr "Postar;Ajornar;Annexar"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -72,7 +73,7 @@ msgstr "%1:%2:%3"
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
-msgstr "tuntematon"
+msgstr "incognite"
 
 #: src/qml/player/TimeLine.qml:82
 msgid "0:00:00"
@@ -80,28 +81,29 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr "Virhe videota toistaessa"
+msgstr "Error in le reproduction del video"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
-msgstr "Sulje"
+msgstr "Clauder"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr "Lähdevideon avaaminen epäonnistui."
+msgstr "Falta in le apertura del video fonte."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
-msgstr "Videomuoto ei ole tuettu."
+msgstr "Formato del video non supportate."
 
 #: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr "Verkkovirhe."
+msgstr "Un error de rete occurreva."
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr "Mediaresurssin toistamiseksi ei ole tarvittavia oikeuksia."
+msgstr ""
+"Il non ha permissiones appropriate pro reproducer un ressource de media."
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr "Toistamistaustaosaan yhdistäminen epäonnistui."
+msgstr "Falta in le connexion del backend del reproduction."

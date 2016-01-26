@@ -18,105 +18,21 @@
  */
 
 import QtQuick 2.0
+import QtMultimedia 5.0
 import Ubuntu.Components 1.1
 import "../sdk"
 
-Item {
-    id: _timeLine
+Slider {
+    id: _slider
+    objectName: "TimeLine.Slider"
 
-    property alias minimumValue: _slider.minimumValue
-    property alias maximumValue: _slider.maximumValue
-    property alias pressed: _slider.pressed
-    property alias liveValue: _slider.value
-    property real value: 0.0
+    readonly property alias liveValue: _slider.value
+    property real videoPosition: -1
+    property variant playerStatus: MediaPlayer.NoMedia
     property string currentTime
     property string remainingTime
 
     signal clicked(bool insideThumb)
-
-    objectName: "TimeLine"
-    // Make sure that the Slider value will be in sync with the video progress after the user click over the slider
-    // The Slider components break the binding when the user interact with the component because of that a simple
-    // "property alias value: _slider.value" does not work
-    onValueChanged: {
-        if (!_slider.pressed) {
-            _slider.value = _timeLine.value
-        }
-    }
-    Slider {
-        id: _slider
-
-        objectName: "TimeLine.Slider"
-        style: VideoSlider {property Item item: _slider}
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            left: parent.left
-            right: _TimeLabel.left
-            rightMargin: units.gu(2)
-        }
-
-        minimumValue: 0
-        maximumValue: 1000
-        live: true
-        onValueChanged: {
-            if (value > 0) {
-                _timeLine.currentTime = formatProgress(value)
-                if (_slider.maximumValue > 0) {
-                    _timeLine.remainingTime = formatProgress(_slider.maximumValue - value)
-                } else {
-                    // TRANSLATORS: this refers to an unknown duration.
-                    _timeLine.remainingTime = i18n.tr("unknown")
-                }
-            } else {
-                _timeLine.currentTime = i18n.tr("0:00:00")
-            }
-        }
-
-        onTouched: {
-            _timeLine.clicked(onThumb)
-        }
-    }
-
-    Label {
-        id: _TimeLabel
-
-        objectName: "TimeLine.TimeLabel"
-        anchors {
-            verticalCenter: _slider.verticalCenter
-            right: parent.right
-            margins: units.gu(2)
-        }
-
-        width: units.gu(6)
-
-        color: "#e8e1d0"
-        font.weight: Font.DemiBold
-        fontSize: "medium"
-        state: "PROGRESSIVE"
-
-        states: [
-            State {
-                name: "PROGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: _timeLine.currentTime }
-            },
-            State {
-                name: "DEGRESSIVE"
-                PropertyChanges { target: _TimeLabel; text: "- %1".arg(_timeLine.remainingTime) }
-            }
-        ]
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (_TimeLabel.state === "PROGRESSIVE") {
-                    _TimeLabel.state = "DEGRESSIVE"
-                } else {
-                    _TimeLabel.state = "PROGRESSIVE"
-                }
-            }
-        }
-    }
 
     function formatProgress(time) {
         var hour = 0
@@ -136,5 +52,38 @@ Item {
         // TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
         // %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
         return  i18n.tr("%1:%2:%3").arg(hour).arg(min).arg(secs)
+    }
+
+    style: VideoSlider {property Item item: _slider}
+    minimumValue: 0
+    maximumValue: 1000
+    live: true
+    onVideoPositionChanged: {
+        if (_slider.playerStatus == MediaPlayer.EndOfMedia)
+        {
+            // On EndOfMedia status, make sure the slider returns to the beginning
+            _slider.value = 0
+        } else {
+            // Else, pass all new positions through to the slider UI
+            _slider.value = _slider.videoPosition
+        }
+    }
+
+    onValueChanged: {
+        if (value > 0) {
+            _slider.currentTime = formatProgress(value)
+            if (_slider.maximumValue > 0) {
+                _slider.remainingTime = formatProgress(_slider.maximumValue - value)
+            } else {
+                // TRANSLATORS: this refers to an unknown duration.
+                _slider.remainingTime = i18n.tr("unknown")
+            }
+        } else {
+            _slider.currentTime = i18n.tr("0:00:00")
+        }
+    }
+
+    onTouched: {
+        _slider.clicked(onThumb)
     }
 }

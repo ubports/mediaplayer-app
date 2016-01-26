@@ -7,103 +7,100 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-10-03 09:06+0200\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2014-07-18 14:57+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-10-04 06:25+0000\n"
-"X-Generator: Launchpad (build 17196)\n"
+"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
-#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:138
-#, qt-format
-msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
-
-#: src/qml/player/TimeLine.qml:72
-msgid "0:00:00"
-msgstr "0:00:00"
-
-#: src/qml/player/VideoPlayer.qml:238
-msgid "A network error occurred."
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
 msgstr ""
 
-#: src/qml/player/VideoPlayer.qml:216
-msgid "Close"
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
 msgstr ""
 
-#: src/qml/player.qml:67
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
+
+#: src/qml/player.qml:66
 msgid "Error"
 msgstr "오류"
 
-#: src/qml/player/VideoPlayer.qml:212
-msgid "Error playing video"
-msgstr ""
-
-#: src/qml/player/VideoPlayer.qml:244
-msgid "Fail to connect with playback backend."
-msgstr ""
-
-#: src/qml/player/VideoPlayer.qml:232
-msgid "Fail to open the source video."
-msgstr ""
-
-#: src/qml/player.qml:68
+#: src/qml/player.qml:67
 msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"재생할 동영상을 선택하지 않았습니다. 전화로 컴퓨터에 접속해 동영상을 전화로 전송한 후 동영상 스코프에서 동영상을 선택해주십시오."
 
-#: src/qml/player.qml:71
+#: src/qml/player.qml:70
 msgid "Ok"
-msgstr ""
+msgstr "확인"
 
-#: src/qml/player.qml:189
-msgid "Pause or Resume Playhead"
-msgstr "일시 중지하거나 계속하기"
-
-#: src/qml/player.qml:188
+#: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "재생 / 일시 중지"
 
-#: src/qml/player.qml:194
-msgid "Post;Upload;Attach"
-msgstr "포스트;업로드;첨부"
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "일시 중지하거나 계속하기"
 
-#: src/qml/player.qml:193
+#: src/qml/player.qml:191
 msgid "Share"
 msgstr "공유"
 
-#: src/qml/player/VideoPlayer.qml:241
-msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "포스트;업로드;첨부"
 
-#: src/qml/player/VideoPlayer.qml:235
-msgid "Video format not supported."
-msgstr ""
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
 
 #. TRANSLATORS: this refers to an unknown duration.
-#: src/qml/player/TimeLine.qml:69
+#: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "알 수 없음"
 
-#~ msgid "Media Player"
-#~ msgstr "미디어 플레이어"
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
 
-#, qt-format
-#~ msgid "0%1"
-#~ msgstr "0%1"
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "동영상 재생 오류"
 
-#, qt-format
-#~ msgid "- %1"
-#~ msgstr "- %1"
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "닫기"
 
-#~ msgid ""
-#~ "No video selected to play. Connect your phone to your computer to transfer "
-#~ "videos to the phone. Then select video from Videos lens."
-#~ msgstr ""
-#~ "재생할 비디오를 선택하지 않았습니다. 휴대 전화를 컴퓨터와 연결하여 비디오를 전송한 후 비디오 렌즈에서 재생할 비디오를 선택하십시오."
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "원본 동영상을 열 수 없습니다."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "동영상 형식을 지원하지 않습니다."
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "네트워크 오류가 발생했습니다."
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "미디어 자원을 재생하는데 필요한 권한이 없습니다."
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr "재생 백엔드에 연결할 수 없습니다."

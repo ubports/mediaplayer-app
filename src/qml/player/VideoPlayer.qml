@@ -21,7 +21,6 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 import Ubuntu.Components 1.1
-import Ubuntu.Components.Extras 0.1
 import Ubuntu.Components.Popups 1.0 as Popups
 import "../common"
 import "../sdk"
@@ -109,6 +108,7 @@ AbstractPlayer {
 
             maximumHeight: units.gu(27)
             sceneSelectorHeight: units.gu(18)
+            playerStatus: player.status
 
             onPlaybackClicked: player.playPause()
 
@@ -130,7 +130,9 @@ AbstractPlayer {
             }
 
             onEndSeek: {
-                if (!isPaused) {
+                // Only automatically resume playing after a seek that is not to the
+                // end of stream (i.e. position == duration)
+                if (player.status != MediaPlayer.EndOfMedia && !isPaused) {
                     player.play()
                 }
             }
@@ -214,7 +216,14 @@ AbstractPlayer {
 
             Button {
                 text: i18n.tr("Close")
-                onClicked: PopupUtils.close(dialogue)
+                onClicked: {
+                    PopupUtils.close(dialogue)
+                    if (player.state != MediaPlayer.PlayingState)
+                    {
+                        console.debug("Warning: Quitting app due to fatal playback error.")
+                        Qt.quit()
+                    }
+                }
             }
 
             Component.onDestruction: player.errorDialog = null

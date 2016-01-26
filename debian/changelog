@@ -1,3 +1,148 @@
+mediaplayer-app (0.20.5+16.04.20160114-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello ]
+  * Update po/CMakeLists.txt to search for string on cpp files Update
+    pot file (LP: #1521186)
+
+ -- Bill Filler <ci-train-bot@canonical.com>  Thu, 14 Jan 2016 20:46:39 +0000
+
+mediaplayer-app (0.20.5+16.04.20160106.1-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello ]
+  * Add X-Ubuntu-Touch=true to desktop file (LP: #1521773)
+  * Translate app title (LP: #1521186)
+
+ -- Bill Filler <ci-train-bot@canonical.com>  Wed, 06 Jan 2016 17:11:48 +0000
+
+mediaplayer-app (0.20.5+15.10.20150701-0ubuntu2~gcc5.1) wily; urgency=medium
+
+  * No-change test rebuild for g++5 ABI transition
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 15 Jul 2015 15:40:26 +0000
+
+mediaplayer-app (0.20.5+15.10.20150701-0ubuntu1) wily; urgency=medium
+
+  [ Bill Filler ]
+  * use OnlyShowIn=Old to hide from Apps scope (LP: #1387691)
+
+  [ Renato Araujo Oliveira Filho ]
+  * Fixed slider positioning. (LP: #1470331)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Wed, 01 Jul 2015 21:53:38 +0000
+
+mediaplayer-app (0.20.5+15.10.20150630-0ubuntu1) wily; urgency=medium
+
+  [ Renato Araujo Oliveira Filho ]
+  * Updated app icon. (LP: #1457424)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 30 Jun 2015 17:57:26 +0000
+
+mediaplayer-app (0.20.5+15.10.20150522-0ubuntu1) wily; urgency=medium
+
+  [ Jim Hodapp ]
+  * Quit playback after fatal playback error. (LP: #1435088)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 22 May 2015 17:36:44 +0000
+
+mediaplayer-app (0.20.5+15.04.20150428-0ubuntu1) vivid; urgency=medium
+
+  [ CI Train Bot ]
+  * Resync trunk.
+
+  [ Ricardo Mendoza ]
+  * Bug #1417006 Performance/Rendering fixes:  * Remove clipping on
+    video loader  * Remove unused rectangles (overdraw) (LP: #1417006)
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Tue, 28 Apr 2015 20:06:50 +0000
+
+mediaplayer-app (0.20.5+15.04.20150320.1-0ubuntu1) vivid; urgency=medium
+
+  [ Jim Hodapp ]
+  * Improves the slider handling logic to make sure we don't display any
+    0 positions passed through by GStreamer while seeking, and also to
+    reset the slider bar to the beginning on EndOfMedia status. No
+    longer need to ignore a 0 position while seeking since media-hub
+    takes care of this issue now. Make position silky smooth while
+    seeking by disconnecting the value from the reported position()
+    while seeking.
+
+  [ Ricardo Mendoza ]
+  * Improves the slider handling logic to make sure we don't display any
+    0 positions passed through by GStreamer while seeking, and also to
+    reset the slider bar to the beginning on EndOfMedia status. No
+    longer need to ignore a 0 position while seeking since media-hub
+    takes care of this issue now. Make position silky smooth while
+    seeking by disconnecting the value from the reported position()
+    while seeking.
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 20 Mar 2015 17:36:28 +0000
+
+mediaplayer-app (0.20.5+15.04.20150213-0ubuntu1) vivid; urgency=medium
+
+  [ Bill Filler ]
+  * remove import of unused Ubuntu.Components.Extras
+
+  [ CI Train Bot ]
+  * New rebuild forced.
+
+ -- CI Train Bot <ci-train-bot@canonical.com>  Fri, 13 Feb 2015 02:56:52 +0000
+
+mediaplayer-app (0.20.5+15.04.20150212-0ubuntu1) vivid; urgency=medium
+
+  [ Bill Filler ]
+  * drop depends on ui-extras
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Thu, 12 Feb 2015 17:36:39 +0000
+
+mediaplayer-app (0.20.5+15.04.20150128-0ubuntu1) vivid; urgency=low
+
+  [ Jim Hodapp ]
+  * Add an autopilot test that tests the missing codec error reporting
+    of media-hub. .
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 28 Jan 2015 12:45:00 +0000
+
+mediaplayer-app (0.20.5+15.04.20150127-0ubuntu1) vivid; urgency=low
+
+  [ Jim Hodapp ]
+  * Add an autopilot test that tests the missing codec error reporting
+    of media-hub. .
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Renato Araujo Oliveira Filho ]
+  * Update translations.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Tue, 27 Jan 2015 15:30:52 +0000
+
+mediaplayer-app (0.20.5+14.10.20141015-0ubuntu1) 14.09; urgency=low
+
+  [ CI bot ]
+  * Resync trunk
+
+  [ Renato Araujo Oliveira Filho ]
+  * Parse video uri when received from UriHandler. (LP: #1376467)
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Wed, 15 Oct 2014 21:51:43 +0000
+
+mediaplayer-app (0.20.5+14.10.20141010.2-0ubuntu1) 14.09; urgency=low
+
+  [ Ubuntu daily release ]
+  * New rebuild forced
+
+  [ Albert Astals ]
+  * make mediaplayer-app.pot
+
+  [ Renato Araujo Oliveira Filho ]
+  * Use all available space for progress bar. Show timestamp on portrait
+    mode.
+
+ -- Ubuntu daily release <ps-jenkins@lists.canonical.com>  Fri, 10 Oct 2014 16:12:34 +0000
+
 mediaplayer-app (0.20.5+14.10.20141002-0ubuntu1) 14.09; urgency=low
 
   [ Akiva Avraham ]
