@@ -20,24 +20,43 @@
 import QtQuick 2.0
 import Ubuntu.Components 1.1
 
+
 MouseArea {
     id: root
 
-    property bool anchored: false
     property bool active: false
+    readonly property alias aboutToDismiss: dismissControls.running
     default property alias controls: contents.children
     readonly property bool fullVisible: (spacer.height === 0)
 
-    property bool _visible: anchored || active || containsMouse
-    property bool _skipAnimation: false
-
-    function hide()
+    function dismiss()
     {
-        _skipAnimation = true
-        active = false
+        dismissControls.restart()
     }
 
+    function abortDismiss()
+    {
+        dismissControls.stop()
+        active = true
+    }
+
+    onActiveChanged: dismissControls.stop()
+
     hoverEnabled: true
+    onExited: dismiss()
+    onEntered: {
+        abortDismiss()
+        active = true
+    }
+
+    Timer {
+        id: dismissControls
+
+        running: false
+        interval: 3000
+        repeat: false
+        onTriggered: root.active = false
+    }
 
     Column {
         anchors.fill: parent
@@ -47,6 +66,7 @@ MouseArea {
                 left: parent.left
                 right: parent.right
             }
+            height: root.active ? 0 : contents.height
         }
         Item {
             id: contents
@@ -61,7 +81,7 @@ MouseArea {
     states: [
         State {
             name: "active"
-            when: root._visible
+            when: root.active
             PropertyChanges {
                 target: spacer
                 height: 0
@@ -70,7 +90,7 @@ MouseArea {
         },
         State {
             name: "deActive"
-            when: !root._visible
+            when: !root.active
             PropertyChanges {
                 target: spacer
                 height: contents.height
@@ -92,20 +112,10 @@ MouseArea {
         Transition {
             from: "active"
             to: "deActive"
-            SequentialAnimation {
-                PauseAnimation {
-                    duration: root._skipAnimation ? 0 : 3000
-                }
-                UbuntuNumberAnimation {
-                    target: spacer
-                    property: "height"
-                    duration: UbuntuAnimation.SlowDuration
-                }
-                PropertyAction {
-                    target: root
-                    property: "_skipAnimation"
-                    value: false
-                }
+            UbuntuNumberAnimation {
+                target: spacer
+                property: "height"
+                duration: UbuntuAnimation.SlowDuration
             }
         }
     ]
