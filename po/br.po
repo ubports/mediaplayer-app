@@ -7,58 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2014-11-18 07:28+0000\n"
 "Last-Translator: Fohanno Thierry <thierry.fohanno@ofis-bzh.org>\n"
 "Language-Team: Breton <br@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-14 05:51+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
-#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:54
-#, qt-format
-msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
+msgstr "Lenner liesvedia"
 
-#: src/qml/player/TimeLine.qml:82
-msgid "0:00:00"
-msgstr "0:00:00"
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
+msgstr ""
 
-#: src/qml/player/VideoPlayer.qml:247
-msgid "A network error occurred."
-msgstr "C'hoarvezet ez eus ur fazi gant ar rouedad"
-
-#: src/qml/player/VideoPlayer.qml:218
-msgid "Close"
-msgstr "Serriñ"
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
 
 #: src/qml/player.qml:66
 msgid "Error"
 msgstr "Fazi"
-
-#: src/qml/player/VideoPlayer.qml:214
-msgid "Error playing video"
-msgstr "Fazi o lenn ar video"
-
-#: src/qml/player/VideoPlayer.qml:253
-msgid "Fail to connect with playback backend."
-msgstr "N'eus ket bet gallet kennaskañ ouzh al lenner."
-
-#: src/qml/player/VideoPlayer.qml:241
-msgid "Fail to open the source video."
-msgstr "N'eus ket bet gallet digeriñ ar vammenn video."
-
-#: ../data/mediaplayer-app.desktop.in.in.h:1
-msgid "Media Player"
-msgstr "Lenner liesvedia"
-
-#: ../data/mediaplayer-app.desktop.in.in.h:2
-msgid "Movies;Movie Player;Video Player"
-msgstr "Filmoù;Lenner filmoù;Lenner video"
 
 #: src/qml/player.qml:67
 msgid ""
@@ -73,31 +47,62 @@ msgstr ""
 msgid "Ok"
 msgstr "Mat eo"
 
-#: src/qml/player.qml:187
-msgid "Pause or Resume Playhead"
-msgstr "Ehanañ pe derc'hel da lenn"
-
 #: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Lenn / Ehan"
 
-#: src/qml/player.qml:192
-msgid "Post;Upload;Attach"
-msgstr "Postañ;Ezporzhiañ;Stagañ"
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "Ehanañ pe derc'hel da lenn"
 
 #: src/qml/player.qml:191
 msgid "Share"
 msgstr "Rannañ"
 
-#: src/qml/player/VideoPlayer.qml:250
-msgid "There are not the appropriate permissions to play a media resource."
-msgstr "N'emañ ket an aotreoù a zo dleet evit lenn ur media."
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Postañ;Ezporzhiañ;Stagañ"
 
-#: src/qml/player/VideoPlayer.qml:244
-msgid "Video format not supported."
-msgstr "Furmad video ha ne c'haller ket ober ganti."
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "dianav"
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "Fazi o lenn ar video"
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "Serriñ"
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "N'eus ket bet gallet digeriñ ar vammenn video."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "Furmad video ha ne c'haller ket ober ganti."
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "C'hoarvezet ez eus ur fazi gant ar rouedad"
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "N'emañ ket an aotreoù a zo dleet evit lenn ur media."
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr "N'eus ket bet gallet kennaskañ ouzh al lenner."

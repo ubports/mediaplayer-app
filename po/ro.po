@@ -7,58 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2014-11-18 12:12+0000\n"
 "Last-Translator: Marian Vasile <marianvasile1972@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-14 05:52+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
-#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:54
-#, qt-format
-msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
+msgstr "Player media"
 
-#: src/qml/player/TimeLine.qml:82
-msgid "0:00:00"
-msgstr "0:00:00"
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
+msgstr ""
 
-#: src/qml/player/VideoPlayer.qml:247
-msgid "A network error occurred."
-msgstr "A apărut o eroare de rețea."
-
-#: src/qml/player/VideoPlayer.qml:218
-msgid "Close"
-msgstr "Închide"
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
 
 #: src/qml/player.qml:66
 msgid "Error"
 msgstr "Eroare"
-
-#: src/qml/player/VideoPlayer.qml:214
-msgid "Error playing video"
-msgstr "Eroare la redarea video"
-
-#: src/qml/player/VideoPlayer.qml:253
-msgid "Fail to connect with playback backend."
-msgstr "Eșec la conectarea cu motorul programului de redare."
-
-#: src/qml/player/VideoPlayer.qml:241
-msgid "Fail to open the source video."
-msgstr "Eșec la deschiderea sursei video."
-
-#: ../data/mediaplayer-app.desktop.in.in.h:1
-msgid "Media Player"
-msgstr "Player media"
-
-#: ../data/mediaplayer-app.desktop.in.in.h:2
-msgid "Movies;Movie Player;Video Player"
-msgstr "Filme;Player video;Redare video"
 
 #: src/qml/player.qml:67
 msgid ""
@@ -73,31 +47,62 @@ msgstr ""
 msgid "Ok"
 msgstr "În regulă"
 
-#: src/qml/player.qml:187
-msgid "Pause or Resume Playhead"
-msgstr "Pauză sau reia Playhead"
-
 #: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Redare / Pauză"
 
-#: src/qml/player.qml:192
-msgid "Post;Upload;Attach"
-msgstr "Postează;Încarcă;Atașează"
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "Pauză sau reia Playhead"
 
 #: src/qml/player.qml:191
 msgid "Share"
 msgstr "Partajare"
 
-#: src/qml/player/VideoPlayer.qml:250
-msgid "There are not the appropriate permissions to play a media resource."
-msgstr "Nu există permisiuni corespunzătoare pentru a reda o resursă media."
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Postează;Încarcă;Atașează"
 
-#: src/qml/player/VideoPlayer.qml:244
-msgid "Video format not supported."
-msgstr "Formatul video nu este recunoscut."
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "necunoscut"
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "Eroare la redarea video"
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "Închide"
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "Eșec la deschiderea sursei video."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "Formatul video nu este recunoscut."
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "A apărut o eroare de rețea."
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "Nu există permisiuni corespunzătoare pentru a reda o resursă media."
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr "Eșec la conectarea cu motorul programului de redare."

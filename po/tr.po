@@ -7,58 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2014-11-05 14:28-0300\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2015-03-09 19:31+0000\n"
 "Last-Translator: Yunus İşleyen <Dekamir@outlook.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-14 05:52+0000\n"
-"X-Generator: Launchpad (build 17886)\n"
+"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
+"X-Generator: Launchpad (build 17902)\n"
 
-#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
-#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
-#: src/qml/player/TimeLine.qml:54
-#, qt-format
-msgid "%1:%2:%3"
-msgstr "%1:%2:%3"
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
+msgstr "Ortam Oynatıcı"
 
-#: src/qml/player/TimeLine.qml:82
-msgid "0:00:00"
-msgstr "0:00:00"
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
+msgstr ""
 
-#: src/qml/player/VideoPlayer.qml:247
-msgid "A network error occurred."
-msgstr "Bir ağ hatası oluştu"
-
-#: src/qml/player/VideoPlayer.qml:218
-msgid "Close"
-msgstr "Kapat"
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
 
 #: src/qml/player.qml:66
 msgid "Error"
 msgstr "Hata"
-
-#: src/qml/player/VideoPlayer.qml:214
-msgid "Error playing video"
-msgstr "Video oynatılırken hata"
-
-#: src/qml/player/VideoPlayer.qml:253
-msgid "Fail to connect with playback backend."
-msgstr "Oynatma arka ucu ile bağlantı başarısız."
-
-#: src/qml/player/VideoPlayer.qml:241
-msgid "Fail to open the source video."
-msgstr "Kaynak dosyayı açma başarısız."
-
-#: ../data/mediaplayer-app.desktop.in.in.h:1
-msgid "Media Player"
-msgstr "Ortam Oynatıcı"
-
-#: ../data/mediaplayer-app.desktop.in.in.h:2
-msgid "Movies;Movie Player;Video Player"
-msgstr "Filmler;Film Oynatıcısı;Video Oynatıcısı"
 
 #: src/qml/player.qml:67
 msgid ""
@@ -72,31 +46,62 @@ msgstr ""
 msgid "Ok"
 msgstr "Tamam"
 
-#: src/qml/player.qml:187
-msgid "Pause or Resume Playhead"
-msgstr "Oynatmayı Duraklat veya Devam Ettir"
-
 #: src/qml/player.qml:186
 msgid "Play / Pause"
 msgstr "Oynat / Duraklat"
 
-#: src/qml/player.qml:192
-msgid "Post;Upload;Attach"
-msgstr "Gönder;Yükle;Ekle"
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr "Oynatmayı Duraklat veya Devam Ettir"
 
 #: src/qml/player.qml:191
 msgid "Share"
 msgstr "Paylaş"
 
-#: src/qml/player/VideoPlayer.qml:250
-msgid "There are not the appropriate permissions to play a media resource."
-msgstr "Bir ortam kaynağı oynatmak için uygun izinler yok."
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Gönder;Yükle;Ekle"
 
-#: src/qml/player/VideoPlayer.qml:244
-msgid "Video format not supported."
-msgstr "Video biçimi desteklenmiyor."
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
 
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
 msgstr "bilinmeyen"
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "Video oynatılırken hata"
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "Kapat"
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "Kaynak dosyayı açma başarısız."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "Video biçimi desteklenmiyor."
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "Bir ağ hatası oluştu"
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "Bir ortam kaynağı oynatmak için uygun izinler yok."
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr "Oynatma arka ucu ile bağlantı başarısız."
