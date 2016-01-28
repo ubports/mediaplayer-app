@@ -87,6 +87,8 @@ bool MediaPlayer::setup()
     //m_view->engine()->addImageProvider("video", new ThumbnailProvider);
     m_view->setColor(QColor("black"));
     m_view->setResizeMode(QQuickView::SizeRootObjectToView);
+    //FIXME: Using a custom int that will be implement on QtMir in the future
+    m_view->setFlags(static_cast <Qt::WindowFlags> (0x00800000));
     m_view->setTitle(tr("Media Player"));
     QUrl playUri;
     if (args.count() >= 2) {
@@ -134,11 +136,7 @@ bool MediaPlayer::setup()
     m_view->setSource(source);
     m_view->setWidth(1200);
     m_view->setHeight(675);
-    if (windowed) {
-        m_view->showNormal();
-    } else {
-        m_view->showFullScreen();
-    }
+    m_view->show();
 
     return true;
 }
@@ -157,18 +155,16 @@ MediaPlayer::~MediaPlayer()
 void
 MediaPlayer::toggleFullscreen()
 {
-    if (m_view->windowState() == Qt::WindowFullScreen) {
-        m_view->setWindowState(Qt::WindowNoState);
-    } else {
-        m_view->setWindowState(Qt::WindowFullScreen);
-    }
+    QWindow::Visibility newVisibility = m_view->visibility() == QWindow::FullScreen ?
+                QWindow::Windowed : QWindow::FullScreen;
+    m_view->setVisibility(newVisibility);
 }
 
 void
 MediaPlayer::leaveFullScreen()
 {
-    if (m_view->windowState() == Qt::WindowFullScreen) {
-        m_view->setWindowState(Qt::WindowNoState);
+    if (m_view->visibility() == QWindow::FullScreen) {
+        m_view->setVisibility(QWindow::Windowed);
     }
 }
 
