@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2014-11-06 09:32+0000\n"
+"PO-Revision-Date: 2016-01-29 20:03+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-01-30 05:43+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -23,12 +23,14 @@ msgstr "Mediasoitin"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "Avaa video"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"Videotiedostot (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;Kaikki "
+"tiedostot (*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
