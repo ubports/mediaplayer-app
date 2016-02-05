@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2014-11-07 12:54+0000\n"
+"PO-Revision-Date: 2016-02-04 22:13+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-02-05 06:27+0000\n"
+"X-Generator: Launchpad (build 17908)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -23,12 +23,14 @@ msgstr "پخش کننده‌ی رسانه"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "گشودن ویدیو"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"پرونده‌های ویدیویی (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;تمام "
+"پرونده‌ها(*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
