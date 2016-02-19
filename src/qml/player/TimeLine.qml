@@ -31,6 +31,7 @@ Slider {
     property variant playerStatus: MediaPlayer.NoMedia
     property string currentTime
     property string remainingTime
+    property int finalSeekPosition: -1
 
     signal clicked(bool insideThumb)
 
@@ -58,6 +59,9 @@ Slider {
     minimumValue: 0
     maximumValue: 1000
     live: true
+
+    onFinalSeekPosition: _slider.value = _slider.finalSeekPosition / 1000
+
     onVideoPositionChanged: {
         if (_slider.playerStatus == MediaPlayer.EndOfMedia)
         {
@@ -65,7 +69,9 @@ Slider {
             _slider.value = 0
         } else {
             // Else, pass all new positions through to the slider UI
-            _slider.value = _slider.videoPosition
+            if (_slider.videoPosition >= (_slider.finalSeekPosition / 1000)) {
+                _slider.value = _slider.videoPosition
+            }
         }
     }
 
