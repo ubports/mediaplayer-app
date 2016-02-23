@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2014-11-18 07:28+0000\n"
+"PO-Revision-Date: 2016-02-22 12:30+0000\n"
 "Last-Translator: Fohanno Thierry <thierry.fohanno@ofis-bzh.org>\n"
 "Language-Team: Breton <br@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-02-23 06:01+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -23,12 +23,14 @@ msgstr "Lenner liesvedia"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "Digeriñ ar video"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"Restroù video (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;An holl restroù "
+"(*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
