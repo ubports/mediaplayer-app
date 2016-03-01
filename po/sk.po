@@ -1,0 +1,108 @@
+# Slovak translation for mediaplayer-app
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
+"PO-Revision-Date: 2016-02-29 17:31+0000\n"
+"Last-Translator: P_E_T_O <Unknown>\n"
+"Language-Team: Slovak <sk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-03-01 05:47+0000\n"
+"X-Generator: Launchpad (build 17925)\n"
+
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
+msgstr "Prehrávač multimédií"
+
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
+msgstr "Otvoriť video"
+
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
+"Video súbory (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;Všetky súbory (*)"
+
+#: src/qml/player.qml:66
+msgid "Error"
+msgstr "Chyba"
+
+#: src/qml/player.qml:67
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos scope."
+msgstr ""
+"Nie je vybrané žiadne video na prehratie. Pripojte svoj telefón k počítaču "
+"na prenos videa do telefónu. Potom vyberte video zo scope Videá."
+
+#: src/qml/player.qml:70
+msgid "Ok"
+msgstr "Ok"
+
+#: src/qml/player.qml:186
+msgid "Play / Pause"
+msgstr "Prehrať / Pozastaviť"
+
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr ""
+
+#: src/qml/player.qml:191
+msgid "Share"
+msgstr "Zdieľať"
+
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr "Prispieť;Uploadovať;Pripojiť"
+
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr "%1:%2:%3"
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:79
+msgid "unknown"
+msgstr "neznáme"
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr "0:00:00"
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr "Chyba pri prehrávaní videa"
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr "Zatvoriť"
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr "Nepodarilo sa otvoriť zdrojové video."
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr "Formát videa nie je podporovaný."
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr "Vyskytla sa chyba siete."
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr "Chýbajú príslušné oprávnenia na prehratie média."
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr ""
