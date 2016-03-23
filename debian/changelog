@@ -1,3 +1,17 @@
+mediaplayer-app (0.20.5+16.04.20160323-0ubuntu1) xenial; urgency=medium
+
+  [ Arthur Mello ]
+  * Do not let the progress bar jump back after a seek command (LP:
+    #1470332)
+
+  [ CI Train Bot ]
+  * Resync trunk.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Set window flag to: 0x00800000 (LP: #1535397)
+
+ -- Bill Filler <ci-train-bot@canonical.com>  Wed, 23 Mar 2016 13:39:23 +0000
+
 mediaplayer-app (0.20.5+16.04.20160126.1-0ubuntu1) xenial; urgency=medium
 
   [ Jeffrey Flaker ]
