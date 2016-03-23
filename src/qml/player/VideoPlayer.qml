@@ -109,6 +109,7 @@ AbstractPlayer {
 
             function seekDone()
             {
+                _controlsContents.finalSeekPosition = _controlsContents.seekPosition
                 // Only automatically resume playing after a seek that is not to the
                 // end of stream (i.e. position == duration)
                 if (player.status !== MediaPlayer.EndOfMedia && !_controlsContents.wasPausedBeforeSeek) {

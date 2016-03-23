@@ -34,6 +34,7 @@ Item {
     property int heightOffset: 0
     property variant playerStatus: MediaPlayer.NoMedia
 
+    property alias finalSeekPosition: _timeline.finalSeekPosition
     property alias settingsEnabled: _settingsButton.enabled
 
     signal fullscreenClicked
