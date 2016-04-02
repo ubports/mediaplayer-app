@@ -1,16 +1,16 @@
-# French translation for mediaplayer-app
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# French (Canada) translation for mediaplayer-app
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the mediaplayer-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2016-04-01 20:34+0000\n"
-"Last-Translator: Ubuntu-QC-1 <Unknown>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2016-04-01 15:06+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (Canada) <fr_CA@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr "Lecteur multimédia"
+msgstr "Diffuseur de médias"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
@@ -41,13 +41,13 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
-"Aucune vidéo sélectionnée pour la lecture. Connectez votre téléphone à votre "
-"ordinateur pour transférer des vidéos sur le téléphone, puis sélectionnez "
-"une vidéo depuis le moteur de recherche Vidéos."
+"Aucune vidéo n'a été sélectionnée pour la lecture. Connectez votre téléphone "
+"à votre ordinateur afin de transférer des vidéos sur le téléphone, puis "
+"sélectionnez une vidéo grâce au module Vidéos."
 
 #: src/qml/player.qml:70
 msgid "Ok"
-msgstr "Valider"
+msgstr "Ok"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
@@ -75,7 +75,7 @@ msgstr "%1:%2:%3"
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
-msgstr "inconnu"
+msgstr "inconnue"
 
 #: src/qml/player/TimeLine.qml:82
 msgid "0:00:00"
@@ -83,7 +83,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr "Erreur de lecture de la vidéo"
+msgstr "Erreur lors de la lecture de la vidéo"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
@@ -91,7 +91,7 @@ msgstr "Fermer"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr "Échec de l'ouverture de la source vidéo."
+msgstr "Échec lors de l'ouverture de la source vidéo."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
@@ -99,13 +99,13 @@ msgstr "Format vidéo non pris en charge."
 
 #: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr "Une erreur réseau s'est produite."
+msgstr "Une erreur réseau est survenue."
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
 msgstr ""
-"Il manque l'autorisation nécessaire pour lire une ressource multimédia."
+"Il manque les permissions nécessaires pour lire une ressource multimédia."
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr "Échec de la connexion avec le lecteur en arrière-plan."
+msgstr "Échec de connexion au dorsal du lecteur."
