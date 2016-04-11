@@ -1,0 +1,105 @@
+# Thai translation for mediaplayer-app
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the mediaplayer-app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer-app\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-01-14 18:27-0200\n"
+"PO-Revision-Date: 2016-04-10 19:51+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Thai <th@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2016-04-11 05:55+0000\n"
+"X-Generator: Launchpad (build 17990)\n"
+
+#: src/mediaplayer.cpp:89
+msgid "Media Player"
+msgstr ""
+
+#: src/mediaplayer.cpp:200
+msgid "Open Video"
+msgstr ""
+
+#: src/mediaplayer.cpp:202
+msgid ""
+"Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
+msgstr ""
+
+#: src/qml/player.qml:66
+msgid "Error"
+msgstr ""
+
+#: src/qml/player.qml:67
+msgid ""
+"No video selected to play. Connect your phone to your computer to transfer "
+"videos to the phone. Then select video from Videos scope."
+msgstr ""
+
+#: src/qml/player.qml:70
+msgid "Ok"
+msgstr ""
+
+#: src/qml/player.qml:186
+msgid "Play / Pause"
+msgstr ""
+
+#: src/qml/player.qml:187
+msgid "Pause or Resume Playhead"
+msgstr ""
+
+#: src/qml/player.qml:191
+msgid "Share"
+msgstr ""
+
+#: src/qml/player.qml:192
+msgid "Post;Upload;Attach"
+msgstr ""
+
+#. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
+#. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
+#: src/qml/player/TimeLine.qml:54
+#, qt-format
+msgid "%1:%2:%3"
+msgstr ""
+
+#. TRANSLATORS: this refers to an unknown duration.
+#: src/qml/player/TimeLine.qml:79
+msgid "unknown"
+msgstr ""
+
+#: src/qml/player/TimeLine.qml:82
+msgid "0:00:00"
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:214
+msgid "Error playing video"
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:218
+msgid "Close"
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:241
+msgid "Fail to open the source video."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:244
+msgid "Video format not supported."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:247
+msgid "A network error occurred."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:250
+msgid "There are not the appropriate permissions to play a media resource."
+msgstr ""
+
+#: src/qml/player/VideoPlayer.qml:253
+msgid "Fail to connect with playback backend."
+msgstr ""
