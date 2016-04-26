@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2015-02-16 10:44+0000\n"
-"Last-Translator: Filippos Kolyvas <Unknown>\n"
+"PO-Revision-Date: 2016-04-25 16:53+0000\n"
+"Last-Translator: Aggelos Arnaoutis <angelosarn@hotmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-04-26 06:01+0000\n"
+"X-Generator: Launchpad (build 17995)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -23,12 +23,14 @@ msgstr "Αναπαραγωγή πολυμέσων"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "Άνοιγμα βίντεο"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"Αρχεία βίντεο (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;Όλα τα αρχεία "
+"(*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
