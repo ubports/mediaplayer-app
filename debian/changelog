@@ -1,3 +1,9 @@
+mediaplayer-app (0.20.5+16.04.20160428-0ubuntu1) xenial; urgency=medium
+
+  * Added arm64 build.
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Thu, 28 Apr 2016 15:07:34 +0000
+
 mediaplayer-app (0.20.5+16.04.20160323-0ubuntu1) xenial; urgency=medium
 
   [ Arthur Mello ]
