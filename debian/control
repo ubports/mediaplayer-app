@@ -21,7 +21,7 @@ Vcs-Browser: https://code.launchpad.net/mediaplayer-app
 X-Ubuntu-Use-Langpack: yes
 
 Package: mediaplayer-app
-Architecture: i386 amd64 armhf
+Architecture: i386 amd64 armhf arm64
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
