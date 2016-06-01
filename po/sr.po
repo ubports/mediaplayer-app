@@ -1,34 +1,36 @@
 # Serbian translation for mediaplayer-app
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # This file is distributed under the same license as the mediaplayer-app package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
-#
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2015-09-06 15:27+0000\n"
-"Last-Translator: Bojan Bogdanović <Unknown>\n"
-"Language-Team: Serbian <sr@li.org>\n"
+"PO-Revision-Date: 2016-06-01 03:27+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <(nothing)>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-06-01 05:53+0000\n"
+"X-Generator: Launchpad (build 18053)\n"
+"Language: sr\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr "Медија плејер"
+msgstr "Медијски програм"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "Отвори снимак"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"Датотеке снимака (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;Све датотеке "
+"(*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
@@ -39,8 +41,9 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
-"Није одабран ниједан видео. Повежите ваш телефон на рачунар да бисте пренели "
-"видео записе на телефон. Затим одаберите видео из Видео опсега."
+"Није изабран ниједан снимак за приказивање. Повежите ваш телефон на рачунар "
+"да бисте пренели видео записе на телефон. Затим изаберите снимак из Видео "
+"опсега."
 
 #: src/qml/player.qml:70
 msgid "Ok"
@@ -60,7 +63,7 @@ msgstr "Подели"
 
 #: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
-msgstr "Постави;Додај;Приложи"
+msgstr "Објави;Додај;Приложи"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -80,7 +83,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr "Грешка при приказивању видеа"
+msgstr "Грешка приказивања снимка"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
@@ -88,11 +91,11 @@ msgstr "Затвори"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr "Неуспешно отварање изворног видеа."
+msgstr "Нисам успео да отворим изворни снимак."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
-msgstr "Формат видеа није подржан."
+msgstr "Формат снимка није подржан."
 
 #: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
@@ -104,4 +107,4 @@ msgstr "Не постоје одговарајуће дозволе за при�
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr "Неуспешно повезивање са помоћним програмом за репродукцију"
+msgstr "Нисам успео да се повежем са позадинцем за пуштање."
