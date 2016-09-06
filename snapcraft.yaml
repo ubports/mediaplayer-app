@@ -1,0 +1,41 @@
+name: mediaplayer-app
+version: 0.20.5
+summary: QML-based media player
+description: |
+  A QML media player that can play audio/video sources.
+  Please find the source at:
+  https://code.launchpad.net/mediaplayer-app
+confinement: strict
+
+apps:
+  mediaplayer-app:
+    command: usr/bin/mediaplayer-app
+    plugs: [mpris]
+
+parts:
+  mediaplayer-app:
+    plugin: cmake
+    source: .
+
+    build-packages:
+      - debhelper
+      - dh-translations
+      - libgl1-mesa-dev
+      - pkg-config
+      - python3
+      - qtbase5-dev
+      - qtdeclarative5-dev
+      - qtmultimedia5-dev
+
+    configflags:
+      - -DCMAKE_INSTALL_PREFIX:PATH=/usr
+      - -DCMAKE_LIBRARY_PATH=/usr/lib
+
+    stage-packages:
+      - qtubuntu-media
+      - qtdeclarative5-ubuntu-content1
+
+  environment:
+    plugin: copy
+    files:
+      mediaplayer-app.wrapper: bin/mediaplayer-app
