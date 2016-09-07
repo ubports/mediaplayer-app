@@ -1,5 +1,5 @@
 name: mediaplayer-app
-version: 0.20.5
+version: 0.20.5-1
 summary: QML-based media player
 description: |
   A QML media player that can play audio/video sources.
