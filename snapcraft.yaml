@@ -41,6 +41,8 @@ parts:
         # Files that we don't want/need in the final snap package
         - -etc
         - -usr/lib/debug
+        - -usr/lib/*/libclick*
+        - -usr/lib/*/libhybris*
         - -usr/lib/*/libogg*
         - -usr/lib/*/libpulse*
         - -usr/lib/python*
