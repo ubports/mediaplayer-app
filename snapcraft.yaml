@@ -36,6 +36,31 @@ parts:
       - qtubuntu-media
       - qtdeclarative5-ubuntu-content1
 
+    filesets:
+      unwanted:
+        # Files that we don't want/need in the final snap package
+        - -etc
+        - -usr/lib/debug
+        - -usr/lib/*/libogg*
+        - -usr/lib/*/libpulse*
+        - -usr/lib/python*
+        - -usr/share/apport
+        - -usr/share/bug
+        - -usr/share/doc
+        - -usr/share/fonts
+        - -usr/share/libwacom
+        - -usr/share/lintian
+        - -usr/share/man
+        - -usr/share/X11
+        - -usr/lib/*.a
+        - -usr/lib/*/*.a
+        - -usr/lib/*.la
+        - -usr/lib/*/*.la
+        - -usr/lib/*/*.o
+
+    snap:
+      - $unwanted
+
   environment:
     plugin: copy
     files:
