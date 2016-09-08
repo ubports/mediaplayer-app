@@ -65,3 +65,4 @@ parts:
     plugin: copy
     files:
       mediaplayer-app.wrapper: bin/mediaplayer-app
+      debian/copyright: usr/share/doc/mediaplayer-app/copyright
