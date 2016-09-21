@@ -27,7 +27,7 @@ Depends: ${misc:Depends},
          qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
          qtdeclarative5-ubuntu-ui-toolkit-plugin | qtdeclarative5-ubuntu-ui-toolkit-plugin-gles,
          qtdeclarative5-window-plugin,
-         qtdeclarative5-xmllistmodel-plugin,
+         qml-module-qtquick-xmllistmodel,
 Conflicts: media-player
 Replaces: media-player
 Provides: media-player
