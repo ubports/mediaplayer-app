@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+16.10.20160921-0ubuntu1) yakkety; urgency=medium
+
+  * Switch from transitional package name for qtdeclarative5-
+    xmllistmodel-plugin to non-transitional package name.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Wed, 21 Sep 2016 15:37:35 +0000
+
 mediaplayer-app (0.20.5+16.04.20160428-0ubuntu1) xenial; urgency=medium
 
   * Added arm64 build.
