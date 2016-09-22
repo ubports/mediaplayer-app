@@ -1,3 +1,9 @@
+mediaplayer-app (0.20.5+16.10.20160922-0ubuntu1) yakkety; urgency=medium
+
+  * Initial snapping up of mediaplayer-app.
+
+ -- Jim Hodapp <jim.hodapp@canonical.com>  Thu, 22 Sep 2016 17:44:54 +0000
+
 mediaplayer-app (0.20.5+16.10.20160921-0ubuntu1) yakkety; urgency=medium
 
   * Switch from transitional package name for qtdeclarative5-
