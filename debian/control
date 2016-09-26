@@ -15,6 +15,7 @@ Build-Depends: cmake,
 # used by unittest
                qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
                qml-module-qttest [amd64 armhf i386],
+               qml-module-qtquick-xmllistmodel [amd64 armhf i386],
                qml-module-ubuntu-test [amd64 armhf i386],
                qtdeclarative5-dev-tools [amd64 armhf i386],
                xvfb [amd64 armhf i386],
