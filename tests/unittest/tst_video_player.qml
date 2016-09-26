@@ -116,6 +116,8 @@ Item {
             // show controls
             mouseClick(player)
             tryCompare(player, 'controlsActive', true)
+            tryCompare(player, 'paused', false)
+            wait(2000)
 
             // click to pause
             var pauseButton = findChild(player, "Controls.PlayBackButton")
@@ -132,14 +134,16 @@ Item {
             // show controls
             mouseClick(player)
             tryCompare(player, 'controlsActive', true)
+            wait(2000)
 
             // click to pause
             var pauseButton = findChild(player, "Controls.PlayBackButton")
             mouseClick(pauseButton)
-            tryCompare(player, 'paused', true)
+            tryCompare(player, 'paused', true, 10000)
+            wait(2000)
 
             mouseClick(pauseButton)
-            tryCompare(player, 'paused', false)
+            tryCompare(player, 'paused', false, 10000)
         }
     }
 }
