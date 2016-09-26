@@ -54,9 +54,16 @@ Item {
         name: "Date tests"
 
         property var player: null
-        readonly property string videUri: Qt.resolvedUrl("../videos/h264.avi")
+        readonly property string videUri: Qt.resolvedUrl("../videos/small.ogg")
 
         when: windowShown
+
+        function clikPlaybackButton(toolbar)
+        {
+            var pauseButton = findChild(toolbar, "Controls.PlayBackButton")
+            //WORKAROUND: mouseClick(pauseButton) fails on vivid
+            mouseClick(player, pauseButton.x + (pauseButton.width / 2), player.height - (pauseButton.height / 2))
+        }
 
 
         function init()
@@ -113,37 +120,39 @@ Item {
             player.playUri(videUri)
             tryCompare(player, 'playing', true)
 
+            var toolbar = findChild(player, "toolbar")
+            tryCompare(toolbar, 'fullVisible', false)
+
             // show controls
             mouseClick(player)
             tryCompare(player, 'controlsActive', true)
+            tryCompare(toolbar, 'fullVisible', true)
             tryCompare(player, 'paused', false)
-            wait(2000)
 
             // click to pause
-            var pauseButton = findChild(player, "Controls.PlayBackButton")
-            mouseClick(pauseButton)
+            clikPlaybackButton(toolbar)
             tryCompare(player, 'paused', true)
         }
+
 
         function test_play_after_pause()
         {
             // play video
+            var toolbar = findChild(player, "toolbar")
             player.playUri(videUri)
             tryCompare(player, 'playing', true)
 
             // show controls
             mouseClick(player)
             tryCompare(player, 'controlsActive', true)
-            wait(2000)
+            tryCompare(toolbar, 'fullVisible', true)
 
             // click to pause
-            var pauseButton = findChild(player, "Controls.PlayBackButton")
-            mouseClick(pauseButton)
-            tryCompare(player, 'paused', true, 10000)
-            wait(2000)
+            clikPlaybackButton(toolbar)
+            tryCompare(player, 'paused', true)
 
-            mouseClick(pauseButton)
-            tryCompare(player, 'paused', false, 10000)
+            clikPlaybackButton(toolbar)
+            tryCompare(player, 'paused', false)
         }
     }
 }
