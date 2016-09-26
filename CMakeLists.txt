@@ -46,6 +46,7 @@ set(MEDIAPLAYER_DIR ${CMAKE_INSTALL_FULL_DATADIR}/mediaplayer-app)
 set (GETTEXT_PACKAGE "mediaplayer-app")
 
 # Tests
+option(USE_XVFB "Use XVFB to run qml tests" on)
 enable_testing()
 
 add_subdirectory(data)
