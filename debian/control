@@ -12,8 +12,11 @@ Build-Depends: cmake,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtmultimedia5-dev,
-               xvfb [amd64 armhf i386],
+# used by unittest
                qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
+               qml-module-qttest [amd64 armhf i386],
+               qtdeclarative5-dev-tools [amd64 armhf i386],
+               xvfb [amd64 armhf i386],
 Standards-Version: 3.9.5
 # If you don't have commit rights to lp:mediaplayer-app but need to upload
 # packaging changes, just go ahead.  The developers will notice and sync
