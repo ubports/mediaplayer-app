@@ -62,7 +62,12 @@ Item {
         {
             var pauseButton = findChild(toolbar, "Controls.PlayBackButton")
             //WORKAROUND: mouseClick(pauseButton) fails on vivid
-            mouseClick(player, pauseButton.x + (pauseButton.width / 2), player.height - (pauseButton.height / 2))
+            var posY = pauseButton.mapFromItem(root, pauseButton.x, pauseButton.y).y
+            if (pauseButton.mapFromItem(root, pauseButton.x, pauseButton.y).y < -590) {
+                mouseClick(pauseButton)
+            } else {
+                mouseClick(player, pauseButton.x + (pauseButton.width / 2), player.height - (pauseButton.height / 2))
+            }
         }
 
 
