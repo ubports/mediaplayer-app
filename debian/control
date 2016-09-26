@@ -12,7 +12,7 @@ Build-Depends: cmake,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtmultimedia5-dev,
-               # used by unittest
+# used by unittest
                qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
                qml-module-qttest [amd64 arm64 armhf i386],
                qml-module-qtquick-xmllistmodel [amd64 arm64 armhf i386],
