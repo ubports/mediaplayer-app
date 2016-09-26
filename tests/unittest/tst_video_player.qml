@@ -94,21 +94,6 @@ Item {
             tryCompare(player, 'paused', false)
         }
 
-        function test_video_progress()
-        {
-            tryCompare(player, 'position', 0)
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
-            wait(6000)
-            verify(player.duration > 5000)
-            wait(6000)
-            verify(player.duration > 10000)
-            wait(6000)
-            verify(player.duration > 15000)
-            wait(6000)
-            verify(player.duration > 20000)
-            tryCompare(player, 'position', 26866, 10000)
-        }
-
         function test_click_to_show_and_hide_controls()
         {
             player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
