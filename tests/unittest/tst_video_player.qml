@@ -54,6 +54,7 @@ Item {
         name: "Date tests"
 
         property var player: null
+        readonly property string videUri: Qt.resolvedUrl("../videos/h264.avi")
 
         when: windowShown
 
@@ -79,14 +80,14 @@ Item {
 
         function test_open_video()
         {
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
+            player.playUri(videUri)
             tryCompare(player, 'paused', false)
             tryCompare(player, 'playing', true)
         }
 
         function test_play_pause_video()
         {
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
+            player.playUri(videUri)
             tryCompare(player, 'playing', true)
             player.playPause()
             tryCompare(player, 'paused', true)
@@ -96,7 +97,7 @@ Item {
 
         function test_click_to_show_and_hide_controls()
         {
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
+            player.playUri(videUri)
             tryCompare(player, 'playing', true)
 
             mouseClick(player)
@@ -109,7 +110,7 @@ Item {
         function test_pause_button()
         {
             // play video
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
+            player.playUri(videUri)
             tryCompare(player, 'playing', true)
 
             // show controls
@@ -125,7 +126,7 @@ Item {
         function test_play_after_pause()
         {
             // play video
-            player.playUri(Qt.resolvedUrl("../videos/small.ogg"))
+            player.playUri(videUri)
             tryCompare(player, 'playing', true)
 
             // show controls
