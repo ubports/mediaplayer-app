@@ -58,19 +58,6 @@ Item {
 
         when: windowShown
 
-        function clikPlaybackButton(toolbar)
-        {
-            var pauseButton = findChild(toolbar, "Controls.PlayBackButton")
-            //WORKAROUND: mouseClick(pauseButton) fails on vivid
-            var posY = pauseButton.mapFromItem(root, pauseButton.x, pauseButton.y).y
-            if (pauseButton.mapFromItem(root, pauseButton.x, pauseButton.y).y < -590) {
-                mouseClick(pauseButton)
-            } else {
-                mouseClick(player, pauseButton.x + (pauseButton.width / 2), player.height - (pauseButton.height / 2))
-            }
-        }
-
-
         function init()
         {
             player = playerComp.createObject(root, {})
@@ -135,7 +122,7 @@ Item {
             tryCompare(player, 'paused', false)
 
             // click to pause
-            clikPlaybackButton(toolbar)
+            player.playPause()
             tryCompare(player, 'paused', true)
         }
 
@@ -153,10 +140,10 @@ Item {
             tryCompare(toolbar, 'fullVisible', true)
 
             // click to pause
-            clikPlaybackButton(toolbar)
+            player.playPause()
             tryCompare(player, 'paused', true)
 
-            clikPlaybackButton(toolbar)
+            player.playPause()
             tryCompare(player, 'paused', false)
         }
     }
