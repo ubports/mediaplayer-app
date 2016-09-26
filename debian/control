@@ -12,15 +12,15 @@ Build-Depends: cmake,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtmultimedia5-dev,
-# used by unittest
+               # used by unittest
                qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
-               qml-module-qttest [amd64 armhf i386],
-               qml-module-qtquick-xmllistmodel [amd64 armhf i386],
-               qml-module-ubuntu-test [amd64 armhf i386],
-               qtdeclarative5-dev-tools [amd64 armhf i386],
-               xvfb [amd64 armhf i386],
+               qml-module-qttest [amd64 arm64 armhf i386],
+               qml-module-qtquick-xmllistmodel [amd64 arm64 armhf i386],
+               qml-module-ubuntu-test [amd64 arm64 armhf i386],
+               qtdeclarative5-dev-tools [amd64 arm64 armhf i386],
+               xvfb [amd64 arm64 armhf i386],
                gstreamer1.0-plugins-base [amd64 i386],
-               gstreamer1.0-hybris [armhf],
+               gstreamer1.0-hybris [arm64 armhf],
 Standards-Version: 3.9.5
 # If you don't have commit rights to lp:mediaplayer-app but need to upload
 # packaging changes, just go ahead.  The developers will notice and sync
