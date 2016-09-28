@@ -1,1 +1,0 @@
-static const char* SAMPLE_IMAGES_DIR = "@sample_images_SOURCE_DIR@";

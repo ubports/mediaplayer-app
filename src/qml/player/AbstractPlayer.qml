@@ -36,6 +36,9 @@ Item {
     property alias status: mediaPlayer.status
     property alias volume: mediaPlayer.volume
 
+    readonly property alias duration: mediaPlayer.duration
+    readonly property alias position: mediaPlayer.position
+
     property int forwardSeekStep: Math.min(60000, mediaPlayer.duration * 0.05)
     property int backwardSeekStep: Math.min(30000, mediaPlayer.duration * 0.025)
 
