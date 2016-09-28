@@ -1,3 +1,13 @@
+mediaplayer-app (0.20.5+16.10.20160928-0ubuntu1) yakkety; urgency=medium
+
+  [ Florian Boucault ]
+  * Fixes for crossbuilding.
+
+  [ Renato Araujo Oliveira Filho ]
+  * Added unit test.
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Wed, 28 Sep 2016 12:23:27 +0000
+
 mediaplayer-app (0.20.5+16.10.20160922-0ubuntu1) yakkety; urgency=medium
 
   * Initial snapping up of mediaplayer-app.
