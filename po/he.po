@@ -14,21 +14,22 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-09-29 06:41+0000\n"
+"X-Generator: Launchpad (build 18204)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr ""
+msgstr "נגן מדיה"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "פתיחת סרטון"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"קובצי וידאו (‎*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;כל הקבצים (*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
@@ -39,10 +40,12 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"לא נבחר סרטון לנגינה. ניתן לחבר את הטלפון למחשב כדי להעביר סרטונים לטלפון "
+"ואז לבחור בסרטון מהיבט הסרטונים."
 
 #: src/qml/player.qml:70
 msgid "Ok"
-msgstr ""
+msgstr "אישור"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
@@ -98,7 +101,7 @@ msgstr ""
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "אין הרשאות הולמות לניגון משאב מדיה."
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
