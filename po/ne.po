@@ -9,26 +9,27 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
 "PO-Revision-Date: 2014-07-18 11:13+0000\n"
-"Last-Translator: Bista Nirooj <nirooj56@outlook.com>\n"
+"Last-Translator: Bista Nirooj <nirooj56@gmail.com>\n"
 "Language-Team: Nepali <ne@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-01-26 05:31+0000\n"
-"X-Generator: Launchpad (build 17902)\n"
+"X-Launchpad-Export-Date: 2016-09-29 06:41+0000\n"
+"X-Generator: Launchpad (build 18204)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr ""
+msgstr "मिडिया प्लेयर"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "भिडियो खोलने"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"भिडियो फाइलहरु (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;सबै फाइलहरु (*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
@@ -39,6 +40,8 @@ msgid ""
 "No video selected to play. Connect your phone to your computer to transfer "
 "videos to the phone. Then select video from Videos scope."
 msgstr ""
+"कुनै पनि भिडियो चयन भाका छैनन्।भिडियो सार्न तपाइको फोन कमप्युटरमा जोडनुहोस्। "
+"अनि भिडियोज स्कोपबाट भिडियो चयन गर्नुस।"
 
 #: src/qml/player.qml:70
 msgid "Ok"
@@ -46,15 +49,15 @@ msgstr "ठिक छ"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
-msgstr "पुनःसुरु गर्नुहोस् / रोक्नुहोस्"
+msgstr ""
 
 #: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
-msgstr "playhead रोक्नुहोस् वा  पुनःसुरु गर्नुहोस् !"
+msgstr ""
 
 #: src/qml/player.qml:191
 msgid "Share"
-msgstr "शेयर"
+msgstr ""
 
 #: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
@@ -78,7 +81,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr ""
+msgstr "भिडियो चलाउदा त्रुटी"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
@@ -86,20 +89,20 @@ msgstr "बन्दगर्नुहोस्"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "स्रोत भिडियो खोल्न असफल।"
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
-msgstr ""
+msgstr "भिडियो ढाँचा असमर्थित।"
 
 #: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr "नेटवर्क त्रुटि देखापर्यो।"
+msgstr ""
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
-msgstr ""
+msgstr "मिडिया स्रोत चलाउन कुनै उपयुक्त अनुमति छैन।"
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "प्लेब्याक ब्याकइन्डसंग जुड्न असफल।"
