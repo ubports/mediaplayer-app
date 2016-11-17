@@ -6,11 +6,18 @@ description: |
   Please find the source at:
   https://code.launchpad.net/mediaplayer-app
 confinement: strict
+grade: devel
 
 apps:
   mediaplayer-app:
-    command: usr/bin/mediaplayer-app
-    plugs: [mpris]
+    command: desktop-launch $SNAP/usr/bin/mediaplayer-app --desktop_file_hint=unity8 $@
+    plugs: [mpris, opengl, platform, unity7]
+
+plugs:
+  platform:
+    interface: content
+    content: ubuntu-app-platform1
+    target: ubuntu-app-platform
 
 parts:
   mediaplayer-app:
@@ -32,9 +39,7 @@ parts:
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
       - -DCMAKE_LIBRARY_PATH=/usr/lib
 
-    stage-packages:
-      - qtubuntu-media
-      - qtdeclarative5-ubuntu-content1
+    stage-packages: []
 
     filesets:
       unwanted:
@@ -63,8 +68,9 @@ parts:
     snap:
       - $unwanted
 
+    after:
+      - desktop-ubuntu-app-platform
+
   environment:
-    plugin: copy
-    files:
-      mediaplayer-app.wrapper: bin/mediaplayer-app
-      debian/copyright: usr/share/doc/mediaplayer-app/copyright
+    plugin: dump
+    source: snap/
