@@ -10,7 +10,7 @@ grade: devel
 
 apps:
   mediaplayer-app:
-    command: desktop-launch $SNAP/usr/bin/mediaplayer-app --desktop_file_hint=unity8 $@
+    command: desktop-launch $SNAP/bin/mediaplayer-app --desktop_file_hint=unity8 $@
     plugs: [mpris, opengl, platform, unity7]
 
 plugs:
@@ -73,3 +73,5 @@ parts:
   environment:
     plugin: dump
     source: snap/
+    organize:
+      mediaplayer-app.wrapper: bin/mediaplayer-app
