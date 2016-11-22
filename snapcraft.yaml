@@ -11,7 +11,7 @@ grade: devel
 apps:
   mediaplayer-app:
     command: desktop-launch $SNAP/bin/mediaplayer-app --desktop_file_hint=unity8 $@
-    plugs: [mpris, opengl, platform, unity7]
+    plugs: [mpris, opengl, platform, unity7, home]
 
 plugs:
   platform:
@@ -39,6 +39,9 @@ parts:
     configflags:
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
       - -DCMAKE_LIBRARY_PATH=/usr/lib
+
+    stage-packages:
+      - xdg-user-dirs
 
     filesets:
       unwanted:

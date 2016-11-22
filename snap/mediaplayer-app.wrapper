@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# FIXME: this is a workaround for XDG variables
+# not being set adequately
+# Ref.: https://bugs.launchpad.net/snappy/+bug/1577471
+XDG_PICTURES_DIR=$(HOME=/home/$USER xdg-user-dir PICTURES)
+XDG_VIDEOS_DIR=$(HOME=/home/$USER xdg-user-dir VIDEOS)
+SNAP_PICTURES_DIR=$HOME/`basename $XDG_PICTURES_DIR`
+SNAP_VIDEOS_DIR=$HOME/`basename $XDG_VIDEOS_DIR`
+
 #FIXME: (ubuntu-app-platform) missing pulse path on LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SNAP/ubuntu-app-platform/usr/lib/x86_64-linux-gnu/pulseaudio
 
