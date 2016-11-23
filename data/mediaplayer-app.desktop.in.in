@@ -12,3 +12,4 @@ X-Ubuntu-SymbolicIcon=@MEDIAPLAYER_DIR@/@MEDIAPLAYER_APP_SYMBOLIC_ICON@
 X-Ubuntu-Gettext-Domain=mediaplayer-app
 X-Ubuntu-Single-Instance=true
 X-Ubuntu-Default-Department-ID=sound-video
+OnlyShowIn=Old
