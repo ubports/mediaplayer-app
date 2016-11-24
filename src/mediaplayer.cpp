@@ -182,11 +182,15 @@ MediaPlayer::onHeightChanged(int height)
 
 bool MediaPlayer::isDesktopMode() const
 {
-  // Assume that platformName (QtUbuntu) with ubuntu
-  // in name means it's running on device
-  // TODO: replace this check with SDK call for formfactor
-  QString platform = QGuiApplication::platformName();
-  return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
+    // WORKAROUND: check unity profile
+    if (qgetenv("UNITY_INDICATOR_PROFILE") == "desktop")
+        return true;
+
+    // Assume that platformName (QtUbuntu) with ubuntu
+    // in name means it's running on device
+    // TODO: replace this check with SDK call for formfactor
+    QString platform = QGuiApplication::platformName();
+    return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
 }
 
 QUrl MediaPlayer::chooseFile()
