@@ -29,7 +29,11 @@ inline bool isRunningInstalled() {
 }
 
 inline QString mediaPlayerDirectory() {
-    if (isRunningInstalled()) {
+    static const QByteArray SNAP_PATH("SNAP");
+
+    if (qEnvironmentVariableIsSet(SNAP_PATH)) {
+        return QString("%1/@MEDIAPLAYER_DIR@").arg(QString(qgetenv(SNAP_PATH)));
+    } else if (isRunningInstalled()) {
         return QString("@MEDIAPLAYER_DIR@");
     } else {
         return QString("@mediaplayer_src_SOURCE_DIR@");
