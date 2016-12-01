@@ -5,13 +5,13 @@ description: |
   A QML media player that can play audio/video sources.
   Please find the source at:
   https://code.launchpad.net/mediaplayer-app
-confinement: strict
-grade: devel
+confinement: devmode
+grade: stable
 
 apps:
   mediaplayer-app:
     command: desktop-launch $SNAP/bin/mediaplayer-app --desktop_file_hint=unity8 $@
-    plugs: [mpris, opengl, platform, unity7, home]
+    plugs: [mpris, opengl, platform, unity7, home, unity8]
 
 plugs:
   platform:
