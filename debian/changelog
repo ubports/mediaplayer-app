@@ -1,3 +1,9 @@
+mediaplayer-app (0.20.5+17.04.20161201-0ubuntu1) zesty; urgency=medium
+
+  * Fix click to seek. (LP: #1645700)
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Thu, 01 Dec 2016 14:09:44 +0000
+
 mediaplayer-app (0.20.5+17.04.20161124.1-0ubuntu1) zesty; urgency=medium
 
   * Use platform content share. (LP: #1629009)
