@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+17.04.20161124.1-0ubuntu1) zesty; urgency=medium
+
+  * Use platform content share. (LP: #1629009)
+  * Run on desktop mode when running on untiy8 snap session.
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Thu, 24 Nov 2016 18:54:49 +0000
+
 mediaplayer-app (0.20.5+16.10.20160928-0ubuntu1) yakkety; urgency=medium
 
   [ Florian Boucault ]
