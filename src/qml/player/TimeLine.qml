@@ -67,7 +67,7 @@ Slider {
         {
             // On EndOfMedia status, make sure the slider returns to the beginning
             _slider.value = 0
-        } else {
+        } else if (!_slider.pressed){
             // Else, pass all new positions through to the slider UI
             if (_slider.videoPosition >= (_slider.finalSeekPosition / 1000)) {
                 _slider.value = _slider.videoPosition
