@@ -14,12 +14,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-30 06:14+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-12-02 05:23+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
-msgstr ""
+msgstr "Luaj Media"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
@@ -46,7 +46,7 @@ msgstr "Ok"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
-msgstr ""
+msgstr "Luaj / Pezullo"
 
 #: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
@@ -54,11 +54,11 @@ msgstr ""
 
 #: src/qml/player.qml:191
 msgid "Share"
-msgstr ""
+msgstr "Shpërndaje"
 
 #: src/qml/player.qml:192
 msgid "Post;Upload;Attach"
-msgstr ""
+msgstr "Post;Upload;Attach"
 
 #. TRANSLATORS: this refers to a duration/remaining time of the video, of which you can change the order.
 #. %1 refers to hours, %2 refers to minutes and %3 refers to seconds.
@@ -70,7 +70,7 @@ msgstr "%1:%2:%3"
 #. TRANSLATORS: this refers to an unknown duration.
 #: src/qml/player/TimeLine.qml:79
 msgid "unknown"
-msgstr ""
+msgstr "i panjohur"
 
 #: src/qml/player/TimeLine.qml:82
 msgid "0:00:00"
@@ -78,7 +78,7 @@ msgstr "0:00:00"
 
 #: src/qml/player/VideoPlayer.qml:214
 msgid "Error playing video"
-msgstr ""
+msgstr "Gabim në luajtjen e videos"
 
 #: src/qml/player/VideoPlayer.qml:218
 msgid "Close"
