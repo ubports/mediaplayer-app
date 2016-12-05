@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-30 06:14+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-12-02 05:23+0000\n"
+"X-Generator: Launchpad (build 18282)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -23,12 +23,14 @@ msgstr "ۋاسىتە قويغۇ"
 
 #: src/mediaplayer.cpp:200
 msgid "Open Video"
-msgstr ""
+msgstr "سىن ئېچىش"
 
 #: src/mediaplayer.cpp:202
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"سىن ھۆججەتلىرى (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;بارلىق "
+"ھۆججەتلەر (*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
