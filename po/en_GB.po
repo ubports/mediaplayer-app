@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: mediaplayer-app\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-01-14 18:27-0200\n"
-"PO-Revision-Date: 2016-02-03 11:21+0000\n"
-"Last-Translator: Andi Chandler <Unknown>\n"
+"PO-Revision-Date: 2016-12-11 14:15+0000\n"
+"Last-Translator: Anthony Harrington 😁 <untaintableangel@ubuntu.com>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-06 05:22+0000\n"
-"X-Generator: Launchpad (build 18282)\n"
+"X-Launchpad-Export-Date: 2016-12-12 05:19+0000\n"
+"X-Generator: Launchpad (build 18292)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -89,7 +89,7 @@ msgstr "Close"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Failure opening the source video."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
@@ -105,4 +105,4 @@ msgstr "Insufficient permissions to play the media resource."
 
 #: src/qml/player/VideoPlayer.qml:253
 msgid "Fail to connect with playback backend."
-msgstr ""
+msgstr "Failure connecting with playback backend."
