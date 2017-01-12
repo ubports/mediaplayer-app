@@ -90,6 +90,15 @@ bool MediaPlayer::setup()
     //FIXME: Using a custom int that will be implement on QtMir in the future
     m_view->setFlags(static_cast <Qt::WindowFlags> (0x00800000));
     m_view->setTitle(tr("Media Player"));
+
+    // remove non url args
+    QStringList newArgs(args);
+    Q_FOREACH(const QString &arg, args) {
+        if (arg.startsWith("--"))
+            newArgs.removeOne(arg);
+    }
+    args = newArgs;
+
     QUrl playUri;
     if (args.count() >= 2) {
         QUrl uri(args[1]);
