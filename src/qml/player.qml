@@ -38,6 +38,11 @@ Item {
     property bool appActive: Qt.application.active
     property variant nativeOrientation: Screen.primaryOrientation
 
+    function pickAFile()
+    {
+        picVideoFile.request()
+    }
+
     onAppActiveChanged: {
         if (!appActive &&
             !mpApplication.desktopMode &&
@@ -170,6 +175,7 @@ Item {
                 playerLoader.item.controlsActive = true
             }
         }
+        onPlayEmptyFile: mediaPlayer.pickAFile()
     }
 
     UnityActions.ActionManager {
@@ -241,6 +247,14 @@ Item {
         }
     }
 
+    ContentHub.ContentPeer {
+        id: picVideoFile
+
+        contentType: ContentHub.ContentType.Videos
+        handler: ContentHub.ContentHandler.Source
+        selectionType: ContentHub.ContentTransfer.Single
+    }
+
     Timer {
         id: lateUrlCheck
 
@@ -248,15 +262,8 @@ Item {
         repeat: false
         running: true
         onTriggered: {
-            if ((playUri == "") && !ContentHub.ContentHub.hasPending) {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        playerLoader.item.playUri(videoFile)
-                    }
-                } else {
-                    PopupUtils.open(dialogNoUrl, null)
-                }
+            if ((playUri === "") && !ContentHub.ContentHub.hasPending) {
+                picVideoFile.request()
             }
         }
     }

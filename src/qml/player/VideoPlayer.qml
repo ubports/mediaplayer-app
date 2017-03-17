@@ -39,6 +39,7 @@ AbstractPlayer {
     property var errorDialog: null
 
     signal timeClicked
+    signal playEmptyFile
 
     objectName: "player"
     nfo: VideoInfo {
@@ -134,8 +135,7 @@ AbstractPlayer {
                 player.video.seek(time)
             }
 
-            settingsEnabled: mpApplication.desktopMode
-
+            settingsEnabled: false
             objectName: "controls"
             state: player.state
             video: player.video
@@ -149,7 +149,13 @@ AbstractPlayer {
             sceneSelectorHeight: units.gu(18)
             playerStatus: player.status
 
-            onPlaybackClicked: player.playPause()
+            onPlaybackClicked: {
+                if (player.uri === "") {
+                    player.playEmptyFile()
+                } else {
+                    player.playPause()
+                }
+            }
 
             onFullscreenClicked: {
                 if (mpApplication.desktopMode) {
@@ -162,16 +168,6 @@ AbstractPlayer {
             onStartSeek: aboutToSeek()
             onEndSeek: seekDone()
             onSeekRequested: seek(time)
-
-            onSettingsClicked: {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        player.stop()
-                        item.playUri(videoFile)
-                    }
-                }
-            }
         }
     }
 
