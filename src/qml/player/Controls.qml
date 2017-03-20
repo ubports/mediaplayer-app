@@ -154,11 +154,10 @@ Item {
                 id: _fullScreenButton
 
                 //TODO: use the correct icon based on window state
-//                visible: (mpApplication.desktopMode || (Window.visibility ===  Window.FullScreen))
-//                iconSource: mpApplication.desktopMode ?
-//                                Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen" :
-//                                "image://theme/close"
-                iconSource:  mpApplication.desktopMode ? "image://theme/view-fullscreen" : "image://theme/close"
+                visible: (mpApplication.desktopMode || (Window.visibility ===  Window.FullScreen))
+                iconSource: mpApplication.desktopMode ?
+                                Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen" :
+                                "image://theme/close"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
                 width: visible ? units.gu(8) : 0

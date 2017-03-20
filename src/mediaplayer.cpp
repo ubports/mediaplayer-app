@@ -187,15 +187,8 @@ MediaPlayer::onHeightChanged(int height)
 
 bool MediaPlayer::isDesktopMode() const
 {
-    // WORKAROUND: check unity profile
-    if (qgetenv("UNITY_INDICATOR_PROFILE") == "desktop")
-        return true;
-
-    // Assume that platformName (QtUbuntu) with ubuntu
-    // in name means it's running on device
-    // TODO: replace this check with SDK call for formfactor
-    QString platform = QGuiApplication::platformName();
-    return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
+    return (qgetenv("UBUNTU_PLATFORM_API_BACKEND").startsWith("desktop") ||
+            (qgetenv("XDG_SESSION_TYPE") == "X11"));
 }
 
 QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)

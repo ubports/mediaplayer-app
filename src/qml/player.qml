@@ -40,7 +40,7 @@ Item {
 
     function pickAFile()
     {
-        picVideoFile.request()
+        videoImport.requestVideo()
     }
 
     onAppActiveChanged: {
@@ -255,15 +255,6 @@ Item {
         }
     }
 
-
-    ContentPeer {
-        id: picVideoFile
-
-        contentType: ContentType.Videos
-        handler: ContentHandler.Destination
-        selectionType: ContentTransfer.Single
-    }
-
     Timer {
         id: lateUrlCheck
 
@@ -272,7 +263,7 @@ Item {
         running: true
         onTriggered: {
             if ((playUri == "") && !ContentHub.hasPending) {
-                videoImport.requestVideo()
+                mediaPlayer.pickAFile()
             }
         }
     }
