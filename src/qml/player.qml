@@ -25,7 +25,7 @@ import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.0 as Popups
-import Ubuntu.Content 0.1 as ContentHub
+import Ubuntu.Content 1.3
 
 Item {
     id: mediaPlayer
@@ -231,10 +231,10 @@ Item {
     }
 
     Connections {
-        target: ContentHub.ContentHub
+        target: ContentHub
         onImportRequested: {
             lateUrlCheck.stop()
-            if (transfer.state === ContentHub.ContentTransfer.Charged) {
+            if (transfer.state === ContentTransfer.Charged) {
                 var urls = []
                 for(var i=0; i < transfer.items.length; i++) {
                     urls.push(transfer.items[i].url)
@@ -247,12 +247,21 @@ Item {
         }
     }
 
-    ContentHub.ContentPeer {
+    VideoImport {
+        id: videoImport
+
+        onVideoReceived: {
+            playerLoader.item.playUri(videoUrl)
+        }
+    }
+
+
+    ContentPeer {
         id: picVideoFile
 
-        contentType: ContentHub.ContentType.Videos
-        handler: ContentHub.ContentHandler.Source
-        selectionType: ContentHub.ContentTransfer.Single
+        contentType: ContentType.Videos
+        handler: ContentHandler.Destination
+        selectionType: ContentTransfer.Single
     }
 
     Timer {
@@ -262,8 +271,8 @@ Item {
         repeat: false
         running: true
         onTriggered: {
-            if ((playUri === "") && !ContentHub.ContentHub.hasPending) {
-                picVideoFile.request()
+            if ((playUri == "") && !ContentHub.hasPending) {
+                videoImport.requestVideo()
             }
         }
     }
