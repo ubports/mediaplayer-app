@@ -188,7 +188,7 @@ MediaPlayer::onHeightChanged(int height)
 bool MediaPlayer::isDesktopMode() const
 {
     return (qgetenv("UBUNTU_PLATFORM_API_BACKEND").startsWith("desktop") ||
-            (qgetenv("XDG_SESSION_TYPE") == "X11"));
+            (qgetenv("XDG_SESSION_TYPE") == "x11"));
 }
 
 QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
