@@ -24,7 +24,7 @@ PopupBase {
     id: dialogue
 
     property alias activeTransfer: signalConnections.target
-    signal videoReceived(string avatarUrl)
+    signal videoReceived(string videoUrl)
     signal destruction()
 
     parent: QuickUtils.rootItem(this)
@@ -65,7 +65,7 @@ PopupBase {
 
             if (dialogue.activeTransfer.state === ContentTransfer.Charged) {
                 if (dialogue.activeTransfer.items.length > 0) {
-                    dialogue.avatarReceived(dialogue.activeTransfer.items[0].url)
+                    dialogue.videoReceived(dialogue.activeTransfer.items[0].url)
                 }
             }
 
