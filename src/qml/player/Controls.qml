@@ -300,7 +300,7 @@ Item {
                 id: _openFileButton
 
                 visible: enabled
-                iconSource: "image://theme/media-eject"
+                iconSource: "image://theme/document-open"
                 iconSize: units.gu(3)
                 anchors {
                     top: parent.top

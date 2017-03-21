@@ -186,7 +186,7 @@ AbstractPlayer {
         Icon {
             id: emptyStateIcon
 
-            source: "image://theme/media-eject"
+            source: "image://theme/document-open"
             color: "white"
             anchors.centerIn: parent
             width: units.gu(4)
