@@ -35,11 +35,12 @@ Item {
     property variant playerStatus: MediaPlayer.NoMedia
 
     property alias finalSeekPosition: _timeline.finalSeekPosition
-    property alias settingsEnabled: _settingsButton.enabled
+    property alias openFileEnabled: _openFileButton.enabled
 
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
+    signal openFileClicked
     signal shareClicked
     signal seekRequested(int time)
     signal startSeek
@@ -153,12 +154,7 @@ Item {
             IconButton {
                 id: _fullScreenButton
 
-                //TODO: use the correct icon based on window state
-//                visible: (mpApplication.desktopMode || (Window.visibility ===  Window.FullScreen))
-//                iconSource: mpApplication.desktopMode ?
-//                                Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen" :
-//                                "image://theme/close"
-                iconSource:  mpApplication.desktopMode ? "image://theme/view-fullscreen" : "image://theme/close"
+                iconSource: Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
                 width: visible ? units.gu(8) : 0
@@ -184,7 +180,8 @@ Item {
                                                               _fullScreenButton.width -
                                                               _timeLabel.width -
                                                               _shareButton.width -
-                                                              _settingsButton.width
+                                                              _openFileButton.width -
+                                                              _quitButton.width
 
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
@@ -206,9 +203,8 @@ Item {
                        playbackButton.width -
                        _timeLabel.width -
                        _shareButton.width -
-                       _settingsButton.width -
-                       units.gu(2) : 0
-
+                       _openFileButton.width -
+                       _quitButton.width : 0
 
                 TimeLine {
                     id: _timeline
@@ -297,14 +293,14 @@ Item {
             }
 
             VLine {
-                visible: _settingsButton.visible
+                visible: _openFileButton.visible
             }
 
             IconButton {
-                id: _settingsButton
+                id: _openFileButton
 
-                visible: false
-                iconSource: "artwork/icon_settings.png"
+                visible: enabled
+                iconSource: "image://theme/document-open"
                 iconSize: units.gu(3)
                 anchors {
                     top: parent.top
@@ -313,7 +309,22 @@ Item {
                 width: visible ? units.gu(7) : 0
                 enabled: false
                 opacity: enabled ? 1.0 : 0.2
-                onClicked: settingsClicked()
+                onClicked: openFileClicked()
+            }
+
+            VLine {}
+
+            IconButton {
+                id: _quitButton
+
+                iconSource: "image://theme/close"
+                iconSize: units.gu(3)
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: units.gu(7)
+                onClicked: Qt.quit()
             }
         }
     }
