@@ -1,3 +1,10 @@
+mediaplayer-app (0.20.5+17.04.20170321.4-0ubuntu1) zesty; urgency=medium
+
+  * Open content peer selection in case of the app start without a video
+    url. (LP: #1673563)
+
+ -- Renato Araujo Oliveira Filho <renato.filho@canonical.com>  Tue, 21 Mar 2017 19:41:57 +0000
+
 mediaplayer-app (0.20.5+17.04.20161201-0ubuntu1) zesty; urgency=medium
 
   * Fix click to seek. (LP: #1645700)
