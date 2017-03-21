@@ -35,6 +35,7 @@ AbstractPlayer {
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
     readonly property int seekStep: 1000
+    readonly property bool isEmpty: source == ""
     property var errorDialog: null
 
     signal timeClicked
@@ -175,9 +176,42 @@ AbstractPlayer {
                 bottom: _controls.top
             }
 
+            enabled: !player.isEmpty
             onClicked: _controls.active = !_controls.active
         }
 
+    Item {
+        id: emptyState
+
+        anchors.fill: parent
+        visible: player.isEmpty
+        Icon {
+            id: emptyStateIcon
+
+            source: "image://theme/media-eject"
+            color: "white"
+            anchors.centerIn: parent
+            width: units.gu(4)
+        }
+        Label {
+            text: i18n.tr("Please choose a file to open")
+            color: "white"
+            textSize: Label.Large
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                top: emptyStateIcon.bottom
+                topMargin: units.gu(2)
+            }
+        }
+    }
+
+    // override "active" on empty state
+    Binding {
+        target: _controls
+        property: "active"
+        value: true
+        when: player.isEmpty
+    }
 
     Keys.onReleased:
     {
