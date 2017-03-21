@@ -43,14 +43,17 @@ Item {
         videoImport.requestVideo()
     }
 
-    onAppActiveChanged: {
-        if (!appActive &&
-            !mpApplication.desktopMode &&
-            playerLoader.item &&
-            playerLoader.item.playing) {
-            playerLoader.item.pause()
-        }
-    }
+//    FIXME: For now keep the video playing even if the app is not active
+//    Wait for a better app life cycle to inform if the app will be suspended or not
+//
+//    onAppActiveChanged: {
+//        if (!appActive &&
+//            !mpApplication.desktopMode &&
+//            playerLoader.item &&
+//            playerLoader.item.playing) {
+//            playerLoader.item.pause()
+//        }
+//    }
 
     Screen.onOrientationChanged: {
         // Rotate the UI when the device orientation changes

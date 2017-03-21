@@ -156,14 +156,7 @@ AbstractPlayer {
                 }
             }
 
-            onFullscreenClicked: {
-                if (mpApplication.desktopMode) {
-                    mpApplication.toggleFullscreen()
-                } else {
-                    Qt.quit()
-                }
-            }
-
+            onFullscreenClicked: mpApplication.toggleFullscreen()
             onOpenFileClicked: player.playEmptyFile()
             onStartSeek: aboutToSeek()
             onEndSeek: seekDone()

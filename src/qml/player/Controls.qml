@@ -154,11 +154,7 @@ Item {
             IconButton {
                 id: _fullScreenButton
 
-                //TODO: use the correct icon based on window state
-                visible: (mpApplication.desktopMode || (Window.visibility ===  Window.FullScreen))
-                iconSource: mpApplication.desktopMode ?
-                                Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen" :
-                                "image://theme/close"
+                iconSource: Window.visibility ===  Window.FullScreen ? "image://theme/view-restore" : "image://theme/view-fullscreen"
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
                 width: visible ? units.gu(8) : 0
@@ -184,7 +180,8 @@ Item {
                                                               _fullScreenButton.width -
                                                               _timeLabel.width -
                                                               _shareButton.width -
-                                                              _openFileButton.width
+                                                              _openFileButton.width -
+                                                              _quitButton.width
 
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
@@ -207,8 +204,7 @@ Item {
                        _timeLabel.width -
                        _shareButton.width -
                        _openFileButton.width -
-                       units.gu(2) : 0
-
+                       _quitButton.width : 0
 
                 TimeLine {
                     id: _timeline
@@ -314,6 +310,21 @@ Item {
                 enabled: false
                 opacity: enabled ? 1.0 : 0.2
                 onClicked: openFileClicked()
+            }
+
+            VLine {}
+
+            IconButton {
+                id: _quitButton
+
+                iconSource: "image://theme/close"
+                iconSize: units.gu(3)
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                width: units.gu(7)
+                onClicked: Qt.quit()
             }
         }
     }

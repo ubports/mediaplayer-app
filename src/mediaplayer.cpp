@@ -57,9 +57,6 @@ bool MediaPlayer::setup()
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
     bool testability = args.removeAll("-testability") > 0;
 
-    // use windowed in desktop as default
-    windowed = windowed || isDesktopMode();
-
     // The testability driver is only loaded by QApplication but not by
     // QGuiApplication.
     // However, QApplication depends on QWidget which would add some
@@ -183,12 +180,6 @@ void
 MediaPlayer::onHeightChanged(int height)
 {
     m_view->rootContext()->setContextProperty("screenHeight", height);
-}
-
-bool MediaPlayer::isDesktopMode() const
-{
-    return (qgetenv("UBUNTU_PLATFORM_API_BACKEND").startsWith("desktop") ||
-            (qgetenv("XDG_SESSION_TYPE") == "x11"));
 }
 
 QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)

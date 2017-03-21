@@ -25,7 +25,6 @@
 class MediaPlayer : public QApplication
 {
     Q_OBJECT
-    Q_PROPERTY(bool desktopMode READ isDesktopMode CONSTANT)
 
 public:
     MediaPlayer(int &argc, char **argv);
@@ -38,7 +37,6 @@ public Q_SLOTS:
     void leaveFullScreen();
     void onWidthChanged(int);
     void onHeightChanged(int);
-    bool isDesktopMode() const;
     QList<QUrl> copyFiles(const QList<QUrl> &urls);
 
 private:
