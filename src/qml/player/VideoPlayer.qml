@@ -166,25 +166,23 @@ AbstractPlayer {
     }
 
     MouseArea {
-            id: _mouseArea
+        id: _mouseArea
 
-            objectName: "videoMouseArea"
-            anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: _controls.top
-            }
-
-            enabled: !player.isEmpty
-            onClicked: _controls.active = !_controls.active
+        objectName: "videoMouseArea"
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: _controls.top
         }
+        onClicked: _controls.active = !_controls.active
+    }
 
     Item {
         id: emptyState
 
         anchors.fill: parent
-        visible: player.isEmpty
+        visible: false
         Icon {
             id: emptyStateIcon
 
@@ -205,13 +203,25 @@ AbstractPlayer {
         }
     }
 
-    // override "active" on empty state
-    Binding {
-        target: _controls
-        property: "active"
-        value: true
-        when: player.isEmpty
-    }
+    state: player.isEmpty ? "empty" : ""
+    states: [
+        State {
+            name: "empty"
+            PropertyChanges {
+                target:  _controls
+                active: true
+            }
+            PropertyChanges {
+                target: emptyState
+                visible: true
+            }
+            PropertyChanges {
+                target: _mouseArea
+                enabled: false
+            }
+        }
+
+    ]
 
     Keys.onReleased:
     {
