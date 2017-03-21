@@ -40,6 +40,8 @@ Item {
 
     function pickAFile()
     {
+        if (playerLoader.item.playing)
+            playerLoader.item.pause()
         videoImport.requestVideo()
     }
 
