@@ -35,11 +35,12 @@ Item {
     property variant playerStatus: MediaPlayer.NoMedia
 
     property alias finalSeekPosition: _timeline.finalSeekPosition
-    property alias settingsEnabled: _settingsButton.enabled
+    property alias openFileEnabled: _openFileButton.enabled
 
     signal fullscreenClicked
     signal playbackClicked
     signal settingsClicked
+    signal openFileClicked
     signal shareClicked
     signal seekRequested(int time)
     signal startSeek
@@ -183,7 +184,7 @@ Item {
                                                               _fullScreenButton.width -
                                                               _timeLabel.width -
                                                               _shareButton.width -
-                                                              _settingsButton.width
+                                                              _openFileButton.width
 
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
@@ -205,7 +206,7 @@ Item {
                        playbackButton.width -
                        _timeLabel.width -
                        _shareButton.width -
-                       _settingsButton.width -
+                       _openFileButton.width -
                        units.gu(2) : 0
 
 
@@ -296,14 +297,14 @@ Item {
             }
 
             VLine {
-                visible: _settingsButton.visible
+                visible: _openFileButton.visible
             }
 
             IconButton {
-                id: _settingsButton
+                id: _openFileButton
 
-                visible: false
-                iconSource: "artwork/icon_settings.png"
+                visible: enabled
+                iconSource: "image://theme/media-eject"
                 iconSize: units.gu(3)
                 anchors {
                     top: parent.top
@@ -312,7 +313,7 @@ Item {
                 width: visible ? units.gu(7) : 0
                 enabled: false
                 opacity: enabled ? 1.0 : 0.2
-                onClicked: settingsClicked()
+                onClicked: openFileClicked()
             }
         }
     }

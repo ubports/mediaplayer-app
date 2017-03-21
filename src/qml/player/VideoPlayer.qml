@@ -134,7 +134,7 @@ AbstractPlayer {
                 player.video.seek(time)
             }
 
-            settingsEnabled: false
+            openFileEnabled: true
             objectName: "controls"
             state: player.state
             video: player.video
@@ -164,6 +164,7 @@ AbstractPlayer {
                 }
             }
 
+            onOpenFileClicked: player.playEmptyFile()
             onStartSeek: aboutToSeek()
             onEndSeek: seekDone()
             onSeekRequested: seek(time)
