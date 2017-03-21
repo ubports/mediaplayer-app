@@ -262,7 +262,7 @@ Item {
         repeat: false
         running: true
         onTriggered: {
-            if ((playUri == "") && !ContentHub.hasPending) {
+            if (playerLoader.item && (playerLoader.item.source == "") && !ContentHub.hasPending) {
                 mediaPlayer.pickAFile()
             }
         }

@@ -28,10 +28,9 @@ import "../sdk"
 AbstractPlayer {
     id: player
 
-    property variant nfo
+    property variant info
     property int pressCount: 0
     property bool wasPlaying: false
-    property string uri
     property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
@@ -42,7 +41,7 @@ AbstractPlayer {
     signal playEmptyFile
 
     objectName: "player"
-    nfo: VideoInfo {
+    info: VideoInfo {
         uri: source
     }
 
@@ -150,7 +149,7 @@ AbstractPlayer {
             playerStatus: player.status
 
             onPlaybackClicked: {
-                if (player.uri === "") {
+                if (player.source == "") {
                     player.playEmptyFile()
                 } else {
                     player.playPause()
