@@ -28,20 +28,21 @@ import "../sdk"
 AbstractPlayer {
     id: player
 
-    property variant nfo
+    property variant info
     property int pressCount: 0
     property bool wasPlaying: false
-    property string uri
     property bool rotating: false
     property alias controlsActive: _controls.active
     property bool componentLoaded: false
     readonly property int seekStep: 1000
+    readonly property bool isEmpty: source == ""
     property var errorDialog: null
 
     signal timeClicked
+    signal playEmptyFile
 
     objectName: "player"
-    nfo: VideoInfo {
+    info: VideoInfo {
         uri: source
     }
 
@@ -134,8 +135,7 @@ AbstractPlayer {
                 player.video.seek(time)
             }
 
-            settingsEnabled: mpApplication.desktopMode
-
+            openFileEnabled: true
             objectName: "controls"
             state: player.state
             video: player.video
@@ -149,46 +149,79 @@ AbstractPlayer {
             sceneSelectorHeight: units.gu(18)
             playerStatus: player.status
 
-            onPlaybackClicked: player.playPause()
-
-            onFullscreenClicked: {
-                if (mpApplication.desktopMode) {
-                    mpApplication.toggleFullscreen()
+            onPlaybackClicked: {
+                if (player.source == "") {
+                    player.playEmptyFile()
                 } else {
-                    Qt.quit()
+                    player.playPause()
                 }
             }
 
+            onFullscreenClicked: mpApplication.toggleFullscreen()
+            onOpenFileClicked: player.playEmptyFile()
             onStartSeek: aboutToSeek()
             onEndSeek: seekDone()
             onSeekRequested: seek(time)
-
-            onSettingsClicked: {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        player.stop()
-                        item.playUri(videoFile)
-                    }
-                }
-            }
         }
     }
 
     MouseArea {
-            id: _mouseArea
+        id: _mouseArea
 
-            objectName: "videoMouseArea"
+        objectName: "videoMouseArea"
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            bottom: _controls.top
+        }
+        onClicked: _controls.active = !_controls.active
+    }
+
+    Item {
+        id: emptyState
+
+        anchors.fill: parent
+        visible: false
+        Icon {
+            id: emptyStateIcon
+
+            source: "image://theme/document-open"
+            color: "white"
+            anchors.centerIn: parent
+            width: units.gu(4)
+        }
+        Label {
+            text: i18n.tr("Please choose a file to open")
+            color: "white"
+            textSize: Label.Large
             anchors {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                bottom: _controls.top
+                horizontalCenter: parent.horizontalCenter
+                top: emptyStateIcon.bottom
+                topMargin: units.gu(2)
             }
+        }
+    }
 
-            onClicked: _controls.active = !_controls.active
+    state: player.isEmpty ? "empty" : ""
+    states: [
+        State {
+            name: "empty"
+            PropertyChanges {
+                target:  _controls
+                active: true
+            }
+            PropertyChanges {
+                target: emptyState
+                visible: true
+            }
+            PropertyChanges {
+                target: _mouseArea
+                enabled: false
+            }
         }
 
+    ]
 
     Keys.onReleased:
     {

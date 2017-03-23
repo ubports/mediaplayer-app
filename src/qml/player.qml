@@ -25,7 +25,7 @@ import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.0 as Popups
-import Ubuntu.Content 0.1 as ContentHub
+import Ubuntu.Content 1.3
 
 Item {
     id: mediaPlayer
@@ -38,14 +38,24 @@ Item {
     property bool appActive: Qt.application.active
     property variant nativeOrientation: Screen.primaryOrientation
 
-    onAppActiveChanged: {
-        if (!appActive &&
-            !mpApplication.desktopMode &&
-            playerLoader.item &&
-            playerLoader.item.playing) {
+    function pickAFile()
+    {
+        if (playerLoader.item.playing)
             playerLoader.item.pause()
-        }
+        videoImport.requestVideo()
     }
+
+//    FIXME: For now keep the video playing even if the app is not active
+//    Wait for a better app life cycle to inform if the app will be suspended or not
+//
+//    onAppActiveChanged: {
+//        if (!appActive &&
+//            !mpApplication.desktopMode &&
+//            playerLoader.item &&
+//            playerLoader.item.playing) {
+//            playerLoader.item.pause()
+//        }
+//    }
 
     Screen.onOrientationChanged: {
         // Rotate the UI when the device orientation changes
@@ -170,6 +180,7 @@ Item {
                 playerLoader.item.controlsActive = true
             }
         }
+        onPlayEmptyFile: mediaPlayer.pickAFile()
     }
 
     UnityActions.ActionManager {
@@ -225,10 +236,10 @@ Item {
     }
 
     Connections {
-        target: ContentHub.ContentHub
+        target: ContentHub
         onImportRequested: {
             lateUrlCheck.stop()
-            if (transfer.state === ContentHub.ContentTransfer.Charged) {
+            if (transfer.state === ContentTransfer.Charged) {
                 var urls = []
                 for(var i=0; i < transfer.items.length; i++) {
                     urls.push(transfer.items[i].url)
@@ -241,6 +252,14 @@ Item {
         }
     }
 
+    VideoImport {
+        id: videoImport
+
+        onVideoReceived: {
+            playerLoader.item.playUri(videoUrl)
+        }
+    }
+
     Timer {
         id: lateUrlCheck
 
@@ -248,15 +267,8 @@ Item {
         repeat: false
         running: true
         onTriggered: {
-            if ((playUri == "") && !ContentHub.ContentHub.hasPending) {
-                if (mpApplication.desktopMode) {
-                    var videoFile = mpApplication.chooseFile()
-                    if (videoFile != "") {
-                        playerLoader.item.playUri(videoFile)
-                    }
-                } else {
-                    PopupUtils.open(dialogNoUrl, null)
-                }
+            if (playerLoader.item && (playerLoader.item.source == "") && !ContentHub.hasPending) {
+                mediaPlayer.pickAFile()
             }
         }
     }

@@ -1,5 +1,5 @@
 name: mediaplayer-app
-version: 0.20.5+17.04.20161201-0ubuntu1
+version: 0.20.5+17.04.20170321.4-0ubuntu1
 summary: QML-based media player
 description: |
   A QML media player that can play audio/video sources.

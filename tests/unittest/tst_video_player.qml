@@ -75,6 +75,21 @@ Item {
             tryCompare(player, 'paused', false)
             tryCompare(player, 'playing', false)
             tryCompare(player, 'wasPlaying', false)
+            tryCompare(player, 'isEmpty', true)
+        }
+
+        function test_empty_state()
+        {
+            tryCompare(player, 'isEmpty', true)
+            tryCompare(player, 'controlsActive', true)
+
+            // test if controls stay active after click on empty state
+            mouseClick(player)
+            tryCompare(player, 'controlsActive', true)
+
+            // play any uri should leave empty state
+            player.playUri(videUri)
+            tryCompare(player, 'isEmpty', false)
         }
 
         function test_open_video()
@@ -87,6 +102,8 @@ Item {
         function test_play_pause_video()
         {
             player.playUri(videUri)
+
+            tryCompare(player, 'isEmpty', false)
             tryCompare(player, 'playing', true)
             player.playPause()
             tryCompare(player, 'paused', true)
@@ -98,6 +115,7 @@ Item {
         {
             player.playUri(videUri)
             tryCompare(player, 'playing', true)
+            tryCompare(player, 'controlsActive', false)
 
             mouseClick(player)
             tryCompare(player, 'controlsActive', true)
@@ -125,7 +143,6 @@ Item {
             player.playPause()
             tryCompare(player, 'paused', true)
         }
-
 
         function test_play_after_pause()
         {

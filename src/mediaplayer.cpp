@@ -47,7 +47,7 @@ static void printUsage(const QStringList& arguments)
 }
 
 MediaPlayer::MediaPlayer(int &argc, char **argv)
-    : QApplication(argc, argv), m_view(0), m_fileChooser(0)
+    : QApplication(argc, argv), m_view(0)
 {
 }
 
@@ -56,9 +56,6 @@ bool MediaPlayer::setup()
     QStringList args = arguments();
     bool windowed = args.removeAll("-w") + args.removeAll("--windowed") > 0;
     bool testability = args.removeAll("-testability") > 0;
-
-    // use windowed in desktop as default
-    windowed = windowed || isDesktopMode();
 
     // The testability driver is only loaded by QApplication but not by
     // QGuiApplication.
@@ -155,10 +152,6 @@ MediaPlayer::~MediaPlayer()
     if (m_view) {
         delete m_view;
     }
-    if (m_fileChooser) {
-        delete m_fileChooser;
-        m_fileChooser = 0;
-    }
 }
 
 void
@@ -187,44 +180,6 @@ void
 MediaPlayer::onHeightChanged(int height)
 {
     m_view->rootContext()->setContextProperty("screenHeight", height);
-}
-
-bool MediaPlayer::isDesktopMode() const
-{
-    // WORKAROUND: check unity profile
-    if (qgetenv("UNITY_INDICATOR_PROFILE") == "desktop")
-        return true;
-
-    // Assume that platformName (QtUbuntu) with ubuntu
-    // in name means it's running on device
-    // TODO: replace this check with SDK call for formfactor
-    QString platform = QGuiApplication::platformName();
-    return !((platform == "ubuntu") || (platform == "ubuntumirclient"));
-}
-
-QUrl MediaPlayer::chooseFile()
-{
-    QUrl fileName;
-    if (!m_fileChooser) {
-        m_fileChooser = new QFileDialog(0,
-                                        tr("Open Video"),
-                                        QStandardPaths::writableLocation(QStandardPaths::MoviesLocation),
-                                        tr("Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"));
-        m_fileChooser->setModal(true);
-        int result = m_fileChooser->exec();
-        if (result == QDialog::Accepted) {
-            QStringList selectedFiles = m_fileChooser->selectedFiles();
-            if (selectedFiles.count() > 0) {
-                fileName = selectedFiles[0];
-            }
-        }
-        delete m_fileChooser;
-        m_fileChooser = 0;
-    } else {
-        m_fileChooser->raise();
-    }
-
-    return fileName;
 }
 
 QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
