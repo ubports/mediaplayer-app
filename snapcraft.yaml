@@ -53,8 +53,19 @@ parts:
       - desktop-ubuntu-app-platform
 
     snap:
+      - -lib
+      - -etc
+      - -usr/lib/python*
+      - -usr/share/apport
+      - -usr/share/bug
+      - -usr/share/doc
+      - -usr/share/fonts
+      - -usr/share/libwacom
+      - -usr/share/lintian
+      - -usr/share/man
+      - -usr/share/X11
       # ubuntu-app-platfrom files (avoid dubplicated).
-      # mantain full list to be easy to mantain
+      # keep a full list to be easy to mantain
       - -usr/lib/x86_64-linux-gnu/Mcrt1.o
       - -usr/lib/x86_64-linux-gnu/Scrt1.o
       - -usr/lib/x86_64-linux-gnu/address-book-service/address-book-service
