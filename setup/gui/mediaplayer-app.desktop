@@ -171,4 +171,3 @@ X-Ubuntu-SymbolicIcon=${SNAP}/usr/share/mediaplayer-app/mediaplayer-app-symbolic
 X-Ubuntu-Gettext-Domain=mediaplayer-app
 X-Ubuntu-Single-Instance=true
 X-Ubuntu-Default-Department-ID=sound-video
-OnlyShowIn=Old
