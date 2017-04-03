@@ -45,8 +45,9 @@ parts:
       - qtmultimedia5-dev
 
     stage-packages:
-      - xdg-user-dirs
       - gstreamer1.0-libav
+      - gstreamer1.0-pulseaudio
+      - xdg-user-dirs
 
     after:
       - desktop-ubuntu-app-platform
