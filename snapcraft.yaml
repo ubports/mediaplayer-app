@@ -29,6 +29,8 @@ plugs:
 parts:
   mediaplayer-app:
     plugin: cmake
+    configflags: [-DCMAKE_INSTALL_PREFIX=/usr, -DCMAKE_LIBRARY_PATH=/usr/lib]
+    build-attributes: [no-system-libraries]
     source: .
 
     build-packages:
@@ -42,39 +44,9 @@ parts:
       - qtdeclarative5-dev
       - qtmultimedia5-dev
 
-    configflags:
-      - -DCMAKE_INSTALL_PREFIX:PATH=/usr
-      - -DCMAKE_LIBRARY_PATH=/usr/lib
-
     stage-packages:
       - xdg-user-dirs
-
-    filesets:
-      unwanted:
-        # Files that we don't want/need in the final snap package
-        - -etc
-        - -usr/lib/debug
-        - -usr/lib/*/libclick*
-        - -usr/lib/*/libhybris*
-        - -usr/lib/*/libogg*
-        - -usr/lib/*/libpulse*
-        - -usr/lib/python*
-        - -usr/share/apport
-        - -usr/share/bug
-        - -usr/share/doc
-        - -usr/share/fonts
-        - -usr/share/libwacom
-        - -usr/share/lintian
-        - -usr/share/man
-        - -usr/share/X11
-        - -usr/lib/*.a
-        - -usr/lib/*/*.a
-        - -usr/lib/*.la
-        - -usr/lib/*/*.la
-        - -usr/lib/*/*.o
-
-    snap:
-      - $unwanted
+      - gstreamer1.0-libav
 
     after:
       - desktop-ubuntu-app-platform
