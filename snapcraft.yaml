@@ -47,6 +47,7 @@ parts:
     stage-packages:
       - gstreamer1.0-libav
       - gstreamer1.0-pulseaudio
+      - libgpm2
       - xdg-user-dirs
 
     after:
