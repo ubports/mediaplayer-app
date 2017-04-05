@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-21 06:47+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-04-05 07:16+0000\n"
+"X-Generator: Launchpad (build 18335)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -46,11 +46,11 @@ msgstr ""
 
 #: src/qml/player.qml:70
 msgid "Ok"
-msgstr "Ok"
+msgstr "Zatwierdź"
 
 #: src/qml/player.qml:186
 msgid "Play / Pause"
-msgstr "Odtwarzanie/pauza"
+msgstr "Odtwórz / wstrzymaj"
 
 #: src/qml/player.qml:187
 msgid "Pause or Resume Playhead"
@@ -90,7 +90,7 @@ msgstr "Zamknij"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr "Otwarcie źródła wideo nie powiodło się."
+msgstr "Nie udało się otworzyć źródła wideo."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."

@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-21 06:46+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-04-05 07:16+0000\n"
+"X-Generator: Launchpad (build 18335)\n"
 
 #: src/mediaplayer.cpp:89
 msgid "Media Player"
@@ -29,6 +29,8 @@ msgstr "Hap video"
 msgid ""
 "Video files (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;All files (*)"
 msgstr ""
+"Skedarë video (*.avi *.mov *.mp4 *.divx *.ogg *.ogv *.mpeg);;Të gjithë "
+"skedarët (*)"
 
 #: src/qml/player.qml:66
 msgid "Error"
@@ -86,15 +88,15 @@ msgstr "Mbyll"
 
 #: src/qml/player/VideoPlayer.qml:241
 msgid "Fail to open the source video."
-msgstr ""
+msgstr "Dështova në hapjen e videos burim."
 
 #: src/qml/player/VideoPlayer.qml:244
 msgid "Video format not supported."
-msgstr ""
+msgstr "Formati i videos nuk suportohet."
 
 #: src/qml/player/VideoPlayer.qml:247
 msgid "A network error occurred."
-msgstr ""
+msgstr "Ndodhi një gabim rrjeti."
 
 #: src/qml/player/VideoPlayer.qml:250
 msgid "There are not the appropriate permissions to play a media resource."
