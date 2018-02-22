@@ -1,4 +1,4 @@
-mediaplayer-app (0.20.5+17.04.20170321.4-0ubuntu1) zesty; urgency=medium
+mediaplayer-app (0.21+ubports1) xenial; urgency=medium
 
   * Open content peer selection in case of the app start without a video
     url. (LP: #1673563)
