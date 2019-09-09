@@ -189,7 +189,7 @@ Item {
                 text: i18n.tr("Play / Pause")
                 keywords: i18n.tr("Pause or Resume Playhead")
                 onTriggered:{
-                    console.log("doniks")
+                    console.log("doniks.")
                     playerLoader.item.playPause()
                 }
             },
