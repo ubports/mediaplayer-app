@@ -59,10 +59,12 @@ Item {
 
     Screen.onOrientationChanged: {
         // Rotate the UI when the device orientation changes
+        console.log("DX sooc")
         mediaPlayer.orientation = Screen.angleBetween(Screen.primaryOrientation, Screen.orientation)
     }
 
     Component.onCompleted: {
+        console.log("DX oc")
         i18n.domain = "mediaplayer-app"
     }
 
@@ -189,7 +191,7 @@ Item {
                 text: i18n.tr("Play / Pause")
                 keywords: i18n.tr("Pause or Resume Playhead")
                 onTriggered:{
-                    console.log("doniks.")
+                    console.log("DX player.qml UA.AM.oT")
                     playerLoader.item.playPause()
                 }
             },

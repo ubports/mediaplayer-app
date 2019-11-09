@@ -47,6 +47,8 @@ AbstractPlayer {
     }
 
     function playUri(uri) {
+        console.log("DX vp.pu " + uri)
+        seek(600)
         source = uri
         if (componentLoaded) {
             play()
@@ -65,6 +67,7 @@ AbstractPlayer {
     }
 
     function playPause() {
+        console.log("DX vp.pp")
         if (["paused", "playing"].indexOf(player.state) != -1) {
             player.togglePause();
         } else {

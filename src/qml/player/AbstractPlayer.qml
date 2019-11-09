@@ -53,6 +53,7 @@ Item {
     }
 
     function play() {
+        console.log("DX ap.p")
         state = "playing"
     }
 
@@ -77,6 +78,7 @@ Item {
     }
 
     function seek(value) {
+        console.log("DX ap.s " + value)
         if (mediaPlayer.seekable) {
             if (state != "playing" && state != "paused") {
                 state = "playing"
