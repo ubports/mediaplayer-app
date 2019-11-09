@@ -55,7 +55,7 @@ Item {
 
     function play() {
         console.log("DX ap.play")
-        seek(700)
+        seek(1200)
         state = "playing"
     }
 
