@@ -49,19 +49,23 @@ Item {
     state: "stopped"
 
     function stop() {
+        console.log("DX as.stop")
         state = "stopped"
     }
 
     function play() {
-        console.log("DX ap.p")
+        console.log("DX ap.play")
+        seek(700)
         state = "playing"
     }
 
     function pause() {
+        console.log("DX ap.pause")
         state = "paused"
     }
 
     function togglePause() {
+        console.log("DX ap.tp")
         if (playing) {
             pause()
         } else if (paused) {
@@ -105,6 +109,7 @@ Item {
     }
 
     function rewind() {
+        console.log("DX ap.rewind")
         if (mediaPlayer.seekable) {
             if (state == "rewinding") {
                 scrubbingTimer.step = Math.max(-5 * forwardSeekStep, scrubbingTimer.step * 1.5)
@@ -159,13 +164,15 @@ Item {
 
         property int step
 
-        onTriggered:
+        onTriggered: {
+            console.log("DX ap.st.ot")
             if (mediaPlayer.position + step < 0) {
                 mediaPlayer.seek(0)
                 player.state = "playing"
             } else {
                 mediaPlayer.seek(mediaPlayer.position + step)
             }
+        }
     }
 
     states: [

@@ -103,6 +103,7 @@ AbstractPlayer {
 
             function aboutToSeek()
             {
+                console.log("DX vp.ats")
                 wasPausedBeforeSeek = (state == "paused")
                 wasVisibleBeforeSeek = _controls.active && !_controls.aboutToDismiss
                 _controls.abortDismiss()
@@ -113,6 +114,7 @@ AbstractPlayer {
 
             function seekDone()
             {
+                console.log("DX vp.sd")
                 _controlsContents.finalSeekPosition = _controlsContents.seekPosition
                 // Only automatically resume playing after a seek that is not to the
                 // end of stream (i.e. position == duration)
@@ -131,6 +133,7 @@ AbstractPlayer {
 
             function seek(time)
             {
+                console.log("DX vp.s" + time)
                 //keep trak of last seek position in case of the last seek does not complete in time
                 //sometimes the seek is too fast and we can not rely on the video position to calculate
                 //the next seek position.
