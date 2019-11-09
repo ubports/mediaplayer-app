@@ -53,9 +53,24 @@ Item {
         state = "stopped"
     }
 
+    function startPlaying() {
+        console.log("DX ap.startPlaying")
+	    play()
+        startPlayingSeekPositionTimer.running = true
+    }
+
+    Timer {
+        id: startPlayingSeekPositionTimer
+        interval: 2000
+        repeat: false
+        running: false
+        onTriggered: {
+            mediaPlayer.seek(120000)
+        }
+    }
+
     function play() {
         console.log("DX ap.play")
-        seek(1200)
         state = "playing"
     }
 
@@ -74,20 +89,21 @@ Item {
     }
 
     function seekForward() {
-        return seek(forwardSeekStep)
+        return seekRelative(forwardSeekStep)
     }
 
     function seekBackward() {
-        return seek(-backwardSeekStep)
+        return seekRelative(-backwardSeekStep)
     }
 
-    function seek(value) {
-        console.log("DX ap.s " + value)
+    function seekRelative(value) {
+        console.log("DX ap.s ", value, state)
         if (mediaPlayer.seekable) {
-            if (state != "playing" && state != "paused") {
-                state = "playing"
-                state = "paused"
-            }
+            //if (state != "playing" && state != "paused") {
+	    //   console.log("DX ap.s toggle state playing/paused")
+            //    state = "playing"
+            //    state = "paused"
+            //}
             mediaPlayer.seek(mediaPlayer.position + value)
         } else {
             return false

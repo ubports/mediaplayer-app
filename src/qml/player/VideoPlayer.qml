@@ -48,17 +48,20 @@ AbstractPlayer {
 
     function playUri(uri) {
         console.log("DX vp.pu " + uri)
-        seek(600)
         source = uri
         if (componentLoaded) {
-            play()
+            //play()
+            console.log("DX vp.pu cl", uri)
+            startPlaying()
         }
     }
 
     Component.onCompleted: {
         componentLoaded = true
         if ((state !== "playing") && (source != "")) {
-            play()
+            //play()
+            console.log("DX vp.oc")
+            startPlaying()
         }
     }
 
@@ -133,7 +136,7 @@ AbstractPlayer {
 
             function seek(time)
             {
-                console.log("DX vp.s" + time)
+                console.log("DX vp.s", time)
                 //keep trak of last seek position in case of the last seek does not complete in time
                 //sometimes the seek is too fast and we can not rely on the video position to calculate
                 //the next seek position.
