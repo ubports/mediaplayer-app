@@ -11,4 +11,6 @@ X-Ubuntu-Touch=true
 X-Ubuntu-SymbolicIcon=@MEDIAPLAYER_DIR@/@MEDIAPLAYER_APP_SYMBOLIC_ICON@
 X-Ubuntu-Gettext-Domain=mediaplayer-app
 X-Ubuntu-Single-Instance=true
+X-Ubuntu-Splash-Image=@MEDIAPLAYER_DIR@/@MEDIAPLAYER_APP_SPLASH@
+X-Ubuntu-Splash-Color=#8940a8
 X-Ubuntu-Default-Department-ID=sound-video

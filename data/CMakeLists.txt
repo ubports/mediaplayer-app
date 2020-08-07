@@ -1,5 +1,6 @@
 set(MEDIAPLAYER_DESKTOP_FILE mediaplayer-app.desktop)
 set(MEDIAPLAYER_APP_ICON mediaplayer-app.png)
+set(MEDIAPLAYER_APP_SPLASH mediaplayer-app-splash.svg)
 set(MEDIAPLAYER_APP_SYMBOLIC_ICON mediaplayer-app-symbolic.svg)
 set(MEDIAPLAYER_URL_DISPATCHER mediaplayer-app.url-dispatcher)
 set(MEDIAPLAYER_CONTENT_HUB mediaplayer-app-content.json)
@@ -14,7 +15,7 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${MEDIAPLAYER_DESKTOP_FILE}
         DESTINATION ${CMAKE_INSTALL_DATADIR}/applications
 )
 
-install(FILES ${MEDIAPLAYER_APP_ICON} ${MEDIAPLAYER_APP_SYMBOLIC_ICON}
+install(FILES ${MEDIAPLAYER_APP_ICON} ${MEDIAPLAYER_APP_SPLASH} ${MEDIAPLAYER_APP_SYMBOLIC_ICON}
         DESTINATION ${MEDIAPLAYER_DIR}
 )
 
