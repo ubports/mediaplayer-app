@@ -24,5 +24,5 @@ Rectangle {
     height: units.dp(1)
     anchors.left: parent.left
     anchors.right: parent.right
-    color: UbuntuColors.coolGrey
+    color: theme.palette.normal.base
 }

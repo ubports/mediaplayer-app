@@ -24,7 +24,7 @@ import QtQuick.Window 2.2
 import QtMultimedia 5.0
 import Ubuntu.Unity.Action 1.1 as UnityActions
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.0 as Popups
+import Ubuntu.Components.Popups 1.3 as Popups
 import Ubuntu.Content 1.3
 
 Item {
@@ -78,7 +78,6 @@ Item {
 
             Button {
                 text: i18n.tr("Ok")
-                gradient: UbuntuColors.greyGradient
                 onClicked: Qt.quit()
             }
         }
