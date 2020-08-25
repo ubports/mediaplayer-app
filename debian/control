@@ -33,8 +33,8 @@ Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
          qml-module-qtmultimedia | qml-module-qtmultimedia-gles,
-         qtdeclarative5-ubuntu-ui-toolkit-plugin | qtdeclarative5-ubuntu-ui-toolkit-plugin-gles,
-         qtdeclarative5-window-plugin,
+         qml-module-ubuntu-components,
+         qml-module-qtquick-window2,
          qml-module-qtquick-xmllistmodel,
 Conflicts: media-player
 Replaces: media-player
