@@ -32,7 +32,7 @@ Item {
     width: screenWidth
     height: screenHeight
 
-    property string orientation: "0"
+    property string orientation: "90"
     property string formFactor: "phone"
     property real volume: playerLoader.item.volume
     property bool appActive: Qt.application.active
