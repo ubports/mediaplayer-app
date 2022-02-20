@@ -244,7 +244,7 @@ Item {
                     urls.push(transfer.items[i].url)
                 }
 
-                var result = mpApplication.copyFiles(urls);
+                var result = urls;
                 if (result.length > 0)
                     playerLoader.item.playUri(result[result.length - 1])
             }

@@ -160,7 +160,20 @@ Item {
                 width: visible ? units.gu(8) : 0
                 height: units.gu(4)
                 onClicked: controls.fullscreenClicked()
-                leftAlignment: true
+            }
+
+            VLine {
+            }
+
+            IconButton {
+                id: _rotateButton
+
+                iconSource: "image://theme/view-rotate"
+                iconSize: units.gu(3)
+                anchors.verticalCenter: parent.verticalCenter
+                width: visible ? units.gu(7) : 0
+                height: units.gu(4)
+                onClicked: { mediaPlayer.orientation = mediaPlayer.orientation == "90" ? "0" : "90" }
             }
 
             VLine {
@@ -175,13 +188,14 @@ Item {
                 iconSource: icon ? "image://theme/media-playback-%1".arg(icon) : ""
                 iconSize: units.gu(3)
                 anchors.verticalCenter: parent.verticalCenter
-                width: controls.orientation === "LANDSCAPE" ? units.gu(10) :
+                width: controls.orientation === "LANDSCAPE" ? units.gu(7) :
                                                               controlsRow.width -
                                                               _fullScreenButton.width -
                                                               _timeLabel.width -
                                                               _shareButton.width -
                                                               _openFileButton.width -
-                                                              _quitButton.width
+                                                              _quitButton.width -
+                                                              _rotateButton.width
 
                 height: units.gu(4)
                 onClicked: controls.playbackClicked()
@@ -204,7 +218,8 @@ Item {
                        _timeLabel.width -
                        _shareButton.width -
                        _openFileButton.width -
-                       _quitButton.width : 0
+                       _quitButton.width -
+                       _rotateButton.width : 0
 
                 TimeLine {
                     id: _timeline

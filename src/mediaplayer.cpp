@@ -143,6 +143,8 @@ bool MediaPlayer::setup()
     m_view->setWidth(1200);
     m_view->setHeight(675);
     m_view->show();
+    prevWidth = m_view->size().width();
+    prevHeight = m_view->size().height();
 
     return true;
 }
@@ -154,32 +156,32 @@ MediaPlayer::~MediaPlayer()
     }
 }
 
-void
-MediaPlayer::toggleFullscreen()
+void MediaPlayer::toggleFullscreen()
 {
     QWindow::Visibility newVisibility = m_view->visibility() == QWindow::FullScreen ?
                 QWindow::Windowed : QWindow::FullScreen;
     m_view->setVisibility(newVisibility);
 }
 
-void
-MediaPlayer::leaveFullScreen()
+void MediaPlayer::leaveFullScreen()
 {
     if (m_view->visibility() == QWindow::FullScreen) {
         m_view->setVisibility(QWindow::Windowed);
     }
 }
 
-void
-MediaPlayer::onWidthChanged(int width)
+void MediaPlayer::onWidthChanged(int width)
 {
+    qInfo() << "INFO: changing width from" << prevWidth << "to" << width;
     m_view->rootContext()->setContextProperty("screenWidth", width);
+    prevWidth = width;
 }
 
-void
-MediaPlayer::onHeightChanged(int height)
+void MediaPlayer::onHeightChanged(int height)
 {
+    qInfo() << "INFO: changing height from" << prevHeight << "to" << height;
     m_view->rootContext()->setContextProperty("screenHeight", height);
+    prevHeight = height;
 }
 
 QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
@@ -228,7 +230,7 @@ QList<QUrl> MediaPlayer::copyFiles(const QList<QUrl> &urls)
         }
 
         if (QFile::copy(originalFile.absoluteFilePath(), newFile.absoluteFilePath())) {
-            result <<  QUrl::fromLocalFile(newFile.absoluteFilePath());
+            result <<  QUrl::fromLocalFile(originalFile.absoluteFilePath());
         } else {
             qWarning() << "Fail to copy file from:" << originalFile.absoluteFilePath() << "to" << newFile.absoluteFilePath();
         }

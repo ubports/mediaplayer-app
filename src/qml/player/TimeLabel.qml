@@ -32,16 +32,16 @@ Label {
     fontSize: "small"
     state: "PROGRESSIVE"
     verticalAlignment: Text.AlignVCenter
-    horizontalAlignment: Text.AlignRight
+    horizontalAlignment: Text.AlignHCenter
 
     states: [
         State {
             name: "PROGRESSIVE"
-            PropertyChanges { target: _TimeLabel; text: _TimeLabel.currentTime }
+            PropertyChanges { target: _TimeLabel; text: _TimeLabel.currentTime.lenght == 0 ? "unknown" : _TimeLabel.currentTime }
         },
         State {
             name: "DEGRESSIVE"
-            PropertyChanges { target: _TimeLabel; text: "- %1".arg(_TimeLabel.remainingTime) }
+            PropertyChanges { target: _TimeLabel; text: _TimeLabel.remainingTime.lenght == 0 ? "unknown" : "- %1".arg(_TimeLabel.remainingTime) }
         }
     ]
 

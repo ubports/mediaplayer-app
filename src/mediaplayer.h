@@ -41,6 +41,8 @@ public Q_SLOTS:
 
 private:
     QQuickView *m_view;
+    int prevHeight;
+    int prevWidth;
 };
 
 #endif // MEDIAPLAYER_H
