@@ -123,6 +123,21 @@ Item {
         smooth: true
 
         Behavior on opacity { NumberAnimation { duration: 200; easing.type: Easing.OutQuad } }
+        
+        PinchArea {
+            id: zoomArea
+            anchors {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                bottom: _controls.top
+            }
+            pinch.target: player
+            pinch.maximumScale: 1.5
+            pinch.minimumScale: 0.8
+            pinch.dragAxis: Pinch.XAndYAxis
+    }
+
     }
 
     MediaPlayer {
